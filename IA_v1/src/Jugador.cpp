@@ -1,6 +1,8 @@
 #include "../include/Jugador.h"
 #include <SFML/Graphics.hpp>
 
+#define vel 0.0002
+
 Jugador::Jugador()
 {
     textura = new sf::Texture();
@@ -22,9 +24,31 @@ Jugador::~Jugador()
     delete textura;
 }
 
-void Jugador::mover(int x, int y)
+void Jugador::mover(int x, int y, sf::Clock c)
 {
     //mover
+    sf::Time time = c.getElapsedTime();
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    {
+        sprite->setScale(-0.2, 0.2);
+        sprite->move({-vel * time.asMilliseconds(), 0});
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    {
+        sprite->setScale(-0.2, 0.2);
+        sprite->move({vel * time.asMilliseconds(), 0});
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+        sprite->setScale(-0.2, 0.2);
+        sprite->move({0, -vel * time.asMilliseconds()});
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+    {
+        sprite->setScale(-0.2, 0.2);
+        sprite->move({0, vel * time.asMilliseconds()});
+    }
 }
 
 void Jugador::dibujar(sf::RenderWindow w)
@@ -35,4 +59,11 @@ void Jugador::dibujar(sf::RenderWindow w)
 sf::Sprite Jugador::getSprite()
 {
     return *sprite;
+}
+
+float *Jugador::getPos()
+{
+    pos[0] = sprite->getPosition().x;
+    pos[1] = sprite->getPosition().y;
+    return pos;
 }

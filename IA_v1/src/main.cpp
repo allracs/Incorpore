@@ -11,7 +11,7 @@ int main()
     Enemigo e;
     Jugador j;
 
-
+    sf::Clock clock;
 	// Start the game loop
     while (app.isOpen())
     {
@@ -22,12 +22,12 @@ int main()
         while (app.pollEvent(event))
         {
             // Close window : exit
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                 app.close();
         }
 
-
-
+        e.mover(j.getPos()[0], j.getPos()[1], clock);
+        j.mover(0, 0, clock);
 
         // Clear screen
         app.clear();

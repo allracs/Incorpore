@@ -1,5 +1,8 @@
 #include "../include/Enemigo.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <math.h>
+#define he 0.0001
 
 Enemigo::Enemigo()
 {
@@ -19,9 +22,29 @@ Enemigo::~Enemigo()
     delete textura;
 }
 
-void Enemigo::mover(int x, int y)
+void Enemigo::mover(int x, int y, sf::Clock c)
 {
     //mover
+    sf::Time time = c.getElapsedTime();
+
+    std::cout << "se mueve " << x << " " << y << std::endl;
+    float h = sqrt((pow(x, 2))+(pow(y, 2)));
+    float xe = x * he / h;
+    float ye = y * he / h;
+    if(x > sprite->getPosition().x)
+    {
+        if(y > sprite->getPosition().y)
+            sprite->move(xe * time.asMilliseconds(), ye * time.asMilliseconds());
+        else
+            sprite->move(xe * time.asMilliseconds(), -ye * time.asMilliseconds());
+    }
+    else
+    {
+        if(y > sprite->getPosition().y)
+            sprite->move(-xe * time.asMilliseconds(), ye * time.asMilliseconds());
+        else
+            sprite->move(-xe * time.asMilliseconds(), -ye * time.asMilliseconds());
+    }
 }
 
 void Enemigo::dibujar(sf::RenderWindow w)
