@@ -12,6 +12,7 @@ Jugador::Jugador()
 
     sprite->setTexture(*textura);
     sprite->setScale(0.2f, 0.2f);
+    sprite->setOrigin(textura->getSize().x/2, textura->getSize().y/2);
 
     pos[0] = 500;
     pos[1] = 500;

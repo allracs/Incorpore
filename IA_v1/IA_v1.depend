@@ -1,20 +1,20 @@
 # depslib dependency file v1.0
-1552484752 source:/home/oscar/Desktop/FV/Incorpore/IA_v1/src/Enemigo.cpp
+1552503753 source:/home/oscar/Desktop/FV/Incorpore/IA_v1/src/Enemigo.cpp
 	"../include/Enemigo.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 	<math.h>
 
-1552481922 /home/oscar/Desktop/FV/Incorpore/IA_v1/include/Enemigo.h
+1552501160 /home/oscar/Desktop/FV/Incorpore/IA_v1/include/Enemigo.h
 	<SFML/Graphics.hpp>
 
-1552498962 source:/home/oscar/Desktop/FV/Incorpore/IA_v1/src/main.cpp
+1552501543 source:/home/oscar/Desktop/FV/Incorpore/IA_v1/src/main.cpp
 	<SFML/Graphics.hpp>
 	<stdio.h>
 	"../include/Enemigo.h"
 	"../include/Jugador.h"
 
-1552484095 source:/home/oscar/Desktop/FV/Incorpore/IA_v1/src/Jugador.cpp
+1552502195 source:/home/oscar/Desktop/FV/Incorpore/IA_v1/src/Jugador.cpp
 	"../include/Jugador.h"
 	<SFML/Graphics.hpp>
 

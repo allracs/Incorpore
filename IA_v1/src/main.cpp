@@ -16,8 +16,6 @@ int main()
 	// Start the game loop
     while (app.isOpen())
     {
-
-
         // Process events
         sf::Event event;
         while (app.pollEvent(event))
@@ -27,7 +25,11 @@ int main()
                 app.close();
         }
 
-        e.mover(j.getPos()[0], j.getPos()[1], clock);
+        if(!j.getSprite().getGlobalBounds().intersects(e.getSprite().getGlobalBounds()))
+        {
+            e.mover(j.getPos()[0], j.getPos()[1], clock);
+        }
+
         j.mover(0, 0, clock);
 
         // Clear screen and reset clock
