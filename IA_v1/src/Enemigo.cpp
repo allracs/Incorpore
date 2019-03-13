@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <math.h>
-#define he 0.0001
+#define he 0.1
 
 Enemigo::Enemigo()
 {
@@ -27,7 +27,7 @@ void Enemigo::mover(int x, int y, sf::Clock c)
     //mover
     sf::Time time = c.getElapsedTime();
 
-    std::cout << "se mueve " << x << " " << y << std::endl;
+    //std::cout << "se mueve " << x << " " << y << std::endl;
     float h = sqrt((pow(x, 2))+(pow(y, 2)));
     float xe = x * he / h;
     float ye = y * he / h;

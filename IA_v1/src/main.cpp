@@ -7,6 +7,7 @@ int main()
 {
     // Create the main window
     sf::RenderWindow app(sf::VideoMode(800, 600), "SFML window");
+    app.setFramerateLimit(60);
 
     Enemigo e;
     Jugador j;
@@ -29,8 +30,9 @@ int main()
         e.mover(j.getPos()[0], j.getPos()[1], clock);
         j.mover(0, 0, clock);
 
-        // Clear screen
+        // Clear screen and reset clock
         app.clear();
+        clock.restart().asMilliseconds();
 
         // Draw the sprite
         app.draw(e.getSprite());

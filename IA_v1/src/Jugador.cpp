@@ -1,7 +1,7 @@
 #include "../include/Jugador.h"
 #include <SFML/Graphics.hpp>
 
-#define vel 0.0002
+#define vel 0.2
 
 Jugador::Jugador()
 {
