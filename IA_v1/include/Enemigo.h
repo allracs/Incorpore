@@ -11,6 +11,8 @@ class Enemigo
         void mover(int x, int y, sf::Clock c);
         sf::Sprite getSprite();
         float *getPos();
+        bool getMoveState();
+        bool getAttackState();
 
     protected:
 

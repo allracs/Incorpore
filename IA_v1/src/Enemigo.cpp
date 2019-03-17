@@ -101,3 +101,13 @@ float *Enemigo::getPos()
     pos[1] = sprite->getPosition().y;
     return pos;
 }
+
+bool Enemigo::getMoveState()
+{
+    return movn;
+}
+
+bool Enemigo::getAttackState()
+{
+    return attackn;
+}
