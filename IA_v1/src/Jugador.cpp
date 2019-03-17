@@ -11,7 +11,7 @@ Jugador::Jugador()
     textura->loadFromFile("img/rect1.JPG");
 
     sprite->setTexture(*textura);
-    sprite->setScale(0.2f, 0.2f);
+    sprite->setScale(0.1f, 0.1f);
     sprite->setOrigin(textura->getSize().x/2, textura->getSize().y/2);
 
     pos[0] = 500;
@@ -32,22 +32,22 @@ void Jugador::mover(int x, int y, sf::Clock c)
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        sprite->setScale(-0.2, 0.2);
+        sprite->setScale(-0.1, 0.1);
         sprite->move({-vel * time.asMilliseconds(), 0});
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        sprite->setScale(-0.2, 0.2);
+        sprite->setScale(-0.1, 0.1);
         sprite->move({vel * time.asMilliseconds(), 0});
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
-        sprite->setScale(-0.2, 0.2);
+        sprite->setScale(-0.1, 0.1);
         sprite->move({0, -vel * time.asMilliseconds()});
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
-        sprite->setScale(-0.2, 0.2);
+        sprite->setScale(-0.1, 0.1);
         sprite->move({0, vel * time.asMilliseconds()});
     }
 }
