@@ -2,12 +2,9 @@
 ############################################
                 CONTROLES
 ############################################
-
-- Z y X para alejar y acercar el zoom
 - Flecha de dirección hacia la derecha para activar la animacion de movimiento a la derecha.
 - Flecha de dirección hacia arriba se cambia al caballero.
 - Flecha de dirección hacia abajo se cambia a la elfa.
-
 */
 
 
@@ -29,6 +26,7 @@ int main()
     sf::View view;
     view.reset(sf::FloatRect(0, 0, screenDimensions.x, screenDimensions.y)); // Esto es necesario para crear la vista.
     view.setViewport(sf::FloatRect(0, 0, 1.0f, 1.0f));
+    view.zoom(0.2f);
 
 
 
@@ -104,12 +102,6 @@ int main()
             walkRight.setSpriteSheet(texture);
         }
 
-
-        // HACER ZOOM PARA VER MEJOR LOS SPRITES.
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-            view.zoom(0.99f);
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-            view.zoom(1.01f);
 
 
         sf::Time frameTime = frameClock.restart();
