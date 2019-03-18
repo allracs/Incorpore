@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1552910655 source:/home/irene/Escritorio/Movimiento/src/player.cpp
+	"player.h"
+
+1552910655 /home/irene/Escritorio/Movimiento/include/player.h
+
+1552911162 source:/home/irene/Escritorio/Movimiento/src/projectile.cpp
+	"projectile.h"
+
+1552911162 /home/irene/Escritorio/Movimiento/include/projectile.h
+
+1552926752 source:/home/irene/Escritorio/Movimiento/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	<stdlib.h>
+	<vector>
+
+1552927919 source:/mnt/hgfs/Universidad/FV/PRUEBAS/Movimiento/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	<stdlib.h>
+	<vector>
+
+1552910655 source:/mnt/hgfs/Universidad/FV/PRUEBAS/Movimiento/src/player.cpp
+	"player.h"
+
+1552910655 /mnt/hgfs/Universidad/FV/PRUEBAS/Movimiento/include/player.h
+
+1552911162 source:/mnt/hgfs/Universidad/FV/PRUEBAS/Movimiento/src/projectile.cpp
+	"projectile.h"
+
+1552911162 /mnt/hgfs/Universidad/FV/PRUEBAS/Movimiento/include/projectile.h
+
