@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1552927459 source:/mnt/hgfs/Universidad/FV/Incorpore/Animaciones/src/AnimatedSprite.cpp
+	"AnimatedSprite.hpp"
+
+1552851969 /mnt/hgfs/Universidad/FV/Incorpore/Animaciones/include/AnimatedSprite.hpp
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/System/Vector2.hpp>
+	"Animation.hpp"
+
+1552851969 /mnt/hgfs/Universidad/FV/Incorpore/Animaciones/include/Animation.hpp
+	<vector>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Texture.hpp>
+
+1552851969 source:/mnt/hgfs/Universidad/FV/Incorpore/Animaciones/src/Animation.cpp
+	"Animation.hpp"
+

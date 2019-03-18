@@ -1,3 +1,18 @@
+/*
+############################################
+                CONTROLES
+############################################
+
+- Z y X para alejar y acercar el zoom
+- Flecha de dirección hacia la derecha para activar la animacion de movimiento a la derecha.
+- Flecha de dirección hacia arriba se cambia al caballero.
+- Flecha de dirección hacia abajo se cambia a la elfa.
+
+*/
+
+
+
+
 #include <SFML/Graphics.hpp>
 #include "AnimatedSprite.hpp"
 #include <iostream>
@@ -6,39 +21,34 @@ int main()
 {
     // Montamos la ventana
     // TO-DO Hacer un viewpoint para hacerle zoom a los sprites.
+
     sf::Vector2i screenDimensions(800,600);
     sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Mostrar animaciones");
     window.setFramerateLimit(60);
 
+    sf::View view;
+    view.reset(sf::FloatRect(0, 0, screenDimensions.x, screenDimensions.y)); // Esto es necesario para crear la vista.
+    view.setViewport(sf::FloatRect(0, 0, 1.0f, 1.0f));
+
+
+
+
     // cargamos una textura (spritesheet)
 
     // TO-DO hacer un array de texturas e ir cargando las texturas según se pulse una tecla u otra.
-    // PRUEBAS
-    /*
-    sf::Texture texture[4];
-    if(!texture[0].loadFromFile("sprites/elfa.png")) { // cargamos la textura de la elfa
-        std::cout << "No se ha podido cargar la textura 0" << std::endl;
-    }
-    if(!texture[1].loadFromFile("sprites/elfa.png")) { // cargamos la textura del soldado
-        std::cout << "No se ha podido cargar la textura 0" << std::endl;
-    }
-    if(!texture[2].loadFromFile("sprites/elfa.png")) { // cargamos la textura del mago
-        std::cout << "No se ha podido cargar la textura 0" << std::endl;
-    }
-    */
-
-    // ESTO FUNCIONA
     sf::Texture texture;
+
+    // std::vector<sf::Texture> texturas;
     if (!texture.loadFromFile("sprites/elfa.png")) {
         std::cout << "No se ha podido cargar la textura" << std::endl;
         return 1;
     }
 
 
-
     // Montar las animaciones (los dos primeros valores del intRect son la posicion inicial del rectangulo y los dos segundos el tamaño)
     // ANIMACION IDLE
     Animation idle;
+
     idle.setSpriteSheet(texture);
     idle.addFrame(sf::IntRect(0, 0, 16, 28));
     idle.addFrame(sf::IntRect(16, 0, 16, 28));
@@ -47,6 +57,7 @@ int main()
 
     // ANIMACION CORRER DERECHA
     Animation walkRight;
+
     walkRight.setSpriteSheet(texture);
     walkRight.addFrame(sf::IntRect(0, 28, 16, 28));
     walkRight.addFrame(sf::IntRect(16, 28, 16, 28));
@@ -73,6 +84,34 @@ int main()
                 window.close();
         }
 
+        // CAMBIAR A TEXTURA CABALLERO
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+            if (!texture.loadFromFile("sprites/caballero.png")) {
+                std::cout << "No se ha podido cargar la textura" << std::endl;
+                return 1;
+            }
+            idle.setSpriteSheet(texture);
+            walkRight.setSpriteSheet(texture);
+        }
+
+        // CAMBIAR A TEXTURA ELFA
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+            if (!texture.loadFromFile("sprites/elfa.png")) {
+                std::cout << "No se ha podido cargar la textura" << std::endl;
+                return 1;
+            }
+            idle.setSpriteSheet(texture);
+            walkRight.setSpriteSheet(texture);
+        }
+
+
+        // HACER ZOOM PARA VER MEJOR LOS SPRITES.
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+            view.zoom(0.99f);
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+            view.zoom(1.01f);
+
+
         sf::Time frameTime = frameClock.restart();
 
         // COLOCAMOS LAS ANIMACIONES SEGÚN LAS TECLAS PULSADAS.
@@ -86,8 +125,6 @@ int main()
             noTeclaPulsada = false;
         }
 
-
-
         // después de ponerlas decimos que reproduzca la actual.
         animatedSprite.play(*currentAnimation);
 
@@ -99,6 +136,12 @@ int main()
         }
 
         noTeclaPulsada = true;
+
+        window.setView(view);
+        /*
+        Para devolver una view al principio:
+        window.setView(window.getDefaultView());
+        */
 
         // update AnimatedSprite
         animatedSprite.update(frameTime);

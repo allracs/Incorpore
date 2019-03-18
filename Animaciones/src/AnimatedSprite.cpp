@@ -81,6 +81,7 @@ sf::Time AnimatedSprite::getFrameTime() const {
 void AnimatedSprite::setFrame(std::size_t newFrame, bool resetTime) {
     if (m_animation) {
         //calculate new vertex positions and texture coordiantes
+        // calcular nuevas posiciones y la textura.
         sf::IntRect rect = m_animation->getFrame(newFrame);
 
         m_vertices[0].position = sf::Vector2f(0.f, 0.f);
