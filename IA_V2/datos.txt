@@ -1,0 +1,27 @@
+class Posicion:
+    > Posicion(int a, int b, int idd)
+    - int x, y, id;
+    - int g, h;
+    + void getPos(&xx, &yy){xx = x; yy = y;}
+    + void setGH(int gg, int hh){g = gg; h = hh;}
+    + int getF(){return g + h;}
+    + int getId(){return id;}
+
+class Mapa:
+    > Constructor: llamar al mapa de David y Dani para coger matriz de ids
+    {
+        int ids[][] = MapDD.getIds();
+        map[ids.length][ids[0].length];
+        for(int a = 0; a < ids.length; a++){
+            for(int b = 0; b < ids[0].length; b++){
+                map[a][b] = new Posicion(a, b, id[a][b]);
+            }
+        }
+    }
+    - Posicion map[][]
+    + int getIds(int f, int c){ return mapId[f][c].getId();}
+
+class Astar:
+    - std::list listaInterior (camino)
+    - std::list listaFrontera (vecinos)
+    - Posicion n (posicion vecina con f menor)
