@@ -2,3 +2,25 @@
 1552511759 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/main.cpp
 	<bits/stdc++.h>
 
+1553110454 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/Astar.cpp
+	"Astar.h"
+
+1553111821 /home/oscar/Desktop/FV/Incorpore/IA_V2/include/Astar.h
+
+1553111953 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/main.cpp
+	"implementation.cpp"
+	<iostream>
+
+1553112555 /home/oscar/Desktop/FV/Incorpore/IA_V2/src/implementation.cpp
+	<iostream>
+	<iomanip>
+	<unordered_map>
+	<unordered_set>
+	<array>
+	<vector>
+	<utility>
+	<queue>
+	<tuple>
+	<algorithm>
+	<cstdlib>
+
