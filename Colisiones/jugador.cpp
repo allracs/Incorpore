@@ -9,10 +9,13 @@ jugador::jugador()
 
     vida = 30;
     velocidadJugador = 2;
+
+    pos_anterior = {0.f,0.f};
 }
 void jugador::movimiento(int num)
 {
     //left = 1, right = 2, down = 3, up = 4
+    pos_anterior = player->getPosition();
     if( num == 1 )
     {
         player->move(-velocidadJugador,0);
@@ -31,17 +34,25 @@ void jugador::movimiento(int num)
     }
 }
 
+
+//GETTERS
+sf::Vector2f jugador::getPos()
+{
+    return pos_anterior;
+}
+
 sf::RectangleShape jugador::getJugador()
 {
     return *player;
 }
-
 
 int jugador::getVida()
 {
     return vida;
 }
 
+
+//SETTERS
 void jugador::setPosicion(int x, int y)
 {
     player->setPosition(x,y);
@@ -50,6 +61,11 @@ void jugador::setPosicion(int x, int y)
 void jugador::setVida()
 {
     vida += 20;
+}
+
+void jugador::setPosAnterior()
+{
+    pos_anterior = player->getPosition();
 }
 
 void jugador::danio(int num)

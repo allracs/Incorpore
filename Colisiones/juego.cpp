@@ -101,18 +101,18 @@ void juego::procesar_colisiones()
            && box_personaje.left + box_personaje.width > box_columna.left)
         {
             std::cout << "choca pared superior" << std::endl;
-            personaje->setPosicion(box_personaje.left, box_columna.top - box_personaje.height);
+            personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
             abajo = false;
         }
 
         //INFERIOR
-        else if(box_personaje.top > box_columna.top
+        if(box_personaje.top > box_columna.top
            && box_personaje.top + box_personaje.height > box_columna.top + box_columna.height
            && box_personaje.left < box_columna.left + box_columna.width
            && box_personaje.left + box_personaje.width > box_columna.left)
         {
             std::cout << "choca pared inferior" << std::endl;
-            personaje->setPosicion(box_personaje.left, box_columna.top + box_columna.height);
+            personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
             arriba = false;
         }
 
@@ -123,19 +123,19 @@ void juego::procesar_colisiones()
            && box_personaje.top + box_personaje.height > box_columna.top)
         {
             std::cout << "choca pared izquieda" << std::endl;
-            personaje->setPosicion(box_columna.left - box_personaje.width, box_personaje.top);
+            personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
             derecha = false;
 
         }
 
         //DERECHA
-        else if(box_personaje.left > box_columna.left
+        if(box_personaje.left > box_columna.left
            && box_personaje.left + box_personaje.width > box_columna.left + box_columna.width
            && box_personaje.top < box_columna.top + box_columna.height
            && box_personaje.top + box_personaje.height > box_columna.top)
         {
             std::cout << "choca pared derecha" << std::endl;
-            personaje->setPosicion(box_columna.left + box_columna.width, box_personaje.top);
+            personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
             izquierda = false;
 
         }
@@ -200,6 +200,7 @@ void juego::procesar_eventos()
         switch(evento->type)
         {
         case sf::Event::KeyPressed:
+
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {
                 if(izquierda == true)

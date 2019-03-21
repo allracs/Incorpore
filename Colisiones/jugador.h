@@ -13,10 +13,12 @@ public:
     sf::Vector2f getPos();
     void setVida();
     void setPosicion(int, int);
+    void setPosAnterior();
 
 private:
     sf::RectangleShape *player;
     sf::Event *evento;
     int vida;
     int velocidadJugador;
+    sf::Vector2f pos_anterior;
 };
