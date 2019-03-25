@@ -11,8 +11,10 @@ class game
         void gameLoop();
         void render();
         void cargaPlayer();
+        void procesarEventos();
     private:
         RenderWindow *window;
         player *jugador;
+        Event *evento;
 
 };
