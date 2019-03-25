@@ -74,8 +74,9 @@
 	"objetos.h"
 	"hud.h"
 
-1553165890 /home/carlos/Escritorio/Incorpore/Colisiones/jugador.h
+1553176144 /home/carlos/Escritorio/Incorpore/Colisiones/jugador.h
 	<SFML/Graphics.hpp>
+	<iostream>
 
 1552309087 /home/carlos/Escritorio/Incorpore/Colisiones/mapa.h
 	<SFML/Graphics.hpp>
@@ -89,9 +90,9 @@
 1552389174 source:/home/carlos/Escritorio/Incorpore/Colisiones/objetos.cpp
 	"objetos.h"
 
-1553166758 source:/home/carlos/Escritorio/Incorpore/Colisiones/juego.cpp
+1553176179 source:/home/carlos/Escritorio/Incorpore/Colisiones/juego.cpp
 	"juego.h"
 
-1553166578 source:/home/carlos/Escritorio/Incorpore/Colisiones/jugador.cpp
+1553176109 source:/home/carlos/Escritorio/Incorpore/Colisiones/jugador.cpp
 	"jugador.h"
 

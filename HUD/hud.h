@@ -15,6 +15,7 @@ public:
     void setPosicionHabilidades();
     void modificar_vida(int,int);
     void setHabilidad(int);
+    void borradoHabilidades();
     int getCantidadVida();
     int getCantidadHabilidades();
     sf::RectangleShape getPiezaVida();
@@ -35,6 +36,13 @@ private:
     sf::Sprite *mana;
     sf::Sprite *mejora_cofre;
     sf::Sprite *espada_magica;
+
+    bool mejora_escudo_esta = false;
+    bool mejora_ataque_esta = false;
+    bool rompe_escudos_esta = false;
+    bool mana_esta = false;
+    bool mejora_cofre_esta = false;
+    bool espada_magica_esta = false;
 
     std::vector<sf::Sprite> *cantidad_corazones;
     std::vector<sf::Sprite> *vector_habilidades;

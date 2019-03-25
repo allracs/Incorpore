@@ -19,3 +19,23 @@
 1552932048 source:/home/carlos/Escritorio/FV/HUD/hud.cpp
 	"hud.h"
 
+1553512691 source:/home/carlos/Escritorio/Incorpore/HUD/hud.cpp
+	"hud.h"
+
+1553513221 /home/carlos/Escritorio/Incorpore/HUD/hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1553513182 source:/home/carlos/Escritorio/Incorpore/HUD/juego.cpp
+	"juego.h"
+
+1552917898 /home/carlos/Escritorio/Incorpore/HUD/juego.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"hud.h"
+	<string>
+
+1552910822 source:/home/carlos/Escritorio/Incorpore/HUD/main.cpp
+	<iostream>
+	"juego.h"
+

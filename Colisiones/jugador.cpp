@@ -12,30 +12,31 @@ jugador::jugador()
 
     pos_anterior = {0.f,0.f};
 }
-void jugador::movimiento(int num)
+
+///---------------------------------MOVIMIENTO
+void jugador::move_izq()
 {
-    //left = 1, right = 2, down = 3, up = 4
     pos_anterior = player->getPosition();
-    if( num == 1 )
-    {
-        player->move(-velocidadJugador,0);
-    }
-    if( num == 2 )
-    {
-        player->move(velocidadJugador,0);
-    }
-    if( num == 3 )
-    {
-        player->move(0,velocidadJugador);
-    }
-    if( num == 4 )
-    {
-        player->move(0,-velocidadJugador);
-    }
+    player->move(-velocidadJugador,0);
+}
+void jugador::move_der()
+{
+    pos_anterior = player->getPosition();
+    player->move(velocidadJugador,0);
+}
+void jugador::move__abaj()
+{
+    pos_anterior = player->getPosition();
+    player->move(0,velocidadJugador);
+}
+void jugador::move__arr()
+{
+    pos_anterior = player->getPosition();
+    player->move(0,-velocidadJugador);
 }
 
 
-//GETTERS
+///------------------------------------GETTERS
 sf::Vector2f jugador::getPos()
 {
     return pos_anterior;
@@ -52,7 +53,7 @@ int jugador::getVida()
 }
 
 
-//SETTERS
+///------------------------------------SETTERS
 void jugador::setPosicion(int x, int y)
 {
     player->setPosition(x,y);
@@ -68,6 +69,8 @@ void jugador::setPosAnterior()
     pos_anterior = player->getPosition();
 }
 
+
+///---------------------------------------DANIO
 void jugador::danio(int num)
 {
     //right = 1, left = 2, top = 3, down = 4

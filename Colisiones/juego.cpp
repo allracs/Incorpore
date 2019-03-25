@@ -106,7 +106,7 @@ void juego::procesar_colisiones()
         }
 
         //INFERIOR
-        if(box_personaje.top > box_columna.top
+        else if(box_personaje.top > box_columna.top
            && box_personaje.top + box_personaje.height > box_columna.top + box_columna.height
            && box_personaje.left < box_columna.left + box_columna.width
            && box_personaje.left + box_personaje.width > box_columna.left)
@@ -129,7 +129,7 @@ void juego::procesar_colisiones()
         }
 
         //DERECHA
-        if(box_personaje.left > box_columna.left
+        else if(box_personaje.left > box_columna.left
            && box_personaje.left + box_personaje.width > box_columna.left + box_columna.width
            && box_personaje.top < box_columna.top + box_columna.height
            && box_personaje.top + box_personaje.height > box_columna.top)
@@ -200,33 +200,32 @@ void juego::procesar_eventos()
         switch(evento->type)
         {
         case sf::Event::KeyPressed:
-
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {
                 if(izquierda == true)
                 {
-                    personaje->movimiento(1);
+                    personaje->move_izq();
                 }
             }
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             {
                 if(derecha == true)
                 {
-                    personaje->movimiento(2);
+                    personaje->move_der();
                 }
             }
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             {
                 if(abajo == true)
                 {
-                    personaje->movimiento(3);
+                    personaje->move__abaj();
                 }
             }
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
             {
                 if(arriba == true)
                 {
-                   personaje->movimiento(4);
+                   personaje->move__arr();
                 }
             }
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))

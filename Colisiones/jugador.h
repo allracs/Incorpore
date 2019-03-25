@@ -1,12 +1,16 @@
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class jugador
 {
 
 public:
     jugador();
-    void movimiento(int);
+    void move_der();
+    void move_izq();
+    void move__abaj();
+    void move__arr();
     sf::RectangleShape getJugador();
     void danio(int);
     int getVida();

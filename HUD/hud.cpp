@@ -32,23 +32,30 @@ hud::hud()
     textura_habilidades = new sf::Texture;
     textura_habilidades->loadFromFile("src/habilidades.png");
 
+    //mejora ataque
     mejora_ataque = new sf::Sprite(*textura_habilidades);
-    mejora_ataque->setTextureRect(sf::IntRect(1,1,60,60));
+    mejora_ataque->setTextureRect(sf::IntRect(306,1,61,61));
+
+    //mejora cofre
+    mejora_cofre = new sf::Sprite(*textura_habilidades);
+    mejora_cofre->setTextureRect(sf::IntRect(61,122,61,61));
+
+    //mejora escudo
     mejora_escudo = new sf::Sprite(*textura_habilidades);
-    mejora_escudo->setTextureRect(sf::IntRect(1,1,122,122));
+    mejora_escudo->setTextureRect(sf::IntRect(1,1,61,61));
+
+    //rompe-escudos
     rompe_escudos = new sf::Sprite(*textura_habilidades);
-    rompe_escudos->setTextureRect(sf::IntRect(0,0,50,144));
+    rompe_escudos->setTextureRect(sf::IntRect(61,61,61,61));
 
-    for(int i = 0; i < 3; i++)
-    {
-        if(i == 0)
-        vector_habilidades->push_back(*mejora_ataque);
+    //mana
+    mana = new sf::Sprite(*textura_habilidades);
+    mana->setTextureRect(sf::IntRect(122,1,61,61));
 
-        if(i ==1)
-        vector_habilidades->push_back(*mejora_escudo);
+    //espada magica
+    espada_magica = new sf::Sprite(*textura_habilidades);
+    espada_magica->setTextureRect(sf::IntRect(244,61,61,61));
 
-
-    }
 
 
     //PIEZA HUD VIDA
@@ -57,10 +64,10 @@ hud::hud()
     pieza_vida->setPosition(0,0);
 
     //PIEZA HUD HABILIDADES
-    pieza_habilidades = new sf::RectangleShape({280,80});
+    pieza_habilidades = new sf::RectangleShape({450,80});
     pieza_habilidades->setFillColor(sf::Color::Blue);
     pieza_habilidades->setOrigin(pieza_habilidades->getOrigin().x/2, pieza_habilidades->getOrigin().x/2);
-    pieza_habilidades->setPosition(250,520);
+    pieza_habilidades->setPosition(180,520);
 
 }
 
@@ -134,32 +141,58 @@ void hud::setPosicionCorazones()
     }
 }
 
-void hud::setPosicionHabilidades()
-{
-    for(int i = 0; i < 3; i++)
-    {
-        if(i == 0)
-        {
-            vector_habilidades->at(i).setPosition({250,120});
-        }
-        if(i == 1)
-        {
-            vector_habilidades->at(i).setPosition({290,220});
-        }
-        if(i == 2)
-        {
-            vector_habilidades->at(i).setPosition({300,320});
-        }
-
-    }
-}
-
 void hud::setHabilidad(int habilidad)
 {
-    // habilidades 1 = mejora_escudo, 2 = mejora_ataque, 3 = mana, 4 = espada_magica, 5 = rompe_escudos, 6 = mejora_cofre
-
-    if(habilidad == 1)
+    if(habilidad == 1 && mejora_escudo_esta == false)
+    {
+        vector_habilidades->push_back(*mejora_escudo);
+        mejora_escudo_esta = true;
+    }
+    if(habilidad == 2 && mejora_cofre_esta == false)
+    {
+        vector_habilidades->push_back(*mejora_cofre);
+        mejora_cofre_esta = true;
+    }
+    if(habilidad == 3 && mejora_ataque_esta == false)
     {
         vector_habilidades->push_back(*mejora_ataque);
+        mejora_ataque_esta = true;
+    }
+    if(habilidad == 4 && mana_esta == false)
+    {
+        vector_habilidades->push_back(*mana);
+        mana_esta = true;
+    }
+    if(habilidad == 5 && rompe_escudos_esta == false)
+    {
+        vector_habilidades->push_back(*rompe_escudos);
+        rompe_escudos_esta = true;
+    }
+    if(habilidad == 6 && espada_magica_esta == false)
+    {
+        vector_habilidades->push_back(*espada_magica);
+        espada_magica_esta = true;
+    }
+
+    setPosicionHabilidades();
+}
+
+void hud::setPosicionHabilidades()
+{
+    for(int i = 0; i < vector_habilidades->size(); i++)
+    {
+       vector_habilidades->at(i).setPosition({200 + (i*70),530});
     }
 }
+
+void hud::borradoHabilidades()
+{
+    vector_habilidades->clear();
+    mejora_escudo_esta = false;
+    mejora_cofre_esta = false;
+    mejora_ataque_esta = false;
+    mana_esta = false;
+    espada_magica_esta = false;
+    rompe_escudos_esta = false;
+}
+
