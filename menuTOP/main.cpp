@@ -23,7 +23,12 @@ int main()
         {
             if(event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape)
                  Window.close();
+                 if(event.key.code==sf::Keyboard::S)
+                    ScreenManager::GetInstance().AddScreen(new SplashScreen);
+                    else if(event.key.code ==sf::Keyboard::T)
+                    ScreenManager::GetInstance().AddScreen(new TitleScreen);
         }
+        Window.clear();
         ScreenManager::GetInstance().Update();
         ScreenManager::GetInstance().Draw(Window);
         Window.display();

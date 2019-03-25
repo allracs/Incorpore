@@ -5,6 +5,8 @@
 #include <iostream>
 #include"GameScreen.h"
 #include"SplashScreen.h"
+#include"TitleScreen.h"
+
 
 #define ScreenWidth 800
 #define ScreenHeight 600
