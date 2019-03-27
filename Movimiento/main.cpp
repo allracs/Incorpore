@@ -2,48 +2,54 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
+#include <cmath>
 
 int main()
 {
-    //Caracteristicas de la ventana
+    //Caracteristicas de la ventana y otras variables
     sf::Vector2i screenDimensions(1080,720);
     sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Incorpore");
     window.setFramerateLimit(60);
-
-    //Crear circulo y posicionarlo
-    sf::CircleShape circle(50);
-    circle.setPosition(sf::Vector2f(screenDimensions / 2));
-    int cooldown = 0;
+    //Para el posicionamiento de la hitbox
     sf::Vector2f playerCenter;
-
-    //BALLS
-	sf::CircleShape projectile;
-	projectile.setFillColor(sf::Color::Red);
-	projectile.setRadius(20.f);
-
-	sf::RectangleShape enemy;
-	enemy.setFillColor(sf::Color::Magenta);
-	enemy.setSize(sf::Vector2f(50.f, 50.f));
-
-	std::vector<sf::CircleShape> projectiles;
-	projectiles.push_back(sf::CircleShape(projectile));
-
-	std::vector<sf::RectangleShape> enemies;
-	enemies.push_back(sf::RectangleShape(enemy));
-	enemies[0].setPosition(200.f, 300.f);
-
-
+    sf::Vector2i mousePos;
+    sf::Event event;
     sf::Clock frameClock;
-
+    //Matar al enemigo
+    bool deleteSprite = false;
     //Velocidad del jugador
     float speed = 200.f;
 
+    //Jugador
+    sf::CircleShape jugador(50);
+    jugador.setPosition(sf::Vector2f(screenDimensions / 2));
+
+    //Hitbox del jugador
+    sf::RectangleShape hitbox;
+    hitbox.setFillColor(sf::Color::Green);
+    hitbox.setSize(sf::Vector2f(120.f, 50.f));
+
+    //Enemigo
+	sf::RectangleShape enemigo;
+	enemigo.setFillColor(sf::Color::Red);
+	enemigo.setSize(sf::Vector2f(50.f, 50.f));
+	enemigo.setPosition(450.f, 300.f);
+
+
     while (window.isOpen())
     {
+
+        //Posicion del mouse para la rotacion persiguiendo al raton
         float mouseX = sf::Mouse::getPosition().x;
         float mouseY = sf::Mouse::getPosition().y;
-        playerCenter = sf::Vector2f(circle.getPosition().x+circle.getRadius(), circle.getPosition().y);
-        sf::Event event;
+        playerCenter = sf::Vector2f(jugador.getPosition().x + jugador.getRadius(), jugador.getPosition().y-jugador.getRadius());
+        mousePos = sf::Mouse::getPosition(window);
+
+        float PI = 3.14159265;
+
+        float dx = mousePos.x - playerCenter.x;
+        float dy = mousePos.y - playerCenter.y;
+
 
 
         while (window.pollEvent(event))
@@ -55,7 +61,13 @@ int main()
         }
 
         sf::Time frameTime = frameClock.restart();
-        //Movimiento
+
+        //Rotacion de la hitbox
+        float rotation = (atan2(dy, dx)) * 180 / PI;
+        hitbox.setRotation(rotation);
+
+
+        //Movimiento del jugador
         sf::Vector2f movement(0.f, 0.f);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
@@ -73,62 +85,24 @@ int main()
         {
             movement.x += speed;
         }
-        circle.move(movement * frameTime.asSeconds());
 
-         //PROYECTILES
-		if (cooldown < 30)
-			cooldown++;
+        jugador.move(movement * frameTime.asSeconds());
+        hitbox.setPosition(jugador.getPosition().x + jugador.getRadius(), jugador.getPosition().y + jugador.getRadius());
 
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && cooldown >= 30) //Atacar
-		{
-			projectile.setPosition(playerCenter);
-			projectiles.push_back(sf::CircleShape(projectile));
 
-			cooldown = 0;
-		}
-
-		for (size_t i = 0; i < projectiles.size(); i++)
-		{
-			projectiles[i].move(0.f, -10.f);
-
-			if(projectiles[i].getPosition().y <= 0)
-				projectiles.erase(projectiles.begin() + i);
-		}
-
-		//COLISIONES
-		if (!enemies.empty() && !projectiles.empty())
-		{
-			for (size_t i = 0; i < projectiles.size(); i++)
-			{
-				for (size_t k = 0; k < enemies.size(); k++)
-				{
-					if (projectiles[i].getGlobalBounds().intersects(enemies[k].getGlobalBounds()))
-					{
-						projectiles.erase(projectiles.begin() + i);
-						enemies.erase(enemies.begin() + k);
-						break;
-					}
+        //El enemigo muere cuando la hitbox le toca y hacemos click
+        if (hitbox.getGlobalBounds().intersects(enemigo.getGlobalBounds()) && sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+					deleteSprite = true;
 				}
-			}
-		}
 
 
-
-        //Dibujar circulo
+        //Dibujar
         window.clear();
-        window.draw(circle);
-
-        for (size_t i = 0; i < enemies.size(); i++)
-		{
-			window.draw(enemies[i]);
-		}
-
-		for (size_t i = 0; i < projectiles.size(); i++)
-		{
-			window.draw(projectiles[i]);
-		}
-
-
+        if (!deleteSprite) {
+            window.draw(enemigo);
+        }
+        window.draw(hitbox);
+        window.draw(jugador);
         window.display();
     }
 
