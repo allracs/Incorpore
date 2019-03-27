@@ -44,8 +44,13 @@
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="mapa.cpp" />
+		<Unit filename="mapa.h" />
 		<Unit filename="player.cpp" />
 		<Unit filename="player.h" />
+		<Unit filename="resources/Mapa.tmx" />
+		<Unit filename="tinyxml2.cpp" />
+		<Unit filename="tinyxml2.h" />
 		<Extensions>
 			<envvars />
 			<code_completion />
