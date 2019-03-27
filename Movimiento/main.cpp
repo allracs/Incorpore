@@ -26,8 +26,12 @@ int main()
 
     //Hitbox del jugador
     sf::RectangleShape hitbox;
-    hitbox.setFillColor(sf::Color::Green);
-    hitbox.setSize(sf::Vector2f(120.f, 50.f));
+    hitbox.setOutlineThickness(3);
+    hitbox.setOutlineColor(sf::Color::Blue);
+    hitbox.setFillColor(sf::Color::Transparent);
+    hitbox.setSize(sf::Vector2f(120.f, 100.f));
+    hitbox.setOrigin(0,50.f);
+
 
     //Enemigo
 	sf::RectangleShape enemigo;
@@ -49,8 +53,6 @@ int main()
 
         float dx = mousePos.x - playerCenter.x;
         float dy = mousePos.y - playerCenter.y;
-
-
 
         while (window.pollEvent(event))
         {

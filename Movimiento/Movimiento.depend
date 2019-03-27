@@ -2,10 +2,14 @@
 1552910655 source:/home/irene/Escritorio/Movimiento/src/player.cpp
 	"player.h"
 
+1553715856 
+
 1552910655 /home/irene/Escritorio/Movimiento/include/player.h
 
 1552911162 source:/home/irene/Escritorio/Movimiento/src/projectile.cpp
 	"projectile.h"
+
+1553084099 e.h"
 
 1552911162 /home/irene/Escritorio/Movimiento/include/projectile.h
 
@@ -47,4 +51,21 @@
 	"projectile.h"
 
 1553084099 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Movimiento/include/projectile.h
+
+1553718007 source:/mnt/hgfs/Universidad/FV/Incorpore/Movimiento/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<cmath>
+
+1553717309 source:/mnt/hgfs/Universidad/FV/Incorpore/Movimiento/src/player.cpp
+	"player.h"
+
+1553717309 /mnt/hgfs/Universidad/FV/Incorpore/Movimiento/include/player.h
+
+1553717309 source:/mnt/hgfs/Universidad/FV/Incorpore/Movimiento/src/projectile.cpp
+	"projectile.h"
+
+1553717309 /mnt/hgfs/Universidad/FV/Incorpore/Movimiento/include/projectile.h
 
