@@ -14,10 +14,12 @@ class game
         void cargaPlayer();
         void cargaMapa();
         void procesarEventos();
+        void setView();
     private:
         RenderWindow *window;
         player *jugador;
         Event *evento;
         mapa *Mapa;
+        View view;
 
 };

@@ -17,7 +17,9 @@ class mapa{
         int getNumCapas();
         int getHeight();
         int getWidth();
+        void colisiones();
         Sprite**** getMapSprite();
+        bool** getColisiones();
     private:
         int width, height,tilewidth, tileheight, gid;
         XMLDocument docXML; //Doc tmx
@@ -26,6 +28,7 @@ class mapa{
         string ficheroImagen; //Nombre y ruta del fichero imagen
         Texture texturaTileset; //textura del tileset
         XMLElement* capa; //Capa del tileset
+        bool** colisionMap; //true = colision
         int nCapas = 0; //Numero de capas del tileset
         string nombreCapa; //nombre de la capa actual
         int*** tileMap;

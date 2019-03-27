@@ -7,7 +7,7 @@ game::game(){
     evento = new Event;
     cargaMapa();
     cargaPlayer();
-
+    view.zoom(0.2f);
     gameLoop();
 }
 
@@ -15,6 +15,7 @@ void game::gameLoop(){
     while(window->isOpen()){
         procesarEventos();
         jugador->movimiento();
+        setView();
         render();
     }
 }
@@ -29,6 +30,10 @@ void game::procesarEventos(){
 
 }
 
+void game::setView(){
+    view.setCenter(jugador->getPlayer().getPosition().x, jugador->getPlayer().getPosition().y);
+}
+
 void game::cargaMapa(){
     Mapa = new mapa;
 }
@@ -38,8 +43,8 @@ void game::cargaPlayer(){
 }
 
 void game::render(){
-    window->clear(Color::Magenta);
-
+    window->clear();
+    window->setView(view);
     for(int i = 0; i < Mapa->getNumCapas(); i++){
         for(int j = 0; j < Mapa->getHeight(); j++){
             for(int k = 0; k < Mapa->getWidth(); k++){

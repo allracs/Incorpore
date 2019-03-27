@@ -2,11 +2,11 @@
 using namespace sf;
 
 player::player(){
-    jugador = new sf::RectangleShape({30,30});
+    jugador = new sf::RectangleShape({16,16});
     jugador->setFillColor(Color::White);
-    jugador->setPosition(250,250);
+    jugador->setPosition(150,50);
 
-    velocidad = 5;
+    velocidad = 2;
 }
 
 RectangleShape player::getPlayer(){

@@ -51,6 +51,7 @@ void mapa::cargaTexturas(){
         capa = capa->NextSiblingElement("layer");
     }
 
+
     capa = mapaXML->FirstChildElement("layer"); //Volvemos a apuntar a la primera capa
     tileMap = new int**[nCapas]; //Asignamos el numero de capas
     string* nombreCapa = new string[nCapas];
@@ -63,6 +64,11 @@ void mapa::cargaTexturas(){
         }
     }
 
+    colisionMap = new bool*[height];
+    for(int i = 0; i < height; i++){
+        colisionMap[i] = new bool[width];
+    }
+
     //Bucle asignacion por capas
     int n = 0; //Capa en la que nos encontramos en el bucle
     while(capa){
@@ -72,6 +78,16 @@ void mapa::cargaTexturas(){
             for(int i = 0; i < height; i++){
                 for(int j = 0; j < width; j++){
                     data->QueryIntAttribute("gid", &tileMap[n][i][j]);
+                    if(n == nCapas-1){
+                        if(tileMap[n][i][j] != 0){
+                            colisionMap[i][j] = true;
+                        }
+                        else{
+                            colisionMap[i][j] = false;
+                        }
+                       // cout << colisionMap[i][j] << endl;
+
+                    }
                     data = data->NextSiblingElement("tile");
                 }
             }
@@ -125,6 +141,7 @@ void mapa::creaSprite(){
 
 }
 
+
 void mapa::getDatos(){
     cout << "ancho:" << width << endl;
     cout << "alto: " << height << endl;
@@ -147,4 +164,8 @@ int mapa::getWidth(){
 
 Sprite**** mapa::getMapSprite(){
     return mapSprite;
+}
+
+bool** mapa::getColisiones(){
+    return colisionMap;
 }
