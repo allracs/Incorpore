@@ -15,6 +15,9 @@ int main()
     ScreenManager::GetInstance().Initialize();
     ScreenManager::GetInstance().LoadContent();
 
+    Window.setKeyRepeatEnabled(false);
+    // EnableKeyRepeat(false);
+
     while(Window.isOpen())
     {
         sf::Event event;
@@ -23,14 +26,16 @@ int main()
         {
             if(event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape)
                  Window.close();
-                 if(event.key.code==sf::Keyboard::S)
+                /* if(event.key.code==sf::Keyboard::S)
                     ScreenManager::GetInstance().AddScreen(new SplashScreen);
                     else if(event.key.code ==sf::Keyboard::T)
                     ScreenManager::GetInstance().AddScreen(new TitleScreen);
+                    */
         }
         Window.clear();
-        ScreenManager::GetInstance().Update();
+        ScreenManager::GetInstance().Update(Window, event);
         ScreenManager::GetInstance().Draw(Window);
+        Window.Get
         Window.display();
     }
     return 0;

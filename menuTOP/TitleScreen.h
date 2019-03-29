@@ -3,6 +3,9 @@
 #define TITLESCREEN_H
 
 #include "GameScreen.h"
+#include "SplashScreen.h"
+#include "ScreenManager.h"
+
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <iostream>
@@ -17,7 +20,7 @@ class TitleScreen : public GameScreen
 
              void LoadContent();
              void UnloadContent();
-             void Update();
+             void Update(sf::Event event);
              void Draw(sf::RenderWindow &Window);
     protected:
     private:

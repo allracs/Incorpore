@@ -3,6 +3,10 @@
 #define SPLASHSCREEN_H
 
 #include "GameScreen.h"
+#include "TitleScreen.h"
+#include "ScreenManager.h"
+
+
 #include <SFML/Graphics.hpp>
 
 #include <string>
@@ -16,7 +20,7 @@ class SplashScreen : public GameScreen
 
              void LoadContent();
              void UnloadContent();
-             void Update();
+             void Update(sf::RenderWindow &Window, sf::Event event);
              void Draw(sf::RenderWindow &Window);
     protected:
     private:

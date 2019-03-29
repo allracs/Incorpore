@@ -22,7 +22,7 @@ class ScreenManager
        void Initialize();
        void LoadContent();
        void UnloadContent();
-       void Update();
+       void Update(sf::RenderWindow &Window, sf::Event event);
        void Draw(sf::RenderWindow &Window);
         void AddScreen(GameScreen *screen);
 

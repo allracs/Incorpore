@@ -34,9 +34,9 @@ void ScreenManager::LoadContent()
     currentScreen->LoadContent();
 
 }
-void ScreenManager::Update()
+void ScreenManager::Update(sf::RenderWindow &Window, sf::Event event)
 {
-    currentScreen->Update();
+    currentScreen->Update(Window, event);
 
 }
 void ScreenManager::Draw(sf::RenderWindow &Window)

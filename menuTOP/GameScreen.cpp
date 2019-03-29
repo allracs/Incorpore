@@ -17,10 +17,11 @@ void GameScreen::LoadContent()
 
 void GameScreen::UnloadContent()
 {
-
+    keys.clear();
+   // input = NULL;
 }
 
-void GameScreen::Update()
+void GameScreen::Update(sf::RenderWindow &Window, sf::Event event)
 {
 
 }
