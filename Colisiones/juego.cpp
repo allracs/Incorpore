@@ -99,17 +99,28 @@ void juego::procesar_colisiones()
         if(personaje->cuadradoarr().getGlobalBounds().intersects(box_columna))
         {
             std::cout << "choca pared inferior" << std::endl;
-            personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
             personaje->setColision(2);
+        }
+
+        //SUPERIOR
+        if(personaje->cuadradoabaj().getGlobalBounds().intersects(box_columna))
+        {
+            std::cout << "choca pared inferior" << std::endl;
+            personaje->setColision(1);
         }
 
         //IZQUIERDA
         if(personaje->cuadradoder().getGlobalBounds().intersects(box_columna))
         {
             std::cout << "choca pared izquieda" << std::endl;
-            personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
             personaje->setColision(3);
+        }
 
+        //DERECHA
+        if(personaje->cuadradoizq().getGlobalBounds().intersects(box_columna))
+        {
+            std::cout << "choca pared derecha" << std::endl;
+            personaje->setColision(4);
         }
 
 
@@ -276,9 +287,9 @@ void juego::render()
     }
 
     //JUGADOR
-    window->draw(personaje->getJugador());
     window->draw((personaje->cuadradoder()));
     window->draw((personaje->cuadradoarr()));
+    window->draw(personaje->getJugador());
 
 
     //ENEMIGO

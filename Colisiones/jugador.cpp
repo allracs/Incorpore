@@ -10,12 +10,20 @@ jugador::jugador()
     //cuadrados para las colisiones
     //cuadrado derecha
     cuadrado_der = new sf::RectangleShape({0.1,player->getGlobalBounds().height});
-    cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getPosition().y);
+    cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getGlobalBounds().top);
     cuadrado_der->setFillColor(sf::Color::Blue);
+    //cuadrado izqquieda
+    cuadrado_izq = new sf::RectangleShape({0.1,player->getGlobalBounds().height});
+    cuadrado_izq->setPosition(player->getGlobalBounds().left, player->getGlobalBounds().top);
+    cuadrado_izq->setFillColor(sf::Color::Blue);
     //cuadrado superior
     cuadrado_arr = new sf::RectangleShape({player->getGlobalBounds().width,0.1});
     cuadrado_arr->setPosition(player->getGlobalBounds().left, player->getPosition().y);
     cuadrado_arr->setFillColor(sf::Color::Blue);
+    //cuadrado inferior
+    cuadrado_abj = new sf::RectangleShape({player->getGlobalBounds().width,0.1});
+    cuadrado_abj->setPosition(player->getGlobalBounds().left, player->getPosition().y + player->getGlobalBounds().height);
+    cuadrado_abj->setFillColor(sf::Color::Blue);
 
     vida = 30;
     velocidadJugador = 1.5;
@@ -27,30 +35,37 @@ jugador::jugador()
 ///---------------------------------MOVIMIENTO
 void jugador::movimiento()
 {
-    setPosAnterior();
      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && colisiona != 4)
     {
         player->move({-velocidadJugador, 0});
-        cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getPosition().y);
+        cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getGlobalBounds().top);
         cuadrado_arr->setPosition(player->getGlobalBounds().left, player->getPosition().y -1);
+        cuadrado_izq->setPosition(player->getGlobalBounds().left, player->getGlobalBounds().top);
+        cuadrado_abj->setPosition(player->getGlobalBounds().left, player->getPosition().y + player->getGlobalBounds().height);
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && colisiona != 3)
     {
         player->move({velocidadJugador, 0});
-        cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getPosition().y);
+        cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getGlobalBounds().top);
         cuadrado_arr->setPosition(player->getGlobalBounds().left, player->getPosition().y -1);
+        cuadrado_izq->setPosition(player->getGlobalBounds().left, player->getGlobalBounds().top);
+        cuadrado_abj->setPosition(player->getGlobalBounds().left, player->getPosition().y + player->getGlobalBounds().height);
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && colisiona != 2)
     {
         player->move({0, -velocidadJugador});
-        cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getPosition().y);
+        cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getGlobalBounds().top);
         cuadrado_arr->setPosition(player->getGlobalBounds().left, player->getPosition().y -1);
+        cuadrado_izq->setPosition(player->getGlobalBounds().left, player->getGlobalBounds().top);
+        cuadrado_abj->setPosition(player->getGlobalBounds().left, player->getPosition().y + player->getGlobalBounds().height);
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && colisiona != 1)
     {
         player->move({0, velocidadJugador});
-        cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getPosition().y);
+        cuadrado_der->setPosition(player->getGlobalBounds().left + player->getGlobalBounds().width, player->getGlobalBounds().top);
         cuadrado_arr->setPosition(player->getGlobalBounds().left, player->getPosition().y -1);
+        cuadrado_izq->setPosition(player->getGlobalBounds().left, player->getGlobalBounds().top);
+        cuadrado_abj->setPosition(player->getGlobalBounds().left, player->getPosition().y + player->getGlobalBounds().height);
     }
     colisiona = 0;
 }
@@ -83,6 +98,16 @@ sf::RectangleShape jugador::cuadradoder()
 sf::RectangleShape jugador::cuadradoarr()
 {
     return *cuadrado_arr;
+}
+
+sf::RectangleShape jugador::cuadradoizq()
+{
+    return *cuadrado_izq;
+}
+
+sf::RectangleShape jugador::cuadradoabaj()
+{
+    return *cuadrado_abj;
 }
 
 ///------------------------------------SETTERS
