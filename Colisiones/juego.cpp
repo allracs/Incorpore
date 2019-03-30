@@ -24,6 +24,7 @@ void juego::game_loop()
 {
     while(window->isOpen())
     {
+        personaje->movimiento();
         procesar_eventos();
         procesar_colisiones();
         movimiento_enemigo();
@@ -92,54 +93,24 @@ void juego::procesar_colisiones()
     sf::FloatRect box_personaje = personaje->getJugador().getGlobalBounds();
     sf::FloatRect box_columna = columna->getColumna().getGlobalBounds();
 
-    if(box_personaje.intersects(box_columna))
-    {
-        //SUPERIOR
-        if(box_personaje.top < box_columna.top
-           && box_personaje.top + box_personaje.height < box_columna.top + box_columna.height
-           && box_personaje.left < box_columna.left + box_columna.width
-           && box_personaje.left + box_personaje.width > box_columna.left)
-        {
-            std::cout << "choca pared superior" << std::endl;
-            personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
-            abajo = false;
-        }
+
 
         //INFERIOR
-        else if(box_personaje.top > box_columna.top
-           && box_personaje.top + box_personaje.height > box_columna.top + box_columna.height
-           && box_personaje.left < box_columna.left + box_columna.width
-           && box_personaje.left + box_personaje.width > box_columna.left)
+        if(personaje->cuadradoarr().getGlobalBounds().intersects(box_columna))
         {
             std::cout << "choca pared inferior" << std::endl;
             personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
-            arriba = false;
+            personaje->setColision(2);
         }
 
         //IZQUIERDA
-        if(box_personaje.left < box_columna.left
-           && box_personaje.left + box_personaje.width < box_columna.left + box_columna.width
-           && box_personaje.top < box_columna.top + box_columna.height
-           && box_personaje.top + box_personaje.height > box_columna.top)
+        if(personaje->cuadradoder().getGlobalBounds().intersects(box_columna))
         {
             std::cout << "choca pared izquieda" << std::endl;
             personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
-            derecha = false;
+            personaje->setColision(3);
 
         }
-
-        //DERECHA
-        else if(box_personaje.left > box_columna.left
-           && box_personaje.left + box_personaje.width > box_columna.left + box_columna.width
-           && box_personaje.top < box_columna.top + box_columna.height
-           && box_personaje.top + box_personaje.height > box_columna.top)
-        {
-            std::cout << "choca pared derecha" << std::endl;
-            personaje->setPosicion(personaje->getPos().x,personaje->getPos().y);
-            izquierda = false;
-
-        }
-    }
 
 
     //COLISIONES ENEMIGO
@@ -197,8 +168,10 @@ void juego::procesar_eventos()
 {
     while(window->pollEvent(*evento))
     {
+        /*
         switch(evento->type)
         {
+
         case sf::Event::KeyPressed:
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {
@@ -234,6 +207,7 @@ void juego::procesar_eventos()
             }
             break;
         }
+        */
     }
 
 }
@@ -303,6 +277,9 @@ void juego::render()
 
     //JUGADOR
     window->draw(personaje->getJugador());
+    window->draw((personaje->cuadradoder()));
+    window->draw((personaje->cuadradoarr()));
+
 
     //ENEMIGO
     window->draw(monstruo->getEnemigo());
