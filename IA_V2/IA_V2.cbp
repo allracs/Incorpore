@@ -44,7 +44,6 @@
 		<Unit filename="cb.bmp" />
 		<Unit filename="include/Astar.h" />
 		<Unit filename="src/Astar.cpp" />
-		<Unit filename="src/implementation.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
