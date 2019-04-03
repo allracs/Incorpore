@@ -23,6 +23,7 @@ int main()
     //Jugador
     sf::CircleShape jugador(50);
     jugador.setPosition(sf::Vector2f(screenDimensions / 2));
+    jugador.setFillColor(sf::Color::Green);
 
     //Hitbox del jugador
     sf::RectangleShape hitbox;
@@ -31,6 +32,9 @@ int main()
     hitbox.setFillColor(sf::Color::Transparent);
     hitbox.setSize(sf::Vector2f(120.f, 100.f));
     hitbox.setOrigin(0,50.f);
+
+
+
 
 
     //Enemigo
@@ -46,8 +50,13 @@ int main()
         //Posicion del mouse para la rotacion persiguiendo al raton
         float mouseX = sf::Mouse::getPosition().x;
         float mouseY = sf::Mouse::getPosition().y;
-        playerCenter = sf::Vector2f(jugador.getPosition().x + jugador.getRadius(), jugador.getPosition().y-jugador.getRadius());
+        playerCenter = sf::Vector2f(jugador.getPosition().x + jugador.getRadius(), jugador.getPosition().y+jugador.getRadius());
         mousePos = sf::Mouse::getPosition(window);
+        sf::Vertex Line[] =
+        {
+            sf::Vertex(sf::Vector2f(playerCenter)),
+            sf::Vertex(sf::Vector2f(mousePos))
+        };
 
         float PI = 3.14159265;
 
@@ -105,6 +114,7 @@ int main()
         }
         window.draw(hitbox);
         window.draw(jugador);
+        window.draw(Line, 2, sf::Lines);
         window.display();
     }
 
