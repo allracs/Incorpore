@@ -1,8 +1,11 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
 #include <cmath>
+#include "Bullet.h"
 
 int main()
 {
@@ -11,8 +14,10 @@ int main()
     sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Incorpore");
     window.setFramerateLimit(60);
     //Para el posicionamiento de la hitbox
-    sf::Vector2f playerCenter;
-    sf::Vector2i mousePos;
+    sf::Vector2f playerCenter; //centro del jugador
+    sf::Vector2f mousePos; //posicion del raton
+    sf::Vector2f aimDirNorm; //normalizar vector
+     sf::Vector2f aimDir;
     sf::Event event;
     sf::Clock frameClock;
     //Matar al enemigo
@@ -24,6 +29,7 @@ int main()
     sf::CircleShape jugador(50);
     jugador.setPosition(sf::Vector2f(screenDimensions / 2));
     jugador.setFillColor(sf::Color::Green);
+    bool rangeON = false;
 
     //Hitbox del jugador
     sf::RectangleShape hitbox;
@@ -33,7 +39,9 @@ int main()
     hitbox.setSize(sf::Vector2f(120.f, 100.f));
     hitbox.setOrigin(0,50.f);
 
-
+    //balas
+    Bullet b1;
+    std::vector<Bullet> bullets;
 
 
 
@@ -51,7 +59,11 @@ int main()
         float mouseX = sf::Mouse::getPosition().x;
         float mouseY = sf::Mouse::getPosition().y;
         playerCenter = sf::Vector2f(jugador.getPosition().x + jugador.getRadius(), jugador.getPosition().y+jugador.getRadius());
-        mousePos = sf::Mouse::getPosition(window);
+        mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
+        aimDir = mousePos - playerCenter;
+        aimDirNorm = aimDir / (float)sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
+
+
         sf::Vertex Line[] =
         {
             sf::Vertex(sf::Vector2f(playerCenter)),
@@ -97,14 +109,53 @@ int main()
             movement.x += speed;
         }
 
+        //Cambio de melee a distancia
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+        {
+            if(rangeON)
+                rangeON = false;
+             else
+                rangeON = true;
+
+        }
+
+
+
         jugador.move(movement * frameTime.asSeconds());
         hitbox.setPosition(jugador.getPosition().x + jugador.getRadius(), jugador.getPosition().y + jugador.getRadius());
 
+        if(rangeON == false){
+            //El enemigo muere cuando la hitbox le toca y hacemos click
+            if (hitbox.getGlobalBounds().intersects(enemigo.getGlobalBounds()) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                deleteSprite = true;
+            }
+        } else {
+            //Shooting
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                b1.shape.setPosition(playerCenter);
+                b1.currVelocity = aimDirNorm * b1.maxSpeed;
 
-        //El enemigo muere cuando la hitbox le toca y hacemos click
-        if (hitbox.getGlobalBounds().intersects(enemigo.getGlobalBounds()) && sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-					deleteSprite = true;
-				}
+                bullets.push_back(Bullet(b1));
+
+
+            }
+        }
+
+         for(size_t i = 0; i < bullets.size(); i++){
+            bullets[i].shape.move(bullets[i].currVelocity);
+            //Para borrar los proyectiles
+            if(bullets[i].shape.getPosition().x < 0 || bullets[i].shape.getPosition().x > window.getSize().x ||
+               bullets[i].shape.getPosition().y < 0 || bullets[i].shape.getPosition().y > window.getSize().y )
+               {
+                bullets.erase(bullets.begin()+i);
+               }
+
+            if (bullets[i].shape.getGlobalBounds().intersects(enemigo.getGlobalBounds()))
+            {
+                deleteSprite = true;
+            }
+        }
 
 
         //Dibujar
@@ -112,6 +163,12 @@ int main()
         if (!deleteSprite) {
             window.draw(enemigo);
         }
+
+        for(size_t i = 0; i < bullets.size(); i++)
+            {
+                window.draw(bullets[i].shape);
+            }
+
         window.draw(hitbox);
         window.draw(jugador);
         window.draw(Line, 2, sf::Lines);

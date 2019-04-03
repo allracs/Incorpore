@@ -35,12 +35,15 @@
 
 1552911162 /mnt/hgfs/Universidad/FV/PRUEBAS/Movimiento/include/projectile.h
 
-1553796342 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Movimiento/main.cpp
+1554308741 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Movimiento/main.cpp
 	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	<SFML/System.hpp>
 	<iostream>
 	<stdlib.h>
 	<vector>
 	<cmath>
+	"Bullet.h"
 
 1553084099 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Movimiento/src/player.cpp
 	"player.h"
@@ -68,4 +71,13 @@
 	"projectile.h"
 
 1553717309 /mnt/hgfs/Universidad/FV/Incorpore/Movimiento/include/projectile.h
+
+1554308616 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Movimiento/include/Bullet.h
+	<SFML/Graphics.hpp>
+	<SFML/Window.hpp>
+	<SFML/System.hpp>
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<cmath>
 

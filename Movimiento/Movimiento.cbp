@@ -42,6 +42,7 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="cb.bmp" />
+		<Unit filename="include/Bullet.h" />
 		<Unit filename="include/player.h" />
 		<Unit filename="include/projectile.h" />
 		<Unit filename="main.cpp" />
