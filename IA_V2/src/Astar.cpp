@@ -3,11 +3,32 @@
 #include <algorithm>
 #include <math.h>
 #include "Astar.h"
+#include "../include/Mapa.h"
+#include "../include/Posicion.h"
 
-Astar::Astar(Posicion i, Posicion f, std::vector<Posicion> &m)
+Astar::Astar(Posicion i, Posicion f, Mapa *m)
 {
     //ctor
-    *mapaArr = m;
+    int alt, anc;
+    alt = m->getAltura();
+    anc = m->getAnchura();
+
+    mapaArr = new bool*[alt];
+    for(int a = 0; a < alt; a++)
+    {
+        mapaArr[a] = new bool[anc];
+    }
+
+    for(int a = 0; a < alt; a++)
+    {
+        for(int b = 0; b < anc; b++)
+        {
+            mapaArr[a][b] = m->getMapa()[a][b];
+        }
+    }
+
+    // mapaArr = m->getMapa();
+
     listaCerrada->push_back(i);
     *ini = i;
     *fin = f;
@@ -34,26 +55,19 @@ std::vector<Posicion> Astar::mapear()
         indiceIni = obtenerMenorF();
         *ini = listaAbierta->at(indiceIni);
         removerLista(indiceIni);
-        rutaEncontrada = finalizarLogica(listaCerrada);
+        rutaEncontrada = finalizarLogica(*listaCerrada);
     }
 
     std::reverse(listaCerrada->begin(), listaCerrada->end());
-
-    Padre aux = listaCerrada->front().padre;
-    Posicion direccionIni;
-    aux.x = direccionIni.x;
-    aux.y = direccionIni.y;
+    Posicion direccionIni = listaCerrada->front().getPadre();
     std::vector<Posicion> salidaFinal;
     salidaFinal.push_back(direccionIni);
 
     for(int i = 1; i < sizeof(listaCerrada)-1; i++)
     {
-        if(listaCerrada->at(i).x == direccionIni.x && listaCerrada->at(i).y == direccionIni.y)
+        if(listaCerrada->at(i).getX() == direccionIni.getX() && listaCerrada->at(i).getY() == direccionIni.getY())
         {
-            aux = listaCerrada->at(i).padre;
-            direccionIni.x = aux.x;
-            direccionIni.y = aux.y;
-            salidaFinal.push_back(direccionIni);
+            salidaFinal.push_back(listaCerrada->at(i).getPadre());
         }
     }
 
@@ -67,12 +81,12 @@ int Astar::obtenerMenorF()
 
     if(listaAbierta->size() > 0)
     {
-        menor = listaAbierta->at(0).f;
+        menor = listaAbierta->at(0).getF();
         for(int i = 1; i < listaAbierta->size(); i++)
         {
-            if(listaAbierta->at(i).f < menor)
+            if(listaAbierta->at(i).getF() < menor)
             {
-                menor = listaAbierta->at(i).f;
+                menor = listaAbierta->at(i).getF();
                 indiceMenor = i;
             }
         }
@@ -92,7 +106,7 @@ bool Astar::finalizarLogica(std::vector<Posicion> &listaCerr)
 
     for(int i = 0; i < listaCerr.size(); ++i)
     {
-        if(listaCerr.at(i).x == fin->x && listaCerr.at(i).y == fin->y)
+        if(listaCerr.at(i).getX() == fin->getX() && listaCerr.at(i).getY() == fin->getY())
         {
             res = true;
         }
@@ -100,7 +114,7 @@ bool Astar::finalizarLogica(std::vector<Posicion> &listaCerr)
     return res;
 }
 
-bool Astar::comprobarListaCerrada(Padre caja, std::vector<Posicion> &listaCerr)
+bool Astar::comprobarListaCerrada(Posicion caja, std::vector<Posicion> &listaCerr)
 {
     bool res = true;
 
@@ -108,7 +122,7 @@ bool Astar::comprobarListaCerrada(Padre caja, std::vector<Posicion> &listaCerr)
     {
         for(int i = 0; i < listaCerr.size(); i++)
         {
-            if(listaCerr.at(i).x == caja.x && listaCerr.at(i).y == caja.y)
+            if(listaCerr.at(i).getX() == caja.getX() && listaCerr.at(i).getY() == caja.getY())
             {
                 res = false;
             }
@@ -117,7 +131,7 @@ bool Astar::comprobarListaCerrada(Padre caja, std::vector<Posicion> &listaCerr)
     return res;
 }
 
-bool Astar::comprobarListaAbierta(Padre caja, std::vector<Posicion> &listaAbi, int &indice)
+bool Astar::comprobarListaAbierta(Posicion caja, std::vector<Posicion> &listaAbi, int &indice)
 {
     bool res = false;
 
@@ -125,7 +139,7 @@ bool Astar::comprobarListaAbierta(Padre caja, std::vector<Posicion> &listaAbi, i
     {
         for(int i = 0; i < listaAbi.size(); i++)
         {
-            if(listaAbi.at(i).x == caja.x && listaAbi.at(i).y == caja.y)
+            if(listaAbi.at(i).getX() == caja.getX() && listaAbi.at(i).getY() == caja.getY())
             {
                 res = true;
                 indice = i;
@@ -135,13 +149,13 @@ bool Astar::comprobarListaAbierta(Padre caja, std::vector<Posicion> &listaAbi, i
     return res;
 }
 
-int Astar::G(Padre player, int valor)
+int Astar::G(Posicion player, int valor)
 {
     int salida = 0;
 
-    if(player.g != -1)
+    if(player.getG() != -1)
     {
-        salida = player.g + valor;
+        salida = player.getG() + valor;
     }
     else
     {
@@ -153,11 +167,8 @@ int Astar::G(Padre player, int valor)
 
 int Astar::heuristica(Posicion inicio)
 {
-    int h = ()
+
+    int h = (abs(inicio.getX() - fin->getX())) + (abs(inicio.getX() - fin->getY()));
+    return h * 10;
 }
-
-
-
-
-
 

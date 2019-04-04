@@ -2,9 +2,11 @@
 #define ASTAR_H
 #include <vector>
 #include <string>
+#include "Mapa.h"
+#include "Posicion.h"
 
 //TODO: convertir Posicion en clase
-typedef struct Padre
+/*typedef struct Padre
 {
     int x, y;
     int g, h, f;
@@ -18,29 +20,29 @@ typedef struct Posicion
     std::string tag;
     Padre padre;
 };
-
+*/
 class Astar
 {
     public:
-        Astar(Posicion i, Posicion f, std::vector<Posicion> &m);
+        Astar(Posicion i, Posicion f, Mapa *m);
         virtual ~Astar();
         std::vector<Posicion> mapear();
         int obtenerMenorF();
         void removerLista(int indicePadre);
         bool finalizarLogica(std::vector<Posicion> &listaCerr);
-        bool comprobarListaCerrada(Padre caja, std::vector<Posicion> &listaCerr);
-        bool comprobarListaAbierta(Padre caja, std::vector<Posicion> &listaAbi, int &indice); //indice: valor para recoger
-        int G(Padre player, int valor);
+        bool comprobarListaCerrada(Posicion caja, std::vector<Posicion> &listaCerr);
+        bool comprobarListaAbierta(Posicion caja, std::vector<Posicion> &listaAbi, int &indice); //indice: valor para recoger
+        int G(Posicion player, int valor);
         int heuristica(Posicion inicio);
         //TODO::-------------------------------------------------------------
-        std::vector<Posicion> comprobarVecinos(Padre padre, std::vector<Posicion> mapa);
+        std::vector<Posicion> comprobarVecinos(Posicion padre, std::vector<Posicion> mapa);
         //-------------------------------------------------------------------
 
     protected:
 
     private:
         std::vector<Posicion> *listaAbierta, *listaCerrada;
-        std::vector<Posicion> *mapaArr;
+        bool **mapaArr;
         std::vector<Posicion> *vecinos;
         Posicion *ini;
         Posicion *fin;
