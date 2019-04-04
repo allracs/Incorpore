@@ -47,25 +47,25 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1552642902 source:/home/carlos/Escritorio/Incorpore/Colisiones/enemigo.cpp
+1553692504 source:/home/carlos/Escritorio/Incorpore/Colisiones/enemigo.cpp
 	"enemigo.h"
 
-1552642910 /home/carlos/Escritorio/Incorpore/Colisiones/enemigo.h
+1553692504 /home/carlos/Escritorio/Incorpore/Colisiones/enemigo.h
 	<SFML/Graphics.hpp>
 
-1552827309 source:/home/carlos/Escritorio/Incorpore/Colisiones/hud.cpp
+1553692504 source:/home/carlos/Escritorio/Incorpore/Colisiones/hud.cpp
 	"hud.h"
 
-1552642871 /home/carlos/Escritorio/Incorpore/Colisiones/hud.h
+1553692504 /home/carlos/Escritorio/Incorpore/Colisiones/hud.h
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1552393675 source:/home/carlos/Escritorio/Incorpore/Colisiones/main.cpp
+1553692523 source:/home/carlos/Escritorio/Incorpore/Colisiones/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"juego.h"
 
-1553087252 /home/carlos/Escritorio/Incorpore/Colisiones/juego.h
+1553692504 /home/carlos/Escritorio/Incorpore/Colisiones/juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"jugador.h"
@@ -74,25 +74,25 @@
 	"objetos.h"
 	"hud.h"
 
-1553176144 /home/carlos/Escritorio/Incorpore/Colisiones/jugador.h
+1553942305 /home/carlos/Escritorio/Incorpore/Colisiones/jugador.h
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1552309087 /home/carlos/Escritorio/Incorpore/Colisiones/mapa.h
+1553692504 /home/carlos/Escritorio/Incorpore/Colisiones/mapa.h
 	<SFML/Graphics.hpp>
 
-1552389290 /home/carlos/Escritorio/Incorpore/Colisiones/objetos.h
+1553692504 /home/carlos/Escritorio/Incorpore/Colisiones/objetos.h
 	<SFML/Graphics.hpp>
 
-1552653911 source:/home/carlos/Escritorio/Incorpore/Colisiones/mapa.cpp
+1553692504 source:/home/carlos/Escritorio/Incorpore/Colisiones/mapa.cpp
 	"mapa.h"
 
-1552389174 source:/home/carlos/Escritorio/Incorpore/Colisiones/objetos.cpp
+1553692504 source:/home/carlos/Escritorio/Incorpore/Colisiones/objetos.cpp
 	"objetos.h"
 
-1553176179 source:/home/carlos/Escritorio/Incorpore/Colisiones/juego.cpp
+1553945675 source:/home/carlos/Escritorio/Incorpore/Colisiones/juego.cpp
 	"juego.h"
 
-1553176109 source:/home/carlos/Escritorio/Incorpore/Colisiones/jugador.cpp
+1553945871 source:/home/carlos/Escritorio/Incorpore/Colisiones/jugador.cpp
 	"jugador.h"
 
