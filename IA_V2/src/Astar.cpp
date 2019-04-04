@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <math.h>
 #include "Astar.h"
 
 Astar::Astar(Posicion i, Posicion f, std::vector<Posicion> &m)
@@ -148,4 +149,15 @@ int Astar::G(Padre player, int valor)
     }
     return salida;
 }
+
+
+int Astar::heuristica(Posicion inicio)
+{
+    int h = ()
+}
+
+
+
+
+
 

@@ -31,6 +31,7 @@ class Astar
         bool comprobarListaCerrada(Padre caja, std::vector<Posicion> &listaCerr);
         bool comprobarListaAbierta(Padre caja, std::vector<Posicion> &listaAbi, int &indice); //indice: valor para recoger
         int G(Padre player, int valor);
+        int heuristica(Posicion inicio);
         //TODO::-------------------------------------------------------------
         std::vector<Posicion> comprobarVecinos(Padre padre, std::vector<Posicion> mapa);
         //-------------------------------------------------------------------
