@@ -29,7 +29,7 @@ void TitleScreen::UnloadContent()
 }
 
 
-void TitleScreen::Update(sf::RenderWIndow &Window, sf::Event event)
+void TitleScreen::Update(sf::RenderWindow &Window, sf::Event event)
 {
     input.Update(event);
     if(input.KeyPressed(keys))

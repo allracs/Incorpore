@@ -6,6 +6,8 @@
 #include"GameScreen.h"
 #include"SplashScreen.h"
 #include"TitleScreen.h"
+#include"FadeAnimation.h"
+
 
 
 #define ScreenWidth 800
@@ -25,6 +27,9 @@ class ScreenManager
        void Update(sf::RenderWindow &Window, sf::Event event);
        void Draw(sf::RenderWindow &Window);
         void AddScreen(GameScreen *screen);
+        float GetAlpha();
+
+        //void GetFrameTime();
 
         protected:
         private:
@@ -32,7 +37,13 @@ class ScreenManager
             ScreenManager(ScreenManager const&);
             void operator=(ScreenManager const&);
 
+            //void Transition(sf::RenderWindow &Window);
+            void Transition(sf::RenderWindow &Window);
+            bool transition;
            // std::string text;
+            FadeAnimation fade;
+
+            GameScreen *newScreen;
 
 };
 #endif

@@ -11,7 +11,9 @@ class GameScreen
 
             virtual void LoadContent();
             virtual void UnloadContent();
+            //virtual void Update(sf::RenderWindow &Window, sf::Event event);
             virtual void Update(sf::RenderWindow &Window, sf::Event event);
+
             virtual void Draw(sf::RenderWindow &Window);
     protected:
         InputManager input;

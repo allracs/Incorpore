@@ -1,25 +1,26 @@
 # depslib dependency file v1.0
-1553797047 source:/home/adri/Escritorio/fv/menuTOP/main.cpp
+1554338177 source:/home/adri/Escritorio/fv/menuTOP/main.cpp
 	<iostream>
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	"ScreenManager.h"
 
-1553796366 /home/adri/Escritorio/fv/menuTOP/ScreenManager.h
+1554339701 /home/adri/Escritorio/fv/menuTOP/ScreenManager.h
 	<string>
 	<iostream>
 	"GameScreen.h"
 	"SplashScreen.h"
 	"TitleScreen.h"
+	"FadeAnimation.h"
 
-1553797047 source:/home/adri/Escritorio/fv/menuTOP/GameScreen.cpp
+1553878811 source:/home/adri/Escritorio/fv/menuTOP/GameScreen.cpp
 	"GameScreen.h"
 
-1553797061 /home/adri/Escritorio/fv/menuTOP/GameScreen.h
+1554339347 /home/adri/Escritorio/fv/menuTOP/GameScreen.h
 	<SFML/Graphics.hpp>
 	"InputManager.h"
 
-1553797047 /home/adri/Escritorio/fv/menuTOP/SplashScreen.h
+1553878705 /home/adri/Escritorio/fv/menuTOP/SplashScreen.h
 	"GameScreen.h"
 	"TitleScreen.h"
 	"ScreenManager.h"
@@ -27,16 +28,16 @@
 	<string>
 	<iostream>
 
-1553796548 source:/home/adri/Escritorio/fv/menuTOP/SplashScreen.cpp
+1553878728 source:/home/adri/Escritorio/fv/menuTOP/SplashScreen.cpp
 	"SplashScreen.h"
 
-1553796549 source:/home/adri/Escritorio/fv/menuTOP/ScreenManager.cpp
+1554339702 source:/home/adri/Escritorio/fv/menuTOP/ScreenManager.cpp
 	"ScreenManager.h"
 
-1553796540 source:/home/adri/Escritorio/fv/menuTOP/TitleScreen.cpp
+1554339715 source:/home/adri/Escritorio/fv/menuTOP/TitleScreen.cpp
 	"TitleScreen.h"
 
-1553797048 /home/adri/Escritorio/fv/menuTOP/TitleScreen.h
+1554047441 /home/adri/Escritorio/fv/menuTOP/TitleScreen.h
 	"GameScreen.h"
 	"SplashScreen.h"
 	"ScreenManager.h"
@@ -50,4 +51,17 @@
 
 1553878299 source:/home/adri/Escritorio/fv/menuTOP/InputManager.cpp
 	"InputManager.h"
+
+1554339589 source:/home/adri/Escritorio/fv/menuTOP/Animation.cpp
+	"Animation.h"
+
+1554339582 /home/adri/Escritorio/fv/menuTOP/Animation.h
+	<SFML/Graphics.hpp>
+	<string>
+
+1554339582 source:/home/adri/Escritorio/fv/menuTOP/FadeAnimation.cpp
+	"FadeAnimation.h"
+
+1554339607 /home/adri/Escritorio/fv/menuTOP/FadeAnimation.h
+	"Animation.h"
 

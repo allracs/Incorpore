@@ -7,11 +7,21 @@ using namespace std;
 
 int main()
 {
+
     sf::RenderWindow Window(sf::VideoMode(ScreenWidth, ScreenHeight, 32), "Prueba de pantalla principal");
    // ScreenManager::GetInstance().SetText("Testing");
     //ScreenManager::GetInstance().DrawText();
+   // sf::Shape Fade = sf::RectangleShape (0,0, ScreenWidth,ScreenHeight, sf::Color(255,255,255));
+    //Fade = new sf::RectangleShape(0,0);
+   // Fade = sf::RectangleShape(0,0);
+    // ScreenWidth,ScreenHeight, sf::Color(255,255,255));
+    //sf::Shape Fade = sf::RectangleShape(0,0, ScreenWidth, ScreenHeight, sf::Color(255,255,255));
+    sf::RectangleShape Fade;
+    Fade.setSize(sf::Vector2f(0,0));
+    Fade.setFillColor(sf::Color(0,0,0,255 * ScreenManager::GetInstance().GetAlpha()));
 
-    //std::cin.get();
+
+
     ScreenManager::GetInstance().Initialize();
     ScreenManager::GetInstance().LoadContent();
 
@@ -33,9 +43,12 @@ int main()
                     */
         }
         Window.clear();
+        //ScreenManager::GetInstance().Update(Window, event);
         ScreenManager::GetInstance().Update(Window, event);
+
+        Fade.setFillColor(sf::Color(0,0,0, 255*ScreenManager::GetInstance().GetAlpha()));
         ScreenManager::GetInstance().Draw(Window);
-        Window.Get
+        Window.draw(Fade);
         Window.display();
     }
     return 0;

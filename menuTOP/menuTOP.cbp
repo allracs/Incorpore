@@ -34,6 +34,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Animation.cpp" />
+		<Unit filename="Animation.h" />
+		<Unit filename="FadeAnimation.cpp" />
+		<Unit filename="FadeAnimation.h" />
 		<Unit filename="GameScreen.cpp" />
 		<Unit filename="GameScreen.h" />
 		<Unit filename="InputManager.cpp" />
