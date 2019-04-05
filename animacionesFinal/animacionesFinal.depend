@@ -3,15 +3,32 @@
 	<SFML/Graphics.hpp>
 	"Animacion.h"
 
+1554320512 .h"
+
 1554464854 source:/mnt/hgfs/Universidad/FV/TRABAJO/animacionesFinal/src/Animacion.cpp
 	"Animacion.h"
 	<iostream>
 
+1554464854 
+
 1554464550 /mnt/hgfs/Universidad/FV/TRABAJO/animacionesFinal/include/Animacion.h
 	<SFML/Graphics.hpp>
+
+1554464550 hics.hpp>
 
 1554320512 source:/mnt/hgfs/Universidad/FV/TRABAJO/animacionesFinal/src/Personaje.cpp
 	"Personaje.h"
 
 1554320777 /mnt/hgfs/Universidad/FV/TRABAJO/animacionesFinal/include/Personaje.h
+
+1554484165 source:/mnt/hgfs/Universidad/FV/Incorpore/animacionesFinal/main.cpp
+	<SFML/Graphics.hpp>
+	"Animacion.h"
+
+1554484060 /mnt/hgfs/Universidad/FV/Incorpore/animacionesFinal/include/Animacion.h
+	<SFML/Graphics.hpp>
+
+1554484514 source:/mnt/hgfs/Universidad/FV/Incorpore/animacionesFinal/src/Animacion.cpp
+	"Animacion.h"
+	<iostream>
 

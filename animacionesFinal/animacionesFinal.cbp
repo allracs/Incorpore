@@ -43,10 +43,8 @@
 		</Compiler>
 		<Unit filename="cb.bmp" />
 		<Unit filename="include/Animacion.h" />
-		<Unit filename="include/Personaje.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Animacion.cpp" />
-		<Unit filename="src/Personaje.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />

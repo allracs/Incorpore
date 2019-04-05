@@ -8,7 +8,6 @@ class Animacion
 {
     public:
         Animacion();
-        //Animacion(char* nTextura, sf::IntRect firstF, sf::IntRect finalF, int incremento);
         virtual ~Animacion();
         void setAnimacion(char* nTextura, sf::IntRect firstF, sf::IntRect finalF, int incremento,float tiempo);
         void update(float deltaTime);

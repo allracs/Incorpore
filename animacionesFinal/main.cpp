@@ -7,9 +7,11 @@ int main()
     sf::RenderWindow app(sf::VideoMode(800, 600), "SFML window");
     app.setFramerateLimit(60);
 
-    Animacion personaje;
-    personaje.setAnimacion("caballero.png", sf::IntRect(0,0,16,28),sf::IntRect(48,0,16,28), 16, 0.1f);
-    personaje.sprite.setScale(8.f, 8.f);
+    // Creamos la animacion que vamos a hacer
+    Animacion idle;
+    // Le damos los valores que son: el nombre del fichero, el frame inicial, el frame final, de cuanto en cuanto se incrementa y la velocidad a la que se reproducirá
+    idle.setAnimacion("caballero.png", sf::IntRect(0,0,16,28),sf::IntRect(48,0,16,28), 16, 0.1f);
+    idle.sprite.setScale(8.f, 8.f);
 
     float deltaTime = 0.f;
     sf::Clock clock;
@@ -27,13 +29,13 @@ int main()
                 app.close();
         }
 
-        personaje.update(deltaTime);
+        idle.update(deltaTime);
 
         // Clear screen
         app.clear();
 
         // Draw the sprite
-        app.draw(personaje.sprite);
+        app.draw(idle.sprite);
 
         // Update the window
         app.display();

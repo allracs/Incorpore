@@ -19,12 +19,12 @@ void Animacion::setAnimacion(char* nTextura, sf::IntRect firstF, sf::IntRect fin
     if(!texture.loadFromFile(nTextura)){
         std::cout << "ERROR AL CARGAR TEXTURA";
     }
-    sprite = sf::Sprite(texture, actualFrame);
-    firstF = firstF;
-    finalF = finalF;
-    incremento = incremento;
+    this->firstF = firstF;
+    this->finalF = finalF;
+    this->incremento = incremento;
     actualFrame = firstF;
     switchTime = tiempo;
+    sprite = sf::Sprite(texture, actualFrame);
 }
 
 void Animacion::update(float deltaTime)
@@ -33,27 +33,15 @@ void Animacion::update(float deltaTime)
     if(totalTime >= switchTime) {
         totalTime -= switchTime;
 
-        if(actualFrame.left == 48){
-            actualFrame.left = 0;
+        if(actualFrame.left == finalF.left){
+            actualFrame.left = firstF.left;
         } else {
-            actualFrame.left += 16;
+            actualFrame.left += incremento;
         }
 
         sprite.setTextureRect(actualFrame);
     }
 
-    /*
-    if(clock.getElapsedTime().asSeconds() >= 1.f) {
-        if(actualFrame.left == 48){
-            actualFrame.left = 0;
-        } else {
-            actualFrame.left += 16;
-        }
-
-        sprite.setTextureRect(actualFrame);
-        clock.restart();
-    }
-    */
 }
 
 
