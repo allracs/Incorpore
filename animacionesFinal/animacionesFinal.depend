@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1554464880 source:/mnt/hgfs/Universidad/FV/TRABAJO/animacionesFinal/main.cpp
+	<SFML/Graphics.hpp>
+	"Animacion.h"
+
+1554464854 source:/mnt/hgfs/Universidad/FV/TRABAJO/animacionesFinal/src/Animacion.cpp
+	"Animacion.h"
+	<iostream>
+
+1554464550 /mnt/hgfs/Universidad/FV/TRABAJO/animacionesFinal/include/Animacion.h
+	<SFML/Graphics.hpp>
+
+1554320512 source:/mnt/hgfs/Universidad/FV/TRABAJO/animacionesFinal/src/Personaje.cpp
+	"Personaje.h"
+
+1554320777 /mnt/hgfs/Universidad/FV/TRABAJO/animacionesFinal/include/Personaje.h
+
