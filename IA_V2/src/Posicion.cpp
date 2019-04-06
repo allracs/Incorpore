@@ -1,5 +1,6 @@
 #include "Posicion.h"
 #include <iostream>
+#include <stdlib.h>
 
 Posicion::Posicion(int n, int m, Posicion p) // n
 {
@@ -7,16 +8,18 @@ Posicion::Posicion(int n, int m, Posicion p) // n
     x = n;
     y = m;
     *padre = p;
-    *g = -1;
-    *h = -1;
+}
+Posicion::Posicion(int n, int m) // n
+{
+    //ctor
+    x = n;
+    y = m;
 }
 
 Posicion::~Posicion()
 {
     //dtor
-    delete g;
-    delete h;
-    delete padre;
+
 }
 
 void Posicion::setG(Posicion p, int valor)  // p: posicion padre; valor: coste de desplazamiento
@@ -32,6 +35,12 @@ void Posicion::setG(Posicion p, int valor)  // p: posicion padre; valor: coste d
         salida = valor;
     }
     *g = salida;
+}
+
+void Posicion::copyGH(int gg, int hh)
+{
+    *g = gg;
+    *h = hh;
 }
 
 int Posicion::getG()

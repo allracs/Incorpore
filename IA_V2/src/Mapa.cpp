@@ -1,11 +1,14 @@
 #include <iostream>
+#include <stdlib.h>
 #include "Mapa.h"
 //PROVISIONAL
 
 Mapa::Mapa(int n, int mm)
 {
+    n = 9;
+    mm = 10;
     //ctor
-    int grid[n][mm] =
+    bool m[n][mm] =
 	{
 		{ 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
 		{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
@@ -18,16 +21,18 @@ Mapa::Mapa(int n, int mm)
 		{ 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 }
 	};
 
+	/*
 	m = new bool *[n];
 	for(int a = 0; a < n; a++){
         m[a] = new bool[mm];
 	}
+	*/
 
 	for(int a = 0; a < n; a++)
     {
-        for(int b = 0; b < mm; mm++)
+        for(int b = 0; b < mm; b++)
         {
-            m[a][b] = grid[a][b];
+            //m[a][b] = grid[a][b];
             std::cout << m[a][b];
         }
         std::cout << std::endl;

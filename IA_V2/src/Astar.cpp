@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include <vector>
 #include <algorithm>
 #include <math.h>
@@ -6,40 +7,41 @@
 #include "../include/Mapa.h"
 #include "../include/Posicion.h"
 
-Astar::Astar(Posicion i, Posicion f, Mapa *m)
+Astar::Astar(Posicion i, Posicion f, Mapa &m)
 {
     //ctor
+    std::cout << "creando ia (constr)" << std::endl;
     int alt, anc;
-    alt = m->getAltura();
-    anc = m->getAnchura();
+    alt = m.getAltura();
+    anc = m.getAnchura();
 
-    mapaArr = new bool*[alt];
-    for(int a = 0; a < alt; a++)
-    {
-        mapaArr[a] = new bool[anc];
-    }
+    mapaArr = m.getMapa();
+    mapa = &m;
 
-    for(int a = 0; a < alt; a++)
-    {
-        for(int b = 0; b < anc; b++)
-        {
-            mapaArr[a][b] = m->getMapa()[a][b];
-        }
-    }
+    listaAbierta = new std::vector<Posicion>;
+    listaCerrada = new std::vector<Posicion>;
 
-    // mapaArr = m->getMapa();
+    if(listaCerrada->size() == 0)
+        listaCerrada->insert(listaCerrada->begin(),i);
+    std::cout << "Lista Cerrada size: " << listaCerrada->size() << std::endl;
 
-    listaCerrada->push_back(i);
-    *ini = i;
-    *fin = f;
+    ini = new Posicion(i.getX(), i.getY());
+    fin = new Posicion(f.getX(), f.getY());
+    std::cout << ini->getX() << " --- " << ini->getY() << std::endl;
+    std::cout << "fin creando ia (constr)" << std::endl;
 }
 
 Astar::~Astar()
 {
     //dtor
+    /*
     delete mapaArr;
+    delete mapa;
+    delete listaAbierta;
+    delete listaCerrada;
     delete ini;
     delete fin;
+    */
 }
 
 std::vector<Posicion> Astar::mapear()
@@ -50,7 +52,8 @@ std::vector<Posicion> Astar::mapear()
 
     while(!rutaEncontrada)
     {
-        vecinos = comprobarVecinos(ini, mapaArr);
+        *vecinos = comprobarVecinos(*ini, *mapa);
+        std::cout << "vecinos comprobados" << std::endl;
         listaAbierta->insert(listaAbierta->begin(), vecinos->begin(), vecinos->end());
         indiceIni = obtenerMenorF();
         *ini = listaAbierta->at(indiceIni);
@@ -187,7 +190,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]-1 != -1 && sonda[1]-1 != -1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]-1][sonda[1]-1] != 1)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[0]-1][sonda[1]-1] != 0)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]-1, padre), *listaCerrada))
@@ -210,7 +213,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
 
                         Posicion aux = Posicion(sonda[0]-1, sonda[1]-1, padre);
                         aux.setG(player, puntosG[1]);
-                        aux.setH(heuristica(*ini));
+                        aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1]-1, padre)));
 
                         listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
 
@@ -220,7 +223,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                 {
                     Posicion aux = Posicion(sonda[0]-1, sonda[1]-1, padre);
                     aux.setG(player, puntosG[1]);
-                    aux.setH(heuristica(*ini));
+                    aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1]-1, padre)));
 
                     salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
 
@@ -231,10 +234,335 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     }
 
     // arriba centro
+    if(sonda[1]-1 != -1)
+    {
+        // comprueba si se puede pasar o no
+        if(paredes[sonda[0]][sonda[1]-1] != 0)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        {
+            // comprueba que no se encuentre en la lista cerrada
+            if(comprobarListaCerrada(Posicion(sonda[0], sonda[1]-1, padre), *listaCerrada))
+            {
+                /*
+                Si ya esta en la lista abierta: comprobar si el camino es mas eficiente
+                Si el camino es mas eficiente: cambiar el padre por el padre actual, de lo contrario no hacer nada
+                Si no esta en la lista: calcular todo normalmente
+                */
+
+                comprobarLista = comprobarListaAbierta(Posicion(sonda[0], sonda[1]-1, padre), *listaAbierta);
+
+                if(comprobarLista.status)
+                {
+                    if(G(player, puntosG[0]) < listaAbierta->at(comprobarLista.indice).getG())
+                    {
+                        //para sustituir la posicion primero se borra y luego se inserta la nueva mas eficiente
+
+                        listaAbierta->erase(listaAbierta->begin()+comprobarLista.indice);
+
+                        Posicion aux = Posicion(sonda[0], sonda[1]-1, padre);
+                        aux.setG(player, puntosG[0]);
+                        aux.setH(heuristica(Posicion(sonda[0], sonda[1]-1, padre)));
+
+                        listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                    }
+                }
+                else
+                {
+                    Posicion aux = Posicion(sonda[0], sonda[1]-1, padre);
+                    aux.setG(player, puntosG[0]);
+                    aux.setH(heuristica(Posicion(sonda[0], sonda[1]-1, padre)));
+
+                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                }
+
+            }
+        }
+    }
+
 
     // arriba derecha
+    if(sonda[0]+1 < mapa.getAnchura() && sonda[0]-1 != -1)
+    {
+        // comprueba si se puede pasar o no
+        if(paredes[sonda[0]+1][sonda[1]-1] != 0)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        {
+            // comprueba que no se encuentre en la lista cerrada
+            if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1]-1, padre), *listaCerrada))
+            {
+                /*
+                Si ya esta en la lista abierta: comprobar si el camino es mas eficiente
+                Si el camino es mas eficiente: cambiar el padre por el padre actual, de lo contrario no hacer nada
+                Si no esta en la lista: calcular todo normalmente
+                */
 
-    // ...
+                comprobarLista = comprobarListaAbierta(Posicion(sonda[0]+1, sonda[1]-1, padre), *listaAbierta);
+
+                if(comprobarLista.status)
+                {
+                    if(G(player, puntosG[1]) < listaAbierta->at(comprobarLista.indice).getG())
+                    {
+                        //para sustituir la posicion primero se borra y luego se inserta la nueva mas eficiente
+
+                        listaAbierta->erase(listaAbierta->begin()+comprobarLista.indice);
+
+                        Posicion aux = Posicion(sonda[0]+1, sonda[1]-1, padre);
+                        aux.setG(player, puntosG[1]);
+                        aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1]-1, padre)));
+
+                        listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                    }
+                }
+                else
+                {
+                    Posicion aux = Posicion(sonda[0]+1, sonda[1]-1, padre);
+                    aux.setG(player, puntosG[1]);
+                    aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1]-1, padre)));
+
+                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                }
+
+            }
+        }
+    }
+
+    // centro izquierda
+    if(sonda[0]-1 != -1)
+    {
+        // comprueba si se puede pasar o no
+        if(paredes[sonda[0]-1][sonda[1]] != 0)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        {
+            // comprueba que no se encuentre en la lista cerrada
+            if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1], padre), *listaCerrada))
+            {
+                /*
+                Si ya esta en la lista abierta: comprobar si el camino es mas eficiente
+                Si el camino es mas eficiente: cambiar el padre por el padre actual, de lo contrario no hacer nada
+                Si no esta en la lista: calcular todo normalmente
+                */
+
+                comprobarLista = comprobarListaAbierta(Posicion(sonda[0]-1, sonda[1], padre), *listaAbierta);
+
+                if(comprobarLista.status)
+                {
+                    if(G(player, puntosG[0]) < listaAbierta->at(comprobarLista.indice).getG())
+                    {
+                        //para sustituir la posicion primero se borra y luego se inserta la nueva mas eficiente
+
+                        listaAbierta->erase(listaAbierta->begin()+comprobarLista.indice);
+
+                        Posicion aux = Posicion(sonda[0]-1, sonda[1], padre);
+                        aux.setG(player, puntosG[0]);
+                        aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1], padre)));
+
+                        listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                    }
+                }
+                else
+                {
+                    Posicion aux = Posicion(sonda[0]-1, sonda[1], padre);
+                    aux.setG(player, puntosG[0]);
+                    aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1], padre)));
+
+                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                }
+
+            }
+        }
+    }
+
+    // centro derecha
+    if(sonda[0]+1 != -1)
+    {
+        //std::cout << "sonda X: " << sonda[0]+1 << std::endl << mapa.getAnchura() << std::endl;
+        // comprueba si se puede pasar o no
+        if(sonda[0]+1 < mapa.getAnchura() && paredes[sonda[0]+1][sonda[1]] != 0)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        {
+            // comprueba que no se encuentre en la lista cerrada
+            if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1], padre), *listaCerrada))
+            {
+                /*
+                Si ya esta en la lista abierta: comprobar si el camino es mas eficiente
+                Si el camino es mas eficiente: cambiar el padre por el padre actual, de lo contrario no hacer nada
+                Si no esta en la lista: calcular todo normalmente
+                */
+
+                comprobarLista = comprobarListaAbierta(Posicion(sonda[0]+1, sonda[1], padre), *listaAbierta);
+
+                if(comprobarLista.status)
+                {
+                    if(G(player, puntosG[0]) < listaAbierta->at(comprobarLista.indice).getG())
+                    {
+                        //para sustituir la posicion primero se borra y luego se inserta la nueva mas eficiente
+
+                        listaAbierta->erase(listaAbierta->begin()+comprobarLista.indice);
+
+                        Posicion aux = Posicion(sonda[0]+1, sonda[1], padre);
+                        aux.setG(player, puntosG[0]);
+                        aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1], padre)));
+
+                        listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                    }
+                }
+                else
+                {
+                    Posicion aux = Posicion(sonda[0]+1, sonda[1], padre);
+                    aux.setG(player, puntosG[0]);
+                    aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1], padre)));
+
+                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                }
+
+            }
+        }
+    }
+
+    // abajo izquierda
+    if(sonda[0]-1 != -1 && sonda[1]+1 < mapa.getAltura())
+    {
+        // comprueba si se puede pasar o no
+        if(paredes[sonda[0]-1][sonda[1]+1] != 0)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        {
+            // comprueba que no se encuentre en la lista cerrada
+            if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]+1, padre), *listaCerrada))
+            {
+                /*
+                Si ya esta en la lista abierta: comprobar si el camino es mas eficiente
+                Si el camino es mas eficiente: cambiar el padre por el padre actual, de lo contrario no hacer nada
+                Si no esta en la lista: calcular todo normalmente
+                */
+
+                comprobarLista = comprobarListaAbierta(Posicion(sonda[0]-1, sonda[1]+1, padre), *listaAbierta);
+
+                if(comprobarLista.status)
+                {
+                    if(G(player, puntosG[1]) < listaAbierta->at(comprobarLista.indice).getG())
+                    {
+                        //para sustituir la posicion primero se borra y luego se inserta la nueva mas eficiente
+
+                        listaAbierta->erase(listaAbierta->begin()+comprobarLista.indice);
+
+                        Posicion aux = Posicion(sonda[0]-1, sonda[1]+1, padre);
+                        aux.setG(player, puntosG[1]);
+                        aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1]+1, padre)));
+
+                        listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                    }
+                }
+                else
+                {
+                    Posicion aux = Posicion(sonda[0]-1, sonda[1]+1, padre);
+                    aux.setG(player, puntosG[1]);
+                    aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1]+1, padre)));
+
+                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                }
+
+            }
+        }
+    }
+
+    // abajo centro
+    if(sonda[1]+1 < mapa.getAltura())
+    {
+        // comprueba si se puede pasar o no
+        if(paredes[sonda[0]][sonda[1]+1] != 0)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        {
+            // comprueba que no se encuentre en la lista cerrada
+            if(comprobarListaCerrada(Posicion(sonda[0], sonda[1]+1, padre), *listaCerrada))
+            {
+                /*
+                Si ya esta en la lista abierta: comprobar si el camino es mas eficiente
+                Si el camino es mas eficiente: cambiar el padre por el padre actual, de lo contrario no hacer nada
+                Si no esta en la lista: calcular todo normalmente
+                */
+
+                comprobarLista = comprobarListaAbierta(Posicion(sonda[0], sonda[1]+1, padre), *listaAbierta);
+
+                if(comprobarLista.status)
+                {
+                    if(G(player, puntosG[0]) < listaAbierta->at(comprobarLista.indice).getG())
+                    {
+                        //para sustituir la posicion primero se borra y luego se inserta la nueva mas eficiente
+
+                        listaAbierta->erase(listaAbierta->begin()+comprobarLista.indice);
+
+                        Posicion aux = Posicion(sonda[0], sonda[1]+1, padre);
+                        aux.setG(player, puntosG[0]);
+                        aux.setH(heuristica(Posicion(sonda[0], sonda[1]+1, padre)));
+
+                        listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                    }
+                }
+                else
+                {
+                    Posicion aux = Posicion(sonda[0], sonda[1]+1, padre);
+                    aux.setG(player, puntosG[0]);
+                    aux.setH(heuristica(Posicion(sonda[0], sonda[1]+1, padre)));
+
+                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                }
+
+            }
+        }
+    }
+
+    // abajo derecha
+    if(sonda[0]+1 < mapa.getAnchura() && sonda[1]+1 < mapa.getAltura())
+    {
+        // comprueba si se puede pasar o no
+        if(paredes[sonda[0]+1][sonda[1]+1] != 0)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        {
+            // comprueba que no se encuentre en la lista cerrada
+            if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1]+1, padre), *listaCerrada))
+            {
+                /*
+                Si ya esta en la lista abierta: comprobar si el camino es mas eficiente
+                Si el camino es mas eficiente: cambiar el padre por el padre actual, de lo contrario no hacer nada
+                Si no esta en la lista: calcular todo normalmente
+                */
+
+                comprobarLista = comprobarListaAbierta(Posicion(sonda[0]+1, sonda[1]+1, padre), *listaAbierta);
+
+                if(comprobarLista.status)
+                {
+                    if(G(player, puntosG[1]) < listaAbierta->at(comprobarLista.indice).getG())
+                    {
+                        //para sustituir la posicion primero se borra y luego se inserta la nueva mas eficiente
+
+                        listaAbierta->erase(listaAbierta->begin()+comprobarLista.indice);
+
+                        Posicion aux = Posicion(sonda[0]+1, sonda[1]+1, padre);
+                        aux.setG(player, puntosG[1]);
+                        aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1]+1, padre)));
+
+                        listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                    }
+                }
+                else
+                {
+                    Posicion aux = Posicion(sonda[0]+1, sonda[1]+1, padre);
+                    aux.setG(player, puntosG[1]);
+                    aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1]+1, padre)));
+
+                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                }
+
+            }
+        }
+    }
 
 
     return salida;

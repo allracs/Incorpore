@@ -6,10 +6,12 @@ class Posicion
 {
     public:
         Posicion(int n, int m, Posicion p);
+        Posicion(int n, int m);
         virtual ~Posicion();
         void setG(Posicion p, int valor);
         void setH(Posicion i, Posicion f);
         void setH(int n);
+        void copyGH(int gg, int hh);
 
         int getG();
         int getH();
@@ -22,7 +24,8 @@ class Posicion
     protected:
 
     private:
-        int x, y, *g, *h;
+        int x, y;
+        int *g, *h;
         bool pared;
         Posicion *padre;
 };
