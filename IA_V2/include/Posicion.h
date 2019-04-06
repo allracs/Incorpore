@@ -9,6 +9,7 @@ class Posicion
         virtual ~Posicion();
         void setG(Posicion p, int valor);
         void setH(Posicion i, Posicion f);
+        void setH(int n);
 
         int getG();
         int getH();

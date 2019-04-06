@@ -21,6 +21,13 @@ typedef struct Posicion
     Padre padre;
 };
 */
+
+typedef struct comprobarListaAb
+{
+    bool status;
+    int indice;
+};
+
 class Astar
 {
     public:
@@ -31,11 +38,11 @@ class Astar
         void removerLista(int indicePadre);
         bool finalizarLogica(std::vector<Posicion> &listaCerr);
         bool comprobarListaCerrada(Posicion caja, std::vector<Posicion> &listaCerr);
-        bool comprobarListaAbierta(Posicion caja, std::vector<Posicion> &listaAbi, int &indice); //indice: valor para recoger
+        comprobarListaAb comprobarListaAbierta(Posicion caja, std::vector<Posicion> &listaAbi);
         int G(Posicion player, int valor);
         int heuristica(Posicion inicio);
         //TODO::-------------------------------------------------------------
-        std::vector<Posicion> comprobarVecinos(Posicion padre, std::vector<Posicion> mapa);
+        std::vector<Posicion> comprobarVecinos(Posicion padre, Mapa mapa);
         //-------------------------------------------------------------------
 
     protected:

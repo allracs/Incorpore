@@ -131,9 +131,9 @@ bool Astar::comprobarListaCerrada(Posicion caja, std::vector<Posicion> &listaCer
     return res;
 }
 
-bool Astar::comprobarListaAbierta(Posicion caja, std::vector<Posicion> &listaAbi, int &indice)
+comprobarListaAb Astar::comprobarListaAbierta(Posicion caja, std::vector<Posicion> &listaAbi)
 {
-    bool res = false;
+    comprobarListaAb res;
 
     if(listaAbi.size() >= 1)
     {
@@ -141,8 +141,8 @@ bool Astar::comprobarListaAbierta(Posicion caja, std::vector<Posicion> &listaAbi
         {
             if(listaAbi.at(i).getX() == caja.getX() && listaAbi.at(i).getY() == caja.getY())
             {
-                res = true;
-                indice = i;
+                res.status = true;
+                res.indice = i;
             }
         }
     }
@@ -167,8 +167,84 @@ int Astar::G(Posicion player, int valor)
 
 int Astar::heuristica(Posicion inicio)
 {
-
     int h = (abs(inicio.getX() - fin->getX())) + (abs(inicio.getX() - fin->getY()));
     return h * 10;
 }
+
+std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
+{
+
+    std::vector<Posicion> salida;
+    Posicion player = padre;    //sera el ultimo en la lista abierta
+    int puntosG[2] = {10, 200};
+    int sonda[2] = {padre.getX(), padre.getY()};
+    comprobarListaAb comprobarLista;
+    bool **paredes = mapa.getMapa();
+
+    //faltan agregar a los que estan en la lista blanca
+
+    // arriba izquierda
+    if(sonda[0]-1 != -1 && sonda[1]-1 != -1)
+    {
+        // comprueba si se puede pasar o no
+        if(paredes[sonda[0]-1][sonda[1]-1] != 1)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        {
+            // comprueba que no se encuentre en la lista cerrada
+            if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]-1, padre), *listaCerrada))
+            {
+                /*
+                Si ya esta en la lista abierta: comprobar si el camino es mas eficiente
+                Si el camino es mas eficiente: cambiar el padre por el padre actual, de lo contrario no hacer nada
+                Si no esta en la lista: calcular todo normalmente
+                */
+
+                comprobarLista = comprobarListaAbierta(Posicion(sonda[0]-1, sonda[1]-1, padre), *listaAbierta);
+
+                if(comprobarLista.status)
+                {
+                    if(G(player, puntosG[1]) < listaAbierta->at(comprobarLista.indice).getG())
+                    {
+                        //para sustituir la posicion primero se borra y luego se inserta la nueva mas eficiente
+
+                        listaAbierta->erase(listaAbierta->begin()+comprobarLista.indice);
+
+                        Posicion aux = Posicion(sonda[0]-1, sonda[1]-1, padre);
+                        aux.setG(player, puntosG[1]);
+                        aux.setH(heuristica(*ini));
+
+                        listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                    }
+                }
+                else
+                {
+                    Posicion aux = Posicion(sonda[0]-1, sonda[1]-1, padre);
+                    aux.setG(player, puntosG[1]);
+                    aux.setH(heuristica(*ini));
+
+                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+
+                }
+
+            }
+        }
+    }
+
+    // arriba centro
+
+    // arriba derecha
+
+    // ...
+
+
+    return salida;
+}
+
+
+
+
+
+
+
+
 

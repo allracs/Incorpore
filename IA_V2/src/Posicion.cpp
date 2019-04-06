@@ -49,6 +49,11 @@ void Posicion::setH(Posicion i, Posicion f)  //p: posicion inicial; f: posicion 
     *h = (abs(ax - fx)) + (abs(ay - fy));
 }
 
+void Posicion::setH(int n)
+{
+    *h = n;
+}
+
 int Posicion::getH()
 {
     return *h;
