@@ -20,6 +20,7 @@ Astar::Astar(Posicion i, Posicion f, Mapa &m)
 
     listaAbierta = new std::vector<Posicion>;
     listaCerrada = new std::vector<Posicion>;
+    vecinos = new std::vector<Posicion>;
 
     if(listaCerrada->size() == 0)
         listaCerrada->insert(listaCerrada->begin(),i);
@@ -148,6 +149,8 @@ comprobarListaAb Astar::comprobarListaAbierta(Posicion caja, std::vector<Posicio
             {
                 res.status = true;
                 res.indice = i;
+                std::cout << "RES INDICE: " << res.indice << std::endl;
+                break;
             }
         }
     }
@@ -185,6 +188,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
 {
 
     std::vector<Posicion> salida;
+    std::cout << "SALIDA SIZE: " << salida.size() << std::endl;
     Posicion player = padre;    //sera el ultimo en la lista abierta
     int puntosG[2] = {10, 200};
     int sonda[2] = {padre.getX(), padre.getY()};
@@ -241,7 +245,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                     aux.setG(player, puntosG[1]);
                     aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1]-1, padre)));
 
-                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+                    salida.insert(salida.begin()+comprobarLista.indice, aux);
 
                 }
 
@@ -288,7 +292,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                     aux.setG(player, puntosG[0]);
                     aux.setH(heuristica(Posicion(sonda[0], sonda[1]-1, padre)));
 
-                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+                    salida.insert(salida.begin()+comprobarLista.indice, aux);
 
                 }
 
@@ -336,7 +340,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                     aux.setG(player, puntosG[1]);
                     aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1]-1, padre)));
 
-                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+                    salida.insert(salida.begin()+comprobarLista.indice, aux);
 
                 }
 
@@ -383,7 +387,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                     aux.setG(player, puntosG[0]);
                     aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1], padre)));
 
-                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+                    salida.insert(salida.begin()+comprobarLista.indice, aux);
 
                 }
 
@@ -431,13 +435,13 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                 }
                 else
                 {
-                    Posicion aux = Posicion(sonda[0]+1, sonda[1], padre);
-                    aux.setG(player, puntosG[0]);
-                    aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1], padre)));
-                    std::cout << "indice lista: " << comprobarLista.indice << std::endl;
-                    std::cout << "listaAb size: " << listaAbierta->size() << std::endl;
-                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
-
+                    Posicion *aux = new Posicion(sonda[0]+1, sonda[1], padre);
+                    aux->setG(player, puntosG[0]);
+                    aux->setH(heuristica(Posicion(sonda[0]+1, sonda[1], padre)));
+                    std::cout << "indice lista 5: " << comprobarLista.indice << std::endl;
+                    std::cout << "listaAb size 5: " << listaAbierta->size() << std::endl;
+                    salida.insert(salida.begin()+comprobarLista.indice, *aux);
+                    std::cout << "hemos llegado" << std::endl;
                 }
 
             }
@@ -483,7 +487,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                     aux.setG(player, puntosG[1]);
                     aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1]+1, padre)));
 
-                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+                    salida.insert(salida.begin()+comprobarLista.indice, aux);
 
                 }
 
@@ -530,7 +534,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                     aux.setG(player, puntosG[0]);
                     aux.setH(heuristica(Posicion(sonda[0], sonda[1]+1, padre)));
 
-                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+                    salida.insert(salida.begin()+comprobarLista.indice, aux);
 
                 }
 
@@ -577,9 +581,9 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                     aux.setG(player, puntosG[1]);
                     aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1]+1, padre)));
 
-                    std::cout << "indice lista: " << comprobarLista.indice << std::endl;
-                    std::cout << "listaAb size: " << listaAbierta->size() << std::endl;
-                    salida.insert(listaAbierta->begin()+comprobarLista.indice, aux);
+                    std::cout << "indice lista 8: " << comprobarLista.indice << std::endl;
+                    std::cout << "listaAb size 8: " << listaAbierta->size() << std::endl;
+                    salida.insert(salida.begin()+comprobarLista.indice, aux);
 
                 }
 
