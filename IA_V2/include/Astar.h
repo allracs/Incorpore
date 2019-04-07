@@ -5,23 +5,6 @@
 #include "Mapa.h"
 #include "Posicion.h"
 
-//TODO: convertir Posicion en clase
-/*typedef struct Padre
-{
-    int x, y;
-    int g, h, f;
-    std::string tag;
-};
-
-typedef struct Posicion
-{
-    int x, y;
-    int g, h, f;
-    std::string tag;
-    Padre padre;
-};
-*/
-
 typedef struct comprobarListaAb
 {
     bool status;

@@ -12,16 +12,21 @@ int main()
     std::cout << "mapa creado" << std::endl;
 
     Posicion x = Posicion(0,0);
-    Posicion y = Posicion(0,2);
+    Posicion y = Posicion(2,1);
     std::cout << "creando ia" << std::endl;
     Astar *ia = new Astar(x, y, *m);
-    std::cout << "ia creada" << std::endl;
+    std::cout << "ia creada" << std::endl << ";;;;;;;;;;;;;" << std::endl;
 
     std::cout << "mapeando" << std::endl;
     std::vector<Posicion> path = ia->mapear();
     std::cout << "mapedao hecho" << std::endl;
 
     std::cout << "Path size: " << path.size() << std::endl;
+    for(int a = 0; a < path.size(); a++)
+    {
+        std::cout << path.at(a).getX() << " .... " << path.at(a).getY() << std::endl;
+    }
+
 
     delete m;
     exit(0);
