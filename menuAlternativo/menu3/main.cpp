@@ -11,6 +11,8 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800,600), "SFML VA");
     //window = new sf::RenderWindow(sf::VideoMode(600,600), "SFML VA");
     //screens
+    bool estadoMenu = true;
+    bool estadoControles = false;
     sf::RectangleShape fondo(sf::Vector2f(400.0f,600.0f));
     fondo.setPosition(250.0f,70.0f);
     sf::Texture texture;
@@ -36,10 +38,13 @@ int main()
     {
     sf::Event evento;
 
-        while(window.pollEvent(evento)){
-            switch(evento.type){
+        while(window.pollEvent(evento))
+        {
+            switch(evento.type)
+            {
             case sf::Event::KeyReleased:
-                switch(evento.key.code){
+                switch(evento.key.code)
+                {
 
                     case sf::Keyboard::Up:
                     menu.MoverArriba();
@@ -49,6 +54,12 @@ int main()
                     menu.MoverAbajo();
                     break;
 
+                    /*case sf::Keyboard::Escape:
+                   window.draw(fondo);
+                   menu.draw(window);
+
+                    break;
+                    */
                     case sf::Keyboard::Return:
                         switch(menu.GetPressedItem())
                         {
@@ -57,18 +68,23 @@ int main()
                                 break;
 
                             case 1:
-
-
                                 std::cout <<"El boton de opciones se ha pulsado" <<std::endl;
-
                                 if(textureControles.loadFromFile("controles.png"))
                                     std::cout <<"textura opciones cargada" <<std::endl;
-
+                                estadoMenu = false;
+                                estadoControles=true;
+                                 menu.borra(window);
                                 fondo.setTexture(&textureControles);
                                // controles.setTexture(&textureControles);
 
-                               window.clear();
-
+                                        switch(evento.key.code)
+                                        {
+                                            case sf::Keyboard::Escape:
+                                                menu.draw(window);
+                                            estadoMenu = true;
+                                             std::cout <<"Estado de menu a true" <<std::endl;
+                                            break;
+                                        }
 
                                 break;
 
@@ -84,7 +100,8 @@ int main()
 
                 }
             break;
-                case sf::Event::Closed:
+
+            case sf::Event::Closed:
                     window.close();
                     break;
             }
@@ -92,7 +109,7 @@ int main()
 
         window.clear();
         window.draw(fondo);
-        menu.draw(window);
+       if(estadoMenu==true){menu.draw(window);}
         window.display();
 
     }

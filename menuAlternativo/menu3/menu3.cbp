@@ -34,8 +34,6 @@
 		</Compiler>
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
-		<Unit filename="Sprite.cpp" />
-		<Unit filename="Sprite.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
