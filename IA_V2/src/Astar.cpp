@@ -127,9 +127,12 @@ void Astar::removerLista(int indicePadre)
 bool Astar::finalizarLogica(std::vector<Posicion> &listaCerr)
 {
     bool res = false;
+    std::cout <<" posicion final: "<< fin->getX() << " - " << fin->getY() <<std::endl;
+
 
     for(int i = 0; i < listaCerr.size(); ++i)
     {
+        std::cout <<" posiciones buscadas: "<<listaCerr.at(i).getX() << " - " << listaCerr.at(i).getY() <<std::endl;
         if(listaCerr.at(i).getX() == fin->getX() && listaCerr.at(i).getY() == fin->getY())
         {
             res = true;
@@ -203,10 +206,10 @@ int Astar::heuristica(Posicion inicio)
 std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
 {
     std::vector<Posicion> salida;
-    std::cout << "EPIEZA COMPROBAR VECINOS - SALIDA SIZE: " << salida.size() << std::endl;
+    std::cout << "EMPIEZA COMPROBAR VECINOS - SALIDA SIZE: " << salida.size() << std::endl;
     Posicion player = padre;    //sera el ultimo en la lista abierta
     int puntosG[2] = {10, 200};
-    int sonda[2] = {padre.getX(), padre.getY()};
+    int sonda[2] = {padre.getX(),padre.getY()};
     int pared = 0;
     comprobarListaAb comprobarLista;
     bool **paredes = mapa.getMapa();
@@ -260,7 +263,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]-1 > -1 && sonda[1]-1 > -1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]-1][sonda[1]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]-1][sonda[0]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]-1, padre), *listaCerrada))
@@ -310,7 +313,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[1]-1 > -1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]][sonda[1]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]-1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0], sonda[1]-1, padre), *listaCerrada))
@@ -360,7 +363,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]+1 < mapa.getAnchura() && sonda[1]-1 != -1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]+1][sonda[1]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]-1][sonda[0]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1]-1, padre), *listaCerrada))
@@ -410,7 +413,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]-1 > -1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]-1][sonda[1]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]][sonda[0]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1], padre), *listaCerrada))
@@ -463,8 +466,9 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     {
         //std::cout << "sonda X: " << sonda[0]+1 << std::endl << mapa.getAnchura() << std::endl;
         // comprueba si se puede pasar o no
-        //std::cout << "paredes: " << paredes[sonda[0]][sonda[1]] << std::endl;
-        if(sonda[0]+1 < mapa.getAnchura() && paredes[sonda[0]+1][sonda[1]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        std::cout << "paredes: " << paredes[sonda[0]+1][sonda[1]] << std::endl;
+        std::cout << sonda[0]+1 << " - " << sonda[1] << std::endl;
+        if(sonda[0]+1 < mapa.getAnchura() && paredes[sonda[1]][sonda[0]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1], padre), *listaCerrada))
@@ -513,7 +517,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]-1 > -1 && sonda[1]+1 < mapa.getAltura())
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]-1][sonda[1]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]+1][sonda[0]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]+1, padre), *listaCerrada))
@@ -563,7 +567,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[1]+1 < mapa.getAltura())
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]][sonda[1]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]+1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0], sonda[1]+1, padre), *listaCerrada))
@@ -613,7 +617,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]+1 < mapa.getAnchura() && sonda[1]+1 < mapa.getAltura())
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]+1][sonda[1]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]+1][sonda[0]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1]+1, padre), *listaCerrada))
