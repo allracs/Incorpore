@@ -7,7 +7,11 @@ Posicion::Posicion(int n, int m, Posicion p) // n
     //ctor
     x = n;
     y = m;
-    *padre = p;
+    //padre = new Posicion(p.getX(), p.getY());
+    padre = &p;
+    g = -1;
+    h = -1;
+    std::cout << "valor G: " << g << std::endl;
 }
 Posicion::Posicion(int n, int m) // n
 {
@@ -34,18 +38,21 @@ void Posicion::setG(Posicion p, int valor)  // p: posicion padre; valor: coste d
     {
         salida = valor;
     }
-    *g = salida;
+    std::cout << "setG (pre): " << g << std::endl;
+    g = salida;
+    std::cout << "setG (post): " << g << std::endl;
 }
 
 void Posicion::copyGH(int gg, int hh)
 {
-    *g = gg;
-    *h = hh;
+    g = gg;
+    h = hh;
 }
 
 int Posicion::getG()
 {
-    return *g;
+    std::cout << "getG: " << g << std::endl;
+    return g;
 }
 
 void Posicion::setH(Posicion i, Posicion f)  //p: posicion inicial; f: posicion final
@@ -55,22 +62,22 @@ void Posicion::setH(Posicion i, Posicion f)  //p: posicion inicial; f: posicion 
     ay = i.getY();
     fx = f.getX();
     fy = f.getY();
-    *h = (abs(ax - fx)) + (abs(ay - fy));
+    h = (abs(ax - fx)) + (abs(ay - fy));
 }
 
 void Posicion::setH(int n)
 {
-    *h = n;
+    h = n;
 }
 
 int Posicion::getH()
 {
-    return *h;
+    return h;
 }
 
 int Posicion::getF()
 {
-    return *g + *h;
+    return g + h;
 }
 
 int Posicion::getX()

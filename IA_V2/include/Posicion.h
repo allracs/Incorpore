@@ -25,7 +25,7 @@ class Posicion
 
     private:
         int x, y;
-        int *g, *h;
+        int g, h;
         bool pared;
         Posicion *padre;
 };
