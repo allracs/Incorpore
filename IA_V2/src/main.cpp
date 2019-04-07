@@ -24,7 +24,7 @@ int main()
     std::cout << "Path size: " << path.size() << std::endl;
     for(int a = 0; a < path.size(); a++)
     {
-        std::cout << path.at(a).getX() << " .... " << path.at(a).getY() << std::endl;
+        std::cout << path.at(a).getY() << " .... " << path.at(a).getX() << std::endl;
     }
 
 
