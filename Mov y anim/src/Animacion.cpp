@@ -26,6 +26,7 @@ void Animacion::setAnimacion(char* nTextura, sf::IntRect firstF, sf::IntRect fin
     actualFrame = firstF;
     switchTime = tiempo;
     sprite = sf::Sprite(texture, actualFrame);
+    sprite.setOrigin((this->firstF.width)/2, (this->firstF.height)/2);
 
 }
 
