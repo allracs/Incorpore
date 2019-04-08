@@ -106,12 +106,15 @@ int Astar::obtenerMenorF()
     if(listaAbierta->size() > 0)
     {
         menor = listaAbierta->at(0).getF();
-        for(int i = 1; i < listaAbierta->size(); i++)
+        if(listaAbierta->size() > 0)
         {
-            if(listaAbierta->at(i).getF() < menor)
+            for(int i = 1; i < listaAbierta->size(); i++)
             {
-                menor = listaAbierta->at(i).getF();
-                indiceMenor = i;
+                if(listaAbierta->at(i).getF() < menor)
+                {
+                    menor = listaAbierta->at(i).getF();
+                    indiceMenor = i;
+                }
             }
         }
     }
@@ -224,7 +227,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
         }
         std::cout << std::endl;
     }
-
+    */
     std::cout << "pos 0-0: " << mapa.getMapa()[0][0] << std::endl;
     std::cout << "pos 0-1: " << mapa.getMapa()[0][1] << std::endl;
     std::cout << "pos 1-0: " << mapa.getMapa()[1][0] << std::endl;
@@ -234,7 +237,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
         std::cout << mapa.getMapa()[k][0];
     }
     std::cout << std::endl;
-
+    /*
     std::cout << "::EL VEÏNS MEUS::" << std::endl;
 
     if(sonda[0]-1 >= 0 && sonda[1]-1 >= 0)

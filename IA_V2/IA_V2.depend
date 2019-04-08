@@ -2,7 +2,7 @@
 1552511759 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/main.cpp
 	<bits/stdc++.h>
 
-1554670889 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/Astar.cpp
+1554714119 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/Astar.cpp
 	<iostream>
 	<stdlib.h>
 	<vector>
@@ -12,13 +12,13 @@
 	"../include/Mapa.h"
 	"../include/Posicion.h"
 
-1554666775 /home/oscar/Desktop/FV/Incorpore/IA_V2/include/Astar.h
+1554713646 /home/oscar/Desktop/FV/Incorpore/IA_V2/include/Astar.h
 	<vector>
 	<string>
 	"Mapa.h"
 	"Posicion.h"
 
-1554670967 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/main.cpp
+1554719212 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/main.cpp
 	<iostream>
 	<stdlib.h>
 	<vector>
@@ -39,16 +39,16 @@
 	<algorithm>
 	<cstdlib>
 
-1554655652 /home/oscar/Desktop/FV/Incorpore/IA_V2/include/Mapa.h
+1554713621 /home/oscar/Desktop/FV/Incorpore/IA_V2/include/Mapa.h
 
-1554655652 /home/oscar/Desktop/FV/Incorpore/IA_V2/include/Posicion.h
+1554713646 /home/oscar/Desktop/FV/Incorpore/IA_V2/include/Posicion.h
 
-1554666775 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/Mapa.cpp
+1554718999 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/Mapa.cpp
 	<iostream>
 	<stdlib.h>
 	"Mapa.h"
 
-1554666775 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/Posicion.cpp
+1554713646 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/Posicion.cpp
 	"Posicion.h"
 	<iostream>
 	<stdlib.h>
