@@ -3,7 +3,7 @@
  <tileset firstgid="1">
   <image source="resources/tileset.png"/>
  </tileset>
- <layer name="Fondo" width="24" height="18">
+ <layer name="Fondo" width="24" height="18" visible="0">
   <data>
    <tile gid="101"/>
    <tile gid="101"/>
@@ -55,26 +55,26 @@
    <tile gid="101"/>
    <tile gid="101"/>
    <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
-   <tile gid="101"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="101"/>
    <tile gid="101"/>
    <tile gid="101"/>
@@ -491,26 +491,26 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="33"/>
+   <tile gid="87"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile gid="82"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile gid="87"/>
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
+   <tile gid="81"/>
    <tile gid="33"/>
    <tile gid="33"/>
+   <tile gid="87"/>
    <tile gid="33"/>
    <tile gid="33"/>
+   <tile gid="83"/>
+   <tile gid="36"/>
    <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="33"/>
-   <tile gid="34"/>
+   <tile gid="87"/>
    <tile gid="35"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -927,26 +927,26 @@
    <tile gid="275"/>
    <tile gid="273"/>
    <tile gid="0"/>
-   <tile gid="87"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="82"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="87"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="81"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="87"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="83"/>
-   <tile gid="36"/>
    <tile gid="0"/>
-   <tile gid="87"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="275"/>
    <tile gid="273"/>
@@ -1311,7 +1311,7 @@
    <tile gid="307"/>
   </data>
  </layer>
- <layer name="Colision" width="24" height="18">
+ <layer name="Colision" width="24" height="18" visible="0">
   <data>
    <tile gid="512"/>
    <tile gid="512"/>

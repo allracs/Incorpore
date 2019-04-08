@@ -2,7 +2,7 @@
 using namespace sf;
 
 game::game(){
-    window = new RenderWindow(VideoMode(800,600), "Carga Mapa");
+    window = new RenderWindow(VideoMode(800,800), "Carga Mapa");
     window->setFramerateLimit(60);
     evento = new Event;
     cargaMapa();
