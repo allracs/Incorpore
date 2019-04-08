@@ -1747,6 +1747,7 @@
    <tile gid="0"/>
   </data>
  </layer>
+ <layer id="3" name="Pared" width="24" height="18">
  <layer id="7" name="Objetos" width="24" height="18">
   <data>
    <tile gid="0"/>
@@ -2183,7 +2184,6 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer id="3" name="Pared" width="24" height="18">
   <data>
    <tile gid="257"/>
    <tile gid="3"/>

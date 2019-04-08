@@ -19,7 +19,7 @@ class mapa{
         int getWidth();
         void cargaObjetos();
         void posicionaObjetos();
-        void generaObjetos(int, int);
+        void generaObjetos(int, int, int);
         void colisiones();
         Sprite**** getMapSprite();
         bool** getColisiones();
