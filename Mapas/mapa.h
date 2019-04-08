@@ -23,6 +23,8 @@ class mapa{
         void colisiones();
         Sprite**** getMapSprite();
         bool** getColisiones();
+        int getNumColisiones();
+        FloatRect** getBounds();
     private:
         int maxObj, nObj;
         int width, height,tilewidth, tileheight, gid;
@@ -41,4 +43,6 @@ class mapa{
         XMLElement *data;
         Sprite* tilesetSprite;
         Sprite**** mapSprite;
+        int nColisiones;
+        FloatRect** colision;
 };

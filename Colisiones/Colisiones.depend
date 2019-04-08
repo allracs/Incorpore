@@ -145,3 +145,9 @@
 1554744618 source:/home/carlos/Escritorio/Colisiones/objetos.cpp
 	"objetos.h"
 
+1554744913 source:/home/david/Documentos/incorpore/Colisiones/enemigo.cpp
+	"enemigo.h"
+
+1554744913 /home/david/Documentos/incorpore/Colisiones/enemigo.h
+	<SFML/Graphics.hpp>
+

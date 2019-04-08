@@ -15,10 +15,50 @@ game::game(){
 void game::gameLoop(){
     while(window->isOpen()){
         procesarEventos();
+        procesarColisiones();
         jugador->movimiento();
         setView();
         render();
     }
+}
+
+void game::procesarColisiones(){
+
+    //COLISIONES COLUMNA
+//    sf::FloatRect box_personaje = jugador->getJugador().getGlobalBounds();
+    sf::FloatRect* box_columna = new FloatRect[Mapa->getNumColisiones()];
+    sf::Sprite box;
+    box = *Mapa->getMapSprite()[4][1][1];
+    box_columna[0] = box.getGlobalBounds();
+    cout << "FloatRect x: " << box_columna[0].width << endl;
+    cout << "FloatRect y: " << box_columna[0].height << endl;
+    //cout << "n:" << Mapa->getNumColisiones() << endl;
+
+
+    //INFERIOR
+    if(jugador->cuadradoarr().getGlobalBounds().intersects(box_columna[0]))
+    {
+        jugador->setColision(2);
+    }
+
+    //SUPERIOR
+    if(jugador->cuadradoabaj().getGlobalBounds().intersects(box_columna[0]))
+    {
+        jugador->setColision(1);
+    }
+
+    //IZQUIERDA
+    if(jugador->cuadradoder().getGlobalBounds().intersects(box_columna[0]))
+    {
+        jugador->setColision(3);
+    }
+
+    //DERECHA
+    if(jugador->cuadradoizq().getGlobalBounds().intersects(box_columna[0]))
+    {
+        jugador->setColision(4);
+    }
+
 }
 
 void game::procesarEventos(){
