@@ -23,7 +23,7 @@ class mapa{
         Sprite**** getMapSprite();
         bool** getColisiones();
     private:
-        int maxObj;
+        int maxObj, nObj;
         int width, height,tilewidth, tileheight, gid;
         int cofre, calavera;
         int* antorcha, *caja, *cajadoble, *columna;
