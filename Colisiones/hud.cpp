@@ -1,4 +1,4 @@
-
+#include <iostream>
 #include "hud.h"
 
 hud::hud()

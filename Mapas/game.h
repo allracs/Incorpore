@@ -16,6 +16,7 @@ class game
         void procesarEventos();
         void setView();
         void mostrarMapaColisiones();
+        void procesarColisiones();
     private:
         RenderWindow *window;
         player *jugador;

@@ -14,6 +14,7 @@ mapa::mapa(){
     cargaTexturas();
     creaSprite();
     posicionaObjetos();
+    colisiones();
 }
 
 mapa::~mapa(){
@@ -51,6 +52,7 @@ void mapa::leerMapa(int n){
     mapaXML = docXML.FirstChildElement("map");
     maxObj = 12;
     nObj = 0;
+    nColisiones = 0;
 }
 
 void mapa::setDatos(){
@@ -112,6 +114,7 @@ void mapa::cargaTexturas(){
                     if(n == nCapas-1){
                         if(tileMap[n][i][j] != 0){
                             colisionMap[i][j] = true;
+                            nColisiones++;
                         }
                         else{
                             colisionMap[i][j] = false;
@@ -175,7 +178,7 @@ void mapa::posicionaObjetos(){
         for(int j = 0; j < width; j++){
             if(colisionMap[i][j] == false && nObj < maxObj){
                 int random = rand() % 100;
-                cout << random << endl;
+                //cout << random << endl;
                 if(random < 1){
                     generaObjetos(i, j, nObj);
                 }
@@ -193,27 +196,30 @@ void mapa::generaObjetos(int j, int k, int no){
             mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
             mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-            mapSprite[4][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-            mapSprite[4][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+            mapSprite[5][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
+            mapSprite[5][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
+            nColisiones++;
         }
         else if(random >= 30 && random < 53){
             //Caja
             mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[caja[1]].getTextureRect());
             mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-            mapSprite[4][j-1][k] = new Sprite(texturaTileset,tilesetSprite[caja[0]].getTextureRect());
-            mapSprite[4][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+            mapSprite[5][j-1][k] = new Sprite(texturaTileset,tilesetSprite[caja[0]].getTextureRect());
+            mapSprite[5][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
+            nColisiones++;
         }
         else if(random >= 53 && random < 68){
             //CajaDoble
             mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[1]].getTextureRect());
             mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-            mapSprite[4][j-1][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[0]].getTextureRect());
-            mapSprite[4][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+            mapSprite[5][j-1][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[0]].getTextureRect());
+            mapSprite[5][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
+            nColisiones++;
         }
         else if(random >= 68 && random < 90){
             //Calavera
@@ -225,14 +231,33 @@ void mapa::generaObjetos(int j, int k, int no){
             mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[columna[1]].getTextureRect());
             mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-            mapSprite[4][j-1][k] = new Sprite(texturaTileset,tilesetSprite[columna[0]].getTextureRect());
-            mapSprite[4][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+            mapSprite[5][j-1][k] = new Sprite(texturaTileset,tilesetSprite[columna[0]].getTextureRect());
+            mapSprite[5][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
+            nColisiones++;
         }
         cout << "Random:" << random << endl;
         nObj++;
     }
 
+}
+
+void mapa::colisiones(){
+    int n = 0;
+    colision = new FloatRect*[height];
+
+    for(int i = 0; i < nCapas; i++){
+        for(int j = 0; j < height; j++){
+            colision[j] = new FloatRect[width];
+            for(int k = 0; k < width; k++){
+                /*
+                if(n < nColisiones && (i == 2 || i == 4 || i == 5)){
+                    colision[j][k] = getMapSprite()[i][j][k]->getGlobalBounds();
+                    n++;
+                }*/
+            }
+        }
+    }
 }
 
 void mapa::getDatos(){
@@ -261,4 +286,12 @@ Sprite**** mapa::getMapSprite(){
 
 bool** mapa::getColisiones(){
     return colisionMap;
+}
+
+int mapa::getNumColisiones(){
+    return nColisiones;
+}
+
+FloatRect** mapa::getBounds(){
+    return colision;
 }
