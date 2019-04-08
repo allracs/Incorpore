@@ -26,21 +26,21 @@ void mapa::cargaObjetos(){
     columna = new int[2];
     antorcha = new int[2];
 
-    antorcha[0] = 154;
-    antorcha[1] = 170;
+    antorcha[0] = 154-1;
+    antorcha[1] = 170-1;
 
-    caja[0] = 102;
-    caja[1] = 118;
+    caja[0] = 102-1;
+    caja[1] = 118-1;
 
-    cajadoble[0] = 103;
-    cajadoble[1] = 119;
+    cajadoble[0] = 103-1;
+    cajadoble[1] = 119-1;
 
-    calavera = 50;
+    calavera = 50-1;
 
-    cofre = 224;
+    cofre = 224-1;
 
-    columna[0] = 109;
-    columna[1] = 206;
+    columna[0] = 190-1;
+    columna[1] = 206-1;
 
 }
 
@@ -131,11 +131,11 @@ void mapa::cargaTexturas(){
 void mapa::posicionaObjetos(){
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
-            if(colisionMap[i][j] == false){
+            if(colisionMap[i][j] == false && nObj < maxObj){
                 //Generacion de objetos aleatorios
                 int random = rand() % 100;
                 cout << random << endl;
-                if(random < 1 && nObj < maxObj){
+                if(random < 1){
                     colisionMap[i][j] = true;
                     generaObjetos(i, j);
                     nObj++;
@@ -148,46 +148,44 @@ void mapa::posicionaObjetos(){
 void mapa::generaObjetos(int j, int k){
     srand(time(NULL));
     int random = rand() % 100;
- /*   if(random >= 0 && random < 30){*/
+    if(random >= 0 && random < 30){
         //Antorcha
         mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
         mapSprite[1][j][k]->setPosition(k*tilewidth,j*tileheight);
 
         mapSprite[2][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-        mapSprite[2][j-1][k]->setPosition(k*tilewidth,j*tileheight);
-   /* }
+        mapSprite[2][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+    }
     else if(random >= 30 && random < 53){
         //Caja
-        mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
+        mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[caja[1]].getTextureRect());
         mapSprite[1][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-        mapSprite[2][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-        mapSprite[2][j-1][k]->setPosition(k*tilewidth,j*tileheight);
+        mapSprite[2][j-1][k] = new Sprite(texturaTileset,tilesetSprite[caja[0]].getTextureRect());
+        mapSprite[2][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
     }
     else if(random >= 53 && random < 68){
         //CajaDoble
-        mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
+        mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[1]].getTextureRect());
         mapSprite[1][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-        mapSprite[2][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-        mapSprite[2][j-1][k]->setPosition(k*tilewidth,j*tileheight);
+        mapSprite[2][j-1][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[0]].getTextureRect());
+        mapSprite[2][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
     }
-    else if(random >= 68 && random < 90){
+    else if(random >= 68 && random < 70){
         //Calavera
-        mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
+        mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[calavera].getTextureRect());
         mapSprite[1][j][k]->setPosition(k*tilewidth,j*tileheight);
-
-        mapSprite[2][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-        mapSprite[2][j-1][k]->setPosition(k*tilewidth,j*tileheight);
     }
-    else if(random >= 90 && random < 100){
+    else if(random >= 70 && random < 100){
         //Columna
-        mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
+        mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[columna[1]].getTextureRect());
         mapSprite[1][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-        mapSprite[2][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-        mapSprite[2][j-1][k]->setPosition(k*tilewidth,j*tileheight);
-    }*/
+        mapSprite[2][j-1][k] = new Sprite(texturaTileset,tilesetSprite[columna[0]].getTextureRect());
+        mapSprite[2][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+    }
+    cout << "Random:" << random << endl;
 
 }
 
