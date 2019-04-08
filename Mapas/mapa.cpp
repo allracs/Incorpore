@@ -13,6 +13,7 @@ mapa::mapa(){
     getDatos();
     cargaTexturas();
     creaSprite();
+    posicionaObjetos();
 }
 
 mapa::~mapa(){
@@ -45,7 +46,7 @@ void mapa::cargaObjetos(){
 
 void mapa::leerMapa(int n){
     if(n == 1){
-       docXML.LoadFile("resources/Mapa.tmx");
+       docXML.LoadFile("resources/Mapa1.tmx");
     }
     mapaXML = docXML.FirstChildElement("map");
     maxObj = 12;
@@ -114,7 +115,6 @@ void mapa::cargaTexturas(){
                         }
                         else{
                             colisionMap[i][j] = false;
-
                         }
                     }
                     data = data->NextSiblingElement("tile");
@@ -128,16 +128,33 @@ void mapa::cargaTexturas(){
 
 }
 
+void mapa::posicionaObjetos(){
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < width; j++){
+            if(colisionMap[i][j] == false){
+                //Generacion de objetos aleatorios
+                int random = rand() % 100;
+                cout << random << endl;
+                if(random < 1 && nObj < maxObj){
+                    colisionMap[i][j] = true;
+                    generaObjetos(i, j);
+                    nObj++;
+                }
+            }
+        }
+    }
+}
+
 void mapa::generaObjetos(int j, int k){
     srand(time(NULL));
     int random = rand() % 100;
  /*   if(random >= 0 && random < 30){*/
         //Antorcha
-        mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
-        mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
+        mapSprite[1][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
+        mapSprite[1][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-        mapSprite[4][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-        mapSprite[4][j-1][k]->setPosition(k*tilewidth,j*tileheight);
+        mapSprite[2][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
+        mapSprite[2][j-1][k]->setPosition(k*tilewidth,j*tileheight);
    /* }
     else if(random >= 30 && random < 53){
         //Caja
@@ -209,16 +226,6 @@ void mapa::creaSprite(){
                 }
                 else{
                     mapSprite[i][j][k] = NULL;
-                }
-                if(colisionMap[j][k] == false){
-                    //Generacion de objetos aleatorios
-                    int random = rand() % 100;
-                    cout << random << endl;
-                    if(random < 1 && nObj < maxObj){
-                        colisionMap[j][k] = true;
-                        generaObjetos(j, k);
-                        nObj++;
-                    }
                 }
             }
         }
