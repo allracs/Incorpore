@@ -19,6 +19,7 @@ class Jugador
         sf::CircleShape jugador;
         Animacion derecha;
         Animacion izquierda;
+        Animacion *actual;
 
 
     private:

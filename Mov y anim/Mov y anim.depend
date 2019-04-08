@@ -2,6 +2,8 @@
 1554715459 source:/home/irene/Escritorio/Mov y anim/src/Enemigo.cpp
 	"Enemigo.h"
 
+1554720157 "
+
 1554715459 /home/irene/Escritorio/Mov y anim/include/Enemigo.h
 
 1554715282 source:/home/irene/Escritorio/Mov y anim/src/Entidad.cpp
@@ -18,6 +20,8 @@
 	"Entidad.h"
 	"Animacion.h"
 
+1554720463 .h"
+
 1554720620 source:/home/irene/Escritorio/Mov y anim/main.cpp
 	<SFML/Graphics.hpp>
 	"Jugador.h"
@@ -26,7 +30,40 @@
 1554719418 /home/irene/Escritorio/Mov y anim/include/Animacion.h
 	<SFML/Graphics.hpp>
 
+1554719418 hics.hpp>
+
 1554720463 source:/home/irene/Escritorio/Mov y anim/src/Animacion.cpp
 	<iostream>
 	"Animacion.h"
+
+1554721252 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/main.cpp
+	<SFML/Graphics.hpp>
+	"Jugador.h"
+	"Animacion.h"
+
+1554723880 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Jugador.h
+	<SFML/Graphics.hpp>
+	"Entidad.h"
+	"Animacion.h"
+
+1554721252 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Entidad.h
+
+1554724620 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Animacion.h
+	<SFML/Graphics.hpp>
+
+1554721253 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Entidad.cpp
+	"Entidad.h"
+
+1554721360 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Jugador.cpp
+	<SFML/Graphics.hpp>
+	"Jugador.h"
+
+1554724612 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Animacion.cpp
+	<iostream>
+	"Animacion.h"
+
+1554721253 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Enemigo.cpp
+	"Enemigo.h"
+
+1554721252 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Enemigo.h
 

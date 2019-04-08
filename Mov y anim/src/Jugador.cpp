@@ -12,9 +12,9 @@ Jugador::Jugador(sf::Vector2f pos)
     movement = sf::Vector2f(0.f, 0.f);
 
     derecha.setAnimacion("caballero.png", sf::IntRect(0,0,16,28), sf::IntRect(48,0,16,28), 16, 0.1f);
-    izquierda.setAnimacion("caballero.png", sf::IntRect(0,0,16,28), sf::IntRect(48,0,16,28), 16, 0.1f);
     derecha.sprite.setScale(5.f, 5.f);
-    derecha.sprite.setScale(-5.f, 5.f);
+
+    actual = &derecha;
 
 
 }
@@ -40,10 +40,15 @@ void Jugador::moverse(){
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             this->movement.x -= speed;
+            derecha.sprite.setScale(-5.f, 5.f);
+
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             this->movement.x += speed;
+            actual = &derecha;
+            derecha.sprite.setScale(5.f, 5.f);
+
         }
 
 }
@@ -53,7 +58,8 @@ void Jugador::update(float delta){
     moverse();
     jugador.move(movement * delta);
 
-    derecha.update(delta, playerCenter);
+    actual->update(delta, playerCenter);
+
 }
 
 
