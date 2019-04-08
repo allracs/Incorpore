@@ -64,6 +64,7 @@ void mapa::cargaTexturas(){
         }
     }
 
+    //Inicializacion mapa de colisiones
     colisionMap = new bool*[height];
     for(int i = 0; i < height; i++){
         colisionMap[i] = new bool[width];
@@ -84,9 +85,16 @@ void mapa::cargaTexturas(){
                         }
                         else{
                             colisionMap[i][j] = false;
+                            //Generacion de objetos aleatorios
+                            int random = rand() % 100;
+                            if(random < 3
+                               && tileMap[n][i][j] != 97 && tileMap[n][i][j] != 98 && tileMap[n][i][j] != 99 && tileMap[n][i][j] != 100
+                               && tileMap[n][i][j] != 113 && tileMap[n][i][j] != 114 && tileMap[n][i][j] != 115 && tileMap[n][i][j] != 116
+                               && tileMap[n][i][j] != 129 && tileMap[n][i][j] != 130 && tileMap[n][i][j] != 131 && tileMap[n][i][j] != 132){
+                                colisionMap[i][j] = true;
+                                generaObjetos();
+                            }
                         }
-                       // cout << colisionMap[i][j] << endl;
-
                     }
                     data = data->NextSiblingElement("tile");
                 }
@@ -96,6 +104,10 @@ void mapa::cargaTexturas(){
         capa = capa->NextSiblingElement("layer");
         n++;
     }
+
+}
+
+void mapa::generaObjetos(){
 
 }
 
