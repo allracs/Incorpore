@@ -17,12 +17,16 @@ class mapa{
         int getNumCapas();
         int getHeight();
         int getWidth();
-        void generaObjetos();
+        void cargaObjetos();
+        void generaObjetos(int, int);
         void colisiones();
         Sprite**** getMapSprite();
         bool** getColisiones();
     private:
+        int maxObj;
         int width, height,tilewidth, tileheight, gid;
+        int cofre, calavera;
+        int* antorcha, *caja, *cajadoble, *columna;
         XMLDocument docXML; //Doc tmx
         XMLElement* mapaXML; //mapa
         XMLElement* imagenTileset; //Imagen tileset
