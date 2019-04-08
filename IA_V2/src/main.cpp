@@ -12,7 +12,7 @@ int main()
     std::cout << "mapa creado" << std::endl;
 
     Posicion x = Posicion(0,0);
-    Posicion y = Posicion(2,0);
+    Posicion y = Posicion(9,8);
     std::cout << "creando ia" << std::endl;
     Astar *ia = new Astar(x, y, *m);
     std::cout << "ia creada" << std::endl << ";;;;;;;;;;;;;" << std::endl;
@@ -36,9 +36,9 @@ int main()
         for(int b = 0; b < m->getAnchura(); b++)
         {
             flag = true;
-            for(int c = 0; c < path.size(); c++)
+            for(int c = 1; c < path.size()-1; c++)
             {
-                if(path.at(c).getY() == a && path.at(c).getX() == b)
+                if(path.at(c).getX() == a && path.at(c).getY() == b)
                 {
                     std::cout << "- ";
                     flag = false;
