@@ -62,7 +62,7 @@ void game::render(){
             for(int k = 0; k < Mapa->getWidth(); k++){
                 if(Mapa->getMapSprite()[i][j][k]!=NULL){
                     window->draw(*(Mapa->getMapSprite()[i][j][k]));
-                    if(i == 1){
+                    if(i == 2){
                         window->draw(jugador->getPlayer());
                     }
                 }
