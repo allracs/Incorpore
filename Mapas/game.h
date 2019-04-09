@@ -17,11 +17,13 @@ class game
         void setView();
         void mostrarMapaColisiones();
         void procesarColisiones();
+        void setColisions();
     private:
         RenderWindow *window;
         player *jugador;
         Event *evento;
         mapa *Mapa;
         View view;
+        FloatRect* colisiones;
 
 };

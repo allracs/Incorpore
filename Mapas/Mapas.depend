@@ -1,17 +1,17 @@
 # depslib dependency file v1.0
-1554750673 source:/home/david/Documentos/incorpore/Mapas/game.cpp
+1554831352 source:/home/david/Documentos/incorpore/Mapas/game.cpp
 	"game.h"
 
-1554746332 /home/david/Documentos/incorpore/Mapas/game.h
+1554829232 /home/david/Documentos/incorpore/Mapas/game.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"player.h"
 	"mapa.h"
 
-1554746171 /home/david/Documentos/incorpore/Mapas/player.h
+1554831092 /home/david/Documentos/incorpore/Mapas/player.h
 	<SFML/Graphics.hpp>
 
-1554750132 /home/david/Documentos/incorpore/Mapas/mapa.h
+1554829147 /home/david/Documentos/incorpore/Mapas/mapa.h
 	"tinyxml2.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -37,13 +37,13 @@
 	<SFML/Graphics.hpp>
 	"game.h"
 
-1554750932 source:/home/david/Documentos/incorpore/Mapas/mapa.cpp
+1554827594 source:/home/david/Documentos/incorpore/Mapas/mapa.cpp
 	"mapa.h"
 	<time.h>
 	<stdio.h>
 	<stdlib.h>
 
-1554746194 source:/home/david/Documentos/incorpore/Mapas/player.cpp
+1554831092 source:/home/david/Documentos/incorpore/Mapas/player.cpp
 	"player.h"
 
 1554744492 source:/home/david/Documentos/incorpore/Mapas/tinyxml2.cpp

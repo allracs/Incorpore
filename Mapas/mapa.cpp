@@ -250,11 +250,10 @@ void mapa::colisiones(){
         for(int j = 0; j < height; j++){
             colision[j] = new FloatRect[width];
             for(int k = 0; k < width; k++){
-                /*
                 if(n < nColisiones && (i == 2 || i == 4 || i == 5)){
-                    colision[j][k] = getMapSprite()[i][j][k]->getGlobalBounds();
+                    //colision[j][k] = getMapSprite()[i][j][k]->getGlobalBounds();
                     n++;
-                }*/
+                }
             }
         }
     }

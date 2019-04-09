@@ -26,37 +26,31 @@ void game::procesarColisiones(){
 
     //COLISIONES COLUMNA
 //    sf::FloatRect box_personaje = jugador->getJugador().getGlobalBounds();
-    sf::FloatRect* box_columna = new FloatRect[Mapa->getNumColisiones()];
-    sf::Sprite box;
-    box = *Mapa->getMapSprite()[4][1][1];
-    box_columna[0] = box.getGlobalBounds();
-    cout << "FloatRect x: " << box_columna[0].width << endl;
-    cout << "FloatRect y: " << box_columna[0].height << endl;
-    //cout << "n:" << Mapa->getNumColisiones() << endl;
 
-
+    for(int i = 0; i < Mapa->getNumColisiones(); i++){
     //INFERIOR
-    if(jugador->cuadradoarr().getGlobalBounds().intersects(box_columna[0]))
+    if(jugador->cuadradoarr().getGlobalBounds().intersects(colisiones[i]))
     {
         jugador->setColision(2);
     }
 
     //SUPERIOR
-    if(jugador->cuadradoabaj().getGlobalBounds().intersects(box_columna[0]))
+    if(jugador->cuadradoabaj().getGlobalBounds().intersects(colisiones[i]))
     {
         jugador->setColision(1);
     }
 
     //IZQUIERDA
-    if(jugador->cuadradoder().getGlobalBounds().intersects(box_columna[0]))
+    if(jugador->cuadradoder().getGlobalBounds().intersects(colisiones[i]))
     {
         jugador->setColision(3);
     }
 
     //DERECHA
-    if(jugador->cuadradoizq().getGlobalBounds().intersects(box_columna[0]))
+    if(jugador->cuadradoizq().getGlobalBounds().intersects(colisiones[i]))
     {
         jugador->setColision(4);
+    }
     }
 
 }
@@ -75,18 +69,37 @@ void game::setView(){
     view.setCenter(jugador->getPlayer().getPosition().x, jugador->getPlayer().getPosition().y);
 }
 
+void game::setColisions(){
+    colisiones = new FloatRect[Mapa->getNumColisiones()];
+    Sprite box;
+    int n = 0;
+    for(int capa = 0; capa < Mapa->getNumCapas(); capa++){
+        for(int alto = 0; alto < Mapa->getHeight(); alto++){
+            for(int ancho = 0; ancho < Mapa->getWidth(); ancho++){
+                    if((capa == 4 || capa == 2) && Mapa->getColisiones()[alto][ancho] == true && Mapa->getMapSprite()[capa][alto][ancho] != NULL){
+                        box = *Mapa->getMapSprite()[capa][alto][ancho];
+                        colisiones[n] = box.getGlobalBounds();
+                        n++;
+                    }
+
+            }
+        }
+    }
+}
+
 void game::mostrarMapaColisiones(){
     for(int j = 0; j < Mapa->getHeight(); j++){
         for(int k = 0; k < Mapa->getWidth(); k++){
             cout << Mapa->getColisiones()[j][k];
         }
-        cout << endl;
+       cout << endl;
     }
 }
 
 void game::cargaMapa(){
     Mapa = new mapa;
     mostrarMapaColisiones();
+    setColisions();
 
 }
 
