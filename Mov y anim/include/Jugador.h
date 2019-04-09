@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
+#include <iostream>
+
 #include "Entidad.h"
 #include "Animacion.h"
 
@@ -11,35 +13,43 @@
 class Jugador
 {
     public:
-        // METODOS
+        // METODOS PUBLICOS
         Jugador(sf::Vector2f pos);
         virtual ~Jugador();
 
-        //Mover el jugador
         void update(float delta, sf::RenderWindow &app);
         void moverse();
         void rotacionAtaque(sf::RenderWindow &app);
         void draw(sf::RenderWindow &app);
 
+        //Getters
+        sf::Vector2f getCenter();
+        sf::Vector2f getMousePos();
+        sf::Vector2f getMovement();
 
-        // VARIABLES
 
-        Animacion derecha;
-        Animacion izquierda;
-        Animacion *actual;
+        // VARIABLES PUBLICAS
+
+
+
 
     private:
+        //VARIBALES PRIVADAS
         sf::RectangleShape jugadorHitbox;
-
-        float speed; //Velocidad del jugador
         sf::Vector2f playerCenter; //centro del jugador
+        float speed; //Velocidad del jugador
         sf::Vector2f mousePos; //posicion del raton
         sf::Vector2f movement; //movimiento del jugador
+
         //Hitbox del jugador
         sf::RectangleShape hitboxAtaque;
 
         //Activar ataque a distancia
         bool rangeON;
+
+         Animacion derecha;
+        Animacion izquierda;
+        Animacion *actual;
 
 };
 

@@ -30,7 +30,7 @@ void Animacion::setAnimacion(char* nTextura, sf::IntRect firstF, sf::IntRect fin
 
 }
 
-void Animacion::update(float deltaTime, sf::Vector2f playerCenter)
+void Animacion::update(float deltaTime, sf::Vector2f movement)
 {
     totalTime += deltaTime;
     if(totalTime >= switchTime) {
@@ -45,7 +45,8 @@ void Animacion::update(float deltaTime, sf::Vector2f playerCenter)
         sprite.setTextureRect(actualFrame);
     }
 
-    std::cout << playerCenter.x << playerCenter.y << std::endl;
-    sprite.setPosition(playerCenter.x, playerCenter.y - 30);
+    //sprite.setPosition(playerCenter.x, playerCenter.y);
+    sprite.move(movement * deltaTime);
+
 
 }
