@@ -54,26 +54,12 @@ std::vector<Posicion> Astar::mapear()
     bool rutaEncontrada = false;
     int contador = 1;
 
-
-    /*
-
-
-    while(!rutaEncontrada) {
-			vecinos = comprobarVecinos(padre, mapa);
-			listaAbierta = vecinos.concat(listaAbierta);
-			indicePadre = obtenerMenorF();
-			padre = listaAbierta[indicePadre];
-			removerLista(indicePadre);
-
-			rutaEncontrada = finalizarLogica(listaCerrada);
-    }
-    */
     while(!rutaEncontrada)
     {
         //std::cout << "¿RUTA ENCONTRADA inicio? " << rutaEncontrada << std::endl;
         //std::cout << "antes de comprobar: " << mapa->getMapa()[0][0] << std::endl;
         vecinos->clear();
-        listaAbierta->clear();
+        //listaAbierta->clear();
         //std::cout << listaAbierta->size() << " /// " << vecinos->size() << std::endl;
         *vecinos = comprobarVecinos(*ini, *mapa);
        // std::cout << "vecinos comprobados " << listaAbierta->size() << std::endl;
@@ -83,20 +69,21 @@ std::vector<Posicion> Astar::mapear()
         *ini = listaAbierta->at(indiceIni);
         removerLista(indiceIni);
         rutaEncontrada = finalizarLogica(*listaCerrada);
-        //std::cout << "¿RUTA ENCONTRADA? " << rutaEncontrada << std::endl;
+        std::cout << "¿RUTA ENCONTRADA? " << rutaEncontrada << std::endl;
         std::cout << "RUTA ENCONTRADA CONTADOR: " << contador << std::endl;
         contador++;
     }
 
-    /*
+
     std::cout << "%%%%%%%%%%%%%%%%%%%%%%%%" << std::endl << "SE VIENE EL REVERSE" << std::endl;
     std::reverse(listaCerrada->begin(), listaCerrada->end());
     std::cout << "REVERSE EL VIENE SE " << listaCerrada->size() << std::endl;
 
     //-------------------------------------------------------------------------
 
-    Posicion direccionIni = listaCerrada->at(0).getPadre();
+    /*
     std::vector<Posicion> salidaFinal;
+    Posicion direccionIni = listaCerrada->at(0).getPadre();
     salidaFinal.insert(salidaFinal.begin(), Posicion(direccionIni.getY(), direccionIni.getX()));
     std::cout << listaCerrada->size() << std::endl;
     for(int i = 1; i < listaCerrada->size(); i++)
@@ -107,31 +94,51 @@ std::vector<Posicion> Astar::mapear()
         salidaFinal.push_back(Posicion(listaCerrada->at(i).getPadre().getY(), listaCerrada->at(i).getPadre().getX()));
         //std::cout << listaCerrada->at(i).getPadre().getY() << "-.-.-.-" << listaCerrada->at(i).getPadre().getX() << std::endl;
     }
+    */
+
     /*
 
+    Posicion direccionDePadres = listaCerrada->at(0);
+    std::vector<Posicion> salidaFinal;
+    salidaFinal.insert(salidaFinal.begin(), direccionDePadres);
+    std::cout << listaCerrada->at(0).getPadre().getPadre().getX() << " --- " << listaCerrada->at(0).getPadre().getPadre().getY() << std::endl << std::endl;
+    std::cout << listaCerrada->at(0).getX() << " --- " << listaCerrada->at(0).getY() << std::endl << std::endl;
+
+    for(int i = 1; i < listaCerrada->size(); i++)
+    {
+        std::cout << listaCerrada->at(i).getX() << " --- " << listaCerrada->at(i).getY() << std::endl;
+        std::cout << direccionDePadres.getPadre().getX() << " --- " << direccionDePadres.getPadre().getY() << std::endl << std::endl;
+        if(listaCerrada->at(i).getX() == direccionDePadres.getX() && listaCerrada->at(i).getY() == direccionDePadres.getY())
+        {
+            std::cout << "ENTRO EN EL BUCLE LOCO: " << i << std::endl;
+            salidaFinal.insert(salidaFinal.end(),listaCerrada->at(i).getPadre());
+            direccionDePadres = listaCerrada->at(i).getPadre();
+        }
+    }
 
 
     -----------------------
-
+    //EMPIEZA JAVASCRIPT
     listaCerrada.reverse();
 
     var direccionDePadres = listaCerrada[0].padre;
     var salidaFinal = [direccionDePadres];
 
     for(let i = 1; i < listaCerrada.length-1; i++) {
-        // Comprobamos el siguiente padre que corresponda con las sus coordenadas
+        // Comprobamos el siguiente padre que corresponda con sus coordenadas
         if(listaCerrada[i].x === direccionDePadres[0] && listaCerrada[i].y === direccionDePadres[1]) {
                 direccionDePadres = listaCerrada[i].padre;
                 salidaFinal.push(listaCerrada[i].padre);
         }
     }
+    //ACABA JAVASCRIPT
+    std::cout << salidaFinal.size() << std::endl;
     */
 
     //-------------------------------------------------------------------------
 
     std::cout << "///////////////SALIDA FINALISIMA/////////////////" << std::endl;
 
-    //std::cout << salidaFinal.at(1).getX() << " --- " << salidaFinal.at(1).getY() << std::endl;
 
     return *listaCerrada;
 }
@@ -179,7 +186,7 @@ bool Astar::finalizarLogica(std::vector<Posicion> &listaCerr)
     for(int i = 0; i < listaCerr.size(); ++i)
     {
         //std::cout <<" posiciones buscadas: "<<listaCerr.at(i).getX() << " - " << listaCerr.at(i).getY() <<std::endl;
-        if(listaCerr.at(i).getX() == fin->getY() && listaCerr.at(i).getY() == fin->getX())
+        if(listaCerr.at(i).getX() == fin->getX() && listaCerr.at(i).getY() == fin->getY())
         {
             res = true;
             break;
@@ -245,8 +252,8 @@ int Astar::G(Posicion player, int valor)
 
 int Astar::heuristica(Posicion inicio)
 {
-    int h = (abs(inicio.getX() - fin->getY())) + (abs(inicio.getY() - fin->getX()));
-    std::cout << "HEURISTICA" << std::endl;
+    int h = (abs(inicio.getX() - fin->getX())) + (abs(inicio.getY() - fin->getY()));
+    std::cout << "HEURISTICA: " << h << std::endl;
     std::cout << inicio.getX() << " --- " << inicio.getY() << std::endl;
     std::cout << fin->getY() << " --- " << fin->getX() << std::endl;
     return h * 10;
@@ -262,7 +269,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     int pared = 0;
     comprobarListaAb comprobarLista;
     bool **paredes = mapa.getMapa();
-    std::cout << "ACTUAL: " << padre.getX() << " --- " << padre.getY() << " --- " << paredes[padre.getX()][padre.getY()] << std::endl;
+    std::cout << "ACTUAL: " << padre.getX() << " --- " << padre.getY() << " --- " << paredes[padre.getY()][padre.getX()] << std::endl;
     /*
     for(int a = 0; a < mapa.getAltura(); a++)
     {
@@ -313,7 +320,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]-1 > -1 && sonda[1]-1 > -1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]-1][sonda[1]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]-1][sonda[0]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]-1, padre), *listaCerrada))
@@ -364,7 +371,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[1]-1 > -1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]][sonda[1]-1]!= pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]-1][sonda[0]]!= pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0], sonda[1]-1, padre), *listaCerrada))
@@ -410,15 +417,15 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     }
 
     std::cout << "=== arriba derecha ===" << std::endl;
-    std::cout << sonda[0]-1 << " - " << sonda[1]+1 << std::endl;
+    std::cout << sonda[0]+1 << " - " << sonda[1]-1 << std::endl;
     // arriba derecha
-    if(sonda[0]-1 >-1 && sonda[1]+1 < mapa.getAnchura())
+    if(sonda[0]+1 < mapa.getAnchura() && sonda[1]-1 >-1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]-1][sonda[1]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]-1][sonda[0]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
-            if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]+1, padre), *listaCerrada))
+            if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1]-1, padre), *listaCerrada))
             {
                 /*
                 Si ya esta en la lista abierta: comprobar si el camino es mas eficiente
@@ -426,7 +433,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                 Si no esta en la lista: calcular todo normalmente
                 */
 
-                comprobarLista = comprobarListaAbierta(Posicion(sonda[0]-1, sonda[1]+1, padre), *listaAbierta);
+                comprobarLista = comprobarListaAbierta(Posicion(sonda[0]+1, sonda[1]-1, padre), *listaAbierta);
 
                 if(comprobarLista.status)       // si esta en la lista o no
                 {
@@ -436,9 +443,9 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
 
                         listaAbierta->erase(listaAbierta->begin()+comprobarLista.indice);
 
-                        Posicion aux = Posicion(sonda[0]-1, sonda[1]+1, padre);
+                        Posicion aux = Posicion(sonda[0]+1, sonda[1]-1, padre);
                         aux.setG(player, puntosG[1]);
-                        aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1]+1, padre)));
+                        aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1]-1, padre)));
                         std::cout << "SE ANYADE A LISTA ABIERTA 3: " << aux.getX() << " --- " << aux.getY() << std::endl;
                         listaAbierta->insert(listaAbierta->begin()+comprobarLista.indice, aux);
 
@@ -446,9 +453,9 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
                 }
                 else
                 {
-                    Posicion aux = Posicion(sonda[0]-1, sonda[1]+1, padre);
+                    Posicion aux = Posicion(sonda[0]+1, sonda[1]-1, padre);
                     aux.setG(player, puntosG[1]);
-                    aux.setH(heuristica(Posicion(sonda[0]-1, sonda[1]+1, padre)));
+                    aux.setH(heuristica(Posicion(sonda[0]+1, sonda[1]-1, padre)));
 
                     std::cout << "indice lista 3: " << comprobarLista.indice << std::endl;
                     std::cout << "listaAb size 3: " << listaAbierta->size() << std::endl;
@@ -467,9 +474,9 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     {
         // comprueba si se puede pasar o no
 
-        std::cout << "paredes: " << paredes[sonda[0]-1][sonda[1]] << std::endl;
+        std::cout << "paredes: " << paredes[sonda[1]][sonda[0]-1] << std::endl;
 
-        if(paredes[sonda[0]-1][sonda[1]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]][sonda[0]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1], padre), *listaCerrada))
@@ -519,13 +526,13 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "=== centro derecha ===" << std::endl;
     std::cout << sonda[0]+1 << " - " << sonda[1] << std::endl;
     // centro derecha
-    if(sonda[0]+1 < mapa.getAltura())
+    if(sonda[0]+1 < mapa.getAnchura())
     {
         //std::cout << "sonda X: " << sonda[0]+1 << std::endl << mapa.getAnchura() << std::endl;
         // comprueba si se puede pasar o no
-        std::cout << "paredes: " << paredes[sonda[0]+1][sonda[1]] << std::endl;
-        std::cout << sonda[0]+1 << " - " << sonda[1] << std::endl;
-        if(sonda[0]+1 < mapa.getAnchura() && paredes[sonda[0]+1][sonda[1]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        //std::cout << "paredes: " << paredes[sonda[0]+1][sonda[1]] << std::endl;
+        //std::cout << sonda[0]+1 << " - " << sonda[1] << std::endl;
+        if(paredes[sonda[1]][sonda[0]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1], padre), *listaCerrada))
@@ -572,10 +579,10 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "=== abajo izquierda ===" << std::endl;
     std::cout << sonda[0]-1 << " - " << sonda[1]+1 << std::endl;
     // abajo izquierda
-    if(sonda[0]-1 > -1 && sonda[1]+1 < mapa.getAnchura())
+    if(sonda[0]-1 > -1 && sonda[1]+1 < mapa.getAltura())
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]-1][sonda[1]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]+1][sonda[0]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]+1, padre), *listaCerrada))
@@ -623,10 +630,10 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "=== abajo centro ===" << std::endl;
     std::cout << sonda[0] << " - " << sonda[1]+1 << std::endl;
     // abajo centro
-    if(sonda[1]+1 < mapa.getAnchura())
+    if(sonda[1]+1 < mapa.getAltura())
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]][sonda[1]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]+1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0], sonda[1]+1, padre), *listaCerrada))
@@ -674,10 +681,10 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "=== abajo derecha ===" << std::endl;
     std::cout << sonda[0]+1 << " - " << sonda[1]+1 << std::endl;
     // abajo derecha
-    if(sonda[0]+1 < mapa.getAltura() && sonda[1]+1 < mapa.getAnchura())
+    if(sonda[0]+1 < mapa.getAnchura() && sonda[1]+1 < mapa.getAltura())
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[0]+1][sonda[1]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]+1][sonda[0]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1]+1, padre), *listaCerrada))

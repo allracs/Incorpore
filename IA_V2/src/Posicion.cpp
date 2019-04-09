@@ -8,7 +8,7 @@ Posicion::Posicion(int n, int m, Posicion p) // n
     x = n;
     y = m;
     //padre = new Posicion(p.getX(), p.getY());
-    padre = &p;
+    padre = new Posicion(p.getX(), p.getY());
     g = -1;
     h = -1;
     //std::cout << "valor G: " << g << std::endl;

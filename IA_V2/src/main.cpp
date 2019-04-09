@@ -10,9 +10,9 @@ int main()
     std::cout << "creando mapa" << std::endl;
     Mapa *m = new Mapa(9,10);
     std::cout << "mapa creado" << std::endl;
-
-    Posicion x = Posicion(0,0);
-    Posicion y = Posicion(9,8);
+                        //Y,X
+    Posicion x = Posicion(0,8);
+    Posicion y = Posicion(7,1);
     std::cout << "creando ia" << std::endl;
     Astar *ia = new Astar(x, y, *m);
     std::cout << "ia creada" << std::endl << ";;;;;;;;;;;;;" << std::endl;
@@ -38,7 +38,7 @@ int main()
             flag = true;
             for(int c = 1; c < path.size()-1; c++)
             {
-                if(path.at(c).getX() == a && path.at(c).getY() == b)
+                if(path.at(c).getX() == b && path.at(c).getY() == a)
                 {
                     std::cout << "- ";
                     flag = false;
