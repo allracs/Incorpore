@@ -6,14 +6,14 @@ hud::hud()
     //TEXTO DE VIDA
     texto_vida = new sf::Text;
     fuente = new sf::Font;
-    fuente->loadFromFile("resources/hud/coolvetica.ttf");
+    fuente->loadFromFile("src/coolvetica.ttf");
     texto_vida->setFont(*fuente);
     texto_vida->setString("Life");
     texto_vida->setPosition(5,0);
 
     //ARRAY DE CORAZONES
     textura_vida = new sf::Texture;
-    textura_vida->loadFromFile("resources/hud/heart-life.png");
+    textura_vida->loadFromFile("src/heart-life.png");
 
     corazon = new sf::Sprite;
     corazon->setTexture(*textura_vida);
@@ -30,7 +30,7 @@ hud::hud()
     //ARRAY HABILIDADES
     vector_habilidades = new std::vector<sf::Sprite>;
     textura_habilidades = new sf::Texture;
-    textura_habilidades->loadFromFile("resources/hud/habilidades.png");
+    textura_habilidades->loadFromFile("src/habilidades.png");
 
     //mejora ataque
     mejora_ataque = new sf::Sprite(*textura_habilidades);
@@ -195,6 +195,7 @@ void hud::borradoHabilidades()
     espada_magica_esta = false;
     rompe_escudos_esta = false;
 }
+
 
 void hud::compruebaTeclas(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))

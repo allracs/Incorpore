@@ -43,12 +43,20 @@
 		</Compiler>
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
+		<Unit filename="hud.cpp" />
+		<Unit filename="hud.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="mapa.cpp" />
 		<Unit filename="mapa.h" />
 		<Unit filename="player.cpp" />
 		<Unit filename="player.h" />
-		<Unit filename="resources/Mapa.tmx" />
+		<Unit filename="resources/tmx/Antorcha.tmx" />
+		<Unit filename="resources/tmx/Caja.tmx" />
+		<Unit filename="resources/tmx/CajaDoble.tmx" />
+		<Unit filename="resources/tmx/Calavera.tmx" />
+		<Unit filename="resources/tmx/Cofre.tmx" />
+		<Unit filename="resources/tmx/Columna.tmx" />
+		<Unit filename="resources/tmx/Mapa.tmx" />
 		<Unit filename="tinyxml2.cpp" />
 		<Unit filename="tinyxml2.h" />
 		<Extensions>

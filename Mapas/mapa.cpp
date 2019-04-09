@@ -10,7 +10,7 @@ mapa::mapa(){
     leerMapa(1);
     cargaObjetos();
     setDatos();
-    getDatos();
+    //getDatos();
     cargaTexturas();
     creaSprite();
     posicionaObjetos();
@@ -47,7 +47,7 @@ void mapa::cargaObjetos(){
 
 void mapa::leerMapa(int n){
     if(n == 1){
-       docXML.LoadFile("resources/Mapa.tmx");
+       docXML.LoadFile("resources/tmx/Mapa.tmx");
     }
     mapaXML = docXML.FirstChildElement("map");
     maxObj = 12;
@@ -236,7 +236,6 @@ void mapa::generaObjetos(int j, int k, int no){
             colisionMap[j][k] = true;
             nColisiones++;
         }
-        cout << "Random:" << random << endl;
         nObj++;
     }
 

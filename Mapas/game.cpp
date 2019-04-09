@@ -6,7 +6,7 @@ game::game(){
     window->setFramerateLimit(60);
     evento = new Event;
     cargaMapa();
-    cargar_hud();
+    //cargar_hud();
     cargaPlayer();
     view.zoom(0.2f);
     gameLoop();
@@ -16,9 +16,9 @@ game::game(){
 void game::gameLoop(){
     while(window->isOpen()){
         procesarEventos();
-       // procesarColisiones();
+        procesarColisiones();
         jugador->movimiento();
-        hud_principal->compruebaTeclas();
+        //hud_principal->compruebaTeclas();
         setView();
         render();
     }
@@ -78,7 +78,7 @@ void game::setColisions(){
     for(int capa = 0; capa < Mapa->getNumCapas(); capa++){
         for(int alto = 0; alto < Mapa->getHeight(); alto++){
             for(int ancho = 0; ancho < Mapa->getWidth(); ancho++){
-                    if(n < Mapa->getNumColisiones() && (capa == 4 || capa == 2) && Mapa->getColisiones()[alto][ancho] == true && Mapa->getMapSprite()[capa][alto][ancho] != NULL){
+                    if(n < Mapa->getNumColisiones() && Mapa->getColisiones()[alto][ancho] == true && Mapa->getMapSprite()[capa][alto][ancho] != NULL){
                         box = *Mapa->getMapSprite()[capa][alto][ancho];
                         colisiones[n] = box.getGlobalBounds();
                         n++;
@@ -94,12 +94,15 @@ void game::cargar_hud(){
 }
 
 void game::mostrarMapaColisiones(){
+    cout << endl << "Mapa de colisiones:" << endl;
+    cout <<  "------------------------" << endl;
     for(int j = 0; j < Mapa->getHeight(); j++){
         for(int k = 0; k < Mapa->getWidth(); k++){
             cout << Mapa->getColisiones()[j][k];
         }
        cout << endl;
     }
+    cout <<  "------------------------" << endl;
 }
 
 void game::cargaMapa(){
@@ -114,7 +117,7 @@ void game::cargaPlayer(){
 }
 
 void game::render(){
-    window->clear();
+    window->clear(Color(28,17,23,255));
     window->setView(view);
     for(int i = 0; i < Mapa->getNumCapas(); i++){
         for(int j = 0; j < Mapa->getHeight(); j++){
@@ -128,7 +131,7 @@ void game::render(){
             }
         }
     }
-
+/*
     window->draw(hud_principal->getPiezaVida());
     window->draw(hud_principal->getPiezaHabilidades());
 
@@ -143,6 +146,6 @@ void game::render(){
     {
         window->draw(hud_principal->getArrayHabilidades().at(i));
     }
-
+*/
     window->display();
 }

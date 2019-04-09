@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1554834587 source:/home/david/Documentos/incorpore/Mapas/game.cpp
+1554842322 source:/home/david/Documentos/incorpore/Mapas/game.cpp
 	"game.h"
 
 1554834125 /home/david/Documentos/incorpore/Mapas/game.h
@@ -11,6 +11,10 @@
 
 1554834008 /home/david/Documentos/incorpore/Mapas/player.h
 	<SFML/Graphics.hpp>
+
+1554834508 /home/david/Documentos/incorpore/Mapas/hud.h
+	<SFML/Graphics.hpp>
+	<vector>
 
 1554834008 /home/david/Documentos/incorpore/Mapas/mapa.h
 	"tinyxml2.h"
@@ -33,12 +37,15 @@
 	<android/log.h>
 	<assert.h>
 
+1554838041 source:/home/david/Documentos/incorpore/Mapas/hud.cpp
+	"hud.h"
+
 1554834008 source:/home/david/Documentos/incorpore/Mapas/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"game.h"
 
-1554834008 source:/home/david/Documentos/incorpore/Mapas/mapa.cpp
+1554842181 source:/home/david/Documentos/incorpore/Mapas/mapa.cpp
 	"mapa.h"
 	<time.h>
 	<stdio.h>
@@ -54,11 +61,4 @@
 	<stdarg.h>
 	<cstddef>
 	<cstdarg>
-
-1554834508 /home/david/Documentos/incorpore/Mapas/hud.h
-	<SFML/Graphics.hpp>
-	<vector>
-
-1554834573 source:/home/david/Documentos/incorpore/Mapas/hud.cpp
-	"hud.h"
 
