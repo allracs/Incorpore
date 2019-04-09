@@ -5,21 +5,26 @@
 Jugador::Jugador(sf::Vector2f pos)
 {
     // Variables del jugador
-    //this->jugador = sf::CircleShape(50);
+
     this->jugadorHitbox = sf::RectangleShape(sf::Vector2f(15, 20));
     this->jugadorHitbox.setPosition(pos);
     this->jugadorHitbox.setOrigin(18/2, 20/2);
     this->jugadorHitbox.setFillColor(sf::Color::Transparent);
-    this->jugadorHitbox.setOutlineThickness(2.f);
+    this->jugadorHitbox.setOutlineThickness(1.f);
     this->jugadorHitbox.setOutlineColor(sf::Color::Green);
     this->rangeON = false;
+
+    float dirMov = 1.f;
+
+
     speed = 200.f;
     movement = sf::Vector2f(0.f, 0.f);
 
     // Animaciones
-    derecha.setAnimacion("caballero.png", sf::IntRect(0,0,16,28), sf::IntRect(48,0,16,28), 16, 0.1f);
+    idle.setAnimacion("caballero.png", sf::IntRect(0,0,16,28), sf::IntRect(48,0,16,28), 16, 0.1f);
+    run.setAnimacion("caballero.png", sf::IntRect(0, 28, 16, 28), sf::IntRect(48, 28, 16, 28), 16, 0.1f);
 
-    actual = &derecha;
+    actual = &idle;
 
     actual->sprite.setPosition(pos);
 
@@ -27,7 +32,7 @@ Jugador::Jugador(sf::Vector2f pos)
 
 
     // Hitbox de ataque
-    hitboxAtaque.setOutlineThickness(2);
+    hitboxAtaque.setOutlineThickness(1);
     hitboxAtaque.setOutlineColor(sf::Color::Blue);
     hitboxAtaque.setFillColor(sf::Color::Transparent);
     hitboxAtaque.setSize(sf::Vector2f(30.f, 16.f));
@@ -61,30 +66,71 @@ void Jugador::rotacionAtaque(sf::RenderWindow &app) {
 
 void Jugador::moverse(){
 
-        movement = sf::Vector2f(0.f, 0.f);
-        //Movimiento del jugador
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        {
-            this->movement.y -= speed;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            this->movement.y += speed;
 
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            this->movement.x -= speed;
-            derecha.sprite.setScale(-1.f, 1.f);
+    movement = sf::Vector2f(0.f, 0.f);
+    //Movimiento del jugador
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        movement.y -= speed;
+        if (actual != &run){
+            std::cout << "CAMBIAMOS A RUN" << std::endl;
+            actual = &run;
+            actual->sprite.setPosition(playerCenter);
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            this->movement.x += speed;
-            actual = &derecha;
-            derecha.sprite.setScale(1.f, 1.f);
 
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    {
+        movement.y += speed;
+        if (actual != &run){
+            std::cout << "CAMBIAMOS A RUN" << std::endl;
+            actual = &run;
+            actual->sprite.setPosition(playerCenter);
         }
+
+
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+        dirMov = -1.f;
+        this->movement.x -= speed;
+
+        if (actual != &run){
+            std::cout << "CAMBIAMOS A RUN" << std::endl;
+            actual = &run;
+            actual->sprite.setPosition(playerCenter);
+        }
+
+
+        actual->sprite.setScale(1.f*dirMov, 1.f);
+
+
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        dirMov = 1.f;
+        this->movement.x += speed;
+
+        if (actual != &run){
+            std::cout << "CAMBIAMOS A RUN" << std::endl;
+            actual = &run;
+            actual->sprite.setPosition(playerCenter);
+        }
+
+        actual->sprite.setScale(1.f*dirMov, 1.f);
+
+    }
+
+    std::cout << "POS: " << movement.x << "--" << movement.y << std::endl;
+    if(movement.x == 0 & movement.y == 0) {
+        if (actual != &idle){
+            std::cout << "CAMBIAMOS A IDLE" << std::endl;
+            actual = &idle;
+            actual->sprite.setPosition(playerCenter);
+            actual->sprite.setScale(1.f*dirMov, 1.f);
+        }
+    }
 
 }
 
@@ -114,9 +160,7 @@ void Jugador::update(float delta, sf::RenderWindow &app){
     actual->update(delta, movement);
 
 
-
     // ANiMACIONES
-
 
 }
 

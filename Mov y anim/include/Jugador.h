@@ -30,6 +30,7 @@ class Jugador
 
         // VARIABLES PUBLICAS
 
+        float dirMov;
 
 
 
@@ -47,8 +48,8 @@ class Jugador
         //Activar ataque a distancia
         bool rangeON;
 
-         Animacion derecha;
-        Animacion izquierda;
+        Animacion idle;
+        Animacion run;
         Animacion *actual;
 
 };

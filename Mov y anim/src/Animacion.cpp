@@ -23,10 +23,10 @@ void Animacion::setAnimacion(char* nTextura, sf::IntRect firstF, sf::IntRect fin
     this->firstF = firstF;
     this->finalF = finalF;
     this->incremento = incremento;
-    actualFrame = firstF;
-    switchTime = tiempo;
-    sprite = sf::Sprite(texture, actualFrame);
-    sprite.setOrigin((this->firstF.width)/2, (this->firstF.height)/2);
+    this->actualFrame = firstF;
+    this->switchTime = tiempo;
+    this->sprite = sf::Sprite(texture, actualFrame);
+    this->sprite.setOrigin((this->firstF.width)/2, (this->firstF.height)/2);
 
 }
 

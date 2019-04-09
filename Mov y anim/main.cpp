@@ -56,6 +56,7 @@ int main()
         }
 
 
+
         /*sf::Vertex Line[] =
         {
             sf::Vertex(sf::Vector2f(Manolito.getCenter())),
@@ -74,6 +75,7 @@ int main()
 
         app.draw(background);
         Manolito.draw(app);
+
         //app.draw(Line, 2, sf::Lines);
 
         /*
