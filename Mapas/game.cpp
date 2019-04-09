@@ -76,7 +76,7 @@ void game::setColisions(){
     for(int capa = 0; capa < Mapa->getNumCapas(); capa++){
         for(int alto = 0; alto < Mapa->getHeight(); alto++){
             for(int ancho = 0; ancho < Mapa->getWidth(); ancho++){
-                    if((capa == 4 || capa == 2) && Mapa->getColisiones()[alto][ancho] == true && Mapa->getMapSprite()[capa][alto][ancho] != NULL){
+                    if(n < Mapa->getNumColisiones() && (capa == 4 || capa == 2) && Mapa->getColisiones()[alto][ancho] == true && Mapa->getMapSprite()[capa][alto][ancho] != NULL){
                         box = *Mapa->getMapSprite()[capa][alto][ancho];
                         colisiones[n] = box.getGlobalBounds();
                         n++;
@@ -115,7 +115,7 @@ void game::render(){
             for(int k = 0; k < Mapa->getWidth(); k++){
                 if(Mapa->getMapSprite()[i][j][k]!=NULL){
                     window->draw(*(Mapa->getMapSprite()[i][j][k]));
-                    if(i == 2){
+                    if(i == 4){
                         window->draw(jugador->getPlayer());
                     }
                 }

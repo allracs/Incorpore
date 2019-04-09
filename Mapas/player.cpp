@@ -8,10 +8,10 @@ player::player(){
 
     //cuadrados para las colisiones
     //cuadrado derecha
-    cuadrado_der = new sf::RectangleShape({0.5,16});
+    cuadrado_der = new sf::RectangleShape({0.5,8});
     cuadrado_der->setFillColor(sf::Color::Blue);
     //cuadrado izquierda
-    cuadrado_izq = new sf::RectangleShape({0.5,16});
+    cuadrado_izq = new sf::RectangleShape({0.5,8});
     cuadrado_izq->setFillColor(sf::Color::Blue);
     //cuadrado superior
     cuadrado_arr = new sf::RectangleShape({16,0.5});
@@ -48,9 +48,9 @@ void player::movimiento()
         jugador->move(0, velocidad);
 
     }
-    cuadrado_der->setPosition(jugador->getGlobalBounds().left + jugador->getGlobalBounds().width, jugador->getGlobalBounds().top);
-    cuadrado_arr->setPosition(jugador->getGlobalBounds().left, jugador->getPosition().y -0.5);
-    cuadrado_izq->setPosition(jugador->getGlobalBounds().left -0.5, jugador->getGlobalBounds().top);
+    cuadrado_der->setPosition(jugador->getGlobalBounds().left + jugador->getGlobalBounds().width, jugador->getGlobalBounds().top + 8);
+    cuadrado_arr->setPosition(jugador->getGlobalBounds().left, jugador->getPosition().y + 7.5);
+    cuadrado_izq->setPosition(jugador->getGlobalBounds().left -0.5, jugador->getGlobalBounds().top+8);
     cuadrado_abj->setPosition(jugador->getGlobalBounds().left, jugador->getPosition().y + jugador->getGlobalBounds().height);
     colisiona_abajo = false;
     colisiona_arriba = false;
