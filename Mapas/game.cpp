@@ -6,6 +6,7 @@ game::game(){
     window->setFramerateLimit(60);
     evento = new Event;
     cargaMapa();
+    cargar_hud();
     cargaPlayer();
     view.zoom(0.2f);
     gameLoop();
@@ -15,8 +16,9 @@ game::game(){
 void game::gameLoop(){
     while(window->isOpen()){
         procesarEventos();
-        procesarColisiones();
+       // procesarColisiones();
         jugador->movimiento();
+        hud_principal->compruebaTeclas();
         setView();
         render();
     }
@@ -87,6 +89,10 @@ void game::setColisions(){
     }
 }
 
+void game::cargar_hud(){
+    hud_principal = new hud;
+}
+
 void game::mostrarMapaColisiones(){
     for(int j = 0; j < Mapa->getHeight(); j++){
         for(int k = 0; k < Mapa->getWidth(); k++){
@@ -123,7 +129,20 @@ void game::render(){
         }
     }
 
+    window->draw(hud_principal->getPiezaVida());
+    window->draw(hud_principal->getPiezaHabilidades());
 
+    window->draw(hud_principal->getTextoVida());
+
+    for(int i = 0; i < hud_principal->getCantidadVida(); i++)
+    {
+        window->draw(hud_principal->getArrayVida().at(i));
+    }
+
+    for(int i = 0; i < hud_principal->getCantidadHabilidades(); i++)
+    {
+        window->draw(hud_principal->getArrayHabilidades().at(i));
+    }
 
     window->display();
 }
