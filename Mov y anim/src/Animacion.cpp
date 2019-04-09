@@ -46,6 +46,6 @@ void Animacion::update(float deltaTime, sf::Vector2f playerCenter)
     }
 
     std::cout << playerCenter.x << playerCenter.y << std::endl;
-    sprite.setPosition(playerCenter);
+    sprite.setPosition(playerCenter.x, playerCenter.y - 30);
 
 }

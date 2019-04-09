@@ -24,13 +24,17 @@ int main()
         }
 
         float delta = frameClock.restart().asSeconds();
-        Manolito.update(delta);
+        Manolito.update(delta, app);
 
         // Clear screen
         app.clear();
-        app.draw(Manolito.derecha.sprite);
-        app.draw(Manolito.jugador);
 
+        Manolito.draw(app);
+        /*
+        app.draw(Manolito.actual->sprite);
+        app.draw(Manolito.jugador);
+        app.draw(Manolito.hitboxAtaque)
+        */
         // Update the window
         app.display();
     }

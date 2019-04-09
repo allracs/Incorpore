@@ -36,13 +36,14 @@
 	<iostream>
 	"Animacion.h"
 
-1554721252 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/main.cpp
+1554796865 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/main.cpp
 	<SFML/Graphics.hpp>
 	"Jugador.h"
 	"Animacion.h"
 
-1554723880 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Jugador.h
+1554799191 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Jugador.h
 	<SFML/Graphics.hpp>
+	<cmath>
 	"Entidad.h"
 	"Animacion.h"
 
@@ -54,11 +55,11 @@
 1554721253 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Entidad.cpp
 	"Entidad.h"
 
-1554724750 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Jugador.cpp
+1554799284 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Jugador.cpp
 	<SFML/Graphics.hpp>
 	"Jugador.h"
 
-1554724612 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Animacion.cpp
+1554799053 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Animacion.cpp
 	<iostream>
 	"Animacion.h"
 
