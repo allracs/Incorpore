@@ -148,7 +148,7 @@ sf::Vector2f Jugador::getMovement() {
 }
 
 sf::RectangleShape Jugador::getHitboxAtaque(){
-    return hitboxAtaque;
+    return this->hitboxAtaque;
 }
 
 void Jugador::update(float delta, sf::RenderWindow &app){

@@ -1,14 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include "Jugador.h"
 #include "Animacion.h"
+#include "Enemigo.h"
 
 int main()
 {
     // Create the main window
-    sf::Vector2i screenDimensions(800,600);
+    sf::Vector2i screenDimensions(1080,720);
     sf::RenderWindow app(sf::VideoMode(screenDimensions.x, screenDimensions.y), "SFML window");
     app.setFramerateLimit(60);
     Jugador Manolito(sf::Vector2f(300, 300));
+    Enemigo Pepe(sf::Vector2f(230, 200));
 
 
     // VISTA
@@ -52,8 +54,11 @@ int main()
         if(!centrado) {
             view.setCenter(Manolito.getCenter());
             centrado = true;
-
         }
+
+        sf::RectangleShape j_hitbox = Manolito.getHitboxAtaque();
+        Pepe.update(delta, app, j_hitbox);
+
 
 
 
@@ -75,6 +80,7 @@ int main()
 
         app.draw(background);
         Manolito.draw(app);
+        Pepe.draw(app);
 
         //app.draw(Line, 2, sf::Lines);
 
