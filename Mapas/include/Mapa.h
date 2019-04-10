@@ -31,7 +31,6 @@ class Mapa{
 
         FloatRect* getBounds();
 
-        void draw(RenderTarget&) const;
     private:
         int width, height, tilewidth, tileheight, gid;
         int nObj, maxObj;
