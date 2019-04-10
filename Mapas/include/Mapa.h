@@ -10,39 +10,51 @@ class Mapa{
         Mapa();
         ~Mapa();
         void leerMapa(int);
+        void cargaObjetos();
+
         void setDatos();
-        void getDatos();
+
         void cargaTexturas();
         void creaSprite();
-        int getNumCapas();
-        int getHeight();
-        int getWidth();
-        void cargaObjetos();
+
         void posicionaObjetos();
         void generaObjetos(int, int, int);
         void colisiones();
+
+        void getDatos();
+        int getNumCapas();
+        int getHeight();
+        int getWidth();
         Sprite**** getMapSprite();
         bool** getColisiones();
         int getNumColisiones();
-        FloatRect** getBounds();
+
+        FloatRect* getBounds();
+
+        void draw(RenderTarget&) const;
     private:
-        int maxObj, nObj;
         int width, height, tilewidth, tileheight, gid;
+        int nObj, maxObj;
         int cofre, calavera;
         int* antorcha, *caja, *cajadoble, *columna;
+        int nColisiones;
+
+        int nCapas = 0; //Numero de capas del tileset
+        string nombreCapa; //nombre de la capa actual
+
         XMLDocument docXML; //Doc tmx
         XMLElement* mapaXML; //mapa
         XMLElement* imagenTileset; //Imagen tileset
+        XMLElement *data;
+        XMLElement* capa; //Capa del tileset
+
         string ficheroImagen; //Nombre y ruta del fichero imagen
         Texture texturaTileset; //textura del tileset
-        XMLElement* capa; //Capa del tileset
-        bool** colisionMap; //true = colision
-        int nCapas = 0; //Numero de capas del tileset
-        string nombreCapa; //nombre de la capa actual
-        int*** tileMap;
-        XMLElement *data;
+
+        int*** tileMap; //GIDs de los tiles del mapa
         Sprite* tilesetSprite;
         Sprite**** mapSprite;
-        int nColisiones;
-        FloatRect** colision;
+
+        bool** colisionMap; //true = colision
+        FloatRect* colision; //Bounding Boxes de las Colisiones
 };

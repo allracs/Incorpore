@@ -28,29 +28,27 @@ void Juego::gameLoop(){
 }
 
 void Juego::procesarColisiones(){
-
     for(int i = 0; i < mapa->getNumColisiones(); i++){
         //INFERIOR
-        if(jugador->cuadradoarr().getGlobalBounds().intersects(colisiones[i])){
+        if(jugador->cuadradoarr().getGlobalBounds().intersects(mapa->getBounds()[i])){
             jugador->setColision(2);
         }
 
         //SUPERIOR
-        if(jugador->cuadradoabaj().getGlobalBounds().intersects(colisiones[i])){
+        if(jugador->cuadradoabaj().getGlobalBounds().intersects(mapa->getBounds()[i])){
             jugador->setColision(1);
         }
 
         //IZQUIERDA
-        if(jugador->cuadradoder().getGlobalBounds().intersects(colisiones[i])){
+        if(jugador->cuadradoder().getGlobalBounds().intersects(mapa->getBounds()[i])){
             jugador->setColision(3);
         }
 
         //DERECHA
-        if(jugador->cuadradoizq().getGlobalBounds().intersects(colisiones[i])){
+        if(jugador->cuadradoizq().getGlobalBounds().intersects(mapa->getBounds()[i])){
             jugador->setColision(4);
         }
     }
-
 }
 
 void Juego::procesarEventos(){
@@ -70,21 +68,7 @@ void Juego::setView(){
 }
 
 void Juego::setColisions(){
-    colisiones = new FloatRect[mapa->getNumColisiones()];
-    Sprite box;
-    int n = 0;
-    for(int capa = 0; capa < mapa->getNumCapas(); capa++){
-        for(int alto = 0; alto < mapa->getHeight(); alto++){
-            for(int ancho = 0; ancho < mapa->getWidth(); ancho++){
-                    if(n < mapa->getNumColisiones() && mapa->getColisiones()[alto][ancho] == true && mapa->getMapSprite()[capa][alto][ancho] != NULL){
-                        box = *mapa->getMapSprite()[capa][alto][ancho];
-                        colisiones[n] = box.getGlobalBounds();
-                        n++;
-                    }
 
-            }
-        }
-    }
 }
 
 void Juego::cargarHUD(){
@@ -105,8 +89,8 @@ void Juego::mostrarMapaColisiones(){
 
 void Juego::cargaMapa(){
     mapa = new Mapa;
-    mostrarMapaColisiones();
-    setColisions();
+    //mostrarMapaColisiones();
+    //setColisions();
 }
 
 void Juego::cargaPlayer(){

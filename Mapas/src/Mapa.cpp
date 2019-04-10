@@ -251,14 +251,16 @@ void Mapa::generaObjetos(int j, int k, int no){
 
 void Mapa::colisiones(){
     int n = 0;
-    colision = new FloatRect*[height];
 
-    for(int i = 0; i < nCapas; i++){
-        for(int j = 0; j < height; j++){
-            colision[j] = new FloatRect[width];
-            for(int k = 0; k < width; k++){
-                if(n < nColisiones && (i == 2 || i == 4 || i == 5)){
-                    //colision[j][k] = getMapSprite()[i][j][k]->getGlobalBounds();
+    colision = new FloatRect[nColisiones];
+    Sprite box;
+
+    for(int capa = 0; capa < nCapas; capa++){
+        for(int alto = 0; alto < height; alto++){
+            for(int ancho = 0; ancho < width; ancho++){
+                if(n < nColisiones && colisionMap[alto][ancho] == true && mapSprite[capa][alto][ancho] != NULL){
+                    box = *mapSprite[capa][alto][ancho];
+                    colision[n] = box.getGlobalBounds();
                     n++;
                 }
             }
@@ -298,6 +300,8 @@ int Mapa::getNumColisiones(){
     return nColisiones;
 }
 
-FloatRect** Mapa::getBounds(){
+FloatRect* Mapa::getBounds(){
     return colision;
 }
+
+

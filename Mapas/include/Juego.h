@@ -24,11 +24,10 @@ class Juego{
         int* dimensiones;
     private:
         RenderWindow *window;
+        RenderStates *states;
         Jugador *jugador;
         Event *evento;
         Mapa *mapa;
         Hud *hud_principal;
         View view;
-        FloatRect* colisiones;
-
 };
