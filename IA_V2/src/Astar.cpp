@@ -294,7 +294,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]-1 > -1 && sonda[1]-1 > -1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[1]-1][sonda[0]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]-1][sonda[0]-1] != pared && paredes[sonda[1]][sonda[0]-1] != pared && paredes[sonda[1]-1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]-1, padre), *listaCerrada))
@@ -396,7 +396,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]+1 < mapa.getAnchura() && sonda[1]-1 >-1)
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[1]-1][sonda[0]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]-1][sonda[0]+1] != pared && paredes[sonda[1]][sonda[0]+1] != pared && paredes[sonda[1]-1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1]-1, padre), *listaCerrada))
@@ -556,7 +556,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]-1 > -1 && sonda[1]+1 < mapa.getAltura())
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[1]+1][sonda[0]-1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]+1][sonda[0]-1] != pared && paredes[sonda[1]][sonda[0]-1] != pared && paredes[sonda[1]+1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]-1, sonda[1]+1, padre), *listaCerrada))
@@ -658,7 +658,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     if(sonda[0]+1 < mapa.getAnchura() && sonda[1]+1 < mapa.getAltura())
     {
         // comprueba si se puede pasar o no
-        if(paredes[sonda[1]+1][sonda[0]+1] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
+        if(paredes[sonda[1]+1][sonda[0]+1] != pared && paredes[sonda[1]][sonda[0]+1] != pared && paredes[sonda[1]+1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
         {
             // comprueba que no se encuentre en la lista cerrada
             if(comprobarListaCerrada(Posicion(sonda[0]+1, sonda[1]+1, padre), *listaCerrada))
