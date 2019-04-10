@@ -12,7 +12,7 @@ int main()
     std::cout << "mapa creado" << std::endl;
                         //Y,X
     Posicion x = Posicion(0,8);
-    Posicion y = Posicion(7,1);
+    Posicion y = Posicion(7,2);
     std::cout << "creando ia" << std::endl;
     Astar *ia = new Astar(x, y, *m);
     std::cout << "ia creada" << std::endl << ";;;;;;;;;;;;;" << std::endl;
