@@ -12,6 +12,7 @@ class Entidad{
         RectangleShape cuadradoarr();
         RectangleShape cuadradoabaj();
         RectangleShape cuadradoizq();
+        RectangleShape cuadradocen();
 
         void setColision(int);
         void setPosicion(int, int);
@@ -23,6 +24,7 @@ class Entidad{
         RectangleShape *cuadrado_arr;
         RectangleShape *cuadrado_abj;
         RectangleShape *cuadrado_izq;
+        RectangleShape *cuadrado_cen;
 
         bool colisiona_arriba = false;
         bool colisiona_abajo = false;

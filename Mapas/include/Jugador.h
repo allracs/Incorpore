@@ -10,6 +10,7 @@ class Jugador : public Entidad{
         Jugador();
         void movimiento();
         void procesarColisiones(int, FloatRect*);
+        void drawBoundingBoxes(RenderWindow&);
     private:
         int velocidad;
 };

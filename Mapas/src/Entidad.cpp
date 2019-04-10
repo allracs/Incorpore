@@ -2,23 +2,27 @@
 
 Entidad::Entidad(){
     sprite = new sf::RectangleShape({16,16});
-    sprite->setFillColor(Color::White);
+    sprite->setFillColor(Color::Yellow);
     sprite->setPosition(150,50);
+    //sprite->setOrigin(sprite->getPosition().x + sprite->getSize().x/2, sprite->getPosition().y + sprite->getSize().y/2);
 
 
     //cuadrados para las colisiones
     //cuadrado derecha
-    cuadrado_der = new sf::RectangleShape({0.5,8});
+    cuadrado_der = new sf::RectangleShape({0.5,7.5});
     cuadrado_der->setFillColor(sf::Color::Blue);
     //cuadrado izquierda
-    cuadrado_izq = new sf::RectangleShape({0.5,8});
+    cuadrado_izq = new sf::RectangleShape({0.5,7.5});
     cuadrado_izq->setFillColor(sf::Color::Blue);
     //cuadrado superior
     cuadrado_arr = new sf::RectangleShape({16,0.5});
-    cuadrado_arr->setFillColor(sf::Color::Blue);
+    cuadrado_arr->setFillColor(sf::Color::Red);
     //cuadrado inferior
     cuadrado_abj = new sf::RectangleShape({16,0.5});
-    cuadrado_abj->setFillColor(sf::Color::Blue);
+    cuadrado_abj->setFillColor(sf::Color::Green);
+
+    cuadrado_cen = new sf::RectangleShape({1,1});
+    cuadrado_cen->setFillColor(sf::Color::Black);
 }
 
 void Entidad::setColision(int num){
@@ -53,6 +57,9 @@ sf::RectangleShape Entidad::cuadradoabaj(){
     return *cuadrado_abj;
 }
 
+sf::RectangleShape Entidad::cuadradocen(){
+    return *cuadrado_cen;
+}
 
 RectangleShape Entidad::getSprite(){
     return *sprite;
