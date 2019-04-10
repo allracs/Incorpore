@@ -36,10 +36,10 @@ int main()
     else
     {
         int flag = true;
-        for(int a = 0; a < m->getAltura(); a++)
+        for(int a = 0; a < m->getHeight(); a++)
         {
             std::cout << "  ";
-            for(int b = 0; b < m->getAnchura(); b++)
+            for(int b = 0; b < m->getWidth(); b++)
             {
                 flag = true;
                 for(int c = 0; c < path.size()-1; c++)

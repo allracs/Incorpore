@@ -46,12 +46,12 @@ Mapa::~Mapa()
     //dtor
 }
 
-int Mapa::getAltura()
+int Mapa::getHeight()
 {
     return altura;
 }
 
-int Mapa::getAnchura()
+int Mapa::getWidth()
 {
     return anchura;
 }

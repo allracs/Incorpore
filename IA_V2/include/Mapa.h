@@ -7,8 +7,8 @@ class Mapa
     public:
         Mapa(int n, int m);
         virtual ~Mapa();
-        int getAltura();
-        int getAnchura();
+        int getHeight();
+        int getWidth();
         bool **getMapa();
 
     protected:

@@ -12,8 +12,8 @@ Astar::Astar(Posicion i, Posicion f, Mapa &m)
     //ctor
     std::cout << "creando ia (constr)" << std::endl;
     int alt, anc;
-    alt = m.getAltura();
-    anc = m.getAnchura();
+    alt = m.getHeight();
+    anc = m.getWidth();
 
     mapaArr = m.getMapa();
     mapa = &m;
@@ -260,9 +260,9 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     bool **paredes = mapa.getMapa();
     std::cout << "ACTUAL: " << padre.getX() << " --- " << padre.getY() << " --- " << paredes[padre.getY()][padre.getX()] << std::endl;
     /*
-    for(int a = 0; a < mapa.getAltura(); a++)
+    for(int a = 0; a < mapa.getHeight(); a++)
     {
-        for(int b = 0; b < mapa.getAnchura(); b++)
+        for(int b = 0; b < mapa.getWidth(); b++)
         {
 
             std::cout << paredes[a][b];
@@ -272,7 +272,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "pos 0-0: " << mapa.getMapa()[0][0] << std::endl;
     std::cout << "pos 0-1: " << mapa.getMapa()[0][1] << std::endl;
     std::cout << "pos 1-0: " << mapa.getMapa()[1][0] << std::endl;
-    std::cout << "pos 8-9: " << mapa.getMapa()[mapa.getAltura()-1][mapa.getAnchura()-1] << std::endl;
+    std::cout << "pos 8-9: " << mapa.getMapa()[mapa.getHeight()-1][mapa.getWidth()-1] << std::endl;
     for(int k = 0; k < 9; k++)
     {
         std::cout << mapa.getMapa()[k][0];
@@ -408,7 +408,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "=== arriba derecha ===" << std::endl;
     std::cout << sonda[0]+1 << " - " << sonda[1]-1 << std::endl;
     // arriba derecha
-    if(sonda[0]+1 < mapa.getAnchura() && sonda[1]-1 >-1)
+    if(sonda[0]+1 < mapa.getWidth() && sonda[1]-1 >-1)
     {
         // comprueba si se puede pasar o no
         if(paredes[sonda[1]-1][sonda[0]+1] != pared && paredes[sonda[1]][sonda[0]+1] != pared && paredes[sonda[1]-1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
@@ -515,9 +515,9 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "=== centro derecha ===" << std::endl;
     std::cout << sonda[0]+1 << " - " << sonda[1] << std::endl;
     // centro derecha
-    if(sonda[0]+1 < mapa.getAnchura())
+    if(sonda[0]+1 < mapa.getWidth())
     {
-        //std::cout << "sonda X: " << sonda[0]+1 << std::endl << mapa.getAnchura() << std::endl;
+        //std::cout << "sonda X: " << sonda[0]+1 << std::endl << mapa.getWidth() << std::endl;
         // comprueba si se puede pasar o no
         //std::cout << "paredes: " << paredes[sonda[0]+1][sonda[1]] << std::endl;
         //std::cout << sonda[0]+1 << " - " << sonda[1] << std::endl;
@@ -568,7 +568,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "=== abajo izquierda ===" << std::endl;
     std::cout << sonda[0]-1 << " - " << sonda[1]+1 << std::endl;
     // abajo izquierda
-    if(sonda[0]-1 > -1 && sonda[1]+1 < mapa.getAltura())
+    if(sonda[0]-1 > -1 && sonda[1]+1 < mapa.getHeight())
     {
         // comprueba si se puede pasar o no
         if(paredes[sonda[1]+1][sonda[0]-1] != pared && paredes[sonda[1]][sonda[0]-1] != pared && paredes[sonda[1]+1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
@@ -619,7 +619,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "=== abajo centro ===" << std::endl;
     std::cout << sonda[0] << " - " << sonda[1]+1 << std::endl;
     // abajo centro
-    if(sonda[1]+1 < mapa.getAltura())
+    if(sonda[1]+1 < mapa.getHeight())
     {
         // comprueba si se puede pasar o no
         if(paredes[sonda[1]+1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
@@ -670,7 +670,7 @@ std::vector<Posicion> Astar::comprobarVecinos(Posicion padre, Mapa mapa)
     std::cout << "=== abajo derecha ===" << std::endl;
     std::cout << sonda[0]+1 << " - " << sonda[1]+1 << std::endl;
     // abajo derecha
-    if(sonda[0]+1 < mapa.getAnchura() && sonda[1]+1 < mapa.getAltura())
+    if(sonda[0]+1 < mapa.getWidth() && sonda[1]+1 < mapa.getHeight())
     {
         // comprueba si se puede pasar o no
         if(paredes[sonda[1]+1][sonda[0]+1] != pared && paredes[sonda[1]][sonda[0]+1] != pared && paredes[sonda[1]+1][sonda[0]] != pared)    //IMPORTANTE--> != 0 si las paredes son 0; != 1 si las paredes son 1
