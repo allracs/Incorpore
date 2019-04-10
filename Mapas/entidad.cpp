@@ -31,8 +31,7 @@ void entidad::setColision(int num){
         colisiona_derecha = true;
 }
 
-void entidad::setPosicion(int x, int y)
-{
+void entidad::setPosicion(int x, int y){
     sprite->setPosition(x,y);
 }
 

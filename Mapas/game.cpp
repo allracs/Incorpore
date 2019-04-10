@@ -83,7 +83,6 @@ void game::setColisions(){
 
 void game::cargar_hud(){
     hud_principal = new hud;
-
 }
 
 void game::mostrarMapaColisiones(){
@@ -102,7 +101,6 @@ void game::cargaMapa(){
     Mapa = new mapa;
     mostrarMapaColisiones();
     setColisions();
-
 }
 
 void game::cargaPlayer(){
