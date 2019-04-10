@@ -2,7 +2,7 @@
 1554715459 source:/home/irene/Escritorio/Mov y anim/src/Enemigo.cpp
 	"Enemigo.h"
 
-1554814827 "
+1554819618 "
 
 1554715459 /home/irene/Escritorio/Mov y anim/include/Enemigo.h
 
@@ -20,7 +20,7 @@
 	"Entidad.h"
 	"Animacion.h"
 
-1554809018 .h"
+1554817699 .h"
 
 1554720620 source:/home/irene/Escritorio/Mov y anim/main.cpp
 	<SFML/Graphics.hpp>
@@ -30,70 +30,19 @@
 1554719418 /home/irene/Escritorio/Mov y anim/include/Animacion.h
 	<SFML/Graphics.hpp>
 
-1554808993 hics.hpp>
+1554815261 hics.hpp>
 
 1554720463 source:/home/irene/Escritorio/Mov y anim/src/Animacion.cpp
 	<iostream>
 	"Animacion.h"
 
-1554814696 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/main.cpp
-	<SFML/Graphics.hpp>
-	"Jugador.h"
-	"Animacion.h"
-	<SFML/Graphics.hpp>
-	"Jugador.h"
-	"Animacion.h"
-
-1554814782 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Jugador.h
-	<SFML/Graphics.hpp>
-	<cmath>
-	"Entidad.h"
-	"Animacion.h"
-	<SFML/Graphics.hpp>
-	<cmath>
-	<iostream>
-	"Entidad.h"
-	"Animacion.h"
-
-1554799921 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Entidad.h
-
-1554808993 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Animacion.h
-	<SFML/Graphics.hpp>
-	<SFML/Graphics.hpp>
-
-1554799921 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Entidad.cpp
-	"Entidad.h"
-	"Entidad.h"
-
-1554814827 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Jugador.cpp
-	<SFML/Graphics.hpp>
-	"Jugador.h"
-	<SFML/Graphics.hpp>
-	"Jugador.h"
-
-1554809018 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Animacion.cpp
-	<iostream>
-	"Animacion.h"
-	<iostream>
-	"Animacion.h"
-
-1554799921 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Enemigo.cpp
-	"Enemigo.h"
-	"Enemigo.h"
-
-1554799921 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Enemigo.h
-
-1554799921 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Enemigo.cpp
-	"Enemigo.h"
-
-1554799921 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Enemigo.h
-
-1554799921 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Entidad.cpp
-	"Entidad.h"
-
-1554799921 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Entidad.h
-
 1554819705 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/main.cpp
+	<SFML/Graphics.hpp>
+	"Jugador.h"
+	"Animacion.h"
+	<SFML/Graphics.hpp>
+	"Jugador.h"
+	"Animacion.h"
 	<SFML/Graphics.hpp>
 	"Jugador.h"
 	"Animacion.h"
@@ -101,18 +50,84 @@
 1554820305 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Jugador.h
 	<SFML/Graphics.hpp>
 	<cmath>
+	"Entidad.h"
+	"Animacion.h"
+	<SFML/Graphics.hpp>
+	<cmath>
+	<iostream>
+	"Entidad.h"
+	"Animacion.h"
+	<SFML/Graphics.hpp>
+	<cmath>
 	<iostream>
 	"Entidad.h"
 	"Animacion.h"
 
+1554799921 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Entidad.h
+
 1554815261 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Animacion.h
 	<SFML/Graphics.hpp>
+	<SFML/Graphics.hpp>
+	<SFML/Graphics.hpp>
+
+1554799921 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Entidad.cpp
+	"Entidad.h"
+	"Entidad.h"
+	"Entidad.h"
+
+1554819618 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Jugador.cpp
+	<SFML/Graphics.hpp>
+	"Jugador.h"
+	<SFML/Graphics.hpp>
+	"Jugador.h"
+	<SFML/Graphics.hpp>
+	"Jugador.h"
 
 1554817699 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Animacion.cpp
 	<iostream>
 	"Animacion.h"
+	<iostream>
+	"Animacion.h"
+	<iostream>
+	"Animacion.h"
 
-1554819618 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Jugador.cpp
+1554799921 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Enemigo.cpp
+	"Enemigo.h"
+	"Enemigo.h"
+	"Enemigo.h"
+
+1554799921 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Enemigo.h
+
+1554897584 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/main.cpp
+	<SFML/Graphics.hpp>
+	"Jugador.h"
+	"Animacion.h"
+
+1554898233 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Jugador.h
+	<SFML/Graphics.hpp>
+	<cmath>
+	<iostream>
+	"Entidad.h"
+	"Animacion.h"
+
+1554895218 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Entidad.h
+
+1554895218 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Animacion.h
+	<SFML/Graphics.hpp>
+
+1554895218 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Animacion.cpp
+	<iostream>
+	"Animacion.h"
+
+1554895218 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Enemigo.cpp
+	"Enemigo.h"
+
+1554895218 /mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/include/Enemigo.h
+
+1554895218 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Entidad.cpp
+	"Entidad.h"
+
+1554898976 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Jugador.cpp
 	<SFML/Graphics.hpp>
 	"Jugador.h"
 

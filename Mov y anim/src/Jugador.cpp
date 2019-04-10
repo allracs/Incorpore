@@ -6,9 +6,9 @@ Jugador::Jugador(sf::Vector2f pos)
 {
     // Variables del jugador
 
-    this->jugadorHitbox = sf::RectangleShape(sf::Vector2f(15, 20));
+    this->jugadorHitbox = sf::RectangleShape(sf::Vector2f(12, 12));
     this->jugadorHitbox.setPosition(pos);
-    this->jugadorHitbox.setOrigin(18/2, 20/2);
+    this->jugadorHitbox.setOrigin(12/2, 12/2);
     this->jugadorHitbox.setFillColor(sf::Color::Transparent);
     this->jugadorHitbox.setOutlineThickness(1.f);
     this->jugadorHitbox.setOutlineColor(sf::Color::Green);
@@ -21,22 +21,23 @@ Jugador::Jugador(sf::Vector2f pos)
     movement = sf::Vector2f(0.f, 0.f);
 
     // Animaciones
-    idle.setAnimacion("caballero.png", sf::IntRect(0,0,16,28), sf::IntRect(48,0,16,28), 16, 0.1f);
-    run.setAnimacion("caballero.png", sf::IntRect(0, 28, 16, 28), sf::IntRect(48, 28, 16, 28), 16, 0.1f);
+    idle.setAnimacion("sprites/caballero.png", sf::IntRect(0,0,16,28), sf::IntRect(48,0,16,28), 16, 0.1f);
+    idle.sprite.setOrigin(9,20);
+    run.setAnimacion("sprites/caballero.png", sf::IntRect(0, 28, 16, 28), sf::IntRect(48, 28, 16, 28), 16, 0.1f);
+    run.sprite.setOrigin(9,20);
+
 
     actual = &idle;
 
     actual->sprite.setPosition(pos);
-
-    //PRUEBAS CON LAS CAJAS DE LOS PERSONAJES.
 
 
     // Hitbox de ataque
     hitboxAtaque.setOutlineThickness(1);
     hitboxAtaque.setOutlineColor(sf::Color::Blue);
     hitboxAtaque.setFillColor(sf::Color::Transparent);
-    hitboxAtaque.setSize(sf::Vector2f(30.f, 16.f));
-    hitboxAtaque.setOrigin(0,16/2.f);
+    hitboxAtaque.setSize(sf::Vector2f(20.f, 12.f));
+    hitboxAtaque.setOrigin(0,6.f);
     hitboxAtaque.setPosition(pos);
 
 }
@@ -122,7 +123,6 @@ void Jugador::moverse(){
 
     }
 
-    std::cout << "POS: " << movement.x << "--" << movement.y << std::endl;
     if(movement.x == 0 & movement.y == 0) {
         if (actual != &idle){
             std::cout << "CAMBIAMOS A IDLE" << std::endl;
@@ -135,7 +135,7 @@ void Jugador::moverse(){
 }
 
 sf::Vector2f Jugador::getCenter(){
-    std::cout << "HA DEVUELTO EL PLAYER CENTER: " << playerCenter.x << "--" << playerCenter.y << std::endl;
+    //std::cout << "HA DEVUELTO EL PLAYER CENTER: " << playerCenter.x << "--" << playerCenter.y << std::endl;
     return playerCenter;
 }
 
@@ -147,10 +147,13 @@ sf::Vector2f Jugador::getMovement() {
     return this->movement;
 }
 
+sf::RectangleShape Jugador::getHitboxAtaque(){
+    return hitboxAtaque;
+}
+
 void Jugador::update(float delta, sf::RenderWindow &app){
     playerCenter = sf::Vector2f(jugadorHitbox.getPosition().x, jugadorHitbox.getPosition().y);
     rotacionAtaque(app);
-
 
     // MOVIMIENTO
     moverse(); // comprobar que el jugador se mueve
@@ -158,6 +161,7 @@ void Jugador::update(float delta, sf::RenderWindow &app){
     hitboxAtaque.move(movement * delta);
 
     actual->update(delta, movement);
+
 
 
     // ANiMACIONES

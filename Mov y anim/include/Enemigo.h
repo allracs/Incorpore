@@ -7,10 +7,11 @@ class Enemigo
     public:
         Enemigo();
         virtual ~Enemigo();
-
-    protected:
+        void serAtacado(Jugador j);
 
     private:
+        sf::RectangleShape enemigoHitbox;
+
 };
 
 #endif // ENEMIGO_H
