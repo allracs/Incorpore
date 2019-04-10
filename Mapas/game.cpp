@@ -6,11 +6,10 @@ game::game(){
     window->setFramerateLimit(60);
     evento = new Event;
     cargaMapa();
-    //cargar_hud();
+    cargar_hud();
     cargaPlayer();
     view.zoom(0.2f);
     gameLoop();
-
 }
 
 void game::gameLoop(){
@@ -18,7 +17,7 @@ void game::gameLoop(){
         procesarEventos();
         procesarColisiones();
         jugador->movimiento();
-        //hud_principal->compruebaTeclas();
+        hud_principal->compruebaTeclas();
         setView();
         render();
     }
@@ -26,33 +25,26 @@ void game::gameLoop(){
 
 void game::procesarColisiones(){
 
-    //COLISIONES COLUMNA
-//    sf::FloatRect box_personaje = jugador->getJugador().getGlobalBounds();
-
     for(int i = 0; i < Mapa->getNumColisiones(); i++){
-    //INFERIOR
-    if(jugador->cuadradoarr().getGlobalBounds().intersects(colisiones[i]))
-    {
-        jugador->setColision(2);
-    }
+        //INFERIOR
+        if(jugador->cuadradoarr().getGlobalBounds().intersects(colisiones[i])){
+            jugador->setColision(2);
+        }
 
-    //SUPERIOR
-    if(jugador->cuadradoabaj().getGlobalBounds().intersects(colisiones[i]))
-    {
-        jugador->setColision(1);
-    }
+        //SUPERIOR
+        if(jugador->cuadradoabaj().getGlobalBounds().intersects(colisiones[i])){
+            jugador->setColision(1);
+        }
 
-    //IZQUIERDA
-    if(jugador->cuadradoder().getGlobalBounds().intersects(colisiones[i]))
-    {
-        jugador->setColision(3);
-    }
+        //IZQUIERDA
+        if(jugador->cuadradoder().getGlobalBounds().intersects(colisiones[i])){
+            jugador->setColision(3);
+        }
 
-    //DERECHA
-    if(jugador->cuadradoizq().getGlobalBounds().intersects(colisiones[i]))
-    {
-        jugador->setColision(4);
-    }
+        //DERECHA
+        if(jugador->cuadradoizq().getGlobalBounds().intersects(colisiones[i])){
+            jugador->setColision(4);
+        }
     }
 
 }
@@ -91,6 +83,7 @@ void game::setColisions(){
 
 void game::cargar_hud(){
     hud_principal = new hud;
+
 }
 
 void game::mostrarMapaColisiones(){
@@ -131,7 +124,7 @@ void game::render(){
             }
         }
     }
-/*
+
     window->draw(hud_principal->getPiezaVida());
     window->draw(hud_principal->getPiezaHabilidades());
 
@@ -146,6 +139,6 @@ void game::render(){
     {
         window->draw(hud_principal->getArrayHabilidades().at(i));
     }
-*/
+
     window->display();
 }

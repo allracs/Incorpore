@@ -62,16 +62,24 @@
 	<cstddef>
 	<cstdarg>
 
+<<<<<<< HEAD
 1554899095 source:/home/fv/FV/Incorpore/Mapas/game.cpp
 	"game.h"
 
 1554897892 /home/fv/FV/Incorpore/Mapas/game.h
+=======
+1554895578 source:/home/david/Documentos/Incorpore/Mapas/game.cpp
+	"game.h"
+
+1554892110 /home/david/Documentos/Incorpore/Mapas/game.h
+>>>>>>> mapa-colisiones
 	<SFML/Graphics.hpp>
 	<iostream>
 	"player.h"
 	"hud.h"
 	"mapa.h"
 
+<<<<<<< HEAD
 1554897892 /home/fv/FV/Incorpore/Mapas/player.h
 	<SFML/Graphics.hpp>
 
@@ -80,11 +88,25 @@
 	<vector>
 
 1554897892 /home/fv/FV/Incorpore/Mapas/mapa.h
+=======
+1554892110 /home/david/Documentos/Incorpore/Mapas/player.h
+	<SFML/Graphics.hpp>
+
+1554895774 /home/david/Documentos/Incorpore/Mapas/hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1554892110 /home/david/Documentos/Incorpore/Mapas/mapa.h
+>>>>>>> mapa-colisiones
 	"tinyxml2.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
+<<<<<<< HEAD
 1554747227 /home/fv/FV/Incorpore/Mapas/tinyxml2.h
+=======
+1554892110 /home/david/Documentos/Incorpore/Mapas/tinyxml2.h
+>>>>>>> mapa-colisiones
 	<ctype.h>
 	<limits.h>
 	<stdio.h>
@@ -100,24 +122,42 @@
 	<android/log.h>
 	<assert.h>
 
+<<<<<<< HEAD
 1554897892 source:/home/fv/FV/Incorpore/Mapas/hud.cpp
 	"hud.h"
 
 1554747227 source:/home/fv/FV/Incorpore/Mapas/main.cpp
+=======
+1554895889 source:/home/david/Documentos/Incorpore/Mapas/hud.cpp
+	"hud.h"
+
+1554892110 source:/home/david/Documentos/Incorpore/Mapas/main.cpp
+>>>>>>> mapa-colisiones
 	<iostream>
 	<SFML/Graphics.hpp>
 	"game.h"
 
+<<<<<<< HEAD
 1554898942 source:/home/fv/FV/Incorpore/Mapas/mapa.cpp
+=======
+1554894412 source:/home/david/Documentos/Incorpore/Mapas/mapa.cpp
+>>>>>>> mapa-colisiones
 	"mapa.h"
 	<time.h>
 	<stdio.h>
 	<stdlib.h>
 
+<<<<<<< HEAD
 1554897892 source:/home/fv/FV/Incorpore/Mapas/player.cpp
 	"player.h"
 
 1554747227 source:/home/fv/FV/Incorpore/Mapas/tinyxml2.cpp
+=======
+1554892110 source:/home/david/Documentos/Incorpore/Mapas/player.cpp
+	"player.h"
+
+1554892110 source:/home/david/Documentos/Incorpore/Mapas/tinyxml2.cpp
+>>>>>>> mapa-colisiones
 	"tinyxml2.h"
 	<new>
 	<stddef.h>
