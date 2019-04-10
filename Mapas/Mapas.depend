@@ -62,41 +62,27 @@
 	<cstddef>
 	<cstdarg>
 
-<<<<<<< HEAD
-1554894412 D
+1554892110 D
 
-1554899969 source:/home/fv/FV/Incorpore/Mapas/game.cpp
+1554913130 source:/home/fv/FV/Incorpore/Mapas/game.cpp
 	"game.h"
 
-1554897892 /home/fv/FV/Incorpore/Mapas/game.h
-
-1554895578 source:/home/david/Documentos/Incorpore/Mapas/game.cpp
-=======
-1554904462 source:/home/david/Documentos/Incorpore/Mapas/game.cpp
->>>>>>> mapa-colisiones
-	"game.h"
-
-1554892110 /home/david/Documentos/Incorpore/Mapas/game.h
-
-1554892110 a-colisiones
+1554910919 /home/fv/FV/Incorpore/Mapas/game.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"player.h"
 	"hud.h"
 	"mapa.h"
-<<<<<<< HEAD
-=======
 
-1554904351 /home/david/Documentos/Incorpore/Mapas/player.h
-	"entidad.h"
+1554904462 source:/home/david/Documentos/Incorpore/Mapas/game.cpp
+
+1554892110 a-colisiones
+	"game.h"
 	<SFML/Graphics.hpp>
-
-1554895774 /home/david/Documentos/Incorpore/Mapas/hud.h
-	<SFML/Graphics.hpp>
-	<vector>
-
-1554892110 /home/david/Documentos/Incorpore/Mapas/mapa.h
->>>>>>> mapa-colisiones
+	<iostream>
+	"player.h"
+	"hud.h"
+	"mapa.h"
 	"tinyxml2.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -128,29 +114,39 @@
 	<cstddef>
 	<cstdarg>
 
-1554897892 /home/fv/FV/Incorpore/Mapas/player.h
-	<SFML/Graphics.hpp>
-
-1554899969 /home/fv/FV/Incorpore/Mapas/hud.h
-	<SFML/Graphics.hpp>
-	<vector>
-
-1554897892 /home/fv/FV/Incorpore/Mapas/mapa.h
+1554892110 /home/david/Documentos/Incorpore/Mapas/game.h
 
 1554892110 /home/david/Documentos/Incorpore/Mapas/player.h
+	"entidad.h"
+	<SFML/Graphics.hpp>
 	<SFML/Graphics.hpp>
 
 1554895774 /home/david/Documentos/Incorpore/Mapas/hud.h
 	<SFML/Graphics.hpp>
 	<vector>
+	<SFML/Graphics.hpp>
+	<vector>
 
 1554892110 /home/david/Documentos/Incorpore/Mapas/mapa.h
+
+1554906230 /home/fv/FV/Incorpore/Mapas/player.h
+	"entidad.h"
+	<SFML/Graphics.hpp>
+
+1554912974 /home/fv/FV/Incorpore/Mapas/hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1554907670 /home/fv/FV/Incorpore/Mapas/mapa.h
+	"tinyxml2.h"
+	<SFML/Graphics.hpp>
+	<iostream>
 
 1554747227 /home/fv/FV/Incorpore/Mapas/tinyxml2.h
 
 1554892110 /home/david/Documentos/Incorpore/Mapas/tinyxml2.h
 
-1554899969 source:/home/fv/FV/Incorpore/Mapas/hud.cpp
+1554913320 source:/home/fv/FV/Incorpore/Mapas/hud.cpp
 	"hud.h"
 
 1554747227 source:/home/fv/FV/Incorpore/Mapas/main.cpp
@@ -160,7 +156,7 @@
 
 1554892110 source:/home/david/Documentos/Incorpore/Mapas/main.cpp
 
-1554900011 source:/home/fv/FV/Incorpore/Mapas/mapa.cpp
+1554906888 source:/home/fv/FV/Incorpore/Mapas/mapa.cpp
 	"mapa.h"
 	<time.h>
 	<stdio.h>
@@ -168,7 +164,7 @@
 
 1554894412 source:/home/david/Documentos/Incorpore/Mapas/mapa.cpp
 
-1554897892 source:/home/fv/FV/Incorpore/Mapas/player.cpp
+1554909376 source:/home/fv/FV/Incorpore/Mapas/player.cpp
 	"player.h"
 
 1554747227 source:/home/fv/FV/Incorpore/Mapas/tinyxml2.cpp
@@ -189,5 +185,11 @@
 
 1554904056 /home/david/Documentos/Incorpore/Mapas/enemy.h
 	"entidad.h"
+	<SFML/Graphics.hpp>
+
+1554909575 source:/home/fv/FV/Incorpore/Mapas/entidad.cpp
+	"entidad.h"
+
+1554906230 /home/fv/FV/Incorpore/Mapas/entidad.h
 	<SFML/Graphics.hpp>
 

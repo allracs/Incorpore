@@ -5,6 +5,7 @@ entidad::entidad(){
     sprite->setFillColor(Color::White);
     sprite->setPosition(150,50);
 
+
     //cuadrados para las colisiones
     //cuadrado derecha
     cuadrado_der = new sf::RectangleShape({0.5,8});
@@ -33,7 +34,7 @@ void entidad::setColision(int num){
 
 void entidad::setPosicion(int x, int y)
 {
-    sprite->setPosition(x,y);
+    sprite->setPosition(x + sprite->getSize().x, y + sprite->getSize().y);
 }
 
 sf::RectangleShape entidad::cuadradoder(){

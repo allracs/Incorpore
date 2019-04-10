@@ -27,7 +27,7 @@ class mapa{
         FloatRect** getBounds();
     private:
         int maxObj, nObj;
-        int width, height,tilewidth, tileheight, gid;
+        int width, height, tilewidth, tileheight, gid;
         int cofre, calavera;
         int* antorcha, *caja, *cajadoble, *columna;
         XMLDocument docXML; //Doc tmx

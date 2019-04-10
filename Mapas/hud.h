@@ -11,18 +11,17 @@ public:
     std::vector<sf::Sprite> getArrayVida();
     std::vector<sf::Sprite> getArrayHabilidades();
     sf::Sprite getCorazon();
-    void setPosicionCorazones();
-    void setPosicionHabilidades();
     void modificar_vida(int,int);
-    void setHabilidad(int);
     void borradoHabilidades();
     int getCantidadVida();
     int getCantidadHabilidades();
     sf::RectangleShape getPiezaVida();
     sf::RectangleShape getPiezaHabilidades();
     void compruebaTeclas();
+    void setHabilidad(int);
     void setPosition(int, int);
-
+    void setPosicionVida(int, int);
+    void setPosicionHabilidades(int, int);
 private:
     sf::Text *texto_vida;
     sf::Font *fuente;

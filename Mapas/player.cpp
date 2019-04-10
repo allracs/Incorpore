@@ -3,7 +3,6 @@ using namespace sf;
 
 player::player(){
 
-
     velocidad = 2;
 }
 

@@ -2,13 +2,16 @@
 using namespace sf;
 
 game::game(){
-    window = new RenderWindow(VideoMode(1280,720), "Carga Mapa");
+    dimensiones = new int[2];
+    dimensiones[0] = 1280;
+    dimensiones[1] = 720;
+    window = new RenderWindow(VideoMode(dimensiones[0], dimensiones[1]), "Carga Mapa");
     window->setFramerateLimit(60);
     evento = new Event;
     cargaMapa();
-    cargar_hud();
+    cargarHUD();
     cargaPlayer();
-    view.setSize(1280, 720);
+    view.setSize(dimensiones[0], dimensiones[1]);
     view.zoom(0.2f);
     gameLoop();
 }
@@ -62,6 +65,8 @@ void game::procesarEventos(){
 
 void game::setView(){
     view.setCenter(jugador->getSprite().getPosition().x, jugador->getSprite().getPosition().y);
+    hud_principal->setPosicionVida(view.getCenter().x - dimensiones[0]/10 + 4, view.getCenter().y - dimensiones[1]/10);
+    hud_principal->setPosicionHabilidades(view.getCenter().x - hud_principal->getPiezaHabilidades().getGlobalBounds().width/2, view.getCenter().y + dimensiones[1]/10 - hud_principal->getPiezaHabilidades().getGlobalBounds().height);
 }
 
 void game::setColisions(){
@@ -82,9 +87,8 @@ void game::setColisions(){
     }
 }
 
-void game::cargar_hud(){
-    hud_principal = new hud;
-
+void game::cargarHUD(){
+    hud_principal = new hud();
 }
 
 void game::mostrarMapaColisiones(){
@@ -142,4 +146,8 @@ void game::render(){
     }
 
     window->display();
+}
+
+View game::getView(){
+    return view;
 }

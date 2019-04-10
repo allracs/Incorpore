@@ -14,12 +14,15 @@ class game
         void render();
         void cargaPlayer();
         void cargaMapa();
-        void cargar_hud();
+        void cargarHUD();
         void procesarEventos();
         void setView();
         void mostrarMapaColisiones();
         void procesarColisiones();
         void setColisions();
+        View getView();
+
+        int* dimensiones;
     private:
         RenderWindow *window;
         player *jugador;
