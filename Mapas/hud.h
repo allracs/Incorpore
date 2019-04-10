@@ -21,6 +21,7 @@ public:
     sf::RectangleShape getPiezaVida();
     sf::RectangleShape getPiezaHabilidades();
     void compruebaTeclas();
+    void setPosition(int, int);
 
 private:
     sf::Text *texto_vida;
