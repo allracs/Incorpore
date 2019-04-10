@@ -106,12 +106,12 @@ std::vector<Posicion> Astar::mapear()
         std::cout <<"// PADRE: " << listaCerrada->at(i-1).getPadre().getY()<< " - " << listaCerrada->at(i-1).getPadre().getX()<< std::endl;
         //std::cout << direccionDePadres.getPadre().getX() << " --- " << direccionDePadres.getPadre().getY() << std::endl << std::endl;
 
-        //std::cout << "Padre existe:" << std::endl;
+        std::cout << "Padre existe:" << std::endl;
         if(listaCerrada->at(i).getX() == direccionDePadres.getX() && listaCerrada->at(i).getY() == direccionDePadres.getY())
         {
-            //std::cout << "ENTRO EN EL BUCLE LOCO: " << i << std::endl;
-            //std::cout <<"Posicion Final: " << fin->getX() << " - " << fin->getY() << std::endl;
-            //std::cout <<"Posicion que entra: " << listaCerrada->at(i).getY() << " - " << listaCerrada->at(i).getX() << std::endl;
+            std::cout << "ENTRO EN EL BUCLE LOCO: " << i << std::endl;
+            std::cout <<"Posicion Final: " << fin->getX() << " - " << fin->getY() << std::endl;
+            std::cout <<"Posicion que entra: " << listaCerrada->at(i).getY() << " - " << listaCerrada->at(i).getX() << std::endl;
 
                 salidaFinal.insert(salidaFinal.end(),listaCerrada->at(i).getPadre());
                 direccionDePadres = listaCerrada->at(i).getPadre();
@@ -120,8 +120,6 @@ std::vector<Posicion> Astar::mapear()
 
         }
     }
-
-    std::reverse(salidaFinal.begin(), salidaFinal.end());
 
     //-------------------------------------------------------------------------
 
