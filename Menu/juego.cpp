@@ -125,16 +125,17 @@ void juego::eventos_raton()
     }
 
     //menu_inicial->getOpciones().at(i).getGlobalBounds().contains( raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y)
-    if(jugar.contains(raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y -40))
+    if(jugar.contains(raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y +55))
     {
         menu_inicial->setOpcionMenu(0);
 
+
     }
-    if(opciones.contains(raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y -40))
+    if(opciones.contains(raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y+55))
     {
         menu_inicial->setOpcionMenu(1);
     }
-    if(salir.contains(raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y -40))
+    if(salir.contains(raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y+55))
     {
         menu_inicial->setOpcionMenu(2);
     }
@@ -146,15 +147,33 @@ void juego::eventos_raton()
 
 
 }
+/*
+void juego::playMusica()
+{
+//sf::Music musica;
+sf::Sound sonido;
+sf::SoundBuffer buffer;
+    if(buffer.loadFromFile("Menu.ogg"))
+        std::cout << "no va la musiquica"<< std::endl;
+//if(!musica->openFromFile("src/Menu.ogg"))
+  //          std::cout << "no va la musiquica"<< std::endl;
+  sonido.setBuffer(buffer);
+  sonido.play();
 
 
+
+}
+*/
 void juego::render()
 {
     window->clear();
 
+
     //menu principal
     if(menuprincipal == true)
     {
+       // playMusica();
+     //   musica->play();
         window->draw(menu_inicial->getFondo());
         window->draw(menu_inicial->getTitulo());
         for(int i = 0; i < 3;i++)
