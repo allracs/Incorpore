@@ -2,11 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-class hud
-{
+class Hud{
 public:
-    hud();
-    ~hud();
+    Hud();
+    ~Hud();
     sf::Text getTextoVida();
     std::vector<sf::Sprite> getArrayVida();
     std::vector<sf::Sprite> getArrayHabilidades();

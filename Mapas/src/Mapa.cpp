@@ -1,4 +1,4 @@
-#include "../include/mapa.h"
+#include "../include/Mapa.h"
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,7 +6,7 @@ using namespace sf;
 using namespace tinyxml2;
 using namespace std;
 
-mapa::mapa(){
+Mapa::Mapa(){
     leerMapa(1);
     cargaObjetos();
     setDatos();
@@ -17,11 +17,11 @@ mapa::mapa(){
     colisiones();
 }
 
-mapa::~mapa(){
+Mapa::~Mapa(){
     //Destructor
 }
 
-void mapa::cargaObjetos(){
+void Mapa::cargaObjetos(){
     caja = new int[2];
     cajadoble = new int[2];
     columna = new int[2];
@@ -45,7 +45,7 @@ void mapa::cargaObjetos(){
 
 }
 
-void mapa::leerMapa(int n){
+void Mapa::leerMapa(int n){
     if(n == 1){
        docXML.LoadFile("resources/tmx/Mapa.tmx");
     }
@@ -55,7 +55,7 @@ void mapa::leerMapa(int n){
     nColisiones = 0;
 }
 
-void mapa::setDatos(){
+void Mapa::setDatos(){
     //Obtengo datos del tmx
     mapaXML->QueryIntAttribute("width", &width);
     mapaXML->QueryIntAttribute("height", &height);
@@ -67,7 +67,7 @@ void mapa::setDatos(){
     capa = mapaXML->FirstChildElement("layer");
 }
 
-void mapa::cargaTexturas(){
+void Mapa::cargaTexturas(){
 
     while(imagenTileset){
         if(!texturaTileset.loadFromFile(ficheroImagen)){
@@ -131,7 +131,7 @@ void mapa::cargaTexturas(){
 
 }
 
-void mapa::creaSprite(){
+void Mapa::creaSprite(){
     mapSprite = new Sprite***[nCapas];
 
     for(int i = 0; i < nCapas; i++){
@@ -173,7 +173,7 @@ void mapa::creaSprite(){
 
 }
 
-void mapa::posicionaObjetos(){
+void Mapa::posicionaObjetos(){
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
             if(colisionMap[i][j] == false && nObj < maxObj){
@@ -195,7 +195,7 @@ void mapa::posicionaObjetos(){
     }
 }
 
-void mapa::generaObjetos(int j, int k, int no){
+void Mapa::generaObjetos(int j, int k, int no){
     //srand(time(NULL));
     while(nObj == no) {
         int random = rand() % 100;
@@ -249,7 +249,7 @@ void mapa::generaObjetos(int j, int k, int no){
 
 }
 
-void mapa::colisiones(){
+void Mapa::colisiones(){
     int n = 0;
     colision = new FloatRect*[height];
 
@@ -266,7 +266,7 @@ void mapa::colisiones(){
     }
 }
 
-void mapa::getDatos(){
+void Mapa::getDatos(){
     cout << "ancho:" << width << endl;
     cout << "alto: " << height << endl;
     cout << "ancho tile: " << tilewidth << endl;
@@ -274,30 +274,30 @@ void mapa::getDatos(){
     cout << "imagen: " << ficheroImagen << endl;
 }
 
-int mapa::getNumCapas(){
+int Mapa::getNumCapas(){
     return nCapas;
 }
 
-int mapa::getHeight(){
+int Mapa::getHeight(){
     return height;
 }
 
-int mapa::getWidth(){
+int Mapa::getWidth(){
     return width;
 }
 
-Sprite**** mapa::getMapSprite(){
+Sprite**** Mapa::getMapSprite(){
     return mapSprite;
 }
 
-bool** mapa::getColisiones(){
+bool** Mapa::getColisiones(){
     return colisionMap;
 }
 
-int mapa::getNumColisiones(){
+int Mapa::getNumColisiones(){
     return nColisiones;
 }
 
-FloatRect** mapa::getBounds(){
+FloatRect** Mapa::getBounds(){
     return colision;
 }

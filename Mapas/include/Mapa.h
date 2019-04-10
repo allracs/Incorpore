@@ -5,10 +5,10 @@ using namespace sf;
 using namespace tinyxml2;
 using namespace std;
 
-class mapa{
+class Mapa{
     public:
-        mapa();
-        ~mapa();
+        Mapa();
+        ~Mapa();
         void leerMapa(int);
         void setDatos();
         void getDatos();

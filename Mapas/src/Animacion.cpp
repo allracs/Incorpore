@@ -20,13 +20,13 @@ void Animacion::setAnimacion(char* nTextura, sf::IntRect firstF, sf::IntRect fin
     if(!texture.loadFromFile(nTextura)){
         std::cout << "ERROR AL CARGAR TEXTURA";
     }
-    this->firstF = firstF;
-    this->finalF = finalF;
-    this->incremento = incremento;
-    this->actualFrame = firstF;
-    this->switchTime = tiempo;
-    this->sprite = sf::Sprite(texture, actualFrame);
-    this->sprite.setOrigin((this->firstF.width)/2, (this->firstF.height)/2);
+    firstF = firstF;
+    finalF = finalF;
+    incremento = incremento;
+    actualFrame = firstF;
+    switchTime = tiempo;
+    sprite = sf::Sprite(texture, actualFrame);
+    sprite.setOrigin((firstF.width)/2, (firstF.height)/2);
 
 }
 

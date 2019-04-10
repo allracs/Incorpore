@@ -1,6 +1,6 @@
-#include "../include/entidad.h"
+#include "../include/Entidad.h"
 
-entidad::entidad(){
+Entidad::Entidad(){
     sprite = new sf::RectangleShape({16,16});
     sprite->setFillColor(Color::White);
     sprite->setPosition(150,50);
@@ -21,7 +21,7 @@ entidad::entidad(){
     cuadrado_abj->setFillColor(sf::Color::Blue);
 }
 
-void entidad::setColision(int num){
+void Entidad::setColision(int num){
     if(num == 1)
         colisiona_arriba = true;
     if(num == 2)
@@ -32,28 +32,28 @@ void entidad::setColision(int num){
         colisiona_derecha = true;
 }
 
-void entidad::setPosicion(int x, int y)
+void Entidad::setPosicion(int x, int y)
 {
     sprite->setPosition(x + sprite->getSize().x, y + sprite->getSize().y);
 }
 
-sf::RectangleShape entidad::cuadradoder(){
+sf::RectangleShape Entidad::cuadradoder(){
     return *cuadrado_der;
 }
 
-sf::RectangleShape entidad::cuadradoarr(){
+sf::RectangleShape Entidad::cuadradoarr(){
     return *cuadrado_arr;
 }
 
-sf::RectangleShape entidad::cuadradoizq(){
+sf::RectangleShape Entidad::cuadradoizq(){
     return *cuadrado_izq;
 }
 
-sf::RectangleShape entidad::cuadradoabaj(){
+sf::RectangleShape Entidad::cuadradoabaj(){
     return *cuadrado_abj;
 }
 
 
-RectangleShape entidad::getSprite(){
+RectangleShape Entidad::getSprite(){
     return *sprite;
 }

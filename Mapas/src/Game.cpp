@@ -1,4 +1,4 @@
-#include "../include/game.h"
+#include "../include/Game.h"
 using namespace sf;
 
 game::game(){
@@ -29,7 +29,7 @@ void game::gameLoop(){
 
 void game::procesarColisiones(){
 
-    for(int i = 0; i < Mapa->getNumColisiones(); i++){
+    for(int i = 0; i < mapa->getNumColisiones(); i++){
         //INFERIOR
         if(jugador->cuadradoarr().getGlobalBounds().intersects(colisiones[i])){
             jugador->setColision(2);
@@ -70,14 +70,14 @@ void game::setView(){
 }
 
 void game::setColisions(){
-    colisiones = new FloatRect[Mapa->getNumColisiones()];
+    colisiones = new FloatRect[mapa->getNumColisiones()];
     Sprite box;
     int n = 0;
-    for(int capa = 0; capa < Mapa->getNumCapas(); capa++){
-        for(int alto = 0; alto < Mapa->getHeight(); alto++){
-            for(int ancho = 0; ancho < Mapa->getWidth(); ancho++){
-                    if(n < Mapa->getNumColisiones() && Mapa->getColisiones()[alto][ancho] == true && Mapa->getMapSprite()[capa][alto][ancho] != NULL){
-                        box = *Mapa->getMapSprite()[capa][alto][ancho];
+    for(int capa = 0; capa < mapa->getNumCapas(); capa++){
+        for(int alto = 0; alto < mapa->getHeight(); alto++){
+            for(int ancho = 0; ancho < mapa->getWidth(); ancho++){
+                    if(n < mapa->getNumColisiones() && mapa->getColisiones()[alto][ancho] == true && mapa->getMapSprite()[capa][alto][ancho] != NULL){
+                        box = *mapa->getMapSprite()[capa][alto][ancho];
                         colisiones[n] = box.getGlobalBounds();
                         n++;
                     }
@@ -88,15 +88,15 @@ void game::setColisions(){
 }
 
 void game::cargarHUD(){
-    hud_principal = new hud();
+    hud_principal = new Hud();
 }
 
 void game::mostrarMapaColisiones(){
     cout << endl << "Mapa de colisiones:" << endl;
     cout <<  "------------------------" << endl;
-    for(int j = 0; j < Mapa->getHeight(); j++){
-        for(int k = 0; k < Mapa->getWidth(); k++){
-            cout << Mapa->getColisiones()[j][k];
+    for(int j = 0; j < mapa->getHeight(); j++){
+        for(int k = 0; k < mapa->getWidth(); k++){
+            cout << mapa->getColisiones()[j][k];
         }
        cout << endl;
     }
@@ -104,23 +104,23 @@ void game::mostrarMapaColisiones(){
 }
 
 void game::cargaMapa(){
-    Mapa = new mapa;
+    mapa = new Mapa;
     mostrarMapaColisiones();
     setColisions();
 }
 
 void game::cargaPlayer(){
-    jugador = new player;
+    jugador = new Player;
 }
 
 void game::render(){
     window->clear(Color(28,17,23,255));
     window->setView(view);
-    for(int i = 0; i < Mapa->getNumCapas(); i++){
-        for(int j = 0; j < Mapa->getHeight(); j++){
-            for(int k = 0; k < Mapa->getWidth(); k++){
-                if(Mapa->getMapSprite()[i][j][k]!=NULL){
-                    window->draw(*(Mapa->getMapSprite()[i][j][k]));
+    for(int i = 0; i < mapa->getNumCapas(); i++){
+        for(int j = 0; j < mapa->getHeight(); j++){
+            for(int k = 0; k < mapa->getWidth(); k++){
+                if(mapa->getMapSprite()[i][j][k]!=NULL){
+                    window->draw(*(mapa->getMapSprite()[i][j][k]));
                     if(i == 3){
                         window->draw(jugador->getSprite());
                     }

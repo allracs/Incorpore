@@ -1,11 +1,11 @@
 
-#include "../include/hud.h"
+#include "../include/Hud.h"
 
-hud::hud()
+Hud::Hud()
 {
     //PIEZA HUD VIDA
     pieza_vida = new sf::RectangleShape({115,20});
-    pieza_vida->setFillColor(sf::Color::Blue);
+    pieza_vida->setFillColor(sf::Color(28,17,23,255));
     pieza_vida->setPosition(0,0);
 
     //TEXTO DE VIDA
@@ -70,14 +70,14 @@ hud::hud()
 
     //PIEZA HUD HABILIDADES
     pieza_habilidades = new sf::RectangleShape({90,16});
-    pieza_habilidades->setFillColor(sf::Color::Blue);
+    pieza_habilidades->setFillColor(sf::Color(28,17,23,255));
     pieza_habilidades->setOrigin(pieza_habilidades->getOrigin().x/2, pieza_habilidades->getOrigin().x/2);
     pieza_habilidades->setPosition(180,520);
 
 }
 
 
-void hud::modificar_vida(int cantidad, int sr)
+void Hud::modificar_vida(int cantidad, int sr)
 {
     //sr = 1 -> suma vida
     //sr = 2 -> resta vida
@@ -93,7 +93,7 @@ void hud::modificar_vida(int cantidad, int sr)
 
 }
 
-void hud::borradoHabilidades()
+void Hud::borradoHabilidades()
 {
     vector_habilidades->clear();
     mejora_escudo_esta = false;
@@ -105,7 +105,7 @@ void hud::borradoHabilidades()
 }
 
 
-void hud::compruebaTeclas(){
+void Hud::compruebaTeclas(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
         modificar_vida(1,1);
     }
@@ -150,7 +150,7 @@ void hud::compruebaTeclas(){
 
 //SETTERS
 
-void hud::setPosicionVida(int x, int y){
+void Hud::setPosicionVida(int x, int y){
     pieza_vida->setPosition(x,y);
     texto_vida->setPosition(pieza_vida->getPosition().x, pieza_vida->getPosition().y);
     for(int i = 0; i < cantidad_corazones->size(); i++)
@@ -159,7 +159,7 @@ void hud::setPosicionVida(int x, int y){
     }
 }
 
-void hud::setPosicionHabilidades(int x, int y){
+void Hud::setPosicionHabilidades(int x, int y){
     pieza_habilidades->setPosition(x,y);
     for(int i = 0; i < vector_habilidades->size(); i++)
     {
@@ -167,7 +167,7 @@ void hud::setPosicionHabilidades(int x, int y){
     }
 }
 
-void hud::setHabilidad(int habilidad)
+void Hud::setHabilidad(int habilidad)
 {
     if(habilidad == 1 && mejora_escudo_esta == false)
     {
@@ -201,48 +201,48 @@ void hud::setHabilidad(int habilidad)
     }
 }
 
-void hud::setPosition(int x, int y){
+void Hud::setPosition(int x, int y){
     pieza_vida->setPosition(x,y);
 }
 
 //GETTERS
 
-sf::Text hud::getTextoVida()
+sf::Text Hud::getTextoVida()
 {
     return *texto_vida;
 }
 
-std::vector<sf::Sprite> hud::getArrayVida()
+std::vector<sf::Sprite> Hud::getArrayVida()
 {
     return *cantidad_corazones;
 }
 
-std::vector<sf::Sprite> hud::getArrayHabilidades()
+std::vector<sf::Sprite> Hud::getArrayHabilidades()
 {
     return *vector_habilidades;
 }
 
-sf::RectangleShape hud::getPiezaVida()
+sf::RectangleShape Hud::getPiezaVida()
 {
     return *pieza_vida;
 }
 
-sf::RectangleShape hud::getPiezaHabilidades()
+sf::RectangleShape Hud::getPiezaHabilidades()
 {
     return *pieza_habilidades;
 }
 
-int hud::getCantidadVida()
+int Hud::getCantidadVida()
 {
     return cantidad_corazones->size();
 }
 
-int hud::getCantidadHabilidades()
+int Hud::getCantidadHabilidades()
 {
     return vector_habilidades->size();
 }
 
-sf::Sprite hud::getCorazon()
+sf::Sprite Hud::getCorazon()
 {
     return *corazon;
 }
