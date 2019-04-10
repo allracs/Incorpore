@@ -1,0 +1,6 @@
+# gitignore para CodeBlocks
+*.layout
+*.depend
+# directorios generados
+bin/
+obj/
