@@ -81,66 +81,39 @@ std::vector<Posicion> Astar::mapear()
 
     //-------------------------------------------------------------------------
 
-    /*
-    std::vector<Posicion> salidaFinal;
-    Posicion direccionIni = listaCerrada->at(0).getPadre();
-    salidaFinal.insert(salidaFinal.begin(), Posicion(direccionIni.getY(), direccionIni.getX()));
-    std::cout << listaCerrada->size() << std::endl;
-    for(int i = 1; i < listaCerrada->size(); i++)
-    {
-        if(listaCerrada->at(i).getX() == direccionIni.getX() && listaCerrada->at(i).getY() == direccionIni.getY())
-        {
-        }
-        salidaFinal.push_back(Posicion(listaCerrada->at(i).getPadre().getY(), listaCerrada->at(i).getPadre().getX()));
-        //std::cout << listaCerrada->at(i).getPadre().getY() << "-.-.-.-" << listaCerrada->at(i).getPadre().getX() << std::endl;
-    }
-    */
-
-
-
-    Posicion direccionDePadres = listaCerrada->at(0);
+    Posicion direccionDePadres = listaCerrada->at(0).getPadre();
     std::vector<Posicion> salidaFinal;
     salidaFinal.insert(salidaFinal.begin(), direccionDePadres);
-    std::cout << listaCerrada->at(0).getPadre().getPadre().getX() << " --- " << listaCerrada->at(0).getPadre().getPadre().getY() << std::endl << std::endl;
+    //std::cout << listaCerrada->at(0).getPadre().getPadre().getX() << " --- " << listaCerrada->at(0).getPadre().getPadre().getY() << std::endl << std::endl;
     std::cout << listaCerrada->at(0).getX() << " --- " << listaCerrada->at(0).getY() << std::endl << std::endl;
 
-    for(int i = 1; i < listaCerrada->size(); i++)
+    for(int i = 1; i < listaCerrada->size()-1; i++)
     {
-        std::cout << listaCerrada->at(i).getX() << " --- " << listaCerrada->at(i).getY() << std::endl;
-        std::cout << direccionDePadres.getPadre().getX() << " --- " << direccionDePadres.getPadre().getY() << std::endl << std::endl;
+        std::cout <<"//POSICION: "<< listaCerrada->at(i).getY() << " --- " << listaCerrada->at(i).getX() << std::endl;
+        std::cout <<"// PADRE: " << listaCerrada->at(i-1).getPadre().getY()<< " - " << listaCerrada->at(i-1).getPadre().getX()<< std::endl;
+        //std::cout << direccionDePadres.getPadre().getX() << " --- " << direccionDePadres.getPadre().getY() << std::endl << std::endl;
+
+        std::cout << "Padre existe:" << std::endl;
         if(listaCerrada->at(i).getX() == direccionDePadres.getX() && listaCerrada->at(i).getY() == direccionDePadres.getY())
         {
             std::cout << "ENTRO EN EL BUCLE LOCO: " << i << std::endl;
-            salidaFinal.insert(salidaFinal.end(),listaCerrada->at(i).getPadre());
-            direccionDePadres = listaCerrada->at(i).getPadre();
+            std::cout <<"Posicion Final: " << fin->getX() << " - " << fin->getY() << std::endl;
+            std::cout <<"Posicion que entra: " << listaCerrada->at(i).getY() << " - " << listaCerrada->at(i).getX() << std::endl;
+
+                salidaFinal.insert(salidaFinal.end(),listaCerrada->at(i).getPadre());
+                direccionDePadres = listaCerrada->at(i).getPadre();
+
+               // std::cout<< "estoy en la posicion final" << std::endl;
+
         }
     }
-
-    /*
-    -----------------------
-    //EMPIEZA JAVASCRIPT
-    listaCerrada.reverse();
-
-    var direccionDePadres = listaCerrada[0].padre;
-    var salidaFinal = [direccionDePadres];
-
-    for(let i = 1; i < listaCerrada.length-1; i++) {
-        // Comprobamos el siguiente padre que corresponda con sus coordenadas
-        if(listaCerrada[i].x === direccionDePadres[0] && listaCerrada[i].y === direccionDePadres[1]) {
-                direccionDePadres = listaCerrada[i].padre;
-                salidaFinal.push(listaCerrada[i].padre);
-        }
-    }
-    //ACABA JAVASCRIPT
-    std::cout << salidaFinal.size() << std::endl;
-    */
 
     //-------------------------------------------------------------------------
 
     std::cout << "///////////////SALIDA FINALISIMA/////////////////" << std::endl;
 
 
-    return *listaCerrada;
+    return salidaFinal;
 }
 
 int Astar::obtenerMenorF()
@@ -172,7 +145,8 @@ void Astar::removerLista(int indicePadre)
     std::cout << "SE METE EN LISTA CERRADA: " <<std::endl;
     for(int a = 0; a < listaCerrada->size(); a++)
     {
-        std::cout << listaCerrada->at(a).getY() << " --- " << listaCerrada->at(a).getX() << std::endl;
+        std::cout << listaCerrada->at(a).getY() << " --- " << listaCerrada->at(a).getX()<< std::endl;
+        //std::cout <<" // PADRE: " << listaCerrada->at(a).getPadre().getY()<< " - " << listaCerrada->at(a).getPadre().getX()<< std::endl;
     }
     listaAbierta->erase(listaAbierta->begin()+indicePadre);
 }
