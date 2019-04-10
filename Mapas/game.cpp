@@ -107,7 +107,6 @@ void game::cargaMapa(){
     Mapa = new mapa;
     mostrarMapaColisiones();
     setColisions();
-
 }
 
 void game::cargaPlayer(){
