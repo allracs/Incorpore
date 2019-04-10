@@ -1,0 +1,61 @@
+# depslib dependency file v1.0
+1553082131 source:/home/carlos/Escritorio/FV/HUD/juego.cpp
+	"juego.h"
+
+1552917898 /home/carlos/Escritorio/FV/HUD/juego.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"hud.h"
+	<string>
+
+1552910822 source:/home/carlos/Escritorio/FV/HUD/main.cpp
+	<iostream>
+	"juego.h"
+
+1552930455 /home/carlos/Escritorio/FV/HUD/hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1552932048 source:/home/carlos/Escritorio/FV/HUD/hud.cpp
+	"hud.h"
+
+1553512691 source:/home/carlos/Escritorio/Incorpore/HUD/hud.cpp
+	"hud.h"
+
+1553513221 /home/carlos/Escritorio/Incorpore/HUD/hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1553513182 source:/home/carlos/Escritorio/Incorpore/HUD/juego.cpp
+	"juego.h"
+
+1552917898 /home/carlos/Escritorio/Incorpore/HUD/juego.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"hud.h"
+	<string>
+
+1552910822 source:/home/carlos/Escritorio/Incorpore/HUD/main.cpp
+	<iostream>
+	"juego.h"
+
+1554833909 source:/home/david/Documentos/incorpore/HUD/hud.cpp
+	"hud.h"
+
+1554833909 /home/david/Documentos/incorpore/HUD/hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1554833909 source:/home/david/Documentos/incorpore/HUD/juego.cpp
+	"juego.h"
+
+1554833745 /home/david/Documentos/incorpore/HUD/juego.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"hud.h"
+	<string>
+
+1554833745 source:/home/david/Documentos/incorpore/HUD/main.cpp
+	<iostream>
+	"juego.h"
+
