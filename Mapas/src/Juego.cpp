@@ -1,7 +1,7 @@
-#include "../include/Game.h"
+#include "../include/Juego.h"
 using namespace sf;
 
-game::game(){
+Juego::Juego(){
     dimensiones = new int[2];
     dimensiones[0] = 1280;
     dimensiones[1] = 720;
@@ -16,7 +16,7 @@ game::game(){
     gameLoop();
 }
 
-void game::gameLoop(){
+void Juego::gameLoop(){
     while(window->isOpen()){
         procesarEventos();
         procesarColisiones();
@@ -27,7 +27,7 @@ void game::gameLoop(){
     }
 }
 
-void game::procesarColisiones(){
+void Juego::procesarColisiones(){
 
     for(int i = 0; i < mapa->getNumColisiones(); i++){
         //INFERIOR
@@ -53,7 +53,7 @@ void game::procesarColisiones(){
 
 }
 
-void game::procesarEventos(){
+void Juego::procesarEventos(){
 
     while(window->pollEvent(*evento)){
         switch(evento->type){
@@ -63,13 +63,13 @@ void game::procesarEventos(){
 
 }
 
-void game::setView(){
+void Juego::setView(){
     view.setCenter(jugador->getSprite().getPosition().x, jugador->getSprite().getPosition().y);
     hud_principal->setPosicionVida(view.getCenter().x - dimensiones[0]/10 + 4, view.getCenter().y - dimensiones[1]/10);
     hud_principal->setPosicionHabilidades(view.getCenter().x - hud_principal->getPiezaHabilidades().getGlobalBounds().width/2, view.getCenter().y + dimensiones[1]/10 - hud_principal->getPiezaHabilidades().getGlobalBounds().height);
 }
 
-void game::setColisions(){
+void Juego::setColisions(){
     colisiones = new FloatRect[mapa->getNumColisiones()];
     Sprite box;
     int n = 0;
@@ -87,11 +87,11 @@ void game::setColisions(){
     }
 }
 
-void game::cargarHUD(){
+void Juego::cargarHUD(){
     hud_principal = new Hud();
 }
 
-void game::mostrarMapaColisiones(){
+void Juego::mostrarMapaColisiones(){
     cout << endl << "Mapa de colisiones:" << endl;
     cout <<  "------------------------" << endl;
     for(int j = 0; j < mapa->getHeight(); j++){
@@ -103,17 +103,17 @@ void game::mostrarMapaColisiones(){
     cout <<  "------------------------" << endl;
 }
 
-void game::cargaMapa(){
+void Juego::cargaMapa(){
     mapa = new Mapa;
     mostrarMapaColisiones();
     setColisions();
 }
 
-void game::cargaPlayer(){
-    jugador = new Player;
+void Juego::cargaPlayer(){
+    jugador = new Jugador;
 }
 
-void game::render(){
+void Juego::render(){
     window->clear(Color(28,17,23,255));
     window->setView(view);
     for(int i = 0; i < mapa->getNumCapas(); i++){
@@ -147,6 +147,6 @@ void game::render(){
     window->display();
 }
 
-View game::getView(){
+View Juego::getView(){
     return view;
 }

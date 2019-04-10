@@ -5,9 +5,9 @@
 using namespace sf;
 using namespace std;
 
-class Enemy : public Entidad{
+class Enemigo : public Entidad{
     public:
-        Enemy();
+        Enemigo();
     private:
 };
 

@@ -1,12 +1,12 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "../include/game.h"
+#include "../include/Juego.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]){
 
-    game *partida = new game();
+    Juego *partida = new Juego();
 
     return 0;
 }

@@ -5,9 +5,9 @@
 using namespace sf;
 using namespace std;
 
-class Player : public Entidad{
+class Jugador : public Entidad{
     public:
-        Player();
+        Jugador();
         void movimiento();
     private:
         int velocidad;

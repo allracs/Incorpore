@@ -1,15 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Player.h"
+#include "Jugador.h"
 #include "Hud.h"
 #include "Mapa.h"
 
 using namespace sf;
 
-class game
-{
+class Juego{
     public:
-        game();
+        Juego();
         void gameLoop();
         void render();
         void cargaPlayer();
@@ -25,7 +24,7 @@ class game
         int* dimensiones;
     private:
         RenderWindow *window;
-        Player *jugador;
+        Jugador *jugador;
         Event *evento;
         Mapa *mapa;
         Hud *hud_principal;

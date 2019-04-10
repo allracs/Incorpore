@@ -305,10 +305,10 @@
 	<cstddef>
 	<cstdarg>
 
-1554917032 source:/home/david/Documentos/Incorpore/Mapas/src/main.cpp
+1554919064 source:/home/david/Documentos/Incorpore/Mapas/src/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
-	"../include/game.h"
+	"../include/Juego.h"
 
 1554918330 source:/home/david/Documentos/Incorpore/Mapas/src/Enemy.cpp
 	"../include/Enemy.h"
@@ -357,4 +357,28 @@
 
 1554918660 source:/home/david/Documentos/Incorpore/Mapas/src/Player.cpp
 	"../include/Player.h"
+
+1554918880 source:/home/david/Documentos/Incorpore/Mapas/src/Enemigo.cpp
+	"../include/Enemigo.h"
+
+1554918899 /home/david/Documentos/Incorpore/Mapas/include/Enemigo.h
+	"Entidad.h"
+	<SFML/Graphics.hpp>
+
+1554919032 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+	"../include/Juego.h"
+
+1554918977 /home/david/Documentos/Incorpore/Mapas/include/Juego.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"Jugador.h"
+	"Hud.h"
+	"Mapa.h"
+
+1554918949 /home/david/Documentos/Incorpore/Mapas/include/Jugador.h
+	"Entidad.h"
+	<SFML/Graphics.hpp>
+
+1554919047 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
+	"../include/Jugador.h"
 

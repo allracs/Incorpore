@@ -1,13 +1,13 @@
-#include "../include/Player.h"
+#include "../include/Jugador.h"
 using namespace sf;
 
-Player::Player(){
+Jugador::Jugador(){
 
     velocidad = 2;
 }
 
 ///---------------------------------MOVIMIENTO
-void Player::movimiento(){
+void Jugador::movimiento(){
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && colisiona_derecha != true){
         sprite->move(-velocidad, 0);
