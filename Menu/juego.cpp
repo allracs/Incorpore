@@ -1,5 +1,7 @@
 
 #include "juego.h"
+#include <SFML/Graphics.hpp>
+#include <stdlib.h>
 
 juego::juego()
 {

@@ -1,6 +1,7 @@
 
 
 #include <SFML/Graphics.hpp>
+#include <stdlib.h>
 #include <iostream>
 #include "menu.h"
 //#include <SFML/Audio.hpp>
