@@ -1,5 +1,6 @@
 #include "Enemigo.h"
 #include "Jugador.h"
+#include "Bullet.h"
 
 Enemigo::Enemigo(sf::Vector2f pos)
 {
@@ -18,7 +19,7 @@ Enemigo::~Enemigo()
 {
     //dtor
 }
-
+/*
 void Enemigo::serAtacado(sf::RectangleShape hitbox){
     //El enemigo muere cuando la hitbox le toca y hacemos click
     if (hitbox.getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -26,8 +27,12 @@ void Enemigo::serAtacado(sf::RectangleShape hitbox){
         deleteSprite = true;
     }
 
+    if (hitboxBullet.getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()))
+        {
+            deleteSprite = true;
+        }
 }
-
+*/
 
 void Enemigo::draw(sf::RenderWindow &app) {
     if(!deleteSprite){
@@ -37,7 +42,7 @@ void Enemigo::draw(sf::RenderWindow &app) {
 
 void Enemigo::update(float delta, sf::RenderWindow &app, sf::RectangleShape enemigoHitbox){
 
-    serAtacado(enemigoHitbox);
+    //serAtacado(enemigoHitbox);
 
 }
 

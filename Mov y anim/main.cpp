@@ -2,6 +2,7 @@
 #include "Jugador.h"
 #include "Animacion.h"
 #include "Enemigo.h"
+#include "Bullet.h"
 
 int main()
 {

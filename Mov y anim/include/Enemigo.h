@@ -1,6 +1,7 @@
 #ifndef ENEMIGO_H
 #define ENEMIGO_H
 #include "Jugador.h"
+#include "Bullet.h"
 
 
 class Enemigo

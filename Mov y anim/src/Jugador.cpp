@@ -53,6 +53,9 @@ void Jugador::rotacionAtaque(sf::RenderWindow &app) {
     sf::Vector2i pixelPos = sf::Vector2i(sf::Mouse::getPosition(app));
 
     mousePos = app.mapPixelToCoords(pixelPos);
+    aimDir = mousePos - playerCenter;
+    aimDirNorm = aimDir / (float)sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
+
 
     float PI = 3.14159265;
 
@@ -64,6 +67,7 @@ void Jugador::rotacionAtaque(sf::RenderWindow &app) {
     hitboxAtaque.setRotation(rotation);
 
 }
+
 
 void Jugador::moverse(){
 
@@ -134,6 +138,33 @@ void Jugador::moverse(){
 
 }
 
+void Jugador::range(sf::RenderWindow &app){ //Activacion de ataque a distancia
+
+    Bullet::Bullet() b1;
+
+
+    if(rangeON){
+     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                b1.hitbox.setPosition(playerCenter);
+                b1.currVelocity = aimDirNorm * b1.maxSpeed;
+
+                bullets.push_back(Bullet(b1));
+
+
+            }
+        }
+
+         for(size_t i = 0; i < bullets.size(); i++){
+            bullets[i].hitbox.move(bullets[i].currVelocity);
+            //Para borrar los proyectiles
+            if(bullets[i].hitbox.getPosition().x < 0 || bullets[i].hitbox.getPosition().x > app.getSize().x ||
+               bullets[i].hitbox.getPosition().y < 0 || bullets[i].hitbox.getPosition().y > app.getSize().y )
+               {
+                bullets.erase(bullets.begin()+i);
+               }
+    }
+}
+
 sf::Vector2f Jugador::getCenter(){
     //std::cout << "HA DEVUELTO EL PLAYER CENTER: " << playerCenter.x << "--" << playerCenter.y << std::endl;
     return playerCenter;
@@ -162,10 +193,20 @@ void Jugador::update(float delta, sf::RenderWindow &app){
 
     actual->update(delta, movement);
 
-
-
     // ANiMACIONES
 
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+        {
+            if(rangeON)
+                rangeON = false;
+             else
+                rangeON = true;
+
+        }
+
+        if(rangeON){
+            range(app);
+        }
 }
 
 
@@ -173,6 +214,7 @@ void Jugador::draw(sf::RenderWindow &app) {
     app.draw(jugadorHitbox);
     app.draw(actual->sprite);
     app.draw(hitboxAtaque);
+    app.draw(app,bullets);
 
 
 
