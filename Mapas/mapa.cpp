@@ -179,7 +179,15 @@ void mapa::posicionaObjetos(){
             if(colisionMap[i][j] == false && nObj < maxObj){
                 int random = rand() % 100;
                 //cout << random << endl;
-                if(random < 1){
+                if(random < 1 &&
+                   colisionMap[i-1][j-1] == false &&
+                   colisionMap[i][j-1] == false &&
+                   colisionMap[i+1][j-1] == false &&
+                   colisionMap[i-1][j] == false &&
+                   colisionMap[i+1][j] == false &&
+                   colisionMap[i-1][j+1] == false &&
+                   colisionMap[i][j+1] == false &&
+                   colisionMap[i+1][j+1] == false){
                     generaObjetos(i, j, nObj);
                 }
             }
@@ -193,46 +201,46 @@ void mapa::generaObjetos(int j, int k, int no){
         int random = rand() % 100;
         if(random >= 0 && random < 30){
             //Antorcha
-            mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
-            mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
+            mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
+            mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-            mapSprite[5][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-            mapSprite[5][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+            mapSprite[6][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
+            mapSprite[6][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
             nColisiones++;
         }
         else if(random >= 30 && random < 53){
             //Caja
-            mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[caja[1]].getTextureRect());
-            mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
+            mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[caja[1]].getTextureRect());
+            mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-            mapSprite[5][j-1][k] = new Sprite(texturaTileset,tilesetSprite[caja[0]].getTextureRect());
-            mapSprite[5][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+            mapSprite[6][j-1][k] = new Sprite(texturaTileset,tilesetSprite[caja[0]].getTextureRect());
+            mapSprite[6][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
             nColisiones++;
         }
         else if(random >= 53 && random < 68){
             //CajaDoble
-            mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[1]].getTextureRect());
-            mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
+            mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[1]].getTextureRect());
+            mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-            mapSprite[5][j-1][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[0]].getTextureRect());
-            mapSprite[5][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+            mapSprite[6][j-1][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[0]].getTextureRect());
+            mapSprite[6][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
             nColisiones++;
         }
         else if(random >= 68 && random < 90){
             //Calavera
-            mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[calavera].getTextureRect());
-            mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
+            mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[calavera].getTextureRect());
+            mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
         }
         else if(random >= 90 && random < 100){
             //Columna
-            mapSprite[2][j][k] = new Sprite(texturaTileset,tilesetSprite[columna[1]].getTextureRect());
-            mapSprite[2][j][k]->setPosition(k*tilewidth,j*tileheight);
+            mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[columna[1]].getTextureRect());
+            mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
 
-            mapSprite[5][j-1][k] = new Sprite(texturaTileset,tilesetSprite[columna[0]].getTextureRect());
-            mapSprite[5][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+            mapSprite[6][j-1][k] = new Sprite(texturaTileset,tilesetSprite[columna[0]].getTextureRect());
+            mapSprite[6][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
             nColisiones++;
         }
