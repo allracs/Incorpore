@@ -2,7 +2,7 @@
 1552511759 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/main.cpp
 	<bits/stdc++.h>
 
-1554897351 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/Astar.cpp
+1554898250 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/Astar.cpp
 	<iostream>
 	<stdlib.h>
 	<vector>
@@ -18,7 +18,7 @@
 	"Mapa.h"
 	"Posicion.h"
 
-1554895255 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/main.cpp
+1554898442 source:/home/oscar/Desktop/FV/Incorpore/IA_V2/src/main.cpp
 	<iostream>
 	<stdlib.h>
 	<vector>

@@ -49,10 +49,12 @@ Astar::~Astar()
 
 std::vector<Posicion> Astar::mapear()
 {
-
+    std::vector<Posicion> salidaFinal;
     int indiceIni = 0;
     bool rutaEncontrada = false;
     int contador = 1;
+    bool flag=true;
+    int anterior = listaAbierta->size();
 
     while(!rutaEncontrada)
     {
@@ -64,6 +66,17 @@ std::vector<Posicion> Astar::mapear()
         *vecinos = comprobarVecinos(*ini, *mapa);
        // std::cout << "vecinos comprobados " << listaAbierta->size() << std::endl;
         listaAbierta->insert(listaAbierta->begin(), vecinos->begin(), vecinos->end());
+
+
+
+        if(anterior==listaAbierta->size()){
+            std::cout << "Vecinos es cero" << std::endl;
+            flag=false;
+            break;
+        }
+
+
+
         indiceIni = obtenerMenorF();
         std::cout << "indiceIni: " << indiceIni << std::endl;
         *ini = listaAbierta->at(indiceIni);
@@ -73,7 +86,7 @@ std::vector<Posicion> Astar::mapear()
         std::cout << "RUTA ENCONTRADA CONTADOR: " << contador << std::endl;
         contador++;
     }
-
+    if(flag){
 
     std::cout << "%%%%%%%%%%%%%%%%%%%%%%%%" << std::endl << "SE VIENE EL REVERSE" << std::endl;
     std::reverse(listaCerrada->begin(), listaCerrada->end());
@@ -82,7 +95,7 @@ std::vector<Posicion> Astar::mapear()
     //-------------------------------------------------------------------------
 
     Posicion direccionDePadres = listaCerrada->at(0).getPadre();
-    std::vector<Posicion> salidaFinal;
+
     salidaFinal.insert(salidaFinal.begin(), direccionDePadres);
     //std::cout << listaCerrada->at(0).getPadre().getPadre().getX() << " --- " << listaCerrada->at(0).getPadre().getPadre().getY() << std::endl << std::endl;
     std::cout << listaCerrada->at(0).getX() << " --- " << listaCerrada->at(0).getY() << std::endl << std::endl;
@@ -112,6 +125,8 @@ std::vector<Posicion> Astar::mapear()
 
     std::cout << "///////////////SALIDA FINALISIMA/////////////////" << std::endl;
 
+
+    }
 
     return salidaFinal;
 }
