@@ -2,12 +2,13 @@
 using namespace sf;
 
 game::game(){
-    window = new RenderWindow(VideoMode(800,800), "Carga Mapa");
+    window = new RenderWindow(VideoMode(1280,720), "Carga Mapa");
     window->setFramerateLimit(60);
     evento = new Event;
     cargaMapa();
     cargar_hud();
     cargaPlayer();
+    view.setSize(1280, 720);
     view.zoom(0.2f);
     gameLoop();
 }
@@ -115,7 +116,7 @@ void game::render(){
             for(int k = 0; k < Mapa->getWidth(); k++){
                 if(Mapa->getMapSprite()[i][j][k]!=NULL){
                     window->draw(*(Mapa->getMapSprite()[i][j][k]));
-                    if(i == 4){
+                    if(i == 3){
                         window->draw(jugador->getSprite());
                     }
                 }
