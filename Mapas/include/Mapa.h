@@ -31,6 +31,12 @@ class Mapa{
 
         FloatRect* getBounds();
 
+        //MOSTRAMOS POR PANTALLA
+        void mostrarMapaColisiones();
+
+        //DRAW
+        void draw(RenderWindow&, RectangleShape);
+
     private:
         int width, height, tilewidth, tileheight, gid;
         int nObj, maxObj;

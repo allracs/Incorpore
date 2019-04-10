@@ -9,6 +9,7 @@ class Jugador : public Entidad{
     public:
         Jugador();
         void movimiento();
+        void procesarColisiones(int, FloatRect*);
     private:
         int velocidad;
 };

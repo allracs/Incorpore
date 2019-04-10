@@ -9,17 +9,14 @@ using namespace sf;
 class Juego{
     public:
         Juego();
-        void gameLoop();
-        void render();
-        void cargaPlayer();
         void cargaMapa();
         void cargarHUD();
+        void cargaPlayer();
+        void gameLoop();
+
         void procesarEventos();
         void setView();
-        void mostrarMapaColisiones();
-        void procesarColisiones();
-        void setColisions();
-        View getView();
+        void render();
 
         int* dimensiones;
     private:
@@ -28,6 +25,6 @@ class Juego{
         Jugador *jugador;
         Event *evento;
         Mapa *mapa;
-        Hud *hud_principal;
+        Hud *hud;
         View view;
 };

@@ -33,3 +33,26 @@ void Jugador::movimiento(){
     colisiona_izquierda = false;
 }
 
+void Jugador::procesarColisiones(int nColisiones, FloatRect* colisiones){
+    for(int i = 0; i < nColisiones; i++){
+        //INFERIOR
+        if(cuadrado_arr->getGlobalBounds().intersects(colisiones[i])){
+            setColision(2);
+        }
+
+        //SUPERIOR
+        if(cuadrado_abj->getGlobalBounds().intersects(colisiones[i])){
+            setColision(1);
+        }
+
+        //IZQUIERDA
+        if(cuadrado_der->getGlobalBounds().intersects(colisiones[i])){
+            setColision(3);
+        }
+
+        //DERECHA
+        if(cuadrado_izq->getGlobalBounds().intersects(colisiones[i])){
+            setColision(4);
+        }
+    }
+}

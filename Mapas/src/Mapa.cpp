@@ -304,4 +304,29 @@ FloatRect* Mapa::getBounds(){
     return colision;
 }
 
+void Mapa::mostrarMapaColisiones(){
+    cout << endl << "Mapa de colisiones:" << endl;
+    cout <<  "------------------------" << endl;
+    for(int y = 0; y < height; y++){
+        for(int x = 0; x < width; x++){
+            cout << colisionMap[y][x];
+        }
+       cout << endl;
+    }
+    cout <<  "------------------------" << endl;
+}
 
+void Mapa::draw(RenderWindow& target, RectangleShape player){
+    for(int l = 0; l < nCapas; l++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                if(mapSprite[l][y][x]!=NULL){
+                    target.draw(*(mapSprite[l][y][x]));
+                    if(l == 3){
+                        target.draw(player);
+                    }
+                }
+            }
+        }
+    }
+}
