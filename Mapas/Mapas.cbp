@@ -41,17 +41,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="entidad.cpp" />
-		<Unit filename="entidad.h" />
-		<Unit filename="game.cpp" />
-		<Unit filename="game.h" />
-		<Unit filename="hud.cpp" />
-		<Unit filename="hud.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="mapa.cpp" />
-		<Unit filename="mapa.h" />
-		<Unit filename="player.cpp" />
-		<Unit filename="player.h" />
+		<Unit filename="include/Animacion.h" />
+		<Unit filename="include/Enemigo.h" />
+		<Unit filename="include/Entidad.h" />
+		<Unit filename="include/Hud.h" />
+		<Unit filename="include/Juego.h" />
+		<Unit filename="include/Jugador.h" />
+		<Unit filename="include/Mapa.h" />
+		<Unit filename="include/tinyxml2.h" />
 		<Unit filename="resources/tmx/Antorcha.tmx" />
 		<Unit filename="resources/tmx/Caja.tmx" />
 		<Unit filename="resources/tmx/CajaDoble.tmx" />
@@ -59,8 +56,15 @@
 		<Unit filename="resources/tmx/Cofre.tmx" />
 		<Unit filename="resources/tmx/Columna.tmx" />
 		<Unit filename="resources/tmx/Mapa.tmx" />
-		<Unit filename="tinyxml2.cpp" />
-		<Unit filename="tinyxml2.h" />
+		<Unit filename="src/Animacion.cpp" />
+		<Unit filename="src/Enemigo.cpp" />
+		<Unit filename="src/Entidad.cpp" />
+		<Unit filename="src/Hud.cpp" />
+		<Unit filename="src/Juego.cpp" />
+		<Unit filename="src/Jugador.cpp" />
+		<Unit filename="src/Mapa.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/tinyxml2.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />

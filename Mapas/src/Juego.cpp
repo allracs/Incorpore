@@ -1,19 +1,22 @@
-#include "game.h"
+#include "../include/Juego.h"
 using namespace sf;
 
-game::game(){
-    window = new RenderWindow(VideoMode(1280,720), "Carga Mapa");
+Juego::Juego(){
+    dimensiones = new int[2];
+    dimensiones[0] = 1280;
+    dimensiones[1] = 720;
+    window = new RenderWindow(VideoMode(dimensiones[0], dimensiones[1]), "Carga Mapa");
     window->setFramerateLimit(60);
     evento = new Event;
     cargaMapa();
-    cargar_hud();
+    cargarHUD();
     cargaPlayer();
-    view.setSize(1280, 720);
+    view.setSize(dimensiones[0], dimensiones[1]);
     view.zoom(0.2f);
     gameLoop();
 }
 
-void game::gameLoop(){
+void Juego::gameLoop(){
     while(window->isOpen()){
         procesarEventos();
         procesarColisiones();
@@ -24,9 +27,9 @@ void game::gameLoop(){
     }
 }
 
-void game::procesarColisiones(){
+void Juego::procesarColisiones(){
 
-    for(int i = 0; i < Mapa->getNumColisiones(); i++){
+    for(int i = 0; i < mapa->getNumColisiones(); i++){
         //INFERIOR
         if(jugador->cuadradoarr().getGlobalBounds().intersects(colisiones[i])){
             jugador->setColision(2);
@@ -50,7 +53,7 @@ void game::procesarColisiones(){
 
 }
 
-void game::procesarEventos(){
+void Juego::procesarEventos(){
 
     while(window->pollEvent(*evento)){
         switch(evento->type){
@@ -60,19 +63,21 @@ void game::procesarEventos(){
 
 }
 
-void game::setView(){
+void Juego::setView(){
     view.setCenter(jugador->getSprite().getPosition().x, jugador->getSprite().getPosition().y);
+    hud_principal->setPosicionVida(view.getCenter().x - dimensiones[0]/10 + 4, view.getCenter().y - dimensiones[1]/10);
+    hud_principal->setPosicionHabilidades(view.getCenter().x - hud_principal->getPiezaHabilidades().getGlobalBounds().width/2, view.getCenter().y + dimensiones[1]/10 - hud_principal->getPiezaHabilidades().getGlobalBounds().height);
 }
 
-void game::setColisions(){
-    colisiones = new FloatRect[Mapa->getNumColisiones()];
+void Juego::setColisions(){
+    colisiones = new FloatRect[mapa->getNumColisiones()];
     Sprite box;
     int n = 0;
-    for(int capa = 0; capa < Mapa->getNumCapas(); capa++){
-        for(int alto = 0; alto < Mapa->getHeight(); alto++){
-            for(int ancho = 0; ancho < Mapa->getWidth(); ancho++){
-                    if(n < Mapa->getNumColisiones() && Mapa->getColisiones()[alto][ancho] == true && Mapa->getMapSprite()[capa][alto][ancho] != NULL){
-                        box = *Mapa->getMapSprite()[capa][alto][ancho];
+    for(int capa = 0; capa < mapa->getNumCapas(); capa++){
+        for(int alto = 0; alto < mapa->getHeight(); alto++){
+            for(int ancho = 0; ancho < mapa->getWidth(); ancho++){
+                    if(n < mapa->getNumColisiones() && mapa->getColisiones()[alto][ancho] == true && mapa->getMapSprite()[capa][alto][ancho] != NULL){
+                        box = *mapa->getMapSprite()[capa][alto][ancho];
                         colisiones[n] = box.getGlobalBounds();
                         n++;
                     }
@@ -82,40 +87,40 @@ void game::setColisions(){
     }
 }
 
-void game::cargar_hud(){
-    hud_principal = new hud;
+void Juego::cargarHUD(){
+    hud_principal = new Hud();
 }
 
-void game::mostrarMapaColisiones(){
+void Juego::mostrarMapaColisiones(){
     cout << endl << "Mapa de colisiones:" << endl;
     cout <<  "------------------------" << endl;
-    for(int j = 0; j < Mapa->getHeight(); j++){
-        for(int k = 0; k < Mapa->getWidth(); k++){
-            cout << Mapa->getColisiones()[j][k];
+    for(int j = 0; j < mapa->getHeight(); j++){
+        for(int k = 0; k < mapa->getWidth(); k++){
+            cout << mapa->getColisiones()[j][k];
         }
        cout << endl;
     }
     cout <<  "------------------------" << endl;
 }
 
-void game::cargaMapa(){
-    Mapa = new mapa;
+void Juego::cargaMapa(){
+    mapa = new Mapa;
     mostrarMapaColisiones();
     setColisions();
 }
 
-void game::cargaPlayer(){
-    jugador = new player;
+void Juego::cargaPlayer(){
+    jugador = new Jugador;
 }
 
-void game::render(){
+void Juego::render(){
     window->clear(Color(28,17,23,255));
     window->setView(view);
-    for(int i = 0; i < Mapa->getNumCapas(); i++){
-        for(int j = 0; j < Mapa->getHeight(); j++){
-            for(int k = 0; k < Mapa->getWidth(); k++){
-                if(Mapa->getMapSprite()[i][j][k]!=NULL){
-                    window->draw(*(Mapa->getMapSprite()[i][j][k]));
+    for(int i = 0; i < mapa->getNumCapas(); i++){
+        for(int j = 0; j < mapa->getHeight(); j++){
+            for(int k = 0; k < mapa->getWidth(); k++){
+                if(mapa->getMapSprite()[i][j][k]!=NULL){
+                    window->draw(*(mapa->getMapSprite()[i][j][k]));
                     if(i == 3){
                         window->draw(jugador->getSprite());
                     }
@@ -140,4 +145,8 @@ void game::render(){
     }
 
     window->display();
+}
+
+View Juego::getView(){
+    return view;
 }

@@ -1,31 +1,33 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "player.h"
-#include "hud.h"
-#include "mapa.h"
+#include "Jugador.h"
+#include "Hud.h"
+#include "Mapa.h"
 
 using namespace sf;
 
-class game
-{
+class Juego{
     public:
-        game();
+        Juego();
         void gameLoop();
         void render();
         void cargaPlayer();
         void cargaMapa();
-        void cargar_hud();
+        void cargarHUD();
         void procesarEventos();
         void setView();
         void mostrarMapaColisiones();
         void procesarColisiones();
         void setColisions();
+        View getView();
+
+        int* dimensiones;
     private:
         RenderWindow *window;
-        player *jugador;
+        Jugador *jugador;
         Event *evento;
-        mapa *Mapa;
-        hud *hud_principal;
+        Mapa *mapa;
+        Hud *hud_principal;
         View view;
         FloatRect* colisiones;
 

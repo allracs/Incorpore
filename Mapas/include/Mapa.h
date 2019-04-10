@@ -5,10 +5,10 @@ using namespace sf;
 using namespace tinyxml2;
 using namespace std;
 
-class mapa{
+class Mapa{
     public:
-        mapa();
-        ~mapa();
+        Mapa();
+        ~Mapa();
         void leerMapa(int);
         void setDatos();
         void getDatos();
@@ -27,7 +27,7 @@ class mapa{
         FloatRect** getBounds();
     private:
         int maxObj, nObj;
-        int width, height,tilewidth, tileheight, gid;
+        int width, height, tilewidth, tileheight, gid;
         int cofre, calavera;
         int* antorcha, *caja, *cajadoble, *columna;
         XMLDocument docXML; //Doc tmx

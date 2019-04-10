@@ -3,9 +3,9 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-class entidad{
+class Entidad{
     public:
-        entidad();
+        Entidad();
         RectangleShape getSprite();
 
         RectangleShape cuadradoder();

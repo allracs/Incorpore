@@ -1,13 +1,13 @@
 #ifndef ENEMY_H
 #define ENEMY_H
-#include "entidad.h"
+#include "Entidad.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 using namespace std;
 
-class enemy : public entidad{
+class Enemigo : public Entidad{
     public:
-        enemy();
+        Enemigo();
     private:
 };
 
