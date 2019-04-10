@@ -96,7 +96,7 @@ std::vector<Posicion> Astar::mapear()
     }
     */
 
-    /*
+
 
     Posicion direccionDePadres = listaCerrada->at(0);
     std::vector<Posicion> salidaFinal;
@@ -116,7 +116,7 @@ std::vector<Posicion> Astar::mapear()
         }
     }
 
-
+    /*
     -----------------------
     //EMPIEZA JAVASCRIPT
     listaCerrada.reverse();
