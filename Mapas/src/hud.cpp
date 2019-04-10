@@ -1,5 +1,5 @@
 
-#include "hud.h"
+#include "../include/hud.h"
 
 hud::hud()
 {

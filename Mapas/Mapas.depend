@@ -74,7 +74,8 @@
 	"hud.h"
 	"mapa.h"
 
-1554904462 source:/home/david/Documentos/Incorpore/Mapas/game.cpp
+1554915439 source:/home/david/Documentos/Incorpore/Mapas/game.cpp
+	"game.h"
 
 1554892110 a-colisiones
 	"game.h"
@@ -114,20 +115,25 @@
 	<cstddef>
 	<cstdarg>
 
-1554892110 /home/david/Documentos/Incorpore/Mapas/game.h
+1554915439 /home/david/Documentos/Incorpore/Mapas/game.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"player.h"
+	"hud.h"
+	"mapa.h"
 
-1554892110 /home/david/Documentos/Incorpore/Mapas/player.h
+1554915435 /home/david/Documentos/Incorpore/Mapas/player.h
 	"entidad.h"
 	<SFML/Graphics.hpp>
-	<SFML/Graphics.hpp>
 
-1554895774 /home/david/Documentos/Incorpore/Mapas/hud.h
-	<SFML/Graphics.hpp>
-	<vector>
+1554915439 /home/david/Documentos/Incorpore/Mapas/hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
-1554892110 /home/david/Documentos/Incorpore/Mapas/mapa.h
+1554915439 /home/david/Documentos/Incorpore/Mapas/mapa.h
+	"tinyxml2.h"
+	<SFML/Graphics.hpp>
+	<iostream>
 
 1554906230 /home/fv/FV/Incorpore/Mapas/player.h
 	"entidad.h"
@@ -151,7 +157,7 @@
 
 1554747227 source:/home/fv/FV/Incorpore/Mapas/main.cpp
 
-1554895889 source:/home/david/Documentos/Incorpore/Mapas/hud.cpp
+1554915439 source:/home/david/Documentos/Incorpore/Mapas/hud.cpp
 	"hud.h"
 
 1554892110 source:/home/david/Documentos/Incorpore/Mapas/main.cpp
@@ -162,22 +168,26 @@
 	<stdio.h>
 	<stdlib.h>
 
-1554894412 source:/home/david/Documentos/Incorpore/Mapas/mapa.cpp
+1554908632 source:/home/david/Documentos/Incorpore/Mapas/mapa.cpp
+	"mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
 
 1554909376 source:/home/fv/FV/Incorpore/Mapas/player.cpp
 	"player.h"
 
 1554747227 source:/home/fv/FV/Incorpore/Mapas/tinyxml2.cpp
 
-1554892110 source:/home/david/Documentos/Incorpore/Mapas/player.cpp
+1554915439 source:/home/david/Documentos/Incorpore/Mapas/player.cpp
 	"player.h"
 
 1554892110 source:/home/david/Documentos/Incorpore/Mapas/tinyxml2.cpp
 
-1554904424 /home/david/Documentos/Incorpore/Mapas/entidad.h
+1554916231 /home/david/Documentos/Incorpore/Mapas/entidad.h
 	<SFML/Graphics.hpp>
 
-1554904410 source:/home/david/Documentos/Incorpore/Mapas/entidad.cpp
+1554915439 source:/home/david/Documentos/Incorpore/Mapas/entidad.cpp
 	"entidad.h"
 
 1554904009 source:/home/david/Documentos/Incorpore/Mapas/enemy.cpp
@@ -192,4 +202,83 @@
 
 1554906230 /home/fv/FV/Incorpore/Mapas/entidad.h
 	<SFML/Graphics.hpp>
+
+1554916925 source:/home/david/Documentos/Incorpore/Mapas/src/Animacion.cpp
+	<iostream>
+	"../include/Animacion.h"
+
+1554910108 /home/david/Documentos/Incorpore/Mapas/include/Animacion.h
+	<SFML/Graphics.hpp>
+
+1554916931 source:/home/david/Documentos/Incorpore/Mapas/src/enemy.cpp
+	"../include/enemy.h"
+
+1554904056 /home/david/Documentos/Incorpore/Mapas/include/enemy.h
+	"entidad.h"
+	<SFML/Graphics.hpp>
+
+1554916231 /home/david/Documentos/Incorpore/Mapas/include/entidad.h
+	<SFML/Graphics.hpp>
+
+1554916936 source:/home/david/Documentos/Incorpore/Mapas/src/entidad.cpp
+	"../include/entidad.h"
+
+1554916942 source:/home/david/Documentos/Incorpore/Mapas/src/game.cpp
+	"../include/game.h"
+
+1554915439 /home/david/Documentos/Incorpore/Mapas/include/game.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"player.h"
+	"hud.h"
+	"mapa.h"
+
+1554915435 /home/david/Documentos/Incorpore/Mapas/include/player.h
+	"entidad.h"
+	<SFML/Graphics.hpp>
+
+1554915439 /home/david/Documentos/Incorpore/Mapas/include/hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1554915439 /home/david/Documentos/Incorpore/Mapas/include/mapa.h
+	"tinyxml2.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1554892110 /home/david/Documentos/Incorpore/Mapas/include/tinyxml2.h
+	<ctype.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stddef.h>
+	<cctype>
+	<climits>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<stdint.h>
+	<android/log.h>
+	<assert.h>
+
+1554916947 source:/home/david/Documentos/Incorpore/Mapas/src/hud.cpp
+	"../include/hud.h"
+
+1554916955 source:/home/david/Documentos/Incorpore/Mapas/src/mapa.cpp
+	"../include/mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+
+1554916961 source:/home/david/Documentos/Incorpore/Mapas/src/player.cpp
+	"../include/player.h"
+
+1554916969 source:/home/david/Documentos/Incorpore/Mapas/src/tinyxml2.cpp
+	"../include/tinyxml2.h"
+	<new>
+	<stddef.h>
+	<stdarg.h>
+	<cstddef>
+	<cstdarg>
 

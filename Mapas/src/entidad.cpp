@@ -1,4 +1,4 @@
-#include "entidad.h"
+#include "../include/entidad.h"
 
 entidad::entidad(){
     sprite = new sf::RectangleShape({16,16});

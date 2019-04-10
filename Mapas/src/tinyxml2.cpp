@@ -1,4 +1,4 @@
-#include "tinyxml2.h"
+#include "../include/tinyxml2.h"
 
 #include <new>		// yes, this one new style header, is in the Android SDK.
 #if defined(ANDROID_NDK) || defined(__BORLANDC__) || defined(__QNXNTO__)
