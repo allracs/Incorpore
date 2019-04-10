@@ -12,7 +12,7 @@ Juego::Juego(){
     evento = new Event;
 
     view.setSize(dimensiones[0], dimensiones[1]);
-    view.zoom(0.1f);
+    view.zoom(0.2f);
 
     cargaMapa();
     cargarHUD();

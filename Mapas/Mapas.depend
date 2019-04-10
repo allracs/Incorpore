@@ -382,54 +382,54 @@
 1554919047 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
 	"../include/Jugador.h"
 
-1554918786 source:/home/fv/FV/Incorpore/Mapas/src/Animacion.cpp
+1554933974 source:/home/fv/FV/Incorpore/Mapas/src/Animacion.cpp
 	<iostream>
 	"../include/Animacion.h"
 
-1554918786 /home/fv/FV/Incorpore/Mapas/include/Animacion.h
+1554933974 /home/fv/FV/Incorpore/Mapas/include/Animacion.h
 	<SFML/Graphics.hpp>
 
-1554919121 source:/home/fv/FV/Incorpore/Mapas/src/Enemigo.cpp
+1554933974 source:/home/fv/FV/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 
-1554919121 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
+1554933974 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 
-1554931821 /home/fv/FV/Incorpore/Mapas/include/Entidad.h
+1554933974 /home/fv/FV/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
 
-1554932267 source:/home/fv/FV/Incorpore/Mapas/src/Entidad.cpp
+1554933974 source:/home/fv/FV/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
 
-1554929436 source:/home/fv/FV/Incorpore/Mapas/src/Hud.cpp
+1554933974 source:/home/fv/FV/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
-1554929436 /home/fv/FV/Incorpore/Mapas/include/Hud.h
+1554933974 /home/fv/FV/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
-1554933210 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
+1554933974 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 
-1554928645 /home/fv/FV/Incorpore/Mapas/include/Juego.h
+1554933974 /home/fv/FV/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
 	"Hud.h"
 	"Mapa.h"
 
-1554933191 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
+1554933974 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 
-1554929763 /home/fv/FV/Incorpore/Mapas/include/Mapa.h
+1554933974 /home/fv/FV/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1554918786 /home/fv/FV/Incorpore/Mapas/include/tinyxml2.h
+1554933974 /home/fv/FV/Incorpore/Mapas/include/tinyxml2.h
 	<ctype.h>
 	<limits.h>
 	<stdio.h>
@@ -445,22 +445,22 @@
 	<android/log.h>
 	<assert.h>
 
-1554932724 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
+1554933974 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
-1554919121 source:/home/fv/FV/Incorpore/Mapas/src/main.cpp
+1554933974 source:/home/fv/FV/Incorpore/Mapas/src/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"../include/Juego.h"
 
-1554930522 source:/home/fv/FV/Incorpore/Mapas/src/Mapa.cpp
+1554933974 source:/home/fv/FV/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
 	<stdlib.h>
 
-1554918786 source:/home/fv/FV/Incorpore/Mapas/src/tinyxml2.cpp
+1554933974 source:/home/fv/FV/Incorpore/Mapas/src/tinyxml2.cpp
 	"../include/tinyxml2.h"
 	<new>
 	<stddef.h>
