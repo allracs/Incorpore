@@ -4,7 +4,7 @@
 juego::juego()
 {
     //ventana
-    window = new sf::RenderWindow(sf::VideoMode(1280,720), "Baby Dinosaur Dooly");
+    window = new sf::RenderWindow(sf::VideoMode(1280,720), "Incorpore");
     //frames
     window->setFramerateLimit(60);
 
