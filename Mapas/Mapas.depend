@@ -62,6 +62,7 @@
 	<cstddef>
 	<cstdarg>
 
+<<<<<<< HEAD
 1554894412 D
 
 1554899969 source:/home/fv/FV/Incorpore/Mapas/game.cpp
@@ -70,6 +71,9 @@
 1554897892 /home/fv/FV/Incorpore/Mapas/game.h
 
 1554895578 source:/home/david/Documentos/Incorpore/Mapas/game.cpp
+=======
+1554904462 source:/home/david/Documentos/Incorpore/Mapas/game.cpp
+>>>>>>> mapa-colisiones
 	"game.h"
 
 1554892110 /home/david/Documentos/Incorpore/Mapas/game.h
@@ -80,6 +84,19 @@
 	"player.h"
 	"hud.h"
 	"mapa.h"
+<<<<<<< HEAD
+=======
+
+1554904351 /home/david/Documentos/Incorpore/Mapas/player.h
+	"entidad.h"
+	<SFML/Graphics.hpp>
+
+1554895774 /home/david/Documentos/Incorpore/Mapas/hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1554892110 /home/david/Documentos/Incorpore/Mapas/mapa.h
+>>>>>>> mapa-colisiones
 	"tinyxml2.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -160,4 +177,17 @@
 	"player.h"
 
 1554892110 source:/home/david/Documentos/Incorpore/Mapas/tinyxml2.cpp
+
+1554904424 /home/david/Documentos/Incorpore/Mapas/entidad.h
+	<SFML/Graphics.hpp>
+
+1554904410 source:/home/david/Documentos/Incorpore/Mapas/entidad.cpp
+	"entidad.h"
+
+1554904009 source:/home/david/Documentos/Incorpore/Mapas/enemy.cpp
+	"enemy.h"
+
+1554904056 /home/david/Documentos/Incorpore/Mapas/enemy.h
+	"entidad.h"
+	<SFML/Graphics.hpp>
 

@@ -41,6 +41,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="entidad.cpp" />
+		<Unit filename="entidad.h" />
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="hud.cpp" />

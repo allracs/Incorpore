@@ -61,7 +61,7 @@ void game::procesarEventos(){
 }
 
 void game::setView(){
-    view.setCenter(jugador->getPlayer().getPosition().x, jugador->getPlayer().getPosition().y);
+    view.setCenter(jugador->getSprite().getPosition().x, jugador->getSprite().getPosition().y);
 }
 
 void game::setColisions(){
@@ -119,7 +119,7 @@ void game::render(){
                 if(Mapa->getMapSprite()[i][j][k]!=NULL){
                     window->draw(*(Mapa->getMapSprite()[i][j][k]));
                     if(i == 3){
-                        window->draw(jugador->getPlayer());
+                        window->draw(jugador->getSprite());
                     }
                 }
             }
