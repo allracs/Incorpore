@@ -113,16 +113,13 @@ void Jugador::update(float delta, RenderWindow& window){
     moverse(); // comprobar que el jugador se mueve
     jugadorHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);
-    cout << "Delta: " << delta << endl;
-    actual->update(delta, movement);
 
-    // ANiMACIONES
+    //cout << "Delta: " << delta << endl;
+    actual->update(delta, movement);
 }
 
 void Jugador::moverse(){
     movement = Vector2f(0.f, 0.f);
-
-    //Movimiento del jugador
 
     if (Keyboard::isKeyPressed(Keyboard::W) && colisiona_abajo != true){
         movement.y -= speed;

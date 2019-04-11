@@ -20,9 +20,9 @@ void Animacion::setAnimacion(char* nTextura, sf::IntRect firstF, sf::IntRect fin
     if(!texture.loadFromFile(nTextura)){
         std::cout << "ERROR AL CARGAR TEXTURA";
     }
-    firstF = firstF;
-    finalF = finalF;
-    incremento = incremento;
+    this->firstF = firstF;
+    this->finalF = finalF;
+    this->incremento = incremento;
     actualFrame = firstF;
     switchTime = tiempo;
     sprite = sf::Sprite(texture, actualFrame);
@@ -38,8 +38,10 @@ void Animacion::update(float deltaTime, sf::Vector2f movement)
 
         if(actualFrame.left == finalF.left){
             actualFrame.left = firstF.left;
+            std::cout << "Cambiamos de frame0" << std::endl;
         } else {
             actualFrame.left += incremento;
+            std::cout << "Cambiamos de frame" << std::endl;
         }
 
         sprite.setTextureRect(actualFrame);
