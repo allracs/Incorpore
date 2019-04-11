@@ -56,6 +56,9 @@
 		<Unit filename="resources/tmx/Cofre.tmx" />
 		<Unit filename="resources/tmx/Columna.tmx" />
 		<Unit filename="resources/tmx/Mapa.tmx" />
+		<Unit filename="sprites/Kyrises_16x16_RPG_Icon_Pack_V1.2.zip" />
+		<Unit filename="sprites/caballero.png" />
+		<Unit filename="sprites/elfa.png" />
 		<Unit filename="src/Animacion.cpp" />
 		<Unit filename="src/Enemigo.cpp" />
 		<Unit filename="src/Entidad.cpp" />

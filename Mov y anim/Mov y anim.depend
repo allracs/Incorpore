@@ -164,3 +164,39 @@
 1554910108 /home/david/Documentos/Incorpore/Mov y anim/Animacion.h
 	<SFML/Graphics.hpp>
 
+1554933974 source:/home/fv/FV/Incorpore/Mov y anim/main.cpp
+	<SFML/Graphics.hpp>
+	"Jugador.h"
+	"Animacion.h"
+
+1554933974 /home/fv/FV/Incorpore/Mov y anim/include/Jugador.h
+	<SFML/Graphics.hpp>
+	<cmath>
+	<iostream>
+	"Entidad.h"
+	"Animacion.h"
+
+1554917074 /home/fv/FV/Incorpore/Mov y anim/include/Entidad.h
+
+1554917074 /home/fv/FV/Incorpore/Mov y anim/include/Animacion.h
+	<SFML/Graphics.hpp>
+
+1554933974 /home/fv/FV/Incorpore/Mov y anim/Animacion.h
+	<SFML/Graphics.hpp>
+
+1554917074 source:/home/fv/FV/Incorpore/Mov y anim/src/Animacion.cpp
+	<iostream>
+	"Animacion.h"
+
+1554933974 source:/home/fv/FV/Incorpore/Mov y anim/src/Enemigo.cpp
+	"Enemigo.h"
+
+1554933974 /home/fv/FV/Incorpore/Mov y anim/include/Enemigo.h
+
+1554917074 source:/home/fv/FV/Incorpore/Mov y anim/src/Entidad.cpp
+	"Entidad.h"
+
+1554934557 source:/home/fv/FV/Incorpore/Mov y anim/src/Jugador.cpp
+	<SFML/Graphics.hpp>
+	"Jugador.h"
+

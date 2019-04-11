@@ -18,13 +18,16 @@ class Juego{
         void setView();
         void render();
 
-        int* dimensiones;
+        Vector2i dimensiones;
     private:
         RenderWindow *window;
         RenderStates *states;
+        Clock frameClock;
         Jugador *jugador;
         Event *evento;
         Mapa *mapa;
         Hud *hud;
         View view;
+
+        bool centrado;
 };
