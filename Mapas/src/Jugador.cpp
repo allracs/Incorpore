@@ -11,7 +11,7 @@ Jugador::Jugador(Vector2f pos){
     dirMov = 1.f;
     movement = Vector2f(0.f, 0.f);
 
-    idle.setAnimacion("sprites/caballero.png", IntRect(0,0,16,28), IntRect(48,0,16,28), 16, 0.1f);
+    idle.setAnimacion("sprites/caballero.png", IntRect(0, 0, 16, 28), IntRect(48, 0, 16, 28), 16, 0.1f);
     idle.sprite.setOrigin(9,20);
     run.setAnimacion("sprites/caballero.png", IntRect(0, 28, 16, 28), IntRect(48, 28, 16, 28), 16, 0.1f);
     run.sprite.setOrigin(9,20);
@@ -117,10 +117,6 @@ void Jugador::rotacionAtaque(RenderWindow& window) {
     ataqueHitbox.setRotation(rotation);
 }
 
-RectangleShape Jugador::getJugadorHitbox(){
-    return entidadHitbox;
-}
-
 RectangleShape Jugador::getAtaqueHitbox(){
     return ataqueHitbox;
 }
@@ -131,14 +127,4 @@ Vector2f Jugador::getMousePos(){
 
 Vector2f Jugador::getMovement() {
     return movement;
-}
-
-Animacion* Jugador::getActual() {
-    return actual;
-}
-
-void Jugador::draw(RenderWindow& target) {
-    //target.draw(entidadHitbox);
-    target.draw(actual->sprite);
-    //target.draw(ataqueHitbox);
 }

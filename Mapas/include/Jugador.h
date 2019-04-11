@@ -26,9 +26,6 @@ class Jugador: public Entidad{
 
         Vector2f getMousePos();
         Vector2f getMovement();
-        Animacion* getActual();
-
-        void draw(RenderWindow&);
     private:
         float dirMov;
 
@@ -37,10 +34,5 @@ class Jugador: public Entidad{
         Vector2f playerCenter; //centro del jugador
         Vector2f mousePos; //posicion del raton
         Vector2f movement; //movimiento del jugador
-
-        //Animaciones
-        Animacion idle;
-        Animacion run;
-        Animacion* actual;
 };
 #endif

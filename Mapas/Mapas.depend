@@ -437,10 +437,11 @@
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 
-1555010916 /home/fv/FV/Incorpore/Mapas/include/Entidad.h
+1555014183 /home/fv/FV/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
+	"Animacion.h"
 
-1555010410 source:/home/fv/FV/Incorpore/Mapas/src/Entidad.cpp
+1555014183 source:/home/fv/FV/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
 	<iostream>
 
@@ -462,7 +463,7 @@
 	"Hud.h"
 	"Mapa.h"
 
-1555010916 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
+1555014184 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 	<cmath>
@@ -494,7 +495,7 @@
 	<android/log.h>
 	<assert.h>
 
-1555010837 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
+1555013884 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 

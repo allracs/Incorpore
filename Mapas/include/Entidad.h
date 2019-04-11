@@ -1,6 +1,7 @@
 #ifndef ENTIDAD_H
 #define ENTIDAD_H
 #include <SFML/Graphics.hpp>
+#include "Animacion.h"
 using namespace sf;
 
 class Entidad{
@@ -18,10 +19,13 @@ class Entidad{
         void setColisionadores();
         void moverColisionadores(Vector2f);
         void procesarColisiones(int, FloatRect*);
-        void setPosicion(int, int);
-
         void setCenter(Vector2f);
+
         Vector2f getCenter();
+        RectangleShape getEntidadHitbox();
+        Animacion* getActual();
+
+        void draw(RenderWindow&);
         void drawBoundingBoxes(RenderWindow&);
         void showData();
     protected:
@@ -33,6 +37,10 @@ class Entidad{
         RectangleShape *cuadrado_abj;
         RectangleShape *cuadrado_izq;
         RectangleShape *cuadrado_cen;
+
+        Animacion idle;
+        Animacion run;
+        Animacion* actual;
 
         bool colisiona_arriba = false;
         bool colisiona_abajo = false;

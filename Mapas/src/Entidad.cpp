@@ -50,7 +50,6 @@ void Entidad::setColisionadores(){
     cuadrado_der->setPosition(entidadHitbox.getGlobalBounds().left + entidadHitbox.getGlobalBounds().width - 0.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 0.99);
 }
 
-
 void Entidad::moverColisionadores(Vector2f mov){
     cuadrado_arr->move(mov);
     cuadrado_izq->move(mov);
@@ -86,10 +85,6 @@ void Entidad::procesarColisiones(int nColisiones, FloatRect* colisiones){
     }
 }
 
-void Entidad::setPosicion(int x, int y){
-    sprite->setPosition(x + sprite->getSize().x, y + sprite->getSize().y);
-}
-
 void Entidad::setCenter(Vector2f centro){
     entityCenter = centro;
 }
@@ -120,6 +115,21 @@ RectangleShape Entidad::getSprite(){
 
 Vector2f Entidad::getCenter(){
     return entityCenter;
+}
+
+RectangleShape Entidad::getEntidadHitbox(){
+    return entidadHitbox;
+}
+
+
+Animacion* Entidad::getActual() {
+    return actual;
+}
+
+void Entidad::draw(RenderWindow& target) {
+    //target.draw(entidadHitbox);
+    target.draw(actual->sprite);
+    //target.draw(ataqueHitbox);
 }
 
 void Entidad::drawBoundingBoxes(RenderWindow& target){
