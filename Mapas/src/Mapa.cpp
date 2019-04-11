@@ -316,14 +316,14 @@ void Mapa::mostrarMapaColisiones(){
     cout <<  "------------------------" << endl;
 }
 
-void Mapa::draw(RenderWindow& target, RectangleShape player){
+void Mapa::draw(RenderWindow& target, Jugador player){
     for(int l = 0; l < nCapas; l++){
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 if(mapSprite[l][y][x]!=NULL){
                     target.draw(*(mapSprite[l][y][x]));
                     if(l == 3){
-                        target.draw(player);
+                        player.draw(target);
                     }
                 }
             }

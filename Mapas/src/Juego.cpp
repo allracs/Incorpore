@@ -20,6 +20,11 @@ Juego::Juego(){
     gameLoop();
 }
 
+void Juego::cargaPlayer(){
+    jugador = new Jugador({150, 50});
+    view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
+}
+
 void Juego::cargaMapa(){
     mapa = new Mapa;
     //mapa->mostrarMapaColisiones();
@@ -30,11 +35,6 @@ void Juego::cargarHUD(){
     hud = new Hud();
     hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 4, view.getCenter().y - dimensiones.y/10);
     hud->setPosicionHabilidades(view.getCenter().x - hud->getPiezaHabilidades().getGlobalBounds().width/2, view.getCenter().y + dimensiones.y/10 - hud->getPiezaHabilidades().getGlobalBounds().height);
-}
-
-void Juego::cargaPlayer(){
-    jugador = new Jugador({150, 50});
-    view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
 }
 
 void Juego::gameLoop(){
@@ -79,10 +79,10 @@ void Juego::render(){
     window->clear(Color(28,17,23,255));
     window->setView(view);
 
-    mapa->draw(*window, jugador->getSprite());
+    mapa->draw(*window, *jugador);
     hud->draw(*window);
     jugador->drawBoundingBoxes(*window);
-    jugador->draw(*window);
+    //jugador->draw(*window);
 
 
 

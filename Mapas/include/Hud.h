@@ -9,14 +9,11 @@ public:
     Hud();
     ~Hud();
 
-
+    void compruebaTeclas();
     void modificar_vida(int,int);
     void setHabilidad(int);
     void borradoHabilidades();
 
-    void compruebaTeclas();
-
-    //void setPosition(int, int);
     void setPosicionVida(int, int);
     void setPosicionHabilidades(int, int);
 

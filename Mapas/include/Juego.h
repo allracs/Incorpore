@@ -9,9 +9,10 @@ using namespace sf;
 class Juego{
     public:
         Juego();
+
+        void cargaPlayer();
         void cargaMapa();
         void cargarHUD();
-        void cargaPlayer();
         void gameLoop();
 
         void procesarEventos();
