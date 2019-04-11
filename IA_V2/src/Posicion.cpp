@@ -1,4 +1,4 @@
-#include "Posicion.h"
+#include "../include/Posicion.h"
 #include <iostream>
 #include <stdlib.h>
 

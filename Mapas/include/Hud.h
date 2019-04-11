@@ -1,41 +1,48 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+using namespace std;
+using namespace sf;
 
 class Hud{
 public:
     Hud();
     ~Hud();
-    sf::Text getTextoVida();
-    std::vector<sf::Sprite> getArrayVida();
-    std::vector<sf::Sprite> getArrayHabilidades();
-    sf::Sprite getCorazon();
-    void modificar_vida(int,int);
-    void borradoHabilidades();
-    int getCantidadVida();
-    int getCantidadHabilidades();
-    sf::RectangleShape getPiezaVida();
-    sf::RectangleShape getPiezaHabilidades();
+
     void compruebaTeclas();
+    void modificar_vida(int,int);
     void setHabilidad(int);
-    void setPosition(int, int);
+    void borradoHabilidades();
+
     void setPosicionVida(int, int);
     void setPosicionHabilidades(int, int);
-private:
-    sf::Text *texto_vida;
-    sf::Font *fuente;
-    sf::RectangleShape * pieza_vida;
-    sf::RectangleShape * pieza_habilidades;
 
-    sf::Texture *textura_vida;
-    sf::Sprite *corazon;
-    sf::Texture *textura_habilidades;
-    sf::Sprite *mejora_escudo;
-    sf::Sprite *mejora_ataque;
-    sf::Sprite *rompe_escudos;
-    sf::Sprite *mana;
-    sf::Sprite *mejora_cofre;
-    sf::Sprite *espada_magica;
+    Sprite getCorazon();
+    Text getTextoVida();
+    RectangleShape getPiezaVida();
+    RectangleShape getPiezaHabilidades();
+    vector<Sprite> getArrayVida();
+    vector<Sprite> getArrayHabilidades();
+    int getCantidadVida();
+    int getCantidadHabilidades();
+
+    void draw(RenderWindow&);
+    void move(Vector2f);
+private:
+    Text *texto_vida;
+    Font *fuente;
+    RectangleShape * pieza_vida;
+    RectangleShape * pieza_habilidades;
+
+    Texture *textura_vida;
+    Sprite *corazon;
+    Texture *textura_habilidades;
+    Sprite *mejora_escudo;
+    Sprite *mejora_ataque;
+    Sprite *rompe_escudos;
+    Sprite *mana;
+    Sprite *mejora_cofre;
+    Sprite *espada_magica;
 
     bool mejora_escudo_esta = false;
     bool mejora_ataque_esta = false;
@@ -44,6 +51,8 @@ private:
     bool mejora_cofre_esta = false;
     bool espada_magica_esta = false;
 
-    std::vector<sf::Sprite> *cantidad_corazones;
-    std::vector<sf::Sprite> *vector_habilidades;
+    int xVida, yVida, xHab, yHab;
+
+    vector<Sprite> *cantidad_corazones;
+    vector<Sprite> *vector_habilidades;
 };

@@ -7,8 +7,10 @@ using namespace std;
 
 class Enemigo : public Entidad{
     public:
-        Enemigo();
+        Enemigo(Vector2f);
     private:
+        float dirMov;
+        Vector2f movement; //movimiento del jugador
 };
 
 #endif // ENEMY_H

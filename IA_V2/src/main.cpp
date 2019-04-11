@@ -7,14 +7,40 @@
 
 int main()
 {
-    std::cout << "creando mapa" << std::endl;
-    Mapa *m = new Mapa(9,10);
-    std::cout << "mapa creado" << std::endl;
+
                         //Y,X
-    Posicion x = Posicion(9,0);
-    Posicion y = Posicion(4,8);
+    Posicion x = Posicion(1,1);
+    Posicion y = Posicion(8,7);
     std::cout << "creando ia" << std::endl;
-    Astar *ia = new Astar(x, y, *m);
+    int alt = 9;
+    int anc = 10;
+    bool j[alt][anc] =
+	{  // 0  1  2  3  4  5  6  7  8  9
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, // 0
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, // 1
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, // 2
+		{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 1 }, // 3
+		{ 1, 1, 0, 0, 1, 1, 1, 0, 1, 1 }, // 4
+		{ 1, 0, 0, 1, 1, 1, 0, 1, 0, 1 }, // 5
+		{ 1, 0, 0, 0, 0, 1, 0, 0, 0, 1 }, // 6
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, // 7
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }  // 8
+	};
+
+	bool **jj = new bool *[alt];
+	for(int a = 0; a < alt; a++){
+        jj[a] = new bool[anc];
+	}
+
+    for(int a = 0; a < alt; a++)
+    {
+        for(int b = 0; b < anc; b++)
+        {
+            jj[a][b] = j[a][b];
+        }
+    }
+
+    Astar *ia = new Astar(x, y, jj, alt, anc);
     std::cout << "ia creada" << std::endl << ";;;;;;;;;;;;;" << std::endl;
 
     std::cout << "mapeando" << std::endl;
@@ -36,10 +62,10 @@ int main()
     else
     {
         int flag = true;
-        for(int a = 0; a < m->getHeight(); a++)
+        for(int a = 0; a < alt; a++)
         {
             std::cout << "  ";
-            for(int b = 0; b < m->getWidth(); b++)
+            for(int b = 0; b < anc; b++)
             {
                 flag = true;
                 for(int c = 0; c < path.size()-1; c++)
@@ -63,7 +89,7 @@ int main()
                 }
                 if(flag)
                 {
-                    if(m->getMapa()[a][b] == 1)
+                    if(jj[a][b] == 1)
                     {
                         std::cout << "1 ";
                     }
@@ -79,7 +105,5 @@ int main()
     }
 
 
-
-    delete m;
     exit(0);
 }

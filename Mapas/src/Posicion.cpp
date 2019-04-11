@@ -1,4 +1,4 @@
-#include "../include/Posicion.h"
+#include "Posicion.h"
 #include <iostream>
 #include <stdlib.h>
 
@@ -94,3 +94,4 @@ Posicion Posicion::getPadre()
 {
     return *padre;
 }
+

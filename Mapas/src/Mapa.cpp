@@ -2,6 +2,8 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "math.h"
+
 using namespace sf;
 using namespace tinyxml2;
 using namespace std;
@@ -251,14 +253,16 @@ void Mapa::generaObjetos(int j, int k, int no){
 
 void Mapa::colisiones(){
     int n = 0;
-    colision = new FloatRect*[height];
 
-    for(int i = 0; i < nCapas; i++){
-        for(int j = 0; j < height; j++){
-            colision[j] = new FloatRect[width];
-            for(int k = 0; k < width; k++){
-                if(n < nColisiones && (i == 2 || i == 4 || i == 5)){
-                    //colision[j][k] = getMapSprite()[i][j][k]->getGlobalBounds();
+    colision = new FloatRect[nColisiones];
+    Sprite box;
+
+    for(int capa = 0; capa < nCapas; capa++){
+        for(int alto = 0; alto < height; alto++){
+            for(int ancho = 0; ancho < width; ancho++){
+                if(n < nColisiones && colisionMap[alto][ancho] == true && mapSprite[capa][alto][ancho] != NULL){
+                    box = *mapSprite[capa][alto][ancho];
+                    colision[n] = box.getGlobalBounds();
                     n++;
                 }
             }
@@ -298,6 +302,51 @@ int Mapa::getNumColisiones(){
     return nColisiones;
 }
 
-FloatRect** Mapa::getBounds(){
+FloatRect* Mapa::getBounds(){
     return colision;
+}
+
+void Mapa::mostrarMapaColisiones(){
+    cout << endl << "Mapa de colisiones:" << endl;
+    cout <<  "------------------------" << endl;
+    for(int y = 0; y < height; y++){
+        for(int x = 0; x < width; x++){
+            cout << colisionMap[y][x];
+        }
+       cout << endl;
+    }
+    cout <<  "------------------------" << endl;
+}
+
+void Mapa::draw(RenderWindow& target, Jugador player, Enemigo* enemigos, int nEnemigos){
+    for(int l = 0; l < nCapas; l++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                if(mapSprite[l][y][x]!=NULL){
+                    target.draw(*(mapSprite[l][y][x]));
+                    if(l == 3){
+                        player.draw(target);
+                        for(int i = 0; i < nEnemigos; i++){
+                            enemigos[i].draw(target);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Esto es pa mis Oscars (los amo)
+void Mapa::getEntityPostition(Entidad player){
+    Vector2f pos = player.getCenter();
+
+    posicion.x = round(pos.x)/16;
+    posicion.y = round(pos.y)/16;
+
+    cout << "X: " << posicion.x << endl;
+    cout << "Y: " << posicion.y << endl;
+}
+
+Vector2i Mapa::getPosicionJugador(){
+    return posicion;
 }
