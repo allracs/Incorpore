@@ -444,7 +444,7 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1554997025 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
+1554997736 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 
 1554993314 /home/fv/FV/Incorpore/Mapas/include/Juego.h
@@ -485,7 +485,7 @@
 	<android/log.h>
 	<assert.h>
 
-1554997557 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
+1554998237 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 

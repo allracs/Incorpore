@@ -42,7 +42,7 @@ void Jugador::setColisionadores(){
     cuadrado_izq->setSize(Vector2f(0.75, 5.5));
     cuadrado_izq->setPosition(jugadorHitbox.getGlobalBounds().left, jugadorHitbox.getGlobalBounds().top + jugadorHitbox.getGlobalBounds().height/2 + 0.99);
     cuadrado_abj->setSize(Vector2f(11, 0.75));
-    cuadrado_abj->setPosition(jugadorHitbox.getGlobalBounds().left + 1.5, jugadorHitbox.getGlobalBounds().top + jugadorHitbox.getGlobalBounds().height + 0.5);
+    cuadrado_abj->setPosition(jugadorHitbox.getGlobalBounds().left + 1.5, jugadorHitbox.getGlobalBounds().top + jugadorHitbox.getGlobalBounds().height + 1);
     cuadrado_der->setSize(Vector2f(0.75, 5.5));
     cuadrado_der->setPosition(jugadorHitbox.getGlobalBounds().left + jugadorHitbox.getGlobalBounds().width - 0.5, jugadorHitbox.getGlobalBounds().top + jugadorHitbox.getGlobalBounds().height/2 + 0.99);
 }
