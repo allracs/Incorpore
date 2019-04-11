@@ -35,19 +35,25 @@ void Juego::cargaPlayer(){
 }
 
 void Juego::gameLoop(){
+    sf::Clock frameClock;
+
     while(window->isOpen()){
         procesarEventos();
 
-        float delta = frameClock.restart().asSeconds()/5;
-        //jugador->update(delta, *window);
-        jugador->mover();
+        float delta = frameClock.restart().asSeconds();
+        jugador->update(delta, *window);
+
+        /*jugador->mover();
         jugador->movimiento();
-        jugador->rotacionAtaque(*window);
+        jugador->rotacionAtaque(*window);*/
+        //jugador->update(delta, *window);
+
         if(!centrado) {
             setView();
             centrado = true;
         }
-        jugador->procesarColisiones(mapa->getNumColisiones(), mapa->getBounds());
+
+        //jugador->procesarColisiones(mapa->getNumColisiones(), mapa->getBounds());
 
         hud->compruebaTeclas();
         setView();
@@ -77,6 +83,8 @@ void Juego::render(){
     hud->draw(*window);
     jugador->drawBoundingBoxes(*window);
     jugador->draw(*window);
+
+
 
     window->display();
 }

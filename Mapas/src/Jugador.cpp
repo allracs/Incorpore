@@ -5,16 +5,17 @@ using namespace sf;
 
 Jugador::Jugador(Vector2f pos){
     playerCenter = pos;
-    sprite->setOrigin(sprite->getSize().x/2, sprite->getSize().y/2);
+    //sprite->setOrigin(sprite->getSize().x/2, sprite->getSize().y/2);
 
-    jugadorHitbox = RectangleShape(Vector2f(sprite->getSize().x - 4, sprite->getSize().y - 4));
+    //jugadorHitbox = RectangleShape(Vector2f(sprite->getSize().x - 4, sprite->getSize().y - 4));
+    jugadorHitbox = sf::RectangleShape(sf::Vector2f(12,12));
     jugadorHitbox.setPosition(pos);
     jugadorHitbox.setOrigin(12/2, 12/2);
     jugadorHitbox.setFillColor(Color::Transparent);
     jugadorHitbox.setOutlineThickness(1.f);
     jugadorHitbox.setOutlineColor(Color::Green);
 
-    speed = 1.f;
+    speed = 200.f;
     dirMov = 1.f;
     movement = Vector2f(0.f, 0.f);
 
@@ -56,10 +57,10 @@ void Jugador::movimiento(){
     colisiona_arriba = false;
     colisiona_derecha = false;
     colisiona_izquierda = false;*/
-
+    /*
     sprite->setPosition(actual->sprite.getPosition().x, actual->sprite.getPosition().y);
     jugadorHitbox.setPosition(actual->sprite.getPosition().x, actual->sprite.getPosition().y);
-    ataqueHitbox.setPosition(actual->sprite.getPosition().x, actual->sprite.getPosition().y);
+    ataqueHitbox.setPosition(actual->sprite.getPosition().x, actual->sprite.getPosition().y);*/
 }
 
 void Jugador::moverColisionadores(){
@@ -77,7 +78,7 @@ void Jugador::moverColisionadores(){
 }
 
 void Jugador::procesarColisiones(int nColisiones, FloatRect* colisiones){
-    for(int i = 0; i < nColisiones; i++){
+   /* for(int i = 0; i < nColisiones; i++){
         //INFERIOR
         if(cuadrado_arr->getGlobalBounds().intersects(colisiones[i])){
             setColision(2);
@@ -101,7 +102,7 @@ void Jugador::procesarColisiones(int nColisiones, FloatRect* colisiones){
             setColision(4);
             cout <<  "Izq" << endl;
         }
-    }
+    }*/
 }
 
 void Jugador::update(float delta, RenderWindow& window){
@@ -119,13 +120,12 @@ void Jugador::update(float delta, RenderWindow& window){
 }
 
 void Jugador::moverse(){
-    //movement = Vector2f(0.f, 0.f);
+    movement = Vector2f(0.f, 0.f);
 
     //Movimiento del jugador
 
     if (Keyboard::isKeyPressed(Keyboard::W) && colisiona_abajo != true){
         movement.y -= speed;
-
         if (actual != &run){
             cout << "CAMBIAMOS A RUN" << endl;
             actual = &run;
@@ -255,9 +255,9 @@ void Jugador::drawBoundingBoxes(RenderWindow& target){
     target.draw(*cuadrado_cen);
 }
 
-void Jugador::showData(){
+void Jugador::showData(){/*
     cout <<  "x: " << sprite->getPosition().x << endl;
     cout <<  "y: " << sprite->getPosition().y << endl;
     cout <<  "width: " << sprite->getSize().x << endl;
-    cout <<  "height: " << sprite->getSize().x << endl;
+    cout <<  "height: " << sprite->getSize().x << endl;*/
 }

@@ -2,6 +2,8 @@
 1554842322 source:/home/david/Documentos/incorpore/Mapas/game.cpp
 	"game.h"
 
+1554933974 
+
 1554834125 /home/david/Documentos/incorpore/Mapas/game.h
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -11,6 +13,8 @@
 
 1554834008 /home/david/Documentos/incorpore/Mapas/player.h
 	<SFML/Graphics.hpp>
+
+1554933974 hics.hpp>
 
 1554834508 /home/david/Documentos/incorpore/Mapas/hud.h
 	<SFML/Graphics.hpp>
@@ -213,6 +217,8 @@
 1554915439 source:/home/david/Documentos/Incorpore/Mapas/entidad.cpp
 	"entidad.h"
 
+1554916111 "
+
 1554904009 source:/home/david/Documentos/Incorpore/Mapas/enemy.cpp
 	"enemy.h"
 
@@ -230,11 +236,15 @@
 	<iostream>
 	"../include/Animacion.h"
 
+1554933974 e/Animacion.h"
+
 1554910108 /home/david/Documentos/Incorpore/Mapas/include/Animacion.h
 	<SFML/Graphics.hpp>
 
 1554916931 source:/home/david/Documentos/Incorpore/Mapas/src/enemy.cpp
 	"../include/enemy.h"
+
+1554916931 e/enemy.h"
 
 1554904056 /home/david/Documentos/Incorpore/Mapas/include/enemy.h
 	"entidad.h"
@@ -246,8 +256,12 @@
 1554916936 source:/home/david/Documentos/Incorpore/Mapas/src/entidad.cpp
 	"../include/entidad.h"
 
+1554916936 e/entidad.h"
+
 1554916942 source:/home/david/Documentos/Incorpore/Mapas/src/game.cpp
 	"../include/game.h"
+
+1554916942 e/game.h"
 
 1554915439 /home/david/Documentos/Incorpore/Mapas/include/game.h
 	<SFML/Graphics.hpp>
@@ -288,6 +302,8 @@
 1554917971 source:/home/david/Documentos/Incorpore/Mapas/src/hud.cpp
 	"../include/hud.h"
 
+1554917971 e/hud.h"
+
 1554916955 source:/home/david/Documentos/Incorpore/Mapas/src/mapa.cpp
 	"../include/mapa.h"
 	<time.h>
@@ -296,6 +312,8 @@
 
 1554916961 source:/home/david/Documentos/Incorpore/Mapas/src/player.cpp
 	"../include/player.h"
+
+1554916961 e/player.h"
 
 1554916969 source:/home/david/Documentos/Incorpore/Mapas/src/tinyxml2.cpp
 	"../include/tinyxml2.h"
@@ -310,8 +328,12 @@
 	<SFML/Graphics.hpp>
 	"../include/Juego.h"
 
+1554933974 e/Juego.h"
+
 1554918330 source:/home/david/Documentos/Incorpore/Mapas/src/Enemy.cpp
 	"../include/Enemy.h"
+
+1554918330 e/Enemy.h"
 
 1554918394 /home/david/Documentos/Incorpore/Mapas/include/Enemy.h
 	"Entidad.h"
@@ -323,8 +345,12 @@
 1554918352 source:/home/david/Documentos/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
 
+1554933974 e/Entidad.h"
+
 1554918525 source:/home/david/Documentos/Incorpore/Mapas/src/Game.cpp
 	"../include/Game.h"
+
+1554918525 e/Game.h"
 
 1554918435 /home/david/Documentos/Incorpore/Mapas/include/Game.h
 	<SFML/Graphics.hpp>
@@ -349,6 +375,8 @@
 1554918567 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
 	"../include/Hud.h"
 
+1554933974 e/Hud.h"
+
 1554918651 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
@@ -358,8 +386,12 @@
 1554918660 source:/home/david/Documentos/Incorpore/Mapas/src/Player.cpp
 	"../include/Player.h"
 
+1554918660 e/Player.h"
+
 1554918880 source:/home/david/Documentos/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
+
+1554933974 e/Enemigo.h"
 
 1554918899 /home/david/Documentos/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
@@ -381,6 +413,8 @@
 
 1554919047 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
 	"../include/Jugador.h"
+
+1554943705 e/Jugador.h"
 
 1554933974 source:/home/fv/FV/Incorpore/Mapas/src/Animacion.cpp
 	<iostream>
@@ -427,6 +461,8 @@
 	<iostream>
 	"Animacion.h"
 
+1554942748 .h"
+
 1554933974 /home/fv/FV/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	<SFML/Graphics.hpp>
@@ -470,4 +506,93 @@
 	<stdarg.h>
 	<cstddef>
 	<cstdarg>
+
+1554986206 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Animacion.cpp
+	<iostream>
+	"../include/Animacion.h"
+
+1554976622 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Animacion.h
+	<SFML/Graphics.hpp>
+
+1554976622 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Enemigo.cpp
+	"../include/Enemigo.h"
+
+1554976622 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Enemigo.h
+	"Entidad.h"
+	<SFML/Graphics.hpp>
+
+1554984602 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Entidad.h
+	<SFML/Graphics.hpp>
+
+1554976622 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Hud.cpp
+	<SFML/Graphics.hpp>
+	"../include/Hud.h"
+
+1554976622 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1554976622 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+	"../include/Juego.h"
+
+1554984605 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Juego.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"Jugador.h"
+	"Hud.h"
+	"Mapa.h"
+
+1554984605 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Jugador.h
+	"Entidad.h"
+	<SFML/Graphics.hpp>
+	<cmath>
+	<iostream>
+	"Animacion.h"
+
+1554976622 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Mapa.h
+	"tinyxml2.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1554976622 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/tinyxml2.h
+	<ctype.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stddef.h>
+	<cctype>
+	<climits>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<stdint.h>
+	<android/log.h>
+	<assert.h>
+
+1554976622 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/tinyxml2.cpp
+	"../include/tinyxml2.h"
+	<new>
+	<stddef.h>
+	<stdarg.h>
+	<cstddef>
+	<cstdarg>
+
+1554984602 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Entidad.cpp
+	"../include/Entidad.h"
+
+1554986110 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Jugador.cpp
+	<iostream>
+	"../include/Jugador.h"
+
+1554984602 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Mapa.cpp
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+
+1554986248 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Juego.cpp
+	"../include/Juego.h"
 
