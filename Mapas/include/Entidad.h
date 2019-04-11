@@ -23,6 +23,7 @@ class Entidad{
 
         Vector2f getCenter();
         RectangleShape getEntidadHitbox();
+        RectangleShape getAtaqueHitbox();
         Animacion* getActual();
 
         void draw(RenderWindow&);
@@ -31,6 +32,7 @@ class Entidad{
     protected:
         RectangleShape *sprite;
         RectangleShape entidadHitbox;
+        RectangleShape ataqueHitbox;
 
         RectangleShape *cuadrado_der;
         RectangleShape *cuadrado_arr;

@@ -1,6 +1,7 @@
 #include "tinyxml2.h"
-#include "Jugador.h"
 #include "Entidad.h"
+#include "Jugador.h"
+#include "Enemigo.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace sf;
@@ -39,7 +40,7 @@ class Mapa{
         void mostrarMapaColisiones();
 
         //DRAW
-        void draw(RenderWindow&, Jugador);
+        void draw(RenderWindow&, Jugador, Enemigo*, int);
 
     private:
         int width, height, tilewidth, tileheight, gid;

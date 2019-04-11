@@ -121,6 +121,9 @@ RectangleShape Entidad::getEntidadHitbox(){
     return entidadHitbox;
 }
 
+RectangleShape Entidad::getAtaqueHitbox(){
+    return ataqueHitbox;
+}
 
 Animacion* Entidad::getActual() {
     return actual;

@@ -21,15 +21,10 @@ class Jugador: public Entidad{
         void moverse();
         void rotacionAtaque(RenderWindow&);
 
-        RectangleShape getJugadorHitbox();
-        RectangleShape getAtaqueHitbox();
-
         Vector2f getMousePos();
         Vector2f getMovement();
     private:
         float dirMov;
-
-        RectangleShape ataqueHitbox;
 
         Vector2f playerCenter; //centro del jugador
         Vector2f mousePos; //posicion del raton

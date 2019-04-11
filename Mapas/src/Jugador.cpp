@@ -117,10 +117,6 @@ void Jugador::rotacionAtaque(RenderWindow& window) {
     ataqueHitbox.setRotation(rotation);
 }
 
-RectangleShape Jugador::getAtaqueHitbox(){
-    return ataqueHitbox;
-}
-
 Vector2f Jugador::getMousePos(){
     return mousePos;
 }

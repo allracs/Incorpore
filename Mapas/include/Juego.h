@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Jugador.h"
+#include "Enemigo.h"
 #include "Hud.h"
 #include "Mapa.h"
 
@@ -28,6 +29,7 @@ class Juego
         RenderStates *states;
         Clock frameClock;
         Jugador *jugador;
+        Enemigo **enemigos;
         Event *evento;
         Mapa *mapa;
         Hud *hud;
@@ -35,4 +37,5 @@ class Juego
 
         bool centrado;
         float delta;
+        int nEnemigos;
 };

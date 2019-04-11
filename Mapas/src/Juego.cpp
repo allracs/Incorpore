@@ -11,6 +11,7 @@ Juego* Juego::Instance(){
 
 Juego::Juego(){
     dimensiones = Vector2i(1280, 720);
+    nEnemigos = 1;
 
     window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");
     window->setFramerateLimit(60);
@@ -30,6 +31,10 @@ Juego::Juego(){
 
 void Juego::cargaPlayer(){
     jugador = new Jugador({150, 50});
+    enemigos = new Enemigo*[nEnemigos];
+    for(int i = 0; i < nEnemigos; i++){
+        enemigos[i] = new Enemigo({150, 100});
+    }
     view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
 }
 
@@ -79,10 +84,11 @@ void Juego::render(){
     window->clear(Color(28,17,23,255));
     window->setView(view);
 
-    mapa->draw(*window, *jugador);
+    mapa->draw(*window, *jugador, *enemigos, nEnemigos);
     hud->draw(*window);
     mapa->getEntityPostition(*jugador);
     jugador->drawBoundingBoxes(*window);
+    enemigos[0]->drawBoundingBoxes(*window);
 
     window->display();
 }
