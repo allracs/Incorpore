@@ -6,7 +6,7 @@ using namespace std;
 
 int main(int argc, char *argv[]){
 
-    Juego *partida = Juego::Instance();
+    Juego *partida = Juego::Instance();z
 
     return 0;
 }
