@@ -159,7 +159,7 @@ void Jugador::update(float delta, sf::RenderWindow &app){
     moverse(); // comprobar que el jugador se mueve
     jugadorHitbox.move(movement * delta); // mover al jugador.
     hitboxAtaque.move(movement * delta);
-
+    std::cout << "Delta: " << delta << std::endl;
     actual->update(delta, movement);
 
 

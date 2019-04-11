@@ -8,22 +8,29 @@ class Hud{
 public:
     Hud();
     ~Hud();
-    Text getTextoVida();
-    vector<Sprite> getArrayVida();
-    vector<Sprite> getArrayHabilidades();
-    Sprite getCorazon();
+
+
     void modificar_vida(int,int);
-    void borradoHabilidades();
-    int getCantidadVida();
-    int getCantidadHabilidades();
-    RectangleShape getPiezaVida();
-    RectangleShape getPiezaHabilidades();
-    void compruebaTeclas();
     void setHabilidad(int);
-    void setPosition(int, int);
+    void borradoHabilidades();
+
+    void compruebaTeclas();
+
+    //void setPosition(int, int);
     void setPosicionVida(int, int);
     void setPosicionHabilidades(int, int);
+
+    Sprite getCorazon();
+    Text getTextoVida();
+    RectangleShape getPiezaVida();
+    RectangleShape getPiezaHabilidades();
+    vector<Sprite> getArrayVida();
+    vector<Sprite> getArrayHabilidades();
+    int getCantidadVida();
+    int getCantidadHabilidades();
+
     void draw(RenderWindow&);
+    void move(Vector2f);
 private:
     Text *texto_vida;
     Font *fuente;
@@ -46,6 +53,8 @@ private:
     bool mana_esta = false;
     bool mejora_cofre_esta = false;
     bool espada_magica_esta = false;
+
+    int xVida, yVida, xHab, yHab;
 
     vector<Sprite> *cantidad_corazones;
     vector<Sprite> *vector_habilidades;

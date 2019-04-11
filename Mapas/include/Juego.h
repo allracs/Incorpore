@@ -30,4 +30,5 @@ class Juego{
         View view;
 
         bool centrado;
+        float delta;
 };

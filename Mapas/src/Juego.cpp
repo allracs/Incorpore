@@ -28,10 +28,13 @@ void Juego::cargaMapa(){
 
 void Juego::cargarHUD(){
     hud = new Hud();
+    hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 4, view.getCenter().y - dimensiones.y/10);
+    hud->setPosicionHabilidades(view.getCenter().x - hud->getPiezaHabilidades().getGlobalBounds().width/2, view.getCenter().y + dimensiones.y/10 - hud->getPiezaHabilidades().getGlobalBounds().height);
 }
 
 void Juego::cargaPlayer(){
     jugador = new Jugador({150, 50});
+    view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
 }
 
 void Juego::gameLoop(){
@@ -40,19 +43,17 @@ void Juego::gameLoop(){
     while(window->isOpen()){
         procesarEventos();
 
-        float delta = frameClock.restart().asSeconds();
+        delta = frameClock.restart().asSeconds();
         jugador->update(delta, *window);
 
         /*jugador->mover();
         jugador->movimiento();
         jugador->rotacionAtaque(*window);*/
         //jugador->update(delta, *window);
-
         if(!centrado) {
             setView();
             centrado = true;
         }
-
         //jugador->procesarColisiones(mapa->getNumColisiones(), mapa->getBounds());
 
         hud->compruebaTeclas();
@@ -70,9 +71,8 @@ void Juego::procesarEventos(){
 }
 
 void Juego::setView(){
-    view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
-    hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 4, view.getCenter().y - dimensiones.y/10);
-    hud->setPosicionHabilidades(view.getCenter().x - hud->getPiezaHabilidades().getGlobalBounds().width/2, view.getCenter().y + dimensiones.y/10 - hud->getPiezaHabilidades().getGlobalBounds().height);
+    view.move(jugador->getMovement() * delta);
+    hud->move(jugador->getMovement() * delta);
 }
 
 void Juego::render(){

@@ -3,8 +3,7 @@
 using namespace std;
 using namespace sf;
 
-Hud::Hud()
-{
+Hud::Hud(){
     //PIEZA HUD VIDA
     pieza_vida = new RectangleShape({115,20});
     pieza_vida->setFillColor(Color(28,17,23,255));
@@ -77,33 +76,6 @@ Hud::Hud()
     pieza_habilidades->setPosition(180,520);
 }
 
-void Hud::modificar_vida(int cantidad, int sr)
-{
-    //sr = 1 -> suma vida
-    //sr = 2 -> resta vida
-
-    if(sr == 1 && cantidad_corazones->size() < 10)
-    {
-        cantidad_corazones->push_back(*corazon);
-    }
-    if(sr == 2 && cantidad_corazones->size() > 0)
-    {
-        cantidad_corazones->pop_back();
-    }
-}
-
-void Hud::borradoHabilidades()
-{
-    vector_habilidades->clear();
-    mejora_escudo_esta = false;
-    mejora_cofre_esta = false;
-    mejora_ataque_esta = false;
-    mana_esta = false;
-    espada_magica_esta = false;
-    rompe_escudos_esta = false;
-}
-
-
 void Hud::compruebaTeclas(){
     if(Keyboard::isKeyPressed(Keyboard::Up)){
         modificar_vida(1,1);
@@ -146,28 +118,23 @@ void Hud::compruebaTeclas(){
     }
 }
 
+void Hud::modificar_vida(int cantidad, int sr){
+    if(sr == 1 && cantidad_corazones->size() < 10)
+    {
+        cantidad_corazones->push_back(*corazon);
+    }
+    if(sr == 2 && cantidad_corazones->size() > 0)
+    {
+        cantidad_corazones->pop_back();
+    }
 
-//SETTERS
-
-void Hud::setPosicionVida(int x, int y){
-    pieza_vida->setPosition(x,y);
-    texto_vida->setPosition(pieza_vida->getPosition().x, pieza_vida->getPosition().y);
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
         cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + 24 + (i * 8), pieza_vida->getPosition().y + 2});
     }
 }
 
-void Hud::setPosicionHabilidades(int x, int y){
-    pieza_habilidades->setPosition(x,y);
-    for(int i = 0; i < vector_habilidades->size(); i++)
-    {
-       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + (i*15.5),pieza_habilidades->getPosition().y});
-    }
-}
-
-void Hud::setHabilidad(int habilidad)
-{
+void Hud::setHabilidad(int habilidad){
     if(habilidad == 1 && mejora_escudo_esta == false)
     {
         vector_habilidades->push_back(*mejora_escudo);
@@ -198,52 +165,79 @@ void Hud::setHabilidad(int habilidad)
         vector_habilidades->push_back(*espada_magica);
         espada_magica_esta = true;
     }
+
+    for(int i = 0; i < vector_habilidades->size(); i++)
+    {
+       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + (i*15.5),pieza_habilidades->getPosition().y});
+    }
 }
 
-void Hud::setPosition(int x, int y){
+void Hud::borradoHabilidades(){
+    vector_habilidades->clear();
+    mejora_escudo_esta = false;
+    mejora_cofre_esta = false;
+    mejora_ataque_esta = false;
+    mana_esta = false;
+    espada_magica_esta = false;
+    rompe_escudos_esta = false;
+}
+
+
+//SETTERS
+
+void Hud::setPosicionVida(int x, int y){
+    xVida = x;
+    yVida = y;
     pieza_vida->setPosition(x,y);
+    texto_vida->setPosition(pieza_vida->getPosition().x, pieza_vida->getPosition().y);
+    for(int i = 0; i < cantidad_corazones->size(); i++)
+    {
+        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + 24 + (i * 8), pieza_vida->getPosition().y + 2});
+    }
+}
+
+void Hud::setPosicionHabilidades(int x, int y){
+    xHab = x;
+    yHab = y;
+    pieza_habilidades->setPosition(x,y);
+    for(int i = 0; i < vector_habilidades->size(); i++)
+    {
+       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + (i*15.5),pieza_habilidades->getPosition().y});
+    }
 }
 
 //GETTERS
 
-Text Hud::getTextoVida()
-{
+Sprite Hud::getCorazon(){
+    return *corazon;
+}
+
+Text Hud::getTextoVida(){
     return *texto_vida;
 }
 
-vector<Sprite> Hud::getArrayVida()
-{
-    return *cantidad_corazones;
-}
-
-vector<Sprite> Hud::getArrayHabilidades()
-{
-    return *vector_habilidades;
-}
-
-RectangleShape Hud::getPiezaVida()
-{
+RectangleShape Hud::getPiezaVida(){
     return *pieza_vida;
 }
 
-RectangleShape Hud::getPiezaHabilidades()
-{
+RectangleShape Hud::getPiezaHabilidades(){
     return *pieza_habilidades;
 }
 
-int Hud::getCantidadVida()
-{
+vector<Sprite> Hud::getArrayVida(){
+    return *cantidad_corazones;
+}
+
+vector<Sprite> Hud::getArrayHabilidades(){
+    return *vector_habilidades;
+}
+
+int Hud::getCantidadVida(){
     return cantidad_corazones->size();
 }
 
-int Hud::getCantidadHabilidades()
-{
+int Hud::getCantidadHabilidades(){
     return vector_habilidades->size();
-}
-
-Sprite Hud::getCorazon()
-{
-    return *corazon;
 }
 
 void Hud::draw(RenderWindow& target){
@@ -259,5 +253,19 @@ void Hud::draw(RenderWindow& target){
     for(int i = 0; i < vector_habilidades->size(); i++)
     {
         target.draw(vector_habilidades->at(i));
+    }
+}
+
+void Hud::move(Vector2f delta){
+    pieza_vida->move(delta);
+    texto_vida->move(delta);
+    for(int i = 0; i < cantidad_corazones->size(); i++)
+    {
+        cantidad_corazones->at(i).move(delta);
+    }
+    pieza_habilidades->move(delta);
+    for(int i = 0; i < vector_habilidades->size(); i++)
+    {
+       vector_habilidades->at(i).move(delta);
     }
 }
