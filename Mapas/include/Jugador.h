@@ -15,13 +15,12 @@ using namespace sf;
 class Jugador : public Entidad{
     public:
         Jugador(Vector2f pos);
-        void movimiento();
-        void moverColisionadores();
+        void setColisionadores();
+        void moverColisionadores(Vector2f);
         void procesarColisiones(int, FloatRect*);
 
-        void update(float, RenderWindow&);
+        void update(float, RenderWindow&, int, FloatRect*);
         void moverse();
-        void mover();
         void rotacionAtaque(RenderWindow&);
 
         RectangleShape getJugadorHitbox();

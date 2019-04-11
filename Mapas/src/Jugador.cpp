@@ -14,8 +14,9 @@ Jugador::Jugador(Vector2f pos){
     jugadorHitbox.setFillColor(Color::Transparent);
     jugadorHitbox.setOutlineThickness(1.f);
     jugadorHitbox.setOutlineColor(Color::Green);
+    setColisionadores();
 
-    speed = 200.f;
+    speed = 75.f;
     dirMov = 1.f;
     movement = Vector2f(0.f, 0.f);
 
@@ -35,50 +36,26 @@ Jugador::Jugador(Vector2f pos){
     ataqueHitbox.setPosition(pos);
 }
 
-///---------------------------------MOVIMIENTO
-void Jugador::movimiento(){
-    /*cout << actual->sprite.getPosition().x << endl;
-    if(Keyboard::isKeyPressed(Keyboard::A) && colisiona_derecha != true){
-        sprite->move(-speed, 0);
-    }
-    if(Keyboard::isKeyPressed(Keyboard::D) && colisiona_izquierda != true){
-        sprite->move(speed, 0);
-    }
-    if(Keyboard::isKeyPressed(Keyboard::W) && colisiona_abajo != true){
-        sprite->move(0, -speed);
-    }
-    if(Keyboard::isKeyPressed(Keyboard::S) && colisiona_arriba != true){
-        sprite->move(0, speed);
-    }*/
-
-    /*moverColisionadores();
-
-    colisiona_abajo = false;
-    colisiona_arriba = false;
-    colisiona_derecha = false;
-    colisiona_izquierda = false;*/
-    /*
-    sprite->setPosition(actual->sprite.getPosition().x, actual->sprite.getPosition().y);
-    jugadorHitbox.setPosition(actual->sprite.getPosition().x, actual->sprite.getPosition().y);
-    ataqueHitbox.setPosition(actual->sprite.getPosition().x, actual->sprite.getPosition().y);*/
+void Jugador::setColisionadores(){
+    cuadrado_arr->setSize(Vector2f(11, 0.75));
+    cuadrado_arr->setPosition(jugadorHitbox.getGlobalBounds().left + 1.5, jugadorHitbox.getGlobalBounds().top + jugadorHitbox.getGlobalBounds().height/2 - 0.5);
+    cuadrado_izq->setSize(Vector2f(0.75, 5.5));
+    cuadrado_izq->setPosition(jugadorHitbox.getGlobalBounds().left, jugadorHitbox.getGlobalBounds().top + jugadorHitbox.getGlobalBounds().height/2 + 0.99);
+    cuadrado_abj->setSize(Vector2f(11, 0.75));
+    cuadrado_abj->setPosition(jugadorHitbox.getGlobalBounds().left + 1.5, jugadorHitbox.getGlobalBounds().top + jugadorHitbox.getGlobalBounds().height + 0.5);
+    cuadrado_der->setSize(Vector2f(0.75, 5.5));
+    cuadrado_der->setPosition(jugadorHitbox.getGlobalBounds().left + jugadorHitbox.getGlobalBounds().width - 0.5, jugadorHitbox.getGlobalBounds().top + jugadorHitbox.getGlobalBounds().height/2 + 0.99);
 }
 
-void Jugador::moverColisionadores(){
-    /*cuadrado_der->setPosition(actual->sprite.getGlobalBounds().left + actual->sprite.getGlobalBounds().width, actual->sprite.getGlobalBounds().top + 3*actual->sprite.getGlobalBounds().height/4);
-    cuadrado_arr->setPosition(actual->sprite.getGlobalBounds().left, actual->sprite.getPosition().y - 0.01);
-    cuadrado_izq->setPosition(actual->sprite.getGlobalBounds().left -0.5, actual->sprite.getGlobalBounds().top+8);
-    cuadrado_abj->setPosition(actual->sprite.getGlobalBounds().left, actual->sprite.getPosition().y + actual->sprite.getGlobalBounds().height/2 - 0.49);*/
-    cuadrado_cen->setPosition(actual->sprite.getPosition().x - 0.25, actual->sprite.getPosition().y - 0.25);
-
-    cuadrado_der->setPosition(actual->sprite.getGlobalBounds().left + 7.5, actual->sprite.getGlobalBounds().top+8);
-    cuadrado_arr->setPosition(actual->sprite.getGlobalBounds().left, actual->sprite.getPosition().y - 0.01);
-    cuadrado_izq->setPosition(actual->sprite.getGlobalBounds().left - 0.5, actual->sprite.getGlobalBounds().top+8);
-    cuadrado_abj->setPosition(actual->sprite.getGlobalBounds().left, actual->sprite.getPosition().y + actual->sprite.getGlobalBounds().height/2 - 0.49);
-    cout << actual->sprite.getPosition().x << endl;
+void Jugador::moverColisionadores(Vector2f mov){
+    cuadrado_arr->move(mov);
+    cuadrado_izq->move(mov);
+    cuadrado_abj->move(mov);
+    cuadrado_der->move(mov);
 }
 
 void Jugador::procesarColisiones(int nColisiones, FloatRect* colisiones){
-   /* for(int i = 0; i < nColisiones; i++){
+   for(int i = 0; i < nColisiones; i++){
         //INFERIOR
         if(cuadrado_arr->getGlobalBounds().intersects(colisiones[i])){
             setColision(2);
@@ -102,10 +79,10 @@ void Jugador::procesarColisiones(int nColisiones, FloatRect* colisiones){
             setColision(4);
             cout <<  "Izq" << endl;
         }
-    }*/
+    }
 }
 
-void Jugador::update(float delta, RenderWindow& window){
+void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
     playerCenter = Vector2f(jugadorHitbox.getPosition().x, jugadorHitbox.getPosition().y);
     rotacionAtaque(window);
 
@@ -113,6 +90,8 @@ void Jugador::update(float delta, RenderWindow& window){
     moverse(); // comprobar que el jugador se mueve
     jugadorHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);
+    moverColisionadores(movement * delta);
+    procesarColisiones(nCol, colisiones);
 
     //cout << "Delta: " << delta << endl;
     actual->update(delta, movement);
@@ -172,26 +151,7 @@ void Jugador::moverse(){
             actual->sprite.setScale(1.f*dirMov, 1.f);
         }
     }
-}
 
-void Jugador::mover(){
-    if (Keyboard::isKeyPressed(Keyboard::W) && colisiona_abajo != true){
-        actual->sprite.move(0, -speed);
-    }
-
-    if (Keyboard::isKeyPressed(Keyboard::S) && colisiona_arriba != true){
-        actual->sprite.move(0, speed);
-    }
-
-    if(Keyboard::isKeyPressed(Keyboard::A) && colisiona_derecha != true){
-        actual->sprite.move(-speed, 0);
-    }
-
-    if (Keyboard::isKeyPressed(Keyboard::D) && colisiona_izquierda != true){
-        actual->sprite.move(speed, 0);
-    }
-
-    moverColisionadores();
     colisiona_abajo = false;
     colisiona_arriba = false;
     colisiona_derecha = false;
@@ -239,9 +199,9 @@ Animacion* Jugador::getActual() {
 }
 
 void Jugador::draw(RenderWindow& target) {
-    target.draw(jugadorHitbox);
+    //target.draw(jugadorHitbox);
     target.draw(actual->sprite);
-    target.draw(ataqueHitbox);
+    //target.draw(ataqueHitbox);
 }
 
 void Jugador::drawBoundingBoxes(RenderWindow& target){
@@ -249,7 +209,7 @@ void Jugador::drawBoundingBoxes(RenderWindow& target){
     target.draw(*cuadrado_arr);
     target.draw(*cuadrado_abj);
     target.draw(*cuadrado_izq);
-    target.draw(*cuadrado_cen);
+    //target.draw(*cuadrado_cen);
 }
 
 void Jugador::showData(){/*

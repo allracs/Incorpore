@@ -38,10 +38,10 @@ void Animacion::update(float deltaTime, sf::Vector2f movement)
 
         if(actualFrame.left == finalF.left){
             actualFrame.left = firstF.left;
-            std::cout << "Cambiamos de frame0" << std::endl;
+            //::cout << "Cambiamos de frame0" << std::endl;
         } else {
             actualFrame.left += incremento;
-            std::cout << "Cambiamos de frame" << std::endl;
+            //std::cout << "Cambiamos de frame" << std::endl;
         }
 
         sprite.setTextureRect(actualFrame);

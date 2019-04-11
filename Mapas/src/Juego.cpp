@@ -27,8 +27,6 @@ void Juego::cargaPlayer(){
 
 void Juego::cargaMapa(){
     mapa = new Mapa;
-    //mapa->mostrarMapaColisiones();
-    //setColisions();
 }
 
 void Juego::cargarHUD(){
@@ -44,12 +42,8 @@ void Juego::gameLoop(){
         procesarEventos();
 
         delta = frameClock.restart().asSeconds();
-        jugador->update(delta, *window);
+        jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
 
-        /*jugador->mover();
-        jugador->movimiento();
-        jugador->rotacionAtaque(*window);*/
-        //jugador->update(delta, *window);
         if(!centrado) {
             setView();
             centrado = true;
@@ -81,7 +75,7 @@ void Juego::render(){
 
     mapa->draw(*window, *jugador);
     hud->draw(*window);
-    jugador->drawBoundingBoxes(*window);
+    //jugador->drawBoundingBoxes(*window);
     //jugador->draw(*window);
 
 
