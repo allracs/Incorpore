@@ -82,6 +82,7 @@ void Juego::render(){
     mapa->draw(*window, *jugador);
     hud->draw(*window);
     mapa->getEntityPostition(*jugador);
+    jugador->drawBoundingBoxes(*window);
 
     window->display();
 }

@@ -31,6 +31,7 @@ class Mapa{
         bool** getColisiones();
         int getNumColisiones();
         void getEntityPostition(Entidad);
+        Vector2i getPosicionJugador();
 
         FloatRect* getBounds();
 

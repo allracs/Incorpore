@@ -343,3 +343,7 @@ void Mapa::getEntityPostition(Entidad player){
     cout << "X: " << posicion.x << endl;
     cout << "Y: " << posicion.y << endl;
 }
+
+Vector2i Mapa::getPosicionJugador(){
+    return posicion;
+}

@@ -15,12 +15,18 @@ class Entidad{
         RectangleShape cuadradocen();
 
         void setColision(int);
+        void setColisionadores();
+        void moverColisionadores(Vector2f);
+        void procesarColisiones(int, FloatRect*);
         void setPosicion(int, int);
 
         void setCenter(Vector2f);
         Vector2f getCenter();
+        void drawBoundingBoxes(RenderWindow&);
+        void showData();
     protected:
         RectangleShape *sprite;
+        RectangleShape entidadHitbox;
 
         RectangleShape *cuadrado_der;
         RectangleShape *cuadrado_arr;
@@ -34,6 +40,8 @@ class Entidad{
         bool colisiona_izquierda = false;
 
         Vector2f entityCenter;
+
+        float speed;
 };
 
 #endif // ENTIDAD_H
