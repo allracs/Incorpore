@@ -40,7 +40,6 @@ void Juego::gameLoop(){
 
     while(window->isOpen()){
         procesarEventos();
-
         delta = frameClock.restart().asSeconds();
         jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
 
@@ -48,7 +47,6 @@ void Juego::gameLoop(){
             setView();
             centrado = true;
         }
-        //jugador->procesarColisiones(mapa->getNumColisiones(), mapa->getBounds());
 
         hud->compruebaTeclas();
         setView();
@@ -76,13 +74,6 @@ void Juego::render(){
     mapa->draw(*window, *jugador);
     hud->draw(*window);
     mapa->getEntityPostition(*jugador);
-    int* pos = mapa->getEntityPostition(*jugador);
-    cout << "X: " << pos[0] << endl;
-    cout << "Y: " << pos[1] << endl;
-    //jugador->drawBoundingBoxes(*window);
-    //jugador->draw(*window);
-
-
 
     window->display();
 }

@@ -1,5 +1,6 @@
 #include "tinyxml2.h"
 #include "Jugador.h"
+#include "Entidad.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace sf;
@@ -29,7 +30,7 @@ class Mapa{
         Sprite**** getMapSprite();
         bool** getColisiones();
         int getNumColisiones();
-        int* getEntityPostition(Jugador);
+        void getEntityPostition(Entidad);
 
         FloatRect* getBounds();
 
@@ -64,4 +65,5 @@ class Mapa{
 
         bool** colisionMap; //true = colision
         FloatRect* colision; //Bounding Boxes de las Colisiones
+        Vector2i posicion;
 };

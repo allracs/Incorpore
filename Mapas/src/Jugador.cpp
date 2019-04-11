@@ -5,9 +5,7 @@ using namespace sf;
 
 Jugador::Jugador(Vector2f pos){
     playerCenter = pos;
-    //sprite->setOrigin(sprite->getSize().x/2, sprite->getSize().y/2);
-
-    //jugadorHitbox = RectangleShape(Vector2f(sprite->getSize().x - 4, sprite->getSize().y - 4));
+    setCenter(playerCenter);
     jugadorHitbox = sf::RectangleShape(sf::Vector2f(12,12));
     jugadorHitbox.setPosition(pos);
     jugadorHitbox.setOrigin(12/2, 12/2);
@@ -84,6 +82,7 @@ void Jugador::procesarColisiones(int nColisiones, FloatRect* colisiones){
 
 void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
     playerCenter = Vector2f(jugadorHitbox.getPosition().x, jugadorHitbox.getPosition().y);
+    setCenter(playerCenter);
     rotacionAtaque(window);
 
     // MOVIMIENTO
@@ -93,7 +92,6 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     moverColisionadores(movement * delta);
     procesarColisiones(nCol, colisiones);
 
-    //cout << "Delta: " << delta << endl;
     actual->update(delta, movement);
 }
 
@@ -182,7 +180,6 @@ RectangleShape Jugador::getAtaqueHitbox(){
 }
 
 Vector2f Jugador::getCenter(){
-    //cout << "PLAYER CENTER: " << playerCenter.x << " - " << playerCenter.y << endl;
     return playerCenter;
 }
 
@@ -212,9 +209,9 @@ void Jugador::drawBoundingBoxes(RenderWindow& target){
     //target.draw(*cuadrado_cen);
 }
 
-void Jugador::showData(){/*
+void Jugador::showData(){
     cout <<  "x: " << sprite->getPosition().x << endl;
     cout <<  "y: " << sprite->getPosition().y << endl;
     cout <<  "width: " << sprite->getSize().x << endl;
-    cout <<  "height: " << sprite->getSize().x << endl;*/
+    cout <<  "height: " << sprite->getSize().x << endl;
 }

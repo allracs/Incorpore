@@ -12,7 +12,7 @@
 using namespace std;
 using namespace sf;
 
-class Jugador : public Entidad{
+class Jugador: public Entidad{
     public:
         Jugador(Vector2f pos);
         void setColisionadores();
@@ -33,7 +33,6 @@ class Jugador : public Entidad{
         void draw(RenderWindow&);
         void drawBoundingBoxes(RenderWindow&);
         void showData();
-
     private:
         float speed;
         float dirMov;

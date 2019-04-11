@@ -6,10 +6,10 @@
 
 using namespace sf;
 
-class Juego{
+class Juego
+{
     public:
         Juego();
-
         void cargaPlayer();
         void cargaMapa();
         void cargarHUD();

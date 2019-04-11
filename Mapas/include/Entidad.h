@@ -17,6 +17,8 @@ class Entidad{
         void setColision(int);
         void setPosicion(int, int);
 
+        void setCenter(Vector2f);
+        Vector2f getCenter();
     protected:
         RectangleShape *sprite;
 
@@ -30,6 +32,8 @@ class Entidad{
         bool colisiona_abajo = false;
         bool colisiona_derecha = false;
         bool colisiona_izquierda = false;
+
+        Vector2f entityCenter;
 };
 
 #endif // ENTIDAD_H

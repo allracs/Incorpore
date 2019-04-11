@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "math.h"
+
 using namespace sf;
 using namespace tinyxml2;
 using namespace std;
@@ -333,15 +334,12 @@ void Mapa::draw(RenderWindow& target, Jugador player){
 }
 
 //Esto es pa mis Oscars (los amo)
-int* Mapa::getEntityPostition(Jugador player){
+void Mapa::getEntityPostition(Entidad player){
     Vector2f pos = player.getCenter();
-    int* res = new int[2];
 
-    int x = round(pos.x)/16;
-    int y = round(pos.y)/16;
+    posicion.x = round(pos.x)/16;
+    posicion.y = round(pos.y)/16;
 
-    res[0] = x;
-    res[1] = y;
-
-    return res;
+    cout << "X: " << posicion.x << endl;
+    cout << "Y: " << posicion.y << endl;
 }
