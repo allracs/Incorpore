@@ -9,6 +9,7 @@ using namespace sf;
 class Juego
 {
     public:
+        static Juego* Instance();
         Juego();
         void cargaPlayer();
         void cargaMapa();
@@ -21,6 +22,8 @@ class Juego
 
         Vector2i dimensiones;
     private:
+        static Juego* pinstance;
+
         RenderWindow *window;
         RenderStates *states;
         Clock frameClock;

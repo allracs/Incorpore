@@ -451,10 +451,10 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1555007045 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
+1555009303 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 
-1555006500 /home/fv/FV/Incorpore/Mapas/include/Juego.h
+1555009303 /home/fv/FV/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"

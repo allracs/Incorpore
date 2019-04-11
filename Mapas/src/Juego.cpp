@@ -1,6 +1,14 @@
 #include "../include/Juego.h"
 using namespace sf;
 
+Juego* Juego::pinstance = 0;
+
+Juego* Juego::Instance(){
+    if(pinstance == 0)
+        pinstance = new Juego;
+    return pinstance;
+}
+
 Juego::Juego(){
     dimensiones = Vector2i(1280, 720);
 
