@@ -75,6 +75,10 @@ void Juego::render(){
 
     mapa->draw(*window, *jugador);
     hud->draw(*window);
+    mapa->getEntityPostition(*jugador);
+    int* pos = mapa->getEntityPostition(*jugador);
+    cout << "X: " << pos[0] << endl;
+    cout << "Y: " << pos[1] << endl;
     //jugador->drawBoundingBoxes(*window);
     //jugador->draw(*window);
 

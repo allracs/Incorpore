@@ -29,6 +29,7 @@ class Mapa{
         Sprite**** getMapSprite();
         bool** getColisiones();
         int getNumColisiones();
+        int* getEntityPostition(Jugador);
 
         FloatRect* getBounds();
 
