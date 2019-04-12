@@ -12,6 +12,9 @@ class Animacion
         void setAnimacion(char* nTextura, sf::IntRect firstF, sf::IntRect finalF, int incremento,float tiempo);
         void update(float deltaTime, sf::Vector2f movement);
 
+        float getFrame();
+
+
         sf::Sprite sprite;
     private:
         sf::Texture texture;

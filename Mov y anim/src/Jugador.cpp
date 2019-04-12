@@ -17,7 +17,7 @@ Jugador::Jugador(sf::Vector2f pos)
     float dirMov = 1.f;
 
 
-    speed = 200.f;
+    speed = 100.f;
     movement = sf::Vector2f(0.f, 0.f);
 
     // Animaciones
@@ -40,6 +40,16 @@ Jugador::Jugador(sf::Vector2f pos)
     hitboxAtaque.setOrigin(0,6.f);
     hitboxAtaque.setPosition(pos);
 
+
+    if(!swordText.loadFromFile("sprites/sword.png")){
+        std::cout << "ERROR AL CARGAR TEXTURA: sword" << std::endl;
+    }
+    espada.setTexture(swordText);
+    espada.setOrigin(16,16);
+    espada.setPosition(hitboxAtaque.getPosition());
+    espada.setScale(-1.f, -1.f);
+    //espada.rotate(25.f);
+
 }
 
 Jugador::~Jugador()
@@ -56,7 +66,6 @@ void Jugador::rotacionAtaque(sf::RenderWindow &app) {
     aimDir = mousePos - playerCenter;
     aimDirNorm = aimDir / (float)sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
 
-
     float PI = 3.14159265;
 
     float dx = mousePos.x - playerCenter.x;
@@ -65,6 +74,8 @@ void Jugador::rotacionAtaque(sf::RenderWindow &app) {
 
     float rotation = (atan2(dy, dx)) * 180 / PI;
     hitboxAtaque.setRotation(rotation);
+    espada.setRotation(rotation - 45.f);
+    std::cout << "ROTACION DE LA HITBOX: " << hitboxAtaque.getRotation() << std::endl;
 
 }
 
@@ -79,7 +90,7 @@ void Jugador::moverse(){
     {
         movement.y -= speed;
         if (actual != &run){
-            std::cout << "CAMBIAMOS A RUN" << std::endl;
+            //std::cout << "CAMBIAMOS A RUN" << std::endl;
             actual = &run;
             actual->sprite.setPosition(playerCenter);
         }
@@ -89,7 +100,7 @@ void Jugador::moverse(){
     {
         movement.y += speed;
         if (actual != &run){
-            std::cout << "CAMBIAMOS A RUN" << std::endl;
+            //std::cout << "CAMBIAMOS A RUN" << std::endl;
             actual = &run;
             actual->sprite.setPosition(playerCenter);
         }
@@ -102,7 +113,7 @@ void Jugador::moverse(){
         this->movement.x -= speed;
 
         if (actual != &run){
-            std::cout << "CAMBIAMOS A RUN" << std::endl;
+            //std::cout << "CAMBIAMOS A RUN" << std::endl;
             actual = &run;
             actual->sprite.setPosition(playerCenter);
         }
@@ -118,7 +129,7 @@ void Jugador::moverse(){
         this->movement.x += speed;
 
         if (actual != &run){
-            std::cout << "CAMBIAMOS A RUN" << std::endl;
+            //std::cout << "CAMBIAMOS A RUN" << std::endl;
             actual = &run;
             actual->sprite.setPosition(playerCenter);
         }
@@ -129,7 +140,7 @@ void Jugador::moverse(){
 
     if(movement.x == 0 & movement.y == 0) {
         if (actual != &idle){
-            std::cout << "CAMBIAMOS A IDLE" << std::endl;
+            //std::cout << "CAMBIAMOS A IDLE" << std::endl;
             actual = &idle;
             actual->sprite.setPosition(playerCenter);
             actual->sprite.setScale(1.f*dirMov, 1.f);
@@ -138,9 +149,10 @@ void Jugador::moverse(){
 
 }
 
+/*
 void Jugador::range(sf::RenderWindow &app){ //Activacion de ataque a distancia
 
-    Bullet::Bullet() b1;
+//    Bullet::Bullet() b1;
 
 
     if(rangeON){
@@ -164,6 +176,7 @@ void Jugador::range(sf::RenderWindow &app){ //Activacion de ataque a distancia
                }
     }
 }
+*/
 
 sf::Vector2f Jugador::getCenter(){
     //std::cout << "HA DEVUELTO EL PLAYER CENTER: " << playerCenter.x << "--" << playerCenter.y << std::endl;
@@ -182,6 +195,8 @@ sf::RectangleShape Jugador::getHitboxAtaque(){
     return this->hitboxAtaque;
 }
 
+
+
 void Jugador::update(float delta, sf::RenderWindow &app){
     playerCenter = sf::Vector2f(jugadorHitbox.getPosition().x, jugadorHitbox.getPosition().y);
     rotacionAtaque(app);
@@ -190,34 +205,41 @@ void Jugador::update(float delta, sf::RenderWindow &app){
     moverse(); // comprobar que el jugador se mueve
     jugadorHitbox.move(movement * delta); // mover al jugador.
     hitboxAtaque.move(movement * delta);
+    espada.move(movement * delta);
 
     actual->update(delta, movement);
 
-    // ANiMACIONES
 
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-        {
-            if(rangeON)
-                rangeON = false;
-             else
-                rangeON = true;
+    /*
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    {
+        if(rangeON)
+            rangeON = false;
+         else
+            rangeON = true;
+    }
 
-        }
 
-        if(rangeON){
-            range(app);
-        }
+    if(rangeON){
+        range(app);
+    }
+    */
 }
 
 
 void Jugador::draw(sf::RenderWindow &app) {
     app.draw(jugadorHitbox);
-    app.draw(actual->sprite);
+
+    if(hitboxAtaque.getRotation() >= 0 && hitboxAtaque.getRotation() <= 180) {
+        app.draw(actual->sprite);
+        app.draw(espada);
+    } else {
+        app.draw(espada);
+        app.draw(actual->sprite);
+    }
     app.draw(hitboxAtaque);
-    app.draw(app,bullets);
 
-
-
+    //app.draw(app,bullets);
 }
 
 

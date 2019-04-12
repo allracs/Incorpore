@@ -13,10 +13,19 @@ class Enemigo
         void draw(sf::RenderWindow &app);
         void update(float delta, sf::RenderWindow &app, sf::RectangleShape hitbox);
 
+
+
     private:
         sf::RectangleShape enemigoHitbox;
          //Matar al enemigo
-    bool deleteSprite;
+        bool deleteSprite;
+        sf::Vector2f movement; //movimiento del enemigo
+        Animacion *actual;
+
+
+        Animacion idle;
+        Animacion run;
+
 
 };
 

@@ -48,10 +48,14 @@ class Jugador
         sf::Vector2f movement; //movimiento del jugador
         sf::Vector2f aimDirNorm; //normalizar vector
         sf::Vector2f aimDir;
+
         //Ataque del jugador
         sf::RectangleShape hitboxAtaque;
+        sf::Texture swordText;
+        sf::Sprite espada;
 
-            //balas
+
+        //balas
         std::vector<Bullet> bullets;
 
 
@@ -61,6 +65,7 @@ class Jugador
         Animacion idle;
         Animacion run;
         Animacion *actual;
+
 
 };
 
