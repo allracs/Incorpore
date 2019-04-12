@@ -26,9 +26,12 @@ void juego::update()
 {
     while(window->isOpen())
     {
-        procesar_eventos();
+        std::cout << window->getSize().x << " , " << window->getSize().y << std::endl;
+        ////std::cout << sel_raton << std::endl;
         eventos_raton();
+        procesar_eventos();
         menu_inicial->setColorOp();
+        menu_inicial->setPosicion(window->getSize().x, window->getSize().y /2);
         render();
     }
 }
@@ -52,6 +55,13 @@ void juego::procesar_eventos()
                     }else{
                         menu_inicial->setOpcionMenu(menu_inicial->opcion_seleccionada()-1);
                     }
+                    /*
+                    if(sel_raton == false && sel_teclado == false)
+                    {
+                        sel_teclado = true;
+                        menu_inicial->setOpcionMenu(0);
+                    }
+                    */
                     break;
 
                 case sf::Keyboard::Down:
@@ -61,6 +71,13 @@ void juego::procesar_eventos()
                     }else{
                         menu_inicial->setOpcionMenu(menu_inicial->opcion_seleccionada()+1);
                     }
+                    /*
+                    if(sel_raton == false && sel_teclado == false)
+                    {
+                        sel_teclado = true;
+                        menu_inicial->setOpcionMenu(0);
+                    }
+                    */
                     break;
                 case sf::Keyboard::Space:
                     if(menu_inicial->opcion_seleccionada() == 1)
@@ -114,7 +131,7 @@ void juego::eventos_raton()
         if(i == 0)
         {
             jugar = menu_inicial->getOpciones().at(i).getGlobalBounds();
-            std::cout << menu_inicial->getOpciones().at(i).getPosition().x << "," << menu_inicial->getOpciones().at(i).getPosition().x << std::endl;
+            //std::cout << menu_inicial->getOpciones().at(i).getPosition().x << "," << menu_inicial->getOpciones().at(i).getPosition().x << std::endl;
         }
         if(i == 1)
         {
@@ -131,25 +148,37 @@ void juego::eventos_raton()
 
     sf::Vector2f pPos = window->mapPixelToCoords(pixelPos);
 
-    if(jugar.contains(pPos.x, pPos.y))
+    if(jugar.contains(pPos.x, pPos.y) && menuprincipal == true)
     {
         menu_inicial->setOpcionMenu(0);
-
-
+        sel_raton = true;
+        sel_teclado = false;
     }
-    if(opciones.contains(pPos.x, pPos.y))
+    else if(opciones.contains(pPos.x, pPos.y) && menuprincipal == true)
     {
         menu_inicial->setOpcionMenu(1);
+        sel_raton = true;
+        sel_teclado = false;
     }
-    if(salir.contains(pPos.x, pPos.y))
+    else if(salir.contains(pPos.x, pPos.y) && menuprincipal == true)
     {
         menu_inicial->setOpcionMenu(2);
+        sel_raton = true;
+        sel_teclado = false;
     }
+    /*
+    else{
+        if(sel_teclado == false){
+            menu_inicial->setOpcionMenu(3);
+        }
+        sel_raton = false;
+    }
+    */
     recjugar.setSize({opciones.width, opciones.height});
 
 
-    //std::cout << raton->getPosition().x - window->getPosition().x << "," << raton->getPosition().y - window->getPosition().y << std::endl;
-    std::cout << recjugar.getSize().x << "," << recjugar.getSize().y << std::endl;
+    ////std::cout << raton->getPosition().x - window->getPosition().x << "," << raton->getPosition().y - window->getPosition().y << std::endl;
+    //std::cout << recjugar.getSize().x << "," << recjugar.getSize().y << std::endl;
 
 
 }
@@ -160,9 +189,9 @@ void juego::playMusica()
 sf::Sound sonido;
 sf::SoundBuffer buffer;
     if(buffer.loadFromFile("Menu.ogg"))
-        std::cout << "no va la musiquica"<< std::endl;
+        //std::cout << "no va la musiquica"<< std::endl;
 //if(!musica->openFromFile("src/Menu.ogg"))
-  //          std::cout << "no va la musiquica"<< std::endl;
+  //          //std::cout << "no va la musiquica"<< std::endl;
   sonido.setBuffer(buffer);
   sonido.play();
 

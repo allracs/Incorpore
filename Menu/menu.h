@@ -19,7 +19,7 @@ public:
     sf::Text getTitulo();
 
     ///setters
-    void setPosicion(int op, int x, int y);
+    void setPosicion(int, int);
     void setOpcionMenu(int);
     void setColorOp();
 

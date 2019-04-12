@@ -56,11 +56,11 @@ menu::menu()
     jugar->setPosition({1280/2-35,350});
     opciones->setPosition({1280/2- 35,450});
     salir->setPosition({1280/2-35,550});
-    */
+
     jugar->setPosition({1280/2-35,350});
     opciones->setPosition({1280/2-35,450});
     salir->setPosition({1280/2-35,550});
-
+    */
     botones = new std::vector<sf::Text>;
     for(int i = 0; i < 3; i++)
     {
@@ -117,6 +117,10 @@ void menu::setOpcionMenu(int num)
     {
        seleccion = 2;
     }
+    if(num == 3)
+    {
+        seleccion = 3;
+    }
 }
 
 void menu::setColorOp()
@@ -126,7 +130,7 @@ void menu::setColorOp()
     if(seleccion ==0)
     {
         jugar->setColor(sf::Color::Red);
-        jugar->setScale(1.4,1.4);
+        //jugar->setScale(1.4,1.4);
        opciones->setColor(sf::Color::White);
        opciones->setScale(1,1);
        salir->setColor(sf::Color::White);
@@ -137,7 +141,7 @@ void menu::setColorOp()
         jugar->setColor(sf::Color::White);
         jugar->setScale(1,1);
        opciones->setColor(sf::Color::Red);
-       opciones->setScale(1.4,1.4);
+       //opciones->setScale(1.4,1.4);
        salir->setColor(sf::Color::White);
          salir->setScale(1,1);
     }
@@ -148,8 +152,17 @@ void menu::setColorOp()
        opciones->setColor(sf::Color::White);
        opciones->setScale(1,1);
        salir->setColor(sf::Color::Red);
-        salir->setScale(1.4,1.4);
+        //salir->setScale(1.4,1.4);
 
+    }
+    else if(seleccion ==3)
+    {
+        jugar->setColor(sf::Color::White);
+        jugar->setScale(1,1);
+        opciones->setColor(sf::Color::White);
+        opciones->setScale(1,1);
+        salir->setColor(sf::Color::White);
+        salir->setScale(1,1);
     }
 
     for(int i = 0; i < 3; i++)
@@ -165,20 +178,11 @@ void menu::setColorOp()
     }
 }
 
-void menu::setPosicion(int num, int x, int y)
+void menu::setPosicion(int x, int y)
 {
-    if(num == 0)
-    {
-        jugar->setPosition({x,y});
-    }
-    if(num == 1)
-    {
-        opciones->setPosition({x,y});
-    }
-    if(num == 2)
-    {
-        salir->setPosition({x,y});
-    }
+    jugar->setPosition((x/2) - (jugar->getGlobalBounds().width/2), y);
+    opciones->setPosition((x/2) - (opciones->getGlobalBounds().width/2), y + 100);
+    salir->setPosition((x/2) - (salir->getGlobalBounds().width/2), y + 200);
 }
 
 
