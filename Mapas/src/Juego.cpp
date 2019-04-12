@@ -60,8 +60,8 @@ void Juego::gameLoop(){
         procesarEventos();
         delta = frameClock.restart().asSeconds();
         jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
-
         manejarIA();
+        enemigos[0]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*jugador).x, mapa->getPosicionEntidad(*jugador).y));
 
         if(!centrado) {
             setView();
@@ -121,6 +121,9 @@ void Juego::manejarIA(){
             //se llama a astar.mapear()
             std::vector<Posicion> path = ia.mapear();
             std::cout << path.size() << std::endl;
+
+            enemigos[a]->setPath(path);
+
             // SEGUIR EL CAMINO (CON BUCLE INTERPOLADO)
             // mover a enemigos[a] hacia el siguiente punto
 
@@ -164,7 +167,7 @@ void Juego::manejarIA(){
                 }
                 std::cout << std::endl;
             }
-            //fin for each enemigo
-        }
+
+        } //fin for each enemigo
     }
 }

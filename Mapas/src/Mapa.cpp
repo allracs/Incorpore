@@ -342,8 +342,8 @@ Vector2i Mapa::getPosicionEntidad(Entidad e){
     posicion.x = round(pos.x)/16;
     posicion.y = round(pos.y+0.05)/16;
 
-    cout << "X: " << posicion.x << endl;
-    cout << "Y: " << posicion.y << endl;
+    //cout << "X: " << posicion.x << endl;
+    //cout << "Y: " << posicion.y << endl;
 
     return posicion;
 }
