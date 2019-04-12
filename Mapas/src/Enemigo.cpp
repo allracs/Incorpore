@@ -49,7 +49,7 @@ void Enemigo::seguirCamino(Posicion a){
     movement = Vector2f(0.f, 0.f);
     Posicion s = path.at(0);
     std::cout << colisiona_arriba << std::endl;
-    if (a.getY() > s.getY() && !colisiona_arriba){    // ARRIBA
+    if (a.getY() > s.getY() && !colisiona_abajo){    // ABAJO
         movement.y -= speed;
         if (actual != &run){
             cout << "CAMBIAMOS A RUN" << endl;
@@ -58,7 +58,7 @@ void Enemigo::seguirCamino(Posicion a){
         }
     }
 
-    if (a.getY() < s.getY() && !colisiona_abajo){   // ABAJO
+    if (a.getY() < s.getY() && !colisiona_arriba){   // ARRIBA
         movement.y += speed;
 
         if (actual != &run){
@@ -68,7 +68,7 @@ void Enemigo::seguirCamino(Posicion a){
         }
     }
 
-    if(a.getX() > s.getX() && !colisiona_izquierda){   // IZQUIERDA
+    if(a.getX() > s.getX() && !colisiona_derecha){   // DERECHA
         dirMov = -1.f;
         movement.x -= speed;
 
@@ -80,7 +80,7 @@ void Enemigo::seguirCamino(Posicion a){
         actual->sprite.setScale(1.f*dirMov, 1.f);
     }
 
-    if (a.getX() < s.getX() && !colisiona_derecha){    // DERECHA
+    if (a.getX() < s.getX() && !colisiona_izquierda){    // IZQUIERDA
         dirMov = 1.f;
         movement.x += speed;
 
