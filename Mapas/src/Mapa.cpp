@@ -181,7 +181,7 @@ void Mapa::posicionaObjetos(){
             if(colisionMap[i][j] == false && nObj < maxObj){
                 int random = rand() % 100;
                 //cout << random << endl;
-                if(random < 1 &&
+                if(random < 5 &&
                    colisionMap[i-1][j-1] == false &&
                    colisionMap[i][j-1] == false &&
                    colisionMap[i+1][j-1] == false &&
