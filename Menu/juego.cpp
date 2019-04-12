@@ -127,17 +127,21 @@ void juego::eventos_raton()
     }
 
     //menu_inicial->getOpciones().at(i).getGlobalBounds().contains( raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y)
-    if(jugar.contains(raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y +55))
+    sf::Vector2i pixelPos = raton->getPosition(*window);
+
+    sf::Vector2f pPos = window->mapPixelToCoords(pixelPos);
+
+    if(jugar.contains(pPos.x, pPos.y))
     {
         menu_inicial->setOpcionMenu(0);
 
 
     }
-    if(opciones.contains(raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y+55))
+    if(opciones.contains(pPos.x, pPos.y))
     {
         menu_inicial->setOpcionMenu(1);
     }
-    if(salir.contains(raton->getPosition().x - window->getPosition().x, raton->getPosition().y - window->getPosition().y+55))
+    if(salir.contains(pPos.x, pPos.y))
     {
         menu_inicial->setOpcionMenu(2);
     }
