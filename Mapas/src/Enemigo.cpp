@@ -22,6 +22,8 @@ Enemigo::Enemigo(Vector2f pos){
     ataqueHitbox.setSize(Vector2f(20.f, 12.f));
     ataqueHitbox.setOrigin(0,6.f);
     ataqueHitbox.setPosition(pos);
+
+    speed = 30.f;
 }
 
 void Enemigo::setPath(std::vector<Posicion> p){
@@ -33,6 +35,7 @@ void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
     // MOVIMIENTO
     seguirCamino(pos_a); // comprobar que el jugador se mueve
+
     entidadHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);
     moverColisionadores(movement * delta);
@@ -45,8 +48,8 @@ void Enemigo::seguirCamino(Posicion a){
     //aqui el enemigo sigue el camino
     movement = Vector2f(0.f, 0.f);
     Posicion s = path.at(0);
-
-    if (a.getY() < s.getY()){    // ARRIBA
+    std::cout << colisiona_arriba << std::endl;
+    if (a.getY() > s.getY() && !colisiona_arriba){    // ARRIBA
         movement.y -= speed;
         if (actual != &run){
             cout << "CAMBIAMOS A RUN" << endl;
@@ -55,7 +58,7 @@ void Enemigo::seguirCamino(Posicion a){
         }
     }
 
-    if (a.getY() > s.getY()){   // ABAJO
+    if (a.getY() < s.getY() && !colisiona_abajo){   // ABAJO
         movement.y += speed;
 
         if (actual != &run){
@@ -65,7 +68,7 @@ void Enemigo::seguirCamino(Posicion a){
         }
     }
 
-    if(a.getX() < s.getX()){   // IZQUIERDA
+    if(a.getX() > s.getX() && !colisiona_izquierda){   // IZQUIERDA
         dirMov = -1.f;
         movement.x -= speed;
 
@@ -77,7 +80,7 @@ void Enemigo::seguirCamino(Posicion a){
         actual->sprite.setScale(1.f*dirMov, 1.f);
     }
 
-    if (a.getX() > s.getX()){    // DERECHA
+    if (a.getX() < s.getX() && !colisiona_derecha){    // DERECHA
         dirMov = 1.f;
         movement.x += speed;
 

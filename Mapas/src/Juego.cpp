@@ -60,8 +60,9 @@ void Juego::gameLoop(){
         procesarEventos();
         delta = frameClock.restart().asSeconds();
         jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
+
         manejarIA();
-        enemigos[0]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*jugador).x, mapa->getPosicionEntidad(*jugador).y));
+        enemigos[0]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[0]).x, mapa->getPosicionEntidad(*enemigos[0]).y));
 
         if(!centrado) {
             setView();
