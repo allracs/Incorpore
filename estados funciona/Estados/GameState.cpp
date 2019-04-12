@@ -6,12 +6,12 @@ void GameState::initKeybinds()
     this->keybinds.emplace("MOVE_RIGHT", this->supportedKeys->at("D"));
     this->keybinds.emplace("MOVE_UP", this->supportedKeys->at("W"));
     this->keybinds.emplace("MOVE_DOWN", this->supportedKeys->at("S"));
-   // this->keybinds.emplace("MOVE_LEFT", this->supportedKeys->at("A"));
+   //SALIR DEL JUEGO CON ESCAPE ??? FUTURO MENU PAUSA
 }
 
 
-GameState::GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys)
-: State(window, supportedKeys)
+GameState::GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
+: State(window, supportedKeys, states)
 {
     this->initKeybinds();
 }

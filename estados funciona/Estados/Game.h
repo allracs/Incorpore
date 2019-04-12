@@ -21,6 +21,8 @@
 
 #include "State.h"
 
+#include "Button.h"
+
 class Game
  {
     private:
