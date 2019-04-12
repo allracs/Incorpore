@@ -2,7 +2,6 @@
 #define ASTAR_H
 #include <vector>
 #include <string>
-#include "Mapa.h"
 #include "Posicion.h"
 
 typedef struct comprobarListaAb

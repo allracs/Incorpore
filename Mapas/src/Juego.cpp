@@ -1,4 +1,9 @@
 #include "../include/Juego.h"
+#include "../include/Astar.h"
+#include "../include/Posicion.h"
+#include <vector>
+#include <iostream>
+
 using namespace sf;
 
 Juego* Juego::pinstance = 0;
@@ -33,7 +38,7 @@ void Juego::cargaPlayer(){
     jugador = new Jugador({150, 50});
     enemigos = new Enemigo*[nEnemigos];
     for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo({150, 100});
+        enemigos[i] = new Enemigo({150, 100*(i+1)});
     }
     view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
 }
@@ -55,6 +60,8 @@ void Juego::gameLoop(){
         procesarEventos();
         delta = frameClock.restart().asSeconds();
         jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
+
+        manejarIA();
 
         if(!centrado) {
             setView();
@@ -86,9 +93,78 @@ void Juego::render(){
 
     mapa->draw(*window, *jugador, *enemigos, nEnemigos);
     hud->draw(*window);
-    mapa->getEntityPostition(*jugador);
     jugador->drawBoundingBoxes(*window);
     enemigos[0]->drawBoundingBoxes(*window);
+    //enemigos[1]->drawBoundingBoxes(*window);
 
     window->display();
+}
+
+void Juego::manejarIA(){
+
+    if(true){   // anyadir clock para que se ejecute cada X tiempo
+
+        Vector2i v = mapa->getPosicionEntidad(*jugador);
+        Posicion pos_jugador = Posicion(v.x, v.y);
+
+        // para cada enemigo crear Posicion y llamar a la IA
+        // nEnemigos: numero de enemigos en el mapa
+
+        for(int a = 0; a < nEnemigos; a++){
+
+            Vector2i e = mapa->getPosicionEntidad(*enemigos[a]);
+            Posicion pos_enemigo = Posicion(e.x, e.y);
+            //asignar posicion al enemigo
+            //se crea el astar
+            Astar ia = Astar(pos_jugador, pos_enemigo, mapa->getColisiones(), mapa->getHeight(), mapa->getWidth());
+
+            //se llama a astar.mapear()
+            std::vector<Posicion> path = ia.mapear();
+            std::cout << path.size() << std::endl;
+            // SEGUIR EL CAMINO (CON BUCLE INTERPOLADO)
+            // mover a enemigos[a] hacia el siguiente punto
+
+            int flag = true;
+            for(int a = 0; a < mapa->getHeight(); a++)
+            {
+                std::cout << "  ";
+                for(int b = 0; b < mapa->getWidth(); b++)
+                {
+                    flag = true;
+                    for(int c = 0; c < path.size()-1; c++)
+                    {
+                        if(path.at(c).getX() == b && path.at(c).getY() == a)
+                        {
+                            std::cout << "-";
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if(flag && v.x == b && v.y == a)
+                    {
+                        std::cout << "#";
+                        flag = false;
+                    }
+                    if(flag && e.x == b && e.y == a)
+                    {
+                        std::cout << "@";
+                        flag = false;
+                    }
+                    if(flag)
+                    {
+                        if(mapa->getColisiones()[a][b] == 1)
+                        {
+                            std::cout << "1";
+                        }
+                        else
+                        {
+                            std::cout << "0";
+                        }
+                    }
+                }
+                std::cout << std::endl;
+            }
+            //fin for each enemigo
+        }
+    }
 }

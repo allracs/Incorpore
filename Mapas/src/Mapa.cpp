@@ -336,17 +336,14 @@ void Mapa::draw(RenderWindow& target, Jugador player, Enemigo* enemigos, int nEn
     }
 }
 
-//Esto es pa mis Oscars (los amo)
-void Mapa::getEntityPostition(Entidad player){
-    Vector2f pos = player.getCenter();
+Vector2i Mapa::getPosicionEntidad(Entidad e){
+    Vector2f pos = e.getCenter();
 
     posicion.x = round(pos.x)/16;
-    posicion.y = round(pos.y)/16;
+    posicion.y = round(pos.y+0.05)/16;
 
     cout << "X: " << posicion.x << endl;
     cout << "Y: " << posicion.y << endl;
-}
 
-Vector2i Mapa::getPosicionJugador(){
     return posicion;
 }
