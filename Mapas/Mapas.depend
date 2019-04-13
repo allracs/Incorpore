@@ -866,7 +866,7 @@
 1555176949 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Animacion.h
 	<SFML/Graphics.hpp>
 
-1555180633 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Enemigo.cpp
+1555180778 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 
 1555176949 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Enemigo.h
@@ -945,7 +945,7 @@
 	<string>
 	"Posicion.h"
 
-1555180741 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Jugador.cpp
+1555185878 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 

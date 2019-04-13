@@ -32,16 +32,19 @@ Jugador::Jugador(Vector2f pos){
     if(!swordText.loadFromFile("resources/sprites/sword.png"))
         std::cout << "ERROR AL CARGAR LA TEXTURA: sword.png" << std::endl;
     espada.setTexture(swordText);
-    espada.setOrigin(16,16);
-    espada.setPosition(ataqueHitbox.getPosition());
+    espada.setOrigin(14,14);
+    espada.setPosition(ataqueHitbox.getPosition().x +2, ataqueHitbox.getPosition().y +3);
     espada.setScale(-1.f, -1.f);
 
 
 }
 
 void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
+
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
     rotacionAtaque(window);
+    actual->sprite.setScale(1.f*dirMov, 1.f);
+
 
     // MOVIMIENTO
     moverse(); // comprobar que el jugador se mueve
@@ -78,7 +81,6 @@ void Jugador::moverse(){
     }
 
     if(Keyboard::isKeyPressed(Keyboard::A) && colisiona_derecha != true){
-        dirMov = -1.f;
         movement.x -= speed;
 
         if (actual != &run){
@@ -86,11 +88,9 @@ void Jugador::moverse(){
             actual = &run;
             actual->sprite.setPosition(entityCenter);
         }
-        actual->sprite.setScale(1.f*dirMov, 1.f);
     }
 
     if (Keyboard::isKeyPressed(Keyboard::D) && colisiona_izquierda != true){
-        dirMov = 1.f;
         movement.x += speed;
 
         if (actual != &run){
@@ -98,7 +98,6 @@ void Jugador::moverse(){
             actual = &run;
             actual->sprite.setPosition(entityCenter);
         }
-        actual->sprite.setScale(1.f*dirMov, 1.f);
     }
 
     if(movement.x == 0 & movement.y == 0) {
@@ -106,7 +105,6 @@ void Jugador::moverse(){
             //cout << "CAMBIAMOS A IDLE" << endl;
             actual = &idle;
             actual->sprite.setPosition(entityCenter);
-            actual->sprite.setScale(1.f*dirMov, 1.f);
         }
     }
 
@@ -130,6 +128,15 @@ void Jugador::rotacionAtaque(RenderWindow& window) {
     float rotation = (atan2(dy, dx)) * 180 / PI;
     ataqueHitbox.setRotation(rotation);
     espada.setRotation(rotation - 45.f); // hacer que la espada rote alrededor del jugador y se le añade 45 para que esté bien posicionada.
+    if(ataqueHitbox.getRotation() >= 90 && ataqueHitbox.getRotation() <= 270) {
+        dirMov = -1;
+        espada.setPosition(ataqueHitbox.getPosition().x -2, ataqueHitbox.getPosition().y +3);
+
+    } else {
+        dirMov = 1;
+        espada.setPosition(ataqueHitbox.getPosition().x +2, ataqueHitbox.getPosition().y +3);
+    }
+
 }
 
 Vector2f Jugador::getMousePos(){
