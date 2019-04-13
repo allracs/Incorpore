@@ -25,8 +25,12 @@ void GameState::endState()
 std::cout <<"Se acaba el juego" <<"\n";
 }
  //void GameState::updateKeybinds(const float& dt)
+
+
+ //DONE
  void GameState::updateInput(const float & dt)
  {
+    // OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOO CHECK FOR QUIT
     this->checkForQuit();
                 //ESTO COMENTADO ES SIN BINDEAR
        /* if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -38,6 +42,7 @@ std::cout <<"Se acaba el juego" <<"\n";
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         this->player.move(dt,0.f, 1.f);
     */
+    //SOBRA
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_LEFT"))))
         this->player.move(dt,-1.f, 0.f);
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_RIGHT"))))

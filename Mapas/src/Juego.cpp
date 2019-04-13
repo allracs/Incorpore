@@ -32,6 +32,8 @@ Juego::Juego(){
     cargaMapa();
     cargarHUD();
     gameLoop();
+    //initStates OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
 }
 
 void Juego::cargaPlayer(){
@@ -74,12 +76,12 @@ void Juego::gameLoop(){
         render();
     }
 }
-
+// de maquina updatesfmlevents
 void Juego::procesarEventos(){
     while(window->pollEvent(*evento)){
-        switch(evento->type){
 
-        }
+            if(evento->type == sf::Event::Closed)
+            this->window->close();
     }
 }
 
@@ -88,8 +90,19 @@ void Juego::setView(){
     hud->move(jugador->getMovement() * delta);
 }
 
+//--------DE maquina initStates
+void Game::initStates()
+{
+    //this->states.push(new MainMenuState(this->window, &this->supportedKeys, &this->states));
+    this->states.push(new MainMenuState(this->window, &this->states));
+
+    //pushea el primer estado del juego
+    //this->states.push(new GameState(this->window, &this->supportedKeys));
+}
+
 void Juego::render(){
-    window->clear(Color(28,17,23,255));
+    window->clear(Color(28,17,23,255));//YA
+
     window->setView(view);
 
     mapa->draw(*window, *jugador, *enemigos, nEnemigos);
@@ -100,6 +113,30 @@ void Juego::render(){
 
     window->display();
 }
+//maquina
+void Juego::update()
+{
+    this->updateSFMLEvents();
+
+         if(!this->states.empty())
+         {
+                this->states.top()->update(this->dt);
+                if(this->states.top()->getQuit())
+                {
+                    //en stacks el top es el ultimo insertado en el vector
+                    this->states.top()->endState();
+                    delete this->states.top();
+                    this->states.pop();
+                }
+            }
+            //acaba el programa
+            else
+            {
+                this->endApplication();
+                this->window->close();
+            }
+}
+
 
 void Juego::manejarIA(){
 

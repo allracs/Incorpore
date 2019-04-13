@@ -1,5 +1,7 @@
 #include "Game.h"
 
+
+//USELESS DONE EN SU CLASE JUEGO
 void Game::initWindow()
 {
     this->window = new sf::RenderWindow(sf::VideoMode(800,600), "maquina estados");
@@ -10,24 +12,40 @@ void Game::initWindow()
 
 Game::Game()
 {
-this->initWindow();
-this->initKeys();
+
+//this->initWindow();
+
+//this->initKeys();
 this->initStates();
 
 }
 
 Game::~Game()
+{}
+
+void Game::render()
 {
-    delete this->window;
+    this->window->clear();
 
-    while(!this->states.empty())
-    {
+            if(!this->states.empty())
+                this->states.top()->render();
 
-      delete this->states.top();
-    this->states.pop();
-    }
+    this->window->display();
 }
 
+void Game::run()
+{
+    while(this->window->isOpen())
+    {
+
+        this->updateDt(); //ya lo tenian updatedt
+
+        this->update();
+        this->render();
+    }
+
+}
+//USELESS Y "DONE"
 void Game::initKeys()
 {
     this->supportedKeys.emplace("Escape", sf::Keyboard::Key::Escape);
@@ -39,6 +57,7 @@ void Game::initKeys()
 
 }
 
+//DONE
 void Game::initStates()
 {
     this->states.push(new MainMenuState(this->window, &this->supportedKeys, &this->states));
@@ -46,15 +65,16 @@ void Game::initStates()
     //this->states.push(new GameState(this->window, &this->supportedKeys));
 }
 
+//en su loop de juego
+//DONE YA LO TENIAN
 void Game::updateDt()
 {
 //actualiazr la variable dt que es tiempo delta, que es el tiempo que tarda en renderizar 1 frame
    // this->updateSFMLEvents();
-   this->dt = this->dtClock.restart().asSeconds();
-
+   this->dt = this->frameClock.restart().asSeconds();
 }
 
-
+//DONE
 void Game::updateSFMLEvents()
 {
     while(this->window->pollEvent(this->sfEvent))
@@ -64,6 +84,7 @@ void Game::updateSFMLEvents()
     }
 }
 
+//DONE COPY PASTEADO
 void Game::update()
 {
     this->updateSFMLEvents();
@@ -88,26 +109,7 @@ void Game::update()
 }
 
 
-void Game::render()
-{
-    this->window->clear();
-
-            if(!this->states.empty())
-                this->states.top()->render();
-
-    this->window->display();
-}
-
-void Game::run()
-{
-    while(this->window->isOpen())
-    {
-        this->updateDt();
-        this->update();
-        this->render();
-    }
-
-}
+// useless DONE
 void Game::endApplication()
 {
     std::cout <<"Acabando juego" << "\n";

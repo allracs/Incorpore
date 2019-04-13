@@ -62,9 +62,11 @@ void MainMenuState::endState()
 {
 std::cout <<"Saliendo del estado de menu" <<"\n";
 }
- //void GameState::updateKeybinds(const float& dt)
+ //DONE
  void MainMenuState::updateInput(const float & dt)
  {
+    //      OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
     this->checkForQuit();
                 //ESTO COMENTADO ES SIN BINDEAR
        /* if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))

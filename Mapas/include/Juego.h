@@ -20,6 +20,7 @@ class Juego
         void procesarEventos();
         void setView();
         void render();
+        void update(const float& dt);
 
         Vector2i dimensiones;
     private:
@@ -36,6 +37,7 @@ class Juego
         Mapa *mapa;
         Hud *hud;
         View view;
+
 
         bool centrado;
         float delta;

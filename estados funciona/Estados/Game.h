@@ -29,7 +29,7 @@ class Game
         sf::RenderWindow *window;
         sf::Event sfEvent;
 
-        sf::Clock dtClock;
+        sf::Clock frameClock;
         float dt;
 
         std::stack<State*> states;
