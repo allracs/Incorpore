@@ -45,7 +45,7 @@ Jugador::Jugador(sf::Vector2f pos)
         std::cout << "ERROR AL CARGAR TEXTURA: sword" << std::endl;
     }
     espada.setTexture(swordText);
-    espada.setOrigin(16,16);
+    espada.setOrigin(14,14);
     espada.setPosition(hitboxAtaque.getPosition());
     espada.setScale(-1.f, -1.f);
     //espada.rotate(25.f);
@@ -76,6 +76,9 @@ void Jugador::rotacionAtaque(sf::RenderWindow &app) {
     hitboxAtaque.setRotation(rotation);
     espada.setRotation(rotation - 45.f);
     std::cout << "ROTACION DE LA HITBOX: " << hitboxAtaque.getRotation() << std::endl;
+    if(hitboxAtaque.getRotation() >= 90 && hitboxAtaque.getRotation() <= 270) {dirMov = -1;} else { dirMov = 1;}
+
+
 
 }
 
@@ -109,7 +112,6 @@ void Jugador::moverse(){
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        dirMov = -1.f;
         this->movement.x -= speed;
 
         if (actual != &run){
@@ -119,13 +121,11 @@ void Jugador::moverse(){
         }
 
 
-        actual->sprite.setScale(1.f*dirMov, 1.f);
 
 
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        dirMov = 1.f;
         this->movement.x += speed;
 
         if (actual != &run){
@@ -134,7 +134,6 @@ void Jugador::moverse(){
             actual->sprite.setPosition(playerCenter);
         }
 
-        actual->sprite.setScale(1.f*dirMov, 1.f);
 
     }
 
@@ -143,7 +142,6 @@ void Jugador::moverse(){
             //std::cout << "CAMBIAMOS A IDLE" << std::endl;
             actual = &idle;
             actual->sprite.setPosition(playerCenter);
-            actual->sprite.setScale(1.f*dirMov, 1.f);
         }
     }
 
@@ -198,14 +196,18 @@ sf::RectangleShape Jugador::getHitboxAtaque(){
 
 
 void Jugador::update(float delta, sf::RenderWindow &app){
+
     playerCenter = sf::Vector2f(jugadorHitbox.getPosition().x, jugadorHitbox.getPosition().y);
     rotacionAtaque(app);
+    actual->sprite.setScale(1.f*dirMov, 1.f);
+
 
     // MOVIMIENTO
     moverse(); // comprobar que el jugador se mueve
     jugadorHitbox.move(movement * delta); // mover al jugador.
     hitboxAtaque.move(movement * delta);
     espada.move(movement * delta);
+
 
     actual->update(delta, movement);
 

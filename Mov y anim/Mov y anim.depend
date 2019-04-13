@@ -8,8 +8,6 @@
 
 1555079302 
 
-1555079302 
-
 1554918660 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mov y anim/include/Jugador.h
 	<SFML/Graphics.hpp>
 	<cmath>
@@ -158,7 +156,10 @@
 1555176849 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Entidad.cpp
 	"Entidad.h"
 
-1555176851 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Jugador.cpp
+1555184899 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Jugador.cpp
 	<SFML/Graphics.hpp>
 	"Jugador.h"
+
+1555176851 source:/mnt/hgfs/Universidad/FV/Incorpore/Mov y anim/src/Bullet.cpp
+	"Bullet.h"
 
