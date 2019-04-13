@@ -11,7 +11,7 @@ Posicion::Posicion(int n, int m, Posicion p) // n
     padre = new Posicion(p.getX(), p.getY());
     g = -1;
     h = -1;
-    //std::cout << "valor G: " << g << std::endl;
+    ////std::cout << "valor G: " << g << std::endl;
 }
 Posicion::Posicion(int n, int m) // n
 {
@@ -38,9 +38,9 @@ void Posicion::setG(Posicion p, int valor)  // p: posicion padre; valor: coste d
     {
         salida = valor;
     }
-    //std::cout << "setG (pre): " << g << std::endl;
+    ////std::cout << "setG (pre): " << g << std::endl;
     g = salida;
-    //std::cout << "setG (post): " << g << std::endl;
+    ////std::cout << "setG (post): " << g << std::endl;
 }
 
 void Posicion::copyGH(int gg, int hh)
@@ -51,7 +51,7 @@ void Posicion::copyGH(int gg, int hh)
 
 int Posicion::getG()
 {
-    //std::cout << "getG: " << g << std::endl;
+    ////std::cout << "getG: " << g << std::endl;
     return g;
 }
 

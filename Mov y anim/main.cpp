@@ -1,14 +1,34 @@
 #include <SFML/Graphics.hpp>
 #include "Jugador.h"
 #include "Animacion.h"
+#include "Enemigo.h"
+#include "Bullet.h"
 
 int main()
 {
     // Create the main window
-    sf::Vector2i screenDimensions(800,600);
+    sf::Vector2i screenDimensions(1080,720);
     sf::RenderWindow app(sf::VideoMode(screenDimensions.x, screenDimensions.y), "SFML window");
     app.setFramerateLimit(60);
+
+    // creacion de los enemigos y jugadores
     Jugador Manolito(sf::Vector2f(300, 300));
+
+    Enemigo Pepe(sf::Vector2f(230, 250));
+    Enemigo Pepe2(sf::Vector2f(130, 200));
+    Enemigo Pepe3(sf::Vector2f(100, 250));
+    Enemigo Pepe4(sf::Vector2f(150, 250));
+    Enemigo Pepe5(sf::Vector2f(120, 250));
+
+
+    std::vector<Enemigo> enemigos;
+
+    enemigos.push_back(Pepe);
+    enemigos.push_back(Pepe2);
+    enemigos.push_back(Pepe3);
+    enemigos.push_back(Pepe4);
+    enemigos.push_back(Pepe5);
+
 
 
     // VISTA
@@ -46,13 +66,19 @@ int main()
 
         float delta = frameClock.restart().asSeconds();
 
+        sf::RectangleShape j_hitbox = Manolito.getHitboxAtaque();
 
 
         Manolito.update(delta, app);
+
+        for(int i = 0; i < enemigos.size(); i++) {
+            enemigos[i].update(delta, app, j_hitbox);
+        }
+
+
         if(!centrado) {
             view.setCenter(Manolito.getCenter());
             centrado = true;
-
         }
 
 
@@ -73,16 +99,17 @@ int main()
         // Clear screen
         app.clear();
 
+        //Draws
         app.draw(background);
         Manolito.draw(app);
 
+
+        for(int i = 0; i < enemigos.size(); i++)
+            enemigos[i].draw(app);
+
         //app.draw(Line, 2, sf::Lines);
 
-        /*
-        app.draw(Manolito.actual->sprite);
-        app.draw(Manolito.jugador);
-        app.draw(Manolito.hitboxAtaque)
-        */
+
         // Update the window
         app.display();
     }

@@ -120,18 +120,20 @@ void Juego::manejarIA(){
             Astar ia = Astar(pos_jugador, pos_enemigo, mapa->getColisiones(), mapa->getHeight(), mapa->getWidth());
 
             //se llama a astar.mapear()
+
             std::vector<Posicion> path = ia.mapear();
-            std::cout << path.size() << std::endl;
+
+            ////std::cout << path.size() << std::endl;
 
             enemigos[a]->setPath(path);
 
             // SEGUIR EL CAMINO (CON BUCLE INTERPOLADO)
             // mover a enemigos[a] hacia el siguiente punto
-
+            /*
             int flag = true;
             for(int a = 0; a < mapa->getHeight(); a++)
             {
-                std::cout << "  ";
+                //std::cout << "  ";
                 for(int b = 0; b < mapa->getWidth(); b++)
                 {
                     flag = true;
@@ -139,35 +141,36 @@ void Juego::manejarIA(){
                     {
                         if(path.at(c).getX() == b && path.at(c).getY() == a)
                         {
-                            std::cout << "-";
+                            //std::cout << "-";
                             flag = false;
                             break;
                         }
                     }
                     if(flag && v.x == b && v.y == a)
                     {
-                        std::cout << "#";
+                        //std::cout << "#";
                         flag = false;
                     }
                     if(flag && e.x == b && e.y == a)
                     {
-                        std::cout << "@";
+                        //std::cout << "@";
                         flag = false;
                     }
                     if(flag)
                     {
                         if(mapa->getColisiones()[a][b] == 1)
                         {
-                            std::cout << "1";
+                            //std::cout << "1";
                         }
                         else
                         {
-                            std::cout << "0";
+                            //std::cout << "0";
                         }
                     }
                 }
-                std::cout << std::endl;
+                //std::cout << std::endl;
             }
+            */
 
         } //fin for each enemigo
     }

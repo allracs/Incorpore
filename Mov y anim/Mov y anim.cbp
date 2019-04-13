@@ -43,11 +43,13 @@
 		</Compiler>
 		<Unit filename="cb.bmp" />
 		<Unit filename="include/Animacion.h" />
+		<Unit filename="include/Bullet.h" />
 		<Unit filename="include/Enemigo.h" />
 		<Unit filename="include/Entidad.h" />
 		<Unit filename="include/Jugador.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Animacion.cpp" />
+		<Unit filename="src/Bullet.cpp" />
 		<Unit filename="src/Enemigo.cpp" />
 		<Unit filename="src/Entidad.cpp" />
 		<Unit filename="src/Jugador.cpp" />

@@ -47,6 +47,12 @@ void Animacion::update(float deltaTime, sf::Vector2f movement)
 
     //sprite.setPosition(playerCenter.x, playerCenter.y);
     sprite.move(movement * deltaTime);
-
-
 }
+
+float Animacion::getFrame() {
+    return actualFrame.left;
+}
+
+
+
+

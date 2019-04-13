@@ -48,11 +48,11 @@ void Enemigo::seguirCamino(Posicion a){
     //aqui el enemigo sigue el camino
     movement = Vector2f(0.f, 0.f);
     Posicion s = path.at(0);
-    std::cout << colisiona_arriba << std::endl;
+    //std::cout << colisiona_arriba << std::endl;
     if (a.getY() > s.getY() && !colisiona_abajo){    // ABAJO
         movement.y -= speed;
         if (actual != &run){
-            cout << "CAMBIAMOS A RUN" << endl;
+            //cout << "CAMBIAMOS A RUN" << endl;
             actual = &run;
             actual->sprite.setPosition(entityCenter);
         }
@@ -62,7 +62,7 @@ void Enemigo::seguirCamino(Posicion a){
         movement.y += speed;
 
         if (actual != &run){
-            cout << "CAMBIAMOS A RUN" << endl;
+            //cout << "CAMBIAMOS A RUN" << endl;
             actual = &run;
             actual->sprite.setPosition(entityCenter);
         }
@@ -73,7 +73,7 @@ void Enemigo::seguirCamino(Posicion a){
         movement.x -= speed;
 
         if (actual != &run){
-            cout << "CAMBIAMOS A RUN" << endl;
+            //cout << "CAMBIAMOS A RUN" << endl;
             actual = &run;
             actual->sprite.setPosition(entityCenter);
         }
@@ -85,7 +85,7 @@ void Enemigo::seguirCamino(Posicion a){
         movement.x += speed;
 
         if (actual != &run){
-            cout << "CAMBIAMOS A RUN" << endl;
+            //cout << "CAMBIAMOS A RUN" << endl;
             actual = &run;
             actual->sprite.setPosition(entityCenter);
         }
@@ -94,7 +94,7 @@ void Enemigo::seguirCamino(Posicion a){
 
     if(movement.x == 0 & movement.y == 0) {
         if (actual != &idle){
-            cout << "CAMBIAMOS A IDLE" << endl;
+            //cout << "CAMBIAMOS A IDLE" << endl;
             actual = &idle;
             actual->sprite.setPosition(entityCenter);
             actual->sprite.setScale(1.f*dirMov, 1.f);

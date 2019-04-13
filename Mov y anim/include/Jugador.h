@@ -7,6 +7,7 @@
 
 #include "Entidad.h"
 #include "Animacion.h"
+#include "Bullet.h"
 
 
 
@@ -19,8 +20,10 @@ class Jugador
 
         void update(float delta, sf::RenderWindow &app);
         void moverse();
+        void range(sf::RenderWindow &app);
         void rotacionAtaque(sf::RenderWindow &app);
         void draw(sf::RenderWindow &app);
+
 
 
 
@@ -43,9 +46,17 @@ class Jugador
         float speed; //Velocidad del jugador
         sf::Vector2f mousePos; //posicion del raton
         sf::Vector2f movement; //movimiento del jugador
+        sf::Vector2f aimDirNorm; //normalizar vector
+        sf::Vector2f aimDir;
 
         //Ataque del jugador
         sf::RectangleShape hitboxAtaque;
+        sf::Texture swordText;
+        sf::Sprite espada;
+
+
+        //balas
+        std::vector<Bullet> bullets;
 
 
         //Activar ataque a distancia
@@ -54,6 +65,7 @@ class Jugador
         Animacion idle;
         Animacion run;
         Animacion *actual;
+
 
 };
 
