@@ -31,7 +31,7 @@ void juego::update()
         eventos_raton();
         procesar_eventos();
         menu_inicial->setColorOp();
-        menu_inicial->setPosicion(window->mapPixelToCoords((sf::Vector2i)window->getSize()).x, window->getSize().y /2);
+        menu_inicial->setPosicion(window->mapPixelToCoords((sf::Vector2i)window->getSize()).x, window->mapPixelToCoords((sf::Vector2i)window->getSize()).y /2);
         render();
     }
 }
