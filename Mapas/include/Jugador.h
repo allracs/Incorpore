@@ -20,14 +20,18 @@ class Jugador: public Entidad{
         void update(float, RenderWindow&, int, FloatRect*);
         void moverse();
         void rotacionAtaque(RenderWindow&);
+        void draw(sf::RenderWindow &);
 
         Vector2f getMousePos();
         Vector2f getMovement();
     private:
         float dirMov;
 
-        Vector2f playerCenter; //centro del jugador
-        Vector2f mousePos; //posicion del raton
-        Vector2f movement; //movimiento del jugador
+        sf::Sprite espada; // Espada que se muestras encima de la hitbox.
+        sf::Texture swordText; // Textura para el sprite de la espada
+
+        Vector2f playerCenter; // centro del jugador
+        Vector2f mousePos; // posicion del raton
+        Vector2f movement; // movimiento del jugador
 };
 #endif

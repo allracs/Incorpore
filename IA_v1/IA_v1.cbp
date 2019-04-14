@@ -42,8 +42,19 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="cb.bmp" />
+<<<<<<< HEAD:IA_v1/IA_v1.cbp
+=======
+		<Unit filename="include/Animacion.h" />
+		<Unit filename="include/Bullet.h" />
+>>>>>>> mapa-colisiones:Mov y anim/Mov y anim.cbp
 		<Unit filename="include/Enemigo.h" />
 		<Unit filename="include/Jugador.h" />
+<<<<<<< HEAD:IA_v1/IA_v1.cbp
+=======
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Animacion.cpp" />
+		<Unit filename="src/Bullet.cpp" />
+>>>>>>> mapa-colisiones:Mov y anim/Mov y anim.cbp
 		<Unit filename="src/Enemigo.cpp" />
 		<Unit filename="src/Jugador.cpp" />
 		<Unit filename="src/main.cpp" />

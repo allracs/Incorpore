@@ -25,6 +25,8 @@ class Juego
     private:
         static Juego* pinstance;
 
+        void manejarIA();
+
         RenderWindow *window;
         RenderStates *states;
         Clock frameClock;

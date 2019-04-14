@@ -44,14 +44,20 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="include/Animacion.h" />
+<<<<<<< HEAD
 		<Unit filename="include/Astar.h" />
+=======
+>>>>>>> mapa-colisiones
 		<Unit filename="include/Enemigo.h" />
 		<Unit filename="include/Entidad.h" />
 		<Unit filename="include/Hud.h" />
 		<Unit filename="include/Juego.h" />
 		<Unit filename="include/Jugador.h" />
 		<Unit filename="include/Mapa.h" />
+<<<<<<< HEAD
 		<Unit filename="include/Posicion.h" />
+=======
+>>>>>>> mapa-colisiones
 		<Unit filename="include/tinyxml2.h" />
 		<Unit filename="resources/tmx/Antorcha.tmx" />
 		<Unit filename="resources/tmx/Caja.tmx" />
@@ -64,14 +70,20 @@
 		<Unit filename="sprites/caballero.png" />
 		<Unit filename="sprites/elfa.png" />
 		<Unit filename="src/Animacion.cpp" />
+<<<<<<< HEAD
 		<Unit filename="src/Astar.cpp" />
+=======
+>>>>>>> mapa-colisiones
 		<Unit filename="src/Enemigo.cpp" />
 		<Unit filename="src/Entidad.cpp" />
 		<Unit filename="src/Hud.cpp" />
 		<Unit filename="src/Juego.cpp" />
 		<Unit filename="src/Jugador.cpp" />
 		<Unit filename="src/Mapa.cpp" />
+<<<<<<< HEAD
 		<Unit filename="src/Posicion.cpp" />
+=======
+>>>>>>> mapa-colisiones
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/tinyxml2.cpp" />
 		<Extensions>
