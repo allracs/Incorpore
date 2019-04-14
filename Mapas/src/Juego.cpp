@@ -37,15 +37,17 @@ Juego::Juego(){
 void Juego::cargaPlayer(){
     jugador = new Jugador({150, 50});
     enemigos = new Enemigo*[nEnemigos];
-    /*
-    for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo({150, 100 + 30(i+1)});
-    }*/
 
+    for(int i = 0; i < nEnemigos; i++){
+        enemigos[i] = new Enemigo({150 + 10*(i+1), 100 + 10*(i+1)});
+    }
+
+    /*
     enemigos[0] = new Enemigo({150, 100});
     enemigos[1] = new Enemigo({160, 100});
     enemigos[2] = new Enemigo({150, 150});
     enemigos[3] = new Enemigo({160, 160});
+    */
 
     view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
 }
