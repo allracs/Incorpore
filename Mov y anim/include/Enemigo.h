@@ -17,14 +17,18 @@ class Enemigo
 
     private:
         sf::RectangleShape enemigoHitbox;
+        int vida;
          //Matar al enemigo
         bool deleteSprite;
         sf::Vector2f movement; //movimiento del enemigo
+        bool atacado;
+
         Animacion *actual;
-
-
         Animacion idle;
         Animacion run;
+
+        sf::Clock cd;
+
 
 
 };

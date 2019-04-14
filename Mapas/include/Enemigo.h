@@ -13,12 +13,21 @@ class Enemigo : public Entidad{
         Enemigo(Vector2f);
         void setPath(std::vector<Posicion>);
         void update(float, RenderWindow&, int, FloatRect*);
-        void update(float, RenderWindow&, int, FloatRect*, Posicion);
+        void update(float, RenderWindow&, int, FloatRect*, Posicion, sf::RectangleShape enemigoHitbox);
         void seguirCamino(Posicion);
+        void serAtacado(sf::RectangleShape hitbox);
+        void draw(sf::RenderWindow &app);
+
+
+
     private:
         float dirMov;
         Vector2f movement; //movimiento del enemigo
         std::vector<Posicion> path;
+        int vida;
+         //Matar al enemigo
+        bool deleteSprite;
+        sf::Clock cd;
 };
 
 #endif // ENEMY_H

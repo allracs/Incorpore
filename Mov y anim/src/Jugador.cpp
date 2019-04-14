@@ -75,7 +75,7 @@ void Jugador::rotacionAtaque(sf::RenderWindow &app) {
     float rotation = (atan2(dy, dx)) * 180 / PI;
     hitboxAtaque.setRotation(rotation);
     espada.setRotation(rotation - 45.f);
-    std::cout << "ROTACION DE LA HITBOX: " << hitboxAtaque.getRotation() << std::endl;
+    //std::cout << "ROTACION DE LA HITBOX: " << hitboxAtaque.getRotation() << std::endl;
     if(hitboxAtaque.getRotation() >= 90 && hitboxAtaque.getRotation() <= 270) {dirMov = -1;} else { dirMov = 1;}
 
 

@@ -131,16 +131,18 @@ Animacion* Entidad::getActual() {
 
 void Entidad::draw(RenderWindow& target) {
     //target.draw(entidadHitbox);
-    target.draw(actual->sprite);
+    //target.draw(actual->sprite);
     //target.draw(ataqueHitbox);
 }
 
 void Entidad::drawBoundingBoxes(RenderWindow& target){
+    /*
     target.draw(*cuadrado_der);
     target.draw(*cuadrado_arr);
     target.draw(*cuadrado_abj);
     target.draw(*cuadrado_izq);
     //target.draw(*cuadrado_cen);
+    */
 }
 
 void Entidad::showData(){

@@ -24,14 +24,21 @@ Enemigo::Enemigo(Vector2f pos){
     ataqueHitbox.setPosition(pos);
 
     speed = 30.f;
+    deleteSprite = false;
+    vida = 3;
 }
 
 void Enemigo::setPath(std::vector<Posicion> p){
     path = p;
 }
 
-void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones, Posicion pos_a){
+void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones, Posicion pos_a, sf::RectangleShape enemigoHitbox){
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
+
+    if(cd.getElapsedTime().asSeconds()>=0.3f){
+        serAtacado(enemigoHitbox);
+        cd.restart();
+    }
 
     // MOVIMIENTO
     seguirCamino(pos_a); // comprobar que el jugador se mueve
@@ -106,3 +113,30 @@ void Enemigo::seguirCamino(Posicion a){
     colisiona_derecha = false;
     colisiona_izquierda = false;
 }
+
+void Enemigo::serAtacado(sf::RectangleShape hitbox){
+    //El enemigo muere cuando la hitbox le toca y hacemos click
+    if (hitbox.getGlobalBounds().intersects(entidadHitbox.getGlobalBounds()) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+
+        if(vida>0){
+            vida--;
+            actual->sprite.setColor(sf::Color::Red);
+
+        }
+
+        std::cout<<"Tiene de vida: "<<vida<<std::endl;
+        if(vida==0){
+            deleteSprite = true;
+            std::cout<<"Ha sido matado"<<std::endl;
+        }
+    }
+}
+
+void Enemigo::draw(sf::RenderWindow &app) {
+    if(!deleteSprite){
+        app.draw(entidadHitbox);
+        app.draw(actual->sprite);
+    }
+}
+

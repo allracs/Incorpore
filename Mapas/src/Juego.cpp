@@ -71,7 +71,7 @@ void Juego::gameLoop(){
         manejarIA();
 
         for(int i = 0; i < nEnemigos; i++) {
-            enemigos[i]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[i]).x, mapa->getPosicionEntidad(*enemigos[i]).y));
+            enemigos[i]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[i]).x, mapa->getPosicionEntidad(*enemigos[i]).y), jugador->getAtaqueHitbox());
         }
 
         if(!centrado) {

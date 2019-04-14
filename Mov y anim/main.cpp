@@ -50,7 +50,6 @@ int main()
 
 
     sf::Clock frameClock;
-
 	// Start the game loop
     while (app.isOpen())
     {
