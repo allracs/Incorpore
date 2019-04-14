@@ -22,8 +22,6 @@ Enemigo::Enemigo(Vector2f pos){
     ataqueHitbox.setSize(Vector2f(20.f, 12.f));
     ataqueHitbox.setOrigin(0,6.f);
     ataqueHitbox.setPosition(pos);
-<<<<<<< HEAD
-=======
 
     speed = 30.f;
 }
@@ -107,5 +105,4 @@ void Enemigo::seguirCamino(Posicion a){
     colisiona_arriba = false;
     colisiona_derecha = false;
     colisiona_izquierda = false;
->>>>>>> mapa-colisiones
 }

@@ -1,12 +1,9 @@
 #include "../include/Juego.h"
-<<<<<<< HEAD
-=======
 #include "../include/Astar.h"
 #include "../include/Posicion.h"
 #include <vector>
 #include <iostream>
 
->>>>>>> mapa-colisiones
 using namespace sf;
 
 Juego* Juego::pinstance = 0;
@@ -19,11 +16,7 @@ Juego* Juego::Instance(){
 
 Juego::Juego(){
     dimensiones = Vector2i(1280, 720);
-<<<<<<< HEAD
-    nEnemigos = 1;
-=======
     nEnemigos = 4;
->>>>>>> mapa-colisiones
 
     window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");
     window->setFramerateLimit(60);
@@ -44,11 +37,6 @@ Juego::Juego(){
 void Juego::cargaPlayer(){
     jugador = new Jugador({150, 50});
     enemigos = new Enemigo*[nEnemigos];
-<<<<<<< HEAD
-    for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo({150, 100});
-    }
-=======
     /*
     for(int i = 0; i < nEnemigos; i++){
         enemigos[i] = new Enemigo({150, 100 + 30(i+1)});
@@ -59,7 +47,6 @@ void Juego::cargaPlayer(){
     enemigos[2] = new Enemigo({150, 150});
     enemigos[3] = new Enemigo({160, 160});
 
->>>>>>> mapa-colisiones
     view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
 }
 
@@ -81,15 +68,12 @@ void Juego::gameLoop(){
         delta = frameClock.restart().asSeconds();
         jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
 
-<<<<<<< HEAD
-=======
         manejarIA();
 
         for(int i = 0; i < nEnemigos; i++) {
             enemigos[i]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[i]).x, mapa->getPosicionEntidad(*enemigos[i]).y));
         }
 
->>>>>>> mapa-colisiones
         if(!centrado) {
             setView();
             centrado = true;
@@ -120,14 +104,6 @@ void Juego::render(){
 
     mapa->draw(*window, *jugador, *enemigos, nEnemigos);
     hud->draw(*window);
-<<<<<<< HEAD
-    mapa->getEntityPostition(*jugador);
-    jugador->drawBoundingBoxes(*window);
-    enemigos[0]->drawBoundingBoxes(*window);
-
-    window->display();
-}
-=======
     jugador->drawBoundingBoxes(*window);
 
     for(int i = 0; i < nEnemigos; i++){
@@ -215,4 +191,3 @@ void Juego::manejarIA(){
         } //fin for each enemigo
     }
 }
->>>>>>> mapa-colisiones
