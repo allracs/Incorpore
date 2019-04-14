@@ -17,7 +17,7 @@ Animacion::~Animacion()
 
 void Animacion::setAnimacion(char* nTextura, IntRect firstF, IntRect finalF, int incremento, float tiempo)
 {
-    cout << "Cargamos la textura: " << nTextura << endl;
+  //  cout << "Cargamos la textura: " << nTextura << endl;
 
     if(!texture.loadFromFile(nTextura)){
         cout << "ERROR AL CARGAR TEXTURA";

@@ -39,7 +39,7 @@ void Juego::cargaPlayer(){
     enemigos = new Enemigo*[nEnemigos];
 
     for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo({150 + 10*(i+1), 100 + 10*(i+1)});
+        enemigos[i] = new Enemigo({50,50}); //{150 + 10*(i+1), 100 + 10*(i+1)} Comentado por error al aparecer en vacio
     }
 
     /*

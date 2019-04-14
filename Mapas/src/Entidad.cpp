@@ -62,25 +62,25 @@ void Entidad::procesarColisiones(int nColisiones, FloatRect* colisiones){
         //INFERIOR
         if(cuadrado_arr->getGlobalBounds().intersects(colisiones[i])){
             setColision(2);
-            cout <<  "Arriba" << endl;
+          //  cout <<  "Arriba" << endl;
         }
 
         //SUPERIOR
         if(cuadrado_abj->getGlobalBounds().intersects(colisiones[i])){
             setColision(1);
-            cout <<  "Abajo" << endl;
+          //  cout <<  "Abajo" << endl;
         }
 
         //IZQUIERDA
         if(cuadrado_der->getGlobalBounds().intersects(colisiones[i])){
             setColision(3);
-            cout <<  "Der" << endl;
+           // cout <<  "Der" << endl;
         }
 
         //DERECHA
         if(cuadrado_izq->getGlobalBounds().intersects(colisiones[i])){
             setColision(4);
-            cout <<  "Izq" << endl;
+          //  cout <<  "Izq" << endl;
         }
     }
 }

@@ -9,7 +9,10 @@ using namespace tinyxml2;
 using namespace std;
 
 Mapa::Mapa(){
-    leerMapa(1);
+    srand(time(NULL));
+    int random = rand() % 2 +1; //Un random del 1 al 2 (no existe el caso 0)
+    cout << random << endl;
+    leerMapa(random);
     cargaObjetos();
     setDatos();
     //getDatos();
@@ -48,9 +51,19 @@ void Mapa::cargaObjetos(){
 }
 
 void Mapa::leerMapa(int n){
-    if(n == 1){
-       docXML.LoadFile("resources/tmx/Mapa.tmx");
+    switch(n){
+        case 1:
+            docXML.LoadFile("resources/tmx/Mapa.tmx");
+            break;
+        case 2:
+            docXML.LoadFile("resources/tmx/Mapa2.tmx");
+            break;
+        default:
+            std::cerr << "Error: Mapa no existente";
+            exit(0);
+
     }
+
     mapaXML = docXML.FirstChildElement("map");
     maxObj = 12;
     nObj = 0;

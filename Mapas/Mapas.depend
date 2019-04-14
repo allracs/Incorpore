@@ -232,13 +232,13 @@
 1554916111 /home/fv/FV/Incorpore/Mapas/entidad.h
 	<SFML/Graphics.hpp>
 
-1555004130 source:/home/david/Documentos/Incorpore/Mapas/src/Animacion.cpp
+1555282509 source:/home/david/Documentos/Incorpore/Mapas/src/Animacion.cpp
 	<iostream>
 	"../include/Animacion.h"
 
 1555176949 e/Animacion.h"
 
-1554975673 /home/david/Documentos/Incorpore/Mapas/include/Animacion.h
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/Animacion.h
 	<SFML/Graphics.hpp>
 
 1554916931 source:/home/david/Documentos/Incorpore/Mapas/src/enemy.cpp
@@ -283,7 +283,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1554975673 /home/david/Documentos/Incorpore/Mapas/include/tinyxml2.h
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/tinyxml2.h
 	<ctype.h>
 	<limits.h>
 	<stdio.h>
@@ -315,7 +315,7 @@
 
 1554916961 e/player.h"
 
-1554975673 source:/home/david/Documentos/Incorpore/Mapas/src/tinyxml2.cpp
+1555282054 source:/home/david/Documentos/Incorpore/Mapas/src/tinyxml2.cpp
 	"../include/tinyxml2.h"
 	<new>
 	<stddef.h>
@@ -323,7 +323,7 @@
 	<cstddef>
 	<cstdarg>
 
-1554975673 source:/home/david/Documentos/Incorpore/Mapas/src/main.cpp
+1555282054 source:/home/david/Documentos/Incorpore/Mapas/src/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"../include/Juego.h"
@@ -339,11 +339,13 @@
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 
-1554975673 /home/david/Documentos/Incorpore/Mapas/include/Entidad.h
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
+	"Animacion.h"
 
-1554975673 source:/home/david/Documentos/Incorpore/Mapas/src/Entidad.cpp
+1555282418 source:/home/david/Documentos/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
+	<iostream>
 
 1554984602 e/Entidad.h"
 
@@ -363,23 +365,25 @@
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 
-1555004130 /home/david/Documentos/Incorpore/Mapas/include/Hud.h
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
-1555005438 /home/david/Documentos/Incorpore/Mapas/include/Mapa.h
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
+	"Entidad.h"
 	"Jugador.h"
+	"Enemigo.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1555004130 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
+1555282054 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
 1555176949 e/Hud.h"
 
-1555005514 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
+1555284927 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -391,26 +395,34 @@
 
 1554918660 e/Player.h"
 
-1554975673 source:/home/david/Documentos/Incorpore/Mapas/src/Enemigo.cpp
+1555283144 source:/home/david/Documentos/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 
 1555180778 e/Enemigo.h"
 
-1554975673 /home/david/Documentos/Incorpore/Mapas/include/Enemigo.h
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
+	"Posicion.h"
 	<SFML/Graphics.hpp>
+	<iostream>
+	<vector>
 
-1555005584 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1555284697 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
+	"../include/Astar.h"
+	"../include/Posicion.h"
+	<vector>
+	<iostream>
 
-1555004130 /home/david/Documentos/Incorpore/Mapas/include/Juego.h
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
+	"Enemigo.h"
 	"Hud.h"
 	"Mapa.h"
 
-1555004130 /home/david/Documentos/Incorpore/Mapas/include/Jugador.h
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/Jugador.h
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 	<cmath>
@@ -419,7 +431,7 @@
 
 1555178250 .h"
 
-1555004130 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
+1555282054 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
@@ -1151,6 +1163,27 @@
 	"math.h"
 
 1555257803 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Posicion.cpp
+	"../include/Posicion.h"
+	<iostream>
+	<stdlib.h>
+
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/Posicion.h
+
+1555282054 /home/david/Documentos/Incorpore/Mapas/include/Astar.h
+	<vector>
+	<string>
+	"Posicion.h"
+
+1555282054 source:/home/david/Documentos/Incorpore/Mapas/src/Astar.cpp
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<algorithm>
+	<math.h>
+	"../include/Astar.h"
+	"../include/Posicion.h"
+
+1555282054 source:/home/david/Documentos/Incorpore/Mapas/src/Posicion.cpp
 	"../include/Posicion.h"
 	<iostream>
 	<stdlib.h>
