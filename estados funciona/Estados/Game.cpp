@@ -9,19 +9,51 @@ void Game::initWindow()
     this->window->setVerticalSyncEnabled(false);
 }
 
-
 Game::Game()
 {
 
 //this->initWindow();
 
 //this->initKeys();
-this->initStates();
+this->initStates(); //falta pasar
 
 }
 
 Game::~Game()
 {}
+void Game::run()
+{
+    while(this->window->isOpen())
+    {
+        this->updateDt(); //ya lo tenian updatedt
+        this->update();
+        this->render();
+    }
+}
+
+//DONE COPY PASTEADO
+void Game::update()
+{
+    this->updateSFMLEvents();
+
+         if(!this->states.empty())
+         {
+                this->states.top()->update(this->dt);
+                if(this->states.top()->getQuit())
+                {
+                    //en stacks el top es el ultimo insertado en el vector
+                    this->states.top()->endState();
+                    delete this->states.top();
+                    this->states.pop();
+                }
+            }
+            //acaba el programa
+            else
+            {
+                this->endApplication();
+                this->window->close();
+            }
+}
 
 void Game::render()
 {
@@ -33,18 +65,7 @@ void Game::render()
     this->window->display();
 }
 
-void Game::run()
-{
-    while(this->window->isOpen())
-    {
 
-        this->updateDt(); //ya lo tenian updatedt
-
-        this->update();
-        this->render();
-    }
-
-}
 //USELESS Y "DONE"
 void Game::initKeys()
 {
@@ -82,30 +103,6 @@ void Game::updateSFMLEvents()
         if(this->sfEvent.type == sf::Event::Closed)
             this->window->close();
     }
-}
-
-//DONE COPY PASTEADO
-void Game::update()
-{
-    this->updateSFMLEvents();
-
-         if(!this->states.empty())
-         {
-                this->states.top()->update(this->dt);
-                if(this->states.top()->getQuit())
-                {
-                    //en stacks el top es el ultimo insertado en el vector
-                    this->states.top()->endState();
-                    delete this->states.top();
-                    this->states.pop();
-                }
-            }
-            //acaba el programa
-            else
-            {
-                this->endApplication();
-                this->window->close();
-            }
 }
 
 

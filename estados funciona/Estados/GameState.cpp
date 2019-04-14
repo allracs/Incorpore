@@ -1,6 +1,6 @@
 #include "GameState.h"
 
-void GameState::initKeybinds()
+void GameState::initKeybinds()//USELESS
 {
     this->keybinds.emplace("MOVE_LEFT", this->supportedKeys->at("A"));
     this->keybinds.emplace("MOVE_RIGHT", this->supportedKeys->at("D"));
@@ -16,10 +16,8 @@ GameState::GameState(sf::RenderWindow* window, std::map<std::string, int>* suppo
     this->initKeybinds();
 }
 
-GameState::~GameState()
-{
+GameState::~GameState(){}
 
-}
 void GameState::endState()
 {
 std::cout <<"Se acaba el juego" <<"\n";
@@ -52,6 +50,7 @@ std::cout <<"Se acaba el juego" <<"\n";
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_DOWN"))))
         this->player.move(dt,0.f, 1.f);
  }
+
 
 void GameState::update(const float& dt)
 {

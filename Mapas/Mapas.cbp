@@ -49,6 +49,7 @@
 		<Unit filename="include/Entidad.h" />
 		<Unit filename="include/Hud.h" />
 		<Unit filename="include/Juego.h" />
+		<Unit filename="include/JuegoState.h" />
 		<Unit filename="include/Jugador.h" />
 		<Unit filename="include/Mapa.h" />
 		<Unit filename="include/Posicion.h" />
@@ -70,6 +71,7 @@
 		<Unit filename="src/Entidad.cpp" />
 		<Unit filename="src/Hud.cpp" />
 		<Unit filename="src/Juego.cpp" />
+		<Unit filename="src/JuegoState.cpp" />
 		<Unit filename="src/Jugador.cpp" />
 		<Unit filename="src/Mapa.cpp" />
 		<Unit filename="src/Posicion.cpp" />

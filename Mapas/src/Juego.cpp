@@ -6,36 +6,36 @@
 
 using namespace sf;
 
-Juego* Juego::pinstance = 0;
+Juego* Juego::pinstance = 0;//A GAMESTATE
 
-Juego* Juego::Instance(){
+Juego* Juego::Instance(){//EL MAIN LLAMA A ESTO PARA EMPEZAR LA PARTIDA
     if(pinstance == 0)
         pinstance = new Juego;
     return pinstance;
 }
 
 Juego::Juego(){
-    dimensiones = Vector2i(1280, 720);
-    nEnemigos = 1;
 
-    window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");
-    window->setFramerateLimit(60);
+    nEnemigos = 1;//A GAMESTATE
+    dimensiones = Vector2i(1280, 720);//de aqui
+    window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");//de aqui
+    window->setFramerateLimit(60);//de aqui
 
-    evento = new Event;
+    evento = new Event; // what ? MIRARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 
-    view.setSize(dimensiones.x, dimensiones.y);
-    view.zoom(0.2f);
+    view.setSize(dimensiones.x, dimensiones.y);// esto seria de game state, no hace falta parametrizarlo lol(creo)
+    view.zoom(0.2f);//game state
 
-    centrado = false;
+    centrado = false;//game state
 
-    cargaPlayer();
-    cargaMapa();
-    cargarHUD();
+    cargaPlayer();//game state
+    cargaMapa();//game state
+    cargarHUD();//game state
     gameLoop();
     //initStates OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
 }
-
+//sustituye a mi rectangle shape con move - A GAME STATE
 void Juego::cargaPlayer(){
     jugador = new Jugador({150, 50});
     enemigos = new Enemigo*[nEnemigos];
@@ -59,24 +59,24 @@ void Juego::gameLoop(){
     sf::Clock frameClock;
 
     while(window->isOpen()){
-        procesarEventos();
-        delta = frameClock.restart().asSeconds();
-        jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
+        procesarEventos(); //DE AMBOS
+        delta = frameClock.restart().asSeconds();//DE AQUI SOLO ¿?¿?
+        jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());//A GAME STATE
 
-        manejarIA();
-        enemigos[0]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[0]).x, mapa->getPosicionEntidad(*enemigos[0]).y));
+        manejarIA();//A GAME STATE
+        enemigos[0]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[0]).x, mapa->getPosicionEntidad(*enemigos[0]).y)); //A GAME STATE
 
-        if(!centrado) {
+        if(!centrado) { //A GAME STATE
             setView();
             centrado = true;
         }
 
-        hud->compruebaTeclas();
-        setView();
-        render();
+        hud->compruebaTeclas();//A GAME STATE
+        setView();//A gamestate
+        render();//DE AMBOS
     }
 }
-// de maquina updatesfmlevents
+// de maquina updatesfmlevents -> procesarEventos
 void Juego::procesarEventos(){
     while(window->pollEvent(*evento)){
 
@@ -85,35 +85,29 @@ void Juego::procesarEventos(){
     }
 }
 
+//PASAR A GAME STATE !!!!!!!!!!!!!!!!!!!!!!
 void Juego::setView(){
     view.move(jugador->getMovement() * delta);
     hud->move(jugador->getMovement() * delta);
 }
 
-//--------DE maquina initStates
-void Game::initStates()
-{
-    //this->states.push(new MainMenuState(this->window, &this->supportedKeys, &this->states));
-    this->states.push(new MainMenuState(this->window, &this->states));
 
-    //pushea el primer estado del juego
-    //this->states.push(new GameState(this->window, &this->supportedKeys));
-}
 
 void Juego::render(){
-    window->clear(Color(28,17,23,255));//YA
+    window->clear(Color(28,17,23,255));//DONE VA AQUI Y EN GAME STATE MIRARRRR
 
-    window->setView(view);
+    window->setView(view); //esto seria de gamestate
 
-    mapa->draw(*window, *jugador, *enemigos, nEnemigos);
-    hud->draw(*window);
-    jugador->drawBoundingBoxes(*window);
-    enemigos[0]->drawBoundingBoxes(*window);
+    mapa->draw(*window, *jugador, *enemigos, nEnemigos);//PASAR A GAMESTATE
+    hud->draw(*window);//GAMESTATE
+    jugador->drawBoundingBoxes(*window);//PASAR A GAMESTATE
+    enemigos[0]->drawBoundingBoxes(*window);//PASAR A GAMESTATE
     //enemigos[1]->drawBoundingBoxes(*window);
 
+    //FALTA CONTROLAR LOS STATES AQUIIIII
     window->display();
 }
-//maquina
+//de maquina
 void Juego::update()
 {
     this->updateSFMLEvents();
@@ -136,9 +130,17 @@ void Juego::update()
                 this->window->close();
             }
 }
+//--------DE maquina initStates
+void Game::initStates()
+{
+    //this->states.push(new MainMenuState(this->window, &this->supportedKeys, &this->states));
+    this->states.push(new MainMenuState(this->window, &this->states));
 
+    //pushea el primer estado del juego
+    //this->states.push(new GameState(this->window, &this->supportedKeys));
+}
 
-void Juego::manejarIA(){
+void Juego::manejarIA(){ // PASAR A GAME STATE
 
     if(true){   // anyadir clock para que se ejecute cada X tiempo
 
