@@ -41,12 +41,19 @@ void Entidad::setColision(int num){
 
 void Entidad::setColisionadores(){
     cuadrado_arr->setSize(Vector2f(11, 0.75));
-    cuadrado_arr->setPosition(entidadHitbox.getGlobalBounds().left + 1.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 - 0.5);
+    cuadrado_arr->setOrigin(Vector2f(11/2, 0.75/2));
+    cuadrado_arr->setPosition(entidadHitbox.getGlobalBounds().left + 6.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 - 1.5);
+
     cuadrado_izq->setSize(Vector2f(0.75, 5.5));
+    cuadrado_izq->setOrigin(Vector2f(0.75/2, 5.5/2));
     cuadrado_izq->setPosition(entidadHitbox.getGlobalBounds().left, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 0.99);
+
     cuadrado_abj->setSize(Vector2f(11, 0.75));
-    cuadrado_abj->setPosition(entidadHitbox.getGlobalBounds().left + 1.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height + 1);
+    cuadrado_abj->setOrigin(Vector2f(11/2, 0.75/2));
+    cuadrado_abj->setPosition(entidadHitbox.getGlobalBounds().left + 6.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height + 1.8);
+
     cuadrado_der->setSize(Vector2f(0.75, 5.5));
+    cuadrado_der->setOrigin(Vector2f(0.75/2, 5.5/2));
     cuadrado_der->setPosition(entidadHitbox.getGlobalBounds().left + entidadHitbox.getGlobalBounds().width - 0.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 0.99);
 }
 

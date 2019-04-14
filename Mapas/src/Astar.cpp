@@ -45,14 +45,19 @@ Astar::Astar(Posicion i, Posicion f, bool** mapa, int n, int m)
 Astar::~Astar()
 {
     //dtor
-    /*
-    delete mapaArr;
-    delete mapa;
+
+    listaAbierta->clear();
+    listaCerrada->clear();
+    vecinos->clear();
     delete listaAbierta;
     delete listaCerrada;
-    delete ini;
-    delete fin;
-    */
+    delete vecinos;
+    delete ini, fin;
+	for(int a = 0; a < m_alt; a++){
+        delete mapaArr[a];
+	}
+    delete mapaArr;
+
 }
 
 std::vector<Posicion> Astar::mapear()
