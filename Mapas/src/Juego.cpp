@@ -16,7 +16,7 @@ Juego* Juego::Instance(){
 
 Juego::Juego(){
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 1;
+    nEnemigos = 4;
 
     window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");
     window->setFramerateLimit(60);
@@ -37,9 +37,16 @@ Juego::Juego(){
 void Juego::cargaPlayer(){
     jugador = new Jugador({150, 50});
     enemigos = new Enemigo*[nEnemigos];
+    /*
     for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo({150, 100*(i+1)});
-    }
+        enemigos[i] = new Enemigo({150, 100 + 30(i+1)});
+    }*/
+
+    enemigos[0] = new Enemigo({150, 100});
+    enemigos[1] = new Enemigo({160, 100});
+    enemigos[2] = new Enemigo({150, 150});
+    enemigos[3] = new Enemigo({160, 160});
+
     view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
 }
 
@@ -62,7 +69,10 @@ void Juego::gameLoop(){
         jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
 
         manejarIA();
-        enemigos[0]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[0]).x, mapa->getPosicionEntidad(*enemigos[0]).y));
+
+        for(int i = 0; i < nEnemigos; i++) {
+            enemigos[i]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[i]).x, mapa->getPosicionEntidad(*enemigos[i]).y));
+        }
 
         if(!centrado) {
             setView();
@@ -95,8 +105,14 @@ void Juego::render(){
     mapa->draw(*window, *jugador, *enemigos, nEnemigos);
     hud->draw(*window);
     jugador->drawBoundingBoxes(*window);
-    enemigos[0]->drawBoundingBoxes(*window);
-    //enemigos[1]->drawBoundingBoxes(*window);
+
+    for(int i = 0; i < nEnemigos; i++){
+        enemigos[i]->draw(*window);
+    }
+
+    for(int i = 0; i < nEnemigos; i++){
+        enemigos[i]->drawBoundingBoxes(*window);
+    }
 
     window->display();
 }

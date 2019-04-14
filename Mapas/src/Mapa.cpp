@@ -326,9 +326,12 @@ void Mapa::draw(RenderWindow& target, Jugador player, Enemigo* enemigos, int nEn
                     target.draw(*(mapSprite[l][y][x]));
                     if(l == 3){
                         player.draw(target);
+                        /*
                         for(int i = 0; i < nEnemigos; i++){
                             enemigos[i].draw(target);
                         }
+                        */
+
                     }
                 }
             }
