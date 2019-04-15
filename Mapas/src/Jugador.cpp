@@ -61,7 +61,7 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 bool Jugador::recibeDmg(RectangleShape enemigoHitbox){
     Vector2f enemyPos = enemigoHitbox.getPosition();
     bool res = false;
-    if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 2){
+    if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5){
         cout << "Recibe daño" << endl;
         res = true;
         vidas--;
@@ -85,6 +85,8 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox){
         }
         else{
             //Muerto
+            std::cout << "HAS PALMAO, FIN DE LA PARTIDA." << std::endl; //Cambiar por retorno a menu
+            exit(0);
         }
 
         dmgCD.restart();
