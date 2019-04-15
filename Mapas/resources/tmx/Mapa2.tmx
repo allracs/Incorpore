@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2017.07.26" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="16" tileheight="16" nextobjectid="4">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="4">
  <tileset firstgid="1">
   <image source="resources/tmx/tileset.png"/>
  </tileset>
- <layer name="Fondo" width="24" height="18">
+ <layer id="1" name="Fondo" width="24" height="18">
   <data>
    <tile gid="386"/>
    <tile gid="386"/>
@@ -439,7 +439,7 @@
    <tile gid="386"/>
   </data>
  </layer>
- <layer name="Suelo" width="24" height="18">
+ <layer id="2" name="Suelo" width="24" height="18">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -875,7 +875,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="ParedColisiones" width="24" height="18">
+ <layer id="3" name="ParedColisiones" width="24" height="18">
   <data>
    <tile gid="257"/>
    <tile gid="3"/>
@@ -1006,12 +1006,12 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="257"/>
-   <tile gid="2"/>
-   <tile gid="2"/>
-   <tile gid="2"/>
-   <tile gid="3"/>
-   <tile gid="259"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1311,7 +1311,7 @@
    <tile gid="307"/>
   </data>
  </layer>
- <layer name="ObjetosColisiones" width="24" height="18">
+ <layer id="4" name="ObjetosColisiones" width="24" height="18" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1747,7 +1747,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Personaje" width="24" height="18">
+ <layer id="5" name="Personaje" width="24" height="18" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2183,7 +2183,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Pared" width="24" height="18">
+ <layer id="6" name="Pared" width="24" height="18">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2314,12 +2314,12 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="257"/>
+   <tile gid="258"/>
+   <tile gid="258"/>
+   <tile gid="258"/>
+   <tile gid="258"/>
+   <tile gid="259"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2619,7 +2619,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Objetos" width="24" height="18">
+ <layer id="7" name="Objetos" width="24" height="18" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3055,7 +3055,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Colision" width="24" height="18">
+ <layer id="8" name="Colision" width="24" height="18" visible="0">
   <data>
    <tile gid="432"/>
    <tile gid="432"/>
@@ -3491,7 +3491,7 @@
    <tile gid="432"/>
   </data>
  </layer>
- <objectgroup name="Colisiones" visible="0">
+ <objectgroup id="9" name="Colisiones" visible="0">
   <object id="3" x="16" y="32">
    <polyline points="0,0 0,240 144,240 144,64 208,64 208,240 352,240 352,-16 240,-16 240,0 128,0 112,0 112,-16 0,-16 0,0"/>
   </object>
