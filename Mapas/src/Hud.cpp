@@ -22,6 +22,9 @@ Hud::Hud(){
     textura_vida = new Texture;
     textura_vida->loadFromFile("resources/hud/heart-life.png");
 
+    habilidades = new Texture;
+    habilidades->loadFromFile("resources/hud/abilities.png");
+
     corazon = new Sprite;
     corazon->setTexture(*textura_vida);
     corazon->setScale({0.03,0.03});
@@ -70,10 +73,13 @@ Hud::Hud(){
 
 
     //PIEZA HUD HABILIDADES
-    pieza_habilidades = new RectangleShape({90,16});
-    pieza_habilidades->setFillColor(Color(28,17,23,255));
+    pieza_habilidades = new Sprite(*habilidades); // new RectangleShape({90,16});
+    //pieza_habilidades->setFillColor(Color(28,17,23,255));
     pieza_habilidades->setOrigin(pieza_habilidades->getOrigin().x/2, pieza_habilidades->getOrigin().x/2);
-    pieza_habilidades->setPosition(180,520);
+    IntRect dim(0,0,295,66);
+    pieza_habilidades->setTextureRect(dim);
+    pieza_habilidades->scale(0.35, 0.3);
+
 }
 
 void Hud::compruebaTeclas(){
@@ -168,7 +174,7 @@ void Hud::setHabilidad(int habilidad){
 
     for(int i = 0; i < vector_habilidades->size(); i++)
     {
-       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + (i*15.5),pieza_habilidades->getPosition().y});
+       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + 7 + (i*15.5),pieza_habilidades->getPosition().y + 4});
     }
 }
 
@@ -220,7 +226,7 @@ RectangleShape Hud::getPiezaVida(){
     return *pieza_vida;
 }
 
-RectangleShape Hud::getPiezaHabilidades(){
+Sprite Hud::getPiezaHabilidades(){
     return *pieza_habilidades;
 }
 
