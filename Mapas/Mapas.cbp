@@ -42,12 +42,14 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="include/Animacion.h" />
+		<Unit filename="include/Astar.h" />
 		<Unit filename="include/Enemigo.h" />
 		<Unit filename="include/Entidad.h" />
 		<Unit filename="include/Hud.h" />
 		<Unit filename="include/Juego.h" />
 		<Unit filename="include/Jugador.h" />
 		<Unit filename="include/Mapa.h" />
+		<Unit filename="include/Posicion.h" />
 		<Unit filename="include/tinyxml2.h" />
 		<Unit filename="resources/tmx/Antorcha.tmx" />
 		<Unit filename="resources/tmx/Caja.tmx" />
@@ -56,16 +58,20 @@
 		<Unit filename="resources/tmx/Cofre.tmx" />
 		<Unit filename="resources/tmx/Columna.tmx" />
 		<Unit filename="resources/tmx/Mapa.tmx" />
+		<Unit filename="resources/tmx/Mapa2.tmx" />
+		<Unit filename="resources/tmx/Mapa3.tmx" />
 		<Unit filename="sprites/Kyrises_16x16_RPG_Icon_Pack_V1.2.zip" />
 		<Unit filename="sprites/caballero.png" />
 		<Unit filename="sprites/elfa.png" />
 		<Unit filename="src/Animacion.cpp" />
+		<Unit filename="src/Astar.cpp" />
 		<Unit filename="src/Enemigo.cpp" />
 		<Unit filename="src/Entidad.cpp" />
 		<Unit filename="src/Hud.cpp" />
 		<Unit filename="src/Juego.cpp" />
 		<Unit filename="src/Jugador.cpp" />
 		<Unit filename="src/Mapa.cpp" />
+		<Unit filename="src/Posicion.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/tinyxml2.cpp" />
 		<Extensions>

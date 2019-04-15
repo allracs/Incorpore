@@ -19,7 +19,7 @@ public:
 
     Sprite getCorazon();
     Text getTextoVida();
-    RectangleShape getPiezaVida();
+    Sprite getPiezaVida();
     Sprite getPiezaHabilidades();
     vector<Sprite> getArrayVida();
     vector<Sprite> getArrayHabilidades();
@@ -33,7 +33,8 @@ private:
     Font *fuente;
     Sprite* pieza_habilidades;
     Texture* habilidades;
-    RectangleShape * pieza_vida;
+    Sprite * pieza_vida;
+    Texture* vida;
     //RectangleShape * pieza_habilidades;
 
     Texture *textura_vida;
