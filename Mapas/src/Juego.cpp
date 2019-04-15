@@ -16,7 +16,7 @@ Juego* Juego::Instance(){
 
 Juego::Juego(){
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 4;
+    nEnemigos = 3;
 
     window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");
     window->setFramerateLimit(60);
@@ -51,11 +51,11 @@ void Juego::cargaPlayer(){
     cout << "X:" << randX << endl;
     cout << "Y:" << randY << endl;
 */
-    jugador = new Jugador({randX, randY});
+    jugador = new Jugador({50, 50});
     enemigos = new Enemigo*[nEnemigos];
 
     for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo({50,50}); //{150 + 10*(i+1), 100 + 10*(i+1)} Comentado por error al aparecer en vacio
+        enemigos[i] = new Enemigo({50+10*(i+1),50}); //{50 + 10*(i+1), 50 + 10*(i+1)} Comentado por error al aparecer en vacio
     }
 
     /*
@@ -120,17 +120,18 @@ void Juego::render(){
     window->clear(Color(28,17,23,255));
     window->setView(view);
 
-    mapa->draw(*window, *jugador, *enemigos, nEnemigos);
+    mapa->draw(*window, *jugador, enemigos, nEnemigos);
     hud->draw(*window);
     jugador->drawBoundingBoxes(*window);
 
+    /*
     for(int i = 0; i < nEnemigos; i++){
         enemigos[i]->draw(*window);
     }
 
     for(int i = 0; i < nEnemigos; i++){
         enemigos[i]->drawBoundingBoxes(*window);
-    }
+    }*/
 
     window->display();
 }
