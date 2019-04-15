@@ -158,10 +158,10 @@ void Jugador::draw(sf::RenderWindow &app) {
         app.draw(espada);
         app.draw(actual->sprite);
     }
-    app.draw(espada);
     app.draw(ataqueHitbox);
 
 }
+
 
 
 

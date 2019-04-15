@@ -15,6 +15,7 @@ Juego* Juego::Instance(){
 }
 
 Juego::Juego(){
+    srand(time(0));
     dimensiones = Vector2i(1280, 720);
     nEnemigos = 3;
 
@@ -41,7 +42,6 @@ void Juego::cargaPlayer(){
     enemigos = new Enemigo*[nEnemigos];
 
     for(int i = 0; i < nEnemigos; i++){
-        srand(time(NULL));
         enemigos[i] = new Enemigo(generaPosicion()); //{50 + 10*(i+1), 50 + 10*(i+1)} Comentado por error al aparecer en vacio
     }
 
@@ -51,9 +51,8 @@ void Juego::cargaPlayer(){
 Vector2f Juego::generaPosicion(){
     int randX, randY;
     do{
-        srand(time(NULL));
-        randX = rand() % 24;
-        randY = rand() % 18;
+        randX = rand() % mapa->getWidth();
+        randY = rand() % mapa->getHeight();
     }while(mapa->isColision(randX,randY));
     cout <<"X: "<< randX << ", " <<"Y: "<< randY << " --> " << mapa->isColision(randX,randY) << endl;
     Vector2f pos({randX*16, randY*16});
