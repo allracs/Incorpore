@@ -36,36 +36,28 @@ Juego::Juego(){
 }
 
 void Juego::cargaPlayer(){
-    /*
-    srand(time(NULL));
 
-    int randX = rand() % (1280/16);
-    int randY = rand() % (720/16);
-
-
-    while(!mapa->isColision(randX,randY)){
-        srand(time(NULL));
-        randX = rand() % (1280/16) + 16;
-        randY = rand() % (720/16) + 16;
-    }
-    cout << "X:" << randX << endl;
-    cout << "Y:" << randY << endl;
-*/
-    jugador = new Jugador({50, 50});
+    jugador = new Jugador(generaPosicion());
     enemigos = new Enemigo*[nEnemigos];
 
     for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo({50+10*(i+1),50}); //{50 + 10*(i+1), 50 + 10*(i+1)} Comentado por error al aparecer en vacio
+        srand(time(NULL));
+        enemigos[i] = new Enemigo(generaPosicion()); //{50 + 10*(i+1), 50 + 10*(i+1)} Comentado por error al aparecer en vacio
     }
 
-    /*
-    enemigos[0] = new Enemigo({150, 100});
-    enemigos[1] = new Enemigo({160, 100});
-    enemigos[2] = new Enemigo({150, 150});
-    enemigos[3] = new Enemigo({160, 160});
-    */
-
     view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
+}
+
+Vector2f Juego::generaPosicion(){
+    int randX, randY;
+    do{
+        srand(time(NULL));
+        randX = rand() % 24;
+        randY = rand() % 18;
+    }while(mapa->isColision(randX,randY));
+    cout <<"X: "<< randX << ", " <<"Y: "<< randY << " --> " << mapa->isColision(randX,randY) << endl;
+    Vector2f pos({randX*16, randY*16});
+    return pos;
 }
 
 void Juego::cargaMapa(){

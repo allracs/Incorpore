@@ -21,6 +21,8 @@ class Juego
         void setView();
         void render();
 
+        Vector2f generaPosicion();
+
         Vector2i dimensiones;
     private:
         static Juego* pinstance;

@@ -19,6 +19,7 @@ Mapa::Mapa(){
     creaSprite();
     posicionaObjetos();
     colisiones();
+    mostrarMapaColisiones();
 }
 
 Mapa::~Mapa(){
@@ -367,13 +368,5 @@ Vector2i Mapa::getPosicionEntidad(Entidad e){
 }
 
 bool Mapa::isColision(int x, int y){
-    bool res = false;
-    int _x = round(x)/16;
-    int _y = round(y)/16;
-
-    if(colisionMap[_x][_y] == true){
-        res = true;
-    }
-
-    return res;
+    return colisionMap[y][x];
 }
