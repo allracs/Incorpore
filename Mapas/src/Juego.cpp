@@ -38,26 +38,17 @@ Juego::Juego(){
 
 void Juego::cargaPlayer(){
 
-    jugador = new Jugador(generaPosicion());
+    jugador = new Jugador(mapa->generaPosicion());
     enemigos = new Enemigo*[nEnemigos];
 
     for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo(generaPosicion()); //{50 + 10*(i+1), 50 + 10*(i+1)} Comentado por error al aparecer en vacio
+        enemigos[i] = new Enemigo(mapa->generaPosicion());
     }
 
     view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
 }
 
-Vector2f Juego::generaPosicion(){
-    int randX, randY;
-    do{
-        randX = rand() % mapa->getWidth();
-        randY = rand() % mapa->getHeight();
-    }while(mapa->isColision(randX,randY));
-    cout <<"X: "<< randX << ", " <<"Y: "<< randY << " --> " << mapa->isColision(randX,randY) << endl;
-    Vector2f pos({randX*16, randY*16});
-    return pos;
-}
+
 
 void Juego::cargaMapa(){
     mapa = new Mapa;
@@ -81,6 +72,7 @@ void Juego::gameLoop(){
 
         for(int i = 0; i < nEnemigos; i++) {
             enemigos[i]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[i]).x, mapa->getPosicionEntidad(*enemigos[i]).y), jugador->getAtaqueHitbox());
+            jugador->recibeDmg(enemigos[i]->getEntidadHitbox());
         }
 
         if(!centrado) {
