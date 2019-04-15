@@ -5,18 +5,24 @@ using namespace sf;
 
 Hud::Hud(){
     //PIEZA HUD VIDA
-    pieza_vida = new RectangleShape({115,20});
-    pieza_vida->setFillColor(Color(28,17,23,255));
+    vida = new Texture;
+    vida->loadFromFile("resources/hud/abilities.png");
+
+    pieza_vida = new Sprite(*vida);
+
     pieza_vida->setPosition(0,0);
+    IntRect dim(0,0,295,66);
+    pieza_vida->setTextureRect(dim);
+    pieza_vida->scale(0.21, 0.15);
+
 
     //TEXTO DE VIDA
     texto_vida = new Text;
     fuente = new Font;
     fuente->loadFromFile("resources/hud/coolvetica.ttf");
     texto_vida->setFont(*fuente);
-    texto_vida->setString("Life");
-    texto_vida->setScale(0.5, 0.5);
-    texto_vida->setPosition(5, 0);
+    texto_vida->setString("HP");
+    texto_vida->setScale(0.25, 0.25);
 
     //ARRAY DE CORAZONES
     textura_vida = new Texture;
@@ -27,7 +33,7 @@ Hud::Hud(){
 
     corazon = new Sprite;
     corazon->setTexture(*textura_vida);
-    corazon->setScale({0.03,0.03});
+    corazon->setScale({0.015,0.015});
 
     cantidad_corazones = new vector<Sprite>;
 
@@ -76,7 +82,6 @@ Hud::Hud(){
     pieza_habilidades = new Sprite(*habilidades); // new RectangleShape({90,16});
     //pieza_habilidades->setFillColor(Color(28,17,23,255));
     pieza_habilidades->setOrigin(pieza_habilidades->getOrigin().x/2, pieza_habilidades->getOrigin().x/2);
-    IntRect dim(0,0,295,66);
     pieza_habilidades->setTextureRect(dim);
     pieza_habilidades->scale(0.35, 0.3);
 
@@ -136,7 +141,7 @@ void Hud::modificar_vida(int cantidad, int sr){
 
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
-        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + 24 + (i * 8), pieza_vida->getPosition().y + 2});
+        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + 15 + (i * 4), pieza_vida->getPosition().y + 1.25});
     }
 }
 
@@ -195,10 +200,10 @@ void Hud::setPosicionVida(int x, int y){
     xVida = x;
     yVida = y;
     pieza_vida->setPosition(x,y);
-    texto_vida->setPosition(pieza_vida->getPosition().x, pieza_vida->getPosition().y);
+    texto_vida->setPosition(pieza_vida->getPosition().x + 4, pieza_vida->getPosition().y);
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
-        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + 24 + (i * 8), pieza_vida->getPosition().y + 2});
+        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + 15 + (i * 4), pieza_vida->getPosition().y + 1.25});
     }
 }
 
@@ -222,7 +227,7 @@ Text Hud::getTextoVida(){
     return *texto_vida;
 }
 
-RectangleShape Hud::getPiezaVida(){
+Sprite Hud::getPiezaVida(){
     return *pieza_vida;
 }
 
