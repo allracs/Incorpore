@@ -370,3 +370,14 @@ Vector2i Mapa::getPosicionEntidad(Entidad e){
 bool Mapa::isColision(int x, int y){
     return colisionMap[y][x];
 }
+
+Vector2f Mapa::generaPosicion(){
+    int randX, randY;
+    do{
+        randX = rand() % getWidth();
+        randY = rand() % getHeight();
+    }while(isColision(randX,randY));
+    cout <<"X: "<< randX << ", " <<"Y: "<< randY << " --> " << isColision(randX,randY) << endl;
+    Vector2f pos({randX*16, randY*16});
+    return pos;
+}
