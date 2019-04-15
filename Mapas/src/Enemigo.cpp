@@ -8,9 +8,14 @@ Enemigo::Enemigo(Vector2f pos){
     dirMov = 1.f;
     movement = Vector2f(0.f, 0.f);
 
-    idle.setAnimacion("resources/sprites/elfa.png", IntRect(0, 0, 16, 28), IntRect(48, 0, 16, 28), 16, 0.1f);
+    /*idle.setAnimacion("resources/sprites/elfa.png", IntRect(0, 0, 16, 28), IntRect(48, 0, 16, 28), 16, 0.1f);
     idle.sprite.setOrigin(9,20);
     run.setAnimacion("resources/sprites/elfa.png", IntRect(0, 28, 16, 28), IntRect(48, 28, 16, 28), 16, 0.1f);
+    run.sprite.setOrigin(9,20);*/
+
+    idle.setAnimacion("resources/sprites/enemigos.png", IntRect(0, 0, 16, 28), IntRect(48, 0, 16, 28), 16, 0.1f);
+    idle.sprite.setOrigin(9,20);
+    run.setAnimacion("resources/sprites/enemigos.png", IntRect(64, 0, 16, 28), IntRect(112, 0, 16, 28), 16, 0.1f);
     run.sprite.setOrigin(9,20);
 
     actual = &idle;

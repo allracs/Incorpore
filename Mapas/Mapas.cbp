@@ -41,6 +41,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Mapas.depend" />
+		<Unit filename="Mapas.layout" />
 		<Unit filename="include/Animacion.h" />
 		<Unit filename="include/Astar.h" />
 		<Unit filename="include/Enemigo.h" />
@@ -51,6 +53,16 @@
 		<Unit filename="include/Mapa.h" />
 		<Unit filename="include/Posicion.h" />
 		<Unit filename="include/tinyxml2.h" />
+		<Unit filename="resources/hud/coolvetica.ttf" />
+		<Unit filename="resources/hud/habilidades.png" />
+		<Unit filename="resources/hud/heart-life.png" />
+		<Unit filename="resources/sprites/Kyrises_16x16_RPG_Icon_Pack_V1.2.zip" />
+		<Unit filename="resources/sprites/caballero.png" />
+		<Unit filename="resources/sprites/elfa.png" />
+		<Unit filename="resources/sprites/enemigos.png" />
+		<Unit filename="resources/sprites/personajes.png" />
+		<Unit filename="resources/sprites/spritesheets.txt" />
+		<Unit filename="resources/sprites/sword.png" />
 		<Unit filename="resources/tmx/Antorcha.tmx" />
 		<Unit filename="resources/tmx/Caja.tmx" />
 		<Unit filename="resources/tmx/CajaDoble.tmx" />
@@ -60,9 +72,7 @@
 		<Unit filename="resources/tmx/Mapa.tmx" />
 		<Unit filename="resources/tmx/Mapa2.tmx" />
 		<Unit filename="resources/tmx/Mapa3.tmx" />
-		<Unit filename="sprites/Kyrises_16x16_RPG_Icon_Pack_V1.2.zip" />
-		<Unit filename="sprites/caballero.png" />
-		<Unit filename="sprites/elfa.png" />
+		<Unit filename="resources/tmx/tileset.png" />
 		<Unit filename="src/Animacion.cpp" />
 		<Unit filename="src/Astar.cpp" />
 		<Unit filename="src/Enemigo.cpp" />
