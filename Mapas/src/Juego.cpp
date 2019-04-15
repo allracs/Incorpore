@@ -120,7 +120,7 @@ void Juego::render(){
     window->clear(Color(28,17,23,255));
     window->setView(view);
 
-    mapa->draw(*window, *jugador, enemigos, nEnemigos);
+    mapa->draw(*window, jugador, enemigos, nEnemigos);
     hud->draw(*window);
     jugador->drawBoundingBoxes(*window);
 
