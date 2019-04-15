@@ -444,40 +444,40 @@
 1555006583 /home/fv/FV/Incorpore/Mapas/include/Animacion.h
 	<SFML/Graphics.hpp>
 
-1555322088 source:/home/fv/FV/Incorpore/Mapas/src/Enemigo.cpp
+1555339943 source:/home/fv/FV/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 
-1555322088 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
+1555336420 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	"Posicion.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 	<vector>
 
-1555014512 /home/fv/FV/Incorpore/Mapas/include/Entidad.h
+1555336420 /home/fv/FV/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
 	"Animacion.h"
 
-1555323065 source:/home/fv/FV/Incorpore/Mapas/src/Entidad.cpp
+1555329273 source:/home/fv/FV/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
 	<iostream>
 
-1554993188 source:/home/fv/FV/Incorpore/Mapas/src/Hud.cpp
+1555335451 source:/home/fv/FV/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
-1554993318 /home/fv/FV/Incorpore/Mapas/include/Hud.h
+1555335451 /home/fv/FV/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
-1555322522 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
+1555336420 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
 	<vector>
 	<iostream>
 
-1555093760 /home/fv/FV/Incorpore/Mapas/include/Juego.h
+1555336420 /home/fv/FV/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
@@ -485,14 +485,14 @@
 	"Hud.h"
 	"Mapa.h"
 
-1555322088 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
+1555327925 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
 	"Animacion.h"
 
-1555322444 /home/fv/FV/Incorpore/Mapas/include/Mapa.h
+1555336420 /home/fv/FV/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
@@ -516,7 +516,7 @@
 	<android/log.h>
 	<assert.h>
 
-1555322088 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
+1555327949 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
@@ -525,7 +525,7 @@
 	<SFML/Graphics.hpp>
 	"../include/Juego.h"
 
-1555322528 source:/home/fv/FV/Incorpore/Mapas/src/Mapa.cpp
+1555336420 source:/home/fv/FV/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
