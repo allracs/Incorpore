@@ -771,10 +771,10 @@
 	<iostream>
 	"../include/Animacion.h"
 
-1555321071 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Animacion.h
+1555330849 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Animacion.h
 	<SFML/Graphics.hpp>
 
-1555321071 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Astar.cpp
+1555330849 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Astar.cpp
 	<iostream>
 	<stdlib.h>
 	<vector>
@@ -785,14 +785,14 @@
 
 1555180633 e/Posicion.h"
 
-1555321071 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Astar.h
+1555330849 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Astar.h
 	<vector>
 	<string>
 	"Posicion.h"
 
 1555176949 h"
 
-1555321943 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Mapa.h
+1555331828 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
@@ -800,7 +800,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1555321071 /home/oscar/Desktop/FV/Incorpore/Mapas/include/tinyxml2.h
+1555330849 /home/oscar/Desktop/FV/Incorpore/Mapas/include/tinyxml2.h
 	<ctype.h>
 	<limits.h>
 	<stdio.h>
@@ -816,27 +816,27 @@
 	<android/log.h>
 	<assert.h>
 
-1555321071 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Entidad.h
+1555331702 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
 	"Animacion.h"
 
-1555321071 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Jugador.h
+1555330849 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Jugador.h
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
 	"Animacion.h"
 
-1555321071 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Enemigo.h
+1555331702 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	"Posicion.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 	<vector>
 
-1555321071 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Posicion.h
+1555330849 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Posicion.h
 
-1555321071 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Enemigo.cpp
+1555331702 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 
 1555321071 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Entidad.cpp
@@ -847,7 +847,7 @@
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
-1555321071 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Hud.h
+1555331828 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
@@ -858,7 +858,7 @@
 	<vector>
 	<iostream>
 
-1555321071 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Juego.h
+1555331828 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
@@ -870,7 +870,7 @@
 	<iostream>
 	"../include/Jugador.h"
 
-1555321071 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/main.cpp
+1555330849 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"../include/Juego.h"
@@ -882,12 +882,12 @@
 	<stdlib.h>
 	"math.h"
 
-1555321071 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Posicion.cpp
+1555330849 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Posicion.cpp
 	"../include/Posicion.h"
 	<iostream>
 	<stdlib.h>
 
-1555321071 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/tinyxml2.cpp
+1555330849 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/tinyxml2.cpp
 	"../include/tinyxml2.h"
 	<new>
 	<stddef.h>
