@@ -19,7 +19,7 @@ class Jugador: public Entidad{
 
         void update(float, RenderWindow&, int, FloatRect*);
         void moverse();
-        void recibeDmg(RectangleShape);
+        bool recibeDmg(RectangleShape);
         void rotacionAtaque(RenderWindow&);
         void draw(sf::RenderWindow &);
 
@@ -35,5 +35,6 @@ class Jugador: public Entidad{
         Vector2f playerCenter; // centro del jugador
         Vector2f mousePos; // posicion del raton
         Vector2f movement; // movimiento del jugador
+        Clock dmgCD;
 };
 #endif

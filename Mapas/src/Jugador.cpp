@@ -58,34 +58,36 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     actual->update(delta, movement);
 }
 
-void Jugador::recibeDmg(RectangleShape enemigoHitbox){
+bool Jugador::recibeDmg(RectangleShape enemigoHitbox){
     Vector2f enemyPos = enemigoHitbox.getPosition();
-
-    if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds())){
-        //cout << "Recibe daño" << endl;
-
+    bool res = false;
+    if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 2){
+        cout << "Recibe daño" << endl;
+        res = true;
         vidas--;
         if(vidas > 0){
             //colisiona por la derecha
             if(playerCenter.x > enemyPos.x){
-                 //actual->sprite->move(20,0);
+                 //actual->sprite.move(16,0);
             }
             //colisiona por la izquierda
             if(playerCenter.x < enemyPos.x){
-                 //actual->sprite->move(-20,0);
+                 //actual->sprite.move(-16,0);
             }
             //colisiona por arriba
             if(playerCenter.y < enemyPos.y){
-                //actual->sprite->move(0,-20);
+                //actual->sprite.move(0,-16);
             }
             //colisiona por debajo
             if(playerCenter.y > enemyPos.y){
-                //actual->sprite->move(0,20);
+                //actual->sprite.move(0,16);
             }
         }
         else{
             //Muerto
         }
+
+        dmgCD.restart();
     }
 }
 
