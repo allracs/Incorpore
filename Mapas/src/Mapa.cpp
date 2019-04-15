@@ -335,8 +335,38 @@ void Mapa::draw(RenderWindow& target, Jugador player, Enemigo* enemigos, int nEn
         }
     }
 }
+///////////////////new draw
+void Mapa::draw(RenderTarget& target//,Jugador player,
+// Enemigo* enemigos, int nEnemigos)
+{
+    for(int l = 0; l < nCapas; l++){
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                if(mapSprite[l][y][x]!=NULL){
+                    target.draw(*(mapSprite[l][y][x]));
+
+                }
+            }
+        }
+    }
+}
+
+
+
+
+//DE MAQUINA ESTADOS ACORDARSE DE DECLARAR EN HEADER Y HACER ESTO DRAW DE MAPA
+void Mapa::render(sf::RenderTarget* target)
+{
+
+    mapa->draw(*window, *jugador, *enemigos, nEnemigos);
+  //  target->draw(this->shape);
+}
 
 Vector2i Mapa::getPosicionEntidad(Entidad e){
+
+
+
+
     Vector2f pos = e.getCenter();
 
     posicion.x = round(pos.x)/16;

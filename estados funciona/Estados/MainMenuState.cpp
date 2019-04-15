@@ -48,7 +48,6 @@ void MainMenuState::updateButtons()
     //Nueva partida
      if(this->buttons["GAME_STATE"]->isPressed())
     {
-        //this->states->push(new MainMenuState(this->window, &this->supportedKeys, &this->states));
         this->states->push(new GameState(this->window, this->supportedKeys, this->states));
     }
      //para salir del juego

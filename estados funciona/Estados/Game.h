@@ -51,7 +51,7 @@ class Game
     void endApplication();
     //updates
     void updateDt();
-    void updateSFMLEvents();
+    void procesarEventos();
     void update();
     //render
     void render();

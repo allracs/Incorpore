@@ -6,61 +6,23 @@
 
 using namespace sf;
 
-Juego* Juego::pinstance = 0;//A GAMESTATE
-
-Juego* Juego::Instance(){//EL MAIN LLAMA A ESTO PARA EMPEZAR LA PARTIDA
-    if(pinstance == 0)
-        pinstance = new Juego;
-    return pinstance;
-}
-
 Juego::Juego(){
 
-    nEnemigos = 1;//A GAMESTATE
     dimensiones = Vector2i(1280, 720);//de aqui
     window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");//de aqui
     window->setFramerateLimit(60);//de aqui
 
     evento = new Event; // what ? MIRARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-
-    view.setSize(dimensiones.x, dimensiones.y);// esto seria de game state, no hace falta parametrizarlo lol(creo)
-    view.zoom(0.2f);//game state
-
-    centrado = false;//game state
-
-    cargaPlayer();//game state
-    cargaMapa();//game state
-    cargarHUD();//game state
-    gameLoop();
     //initStates OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-
-}
-//sustituye a mi rectangle shape con move - A GAME STATE
-void Juego::cargaPlayer(){
-    jugador = new Jugador({150, 50});
-    enemigos = new Enemigo*[nEnemigos];
-    for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo({150, 100*(i+1)});
-    }
-    view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
-}
-
-void Juego::cargaMapa(){
-    mapa = new Mapa;
-}
-
-void Juego::cargarHUD(){
-    hud = new Hud();
-    hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 4, view.getCenter().y - dimensiones.y/10);
-    hud->setPosicionHabilidades(view.getCenter().x - hud->getPiezaHabilidades().getGlobalBounds().width/2, view.getCenter().y + dimensiones.y/10 - hud->getPiezaHabilidades().getGlobalBounds().height);
 }
 
 void Juego::gameLoop(){
     sf::Clock frameClock;
 
     while(window->isOpen()){
-        procesarEventos(); //DE AMBOS
+        procesarEventos(); //DE JUEGO SOLO
         delta = frameClock.restart().asSeconds();//DE AQUI SOLO ¿?¿?
+
         jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());//A GAME STATE
 
         manejarIA();//A GAME STATE
@@ -76,7 +38,7 @@ void Juego::gameLoop(){
         render();//DE AMBOS
     }
 }
-// de maquina updatesfmlevents -> procesarEventos
+// de maquina updatesfmlevents -> procesarEventos replaceado en el mio para no confundir
 void Juego::procesarEventos(){
     while(window->pollEvent(*evento)){
 
@@ -85,26 +47,26 @@ void Juego::procesarEventos(){
     }
 }
 
-//PASAR A GAME STATE !!!!!!!!!!!!!!!!!!!!!!
-void Juego::setView(){
-    view.move(jugador->getMovement() * delta);
-    hud->move(jugador->getMovement() * delta);
-}
+//setView pasado a A GAME STATE !!!!!!!!!!!!!!!!!!!!!!
 
 
 
 void Juego::render(){
-    window->clear(Color(28,17,23,255));//DONE VA AQUI Y EN GAME STATE MIRARRRR
+    window->clear(Color(28,17,23,255));//DONE VA AQUI
+
+    //AQUI SOLO EL METODO RENDER DE GAME
 
     window->setView(view); //esto seria de gamestate
 
-    mapa->draw(*window, *jugador, *enemigos, nEnemigos);//PASAR A GAMESTATE
-    hud->draw(*window);//GAMESTATE
-    jugador->drawBoundingBoxes(*window);//PASAR A GAMESTATE
-    enemigos[0]->drawBoundingBoxes(*window);//PASAR A GAMESTATE
+    //mapa->draw(*window, *jugador, *enemigos, nEnemigos);//PASAR A GAMESTATE DONE -- PASADO
+   // hud->draw(*window);//GAMESTATE --- pasado
+   // jugador->drawBoundingBoxes(*window);//PASAR A GAMESTATE --- pasado
+    //enemigos[0]->drawBoundingBoxes(*window);//PASAR A GAMESTATE --- pasado
     //enemigos[1]->drawBoundingBoxes(*window);
 
-    //FALTA CONTROLAR LOS STATES AQUIIIII
+      if(!this->states.empty())
+                this->states.top()->render();
+
     window->display();
 }
 //de maquina
@@ -130,7 +92,7 @@ void Juego::update()
                 this->window->close();
             }
 }
-//--------DE maquina initStates
+//--------De maquina initStates
 void Game::initStates()
 {
     //this->states.push(new MainMenuState(this->window, &this->supportedKeys, &this->states));
@@ -140,7 +102,7 @@ void Game::initStates()
     //this->states.push(new GameState(this->window, &this->supportedKeys));
 }
 
-void Juego::manejarIA(){ // PASAR A GAME STATE
+void Juego::manejarIA(){ // PASAR A GAME STATE --------------- PASADO
 
     if(true){   // anyadir clock para que se ejecute cada X tiempo
 

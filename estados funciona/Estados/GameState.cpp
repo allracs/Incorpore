@@ -20,7 +20,7 @@ GameState::~GameState(){}
 
 void GameState::endState()
 {
-std::cout <<"Se acaba el juego" <<"\n";
+    std::cout <<"Se acaba el juego" <<"\n";
 }
  //void GameState::updateKeybinds(const float& dt)
 
@@ -59,26 +59,14 @@ void GameState::update(const float& dt)
     this->updateInput(dt);
 
     this->player.update(dt);
-
 }
 
-void GameState::render(sf::RenderTarget* target)
+void GameState::render(sf::RenderTarget* target)//PASADO MEDIO HACER
 {
         if(!target)
             target = this->window;
 
+            //METER AQUI LOS DRAW ???
             //this->player.render(this->window);
             this->player.render(target);
-
-
-
 }
-/*
-void GameState::updateInput(const float & dt)
-{
-
-}
-*/
-
-
-

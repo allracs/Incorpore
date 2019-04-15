@@ -1,13 +1,7 @@
 #include "Game.h"
 
 
-//USELESS DONE EN SU CLASE JUEGO
-void Game::initWindow()
-{
-    this->window = new sf::RenderWindow(sf::VideoMode(800,600), "maquina estados");
-    this->window->setFramerateLimit(60);
-    this->window->setVerticalSyncEnabled(false);
-}
+
 
 Game::Game()
 {
@@ -21,6 +15,7 @@ this->initStates(); //falta pasar
 
 Game::~Game()
 {}
+
 void Game::run()
 {
     while(this->window->isOpen())
@@ -34,7 +29,7 @@ void Game::run()
 //DONE COPY PASTEADO
 void Game::update()
 {
-    this->updateSFMLEvents();
+    this->procesarEventos();
 
          if(!this->states.empty())
          {
@@ -65,7 +60,13 @@ void Game::render()
     this->window->display();
 }
 
-
+//USELESS DONE EN SU CLASE JUEGO
+void Game::initWindow()
+{
+    this->window = new sf::RenderWindow(sf::VideoMode(800,600), "maquina estados");
+    this->window->setFramerateLimit(60);
+    this->window->setVerticalSyncEnabled(false);
+}
 //USELESS Y "DONE"
 void Game::initKeys()
 {
@@ -91,12 +92,12 @@ void Game::initStates()
 void Game::updateDt()
 {
 //actualiazr la variable dt que es tiempo delta, que es el tiempo que tarda en renderizar 1 frame
-   // this->updateSFMLEvents();
+   // this->procesarEventos();
    this->dt = this->frameClock.restart().asSeconds();
 }
 
 //DONE
-void Game::updateSFMLEvents()
+void Game::procesarEventos()
 {
     while(this->window->pollEvent(this->sfEvent))
     {
