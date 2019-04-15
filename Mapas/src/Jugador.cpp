@@ -7,7 +7,7 @@ Jugador::Jugador(Vector2f pos){
     entityCenter = pos;
     entidadHitbox.setPosition(pos);
     setColisionadores();
-
+    vidas = 10;
     dirMov = 1.f;
     movement = Vector2f(0.f, 0.f);
 
@@ -56,6 +56,37 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     procesarColisiones(nCol, colisiones);
 
     actual->update(delta, movement);
+}
+
+void Jugador::recibeDmg(RectangleShape enemigoHitbox){
+    Vector2f enemyPos = enemigoHitbox.getPosition();
+
+    if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds())){
+        //cout << "Recibe daño" << endl;
+
+        vidas--;
+        if(vidas > 0){
+            //colisiona por la derecha
+            if(playerCenter.x > enemyPos.x){
+                 //actual->sprite->move(20,0);
+            }
+            //colisiona por la izquierda
+            if(playerCenter.x < enemyPos.x){
+                 //actual->sprite->move(-20,0);
+            }
+            //colisiona por arriba
+            if(playerCenter.y < enemyPos.y){
+                //actual->sprite->move(0,-20);
+            }
+            //colisiona por debajo
+            if(playerCenter.y > enemyPos.y){
+                //actual->sprite->move(0,20);
+            }
+        }
+        else{
+            //Muerto
+        }
+    }
 }
 
 void Jugador::moverse(){
