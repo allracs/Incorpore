@@ -28,14 +28,29 @@ Juego::Juego(){
 
     centrado = false;
 
-    cargaPlayer();
+
     cargaMapa();
+    cargaPlayer();
     cargarHUD();
     gameLoop();
 }
 
 void Juego::cargaPlayer(){
-    jugador = new Jugador({150, 50});
+    srand(time(NULL));
+    /*
+    int randX = rand() % 350;
+    int randY = rand() % 250;
+
+
+    while(!mapa->isColision(randX,randY)){
+        srand(time(NULL));
+        randX = rand() % 350;
+        randY = rand() % 250;
+    }
+    cout << "X:" << randX << endl;
+    cout << "Y:" << rand << endl;
+    */
+    jugador = new Jugador({50, 50});
     enemigos = new Enemigo*[nEnemigos];
 
     for(int i = 0; i < nEnemigos; i++){

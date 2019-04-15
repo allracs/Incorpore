@@ -32,6 +32,7 @@ class Mapa{
         bool** getColisiones();
         int getNumColisiones();
         Vector2i getPosicionEntidad(Entidad);
+        bool isColision(int,int);
 
         FloatRect* getBounds();
 
@@ -67,4 +68,5 @@ class Mapa{
         bool** colisionMap; //true = colision
         FloatRect* colision; //Bounding Boxes de las Colisiones
         Vector2i posicion;
+
 };

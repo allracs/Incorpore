@@ -369,7 +369,7 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1555282054 /home/david/Documentos/Incorpore/Mapas/include/Mapa.h
+1555287759 /home/david/Documentos/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
@@ -383,7 +383,7 @@
 
 1555176949 e/Hud.h"
 
-1555284927 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
+1555288189 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -400,14 +400,14 @@
 
 1555180778 e/Enemigo.h"
 
-1555282054 /home/david/Documentos/Incorpore/Mapas/include/Enemigo.h
+1555287220 /home/david/Documentos/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	"Posicion.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 	<vector>
 
-1555284697 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1555288201 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"

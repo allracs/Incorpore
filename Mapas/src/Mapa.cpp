@@ -10,8 +10,7 @@ using namespace std;
 
 Mapa::Mapa(){
     srand(time(NULL));
-    int random = rand() % 2 +1; //Un random del 1 al 2 (no existe el caso 0)
-    cout << random << endl;
+    int random = rand() % 3 +1; //Un random del 1 al 2 (no existe el caso 0)
     leerMapa(random);
     cargaObjetos();
     setDatos();
@@ -57,6 +56,9 @@ void Mapa::leerMapa(int n){
             break;
         case 2:
             docXML.LoadFile("resources/tmx/Mapa2.tmx");
+            break;
+        case 3:
+            docXML.LoadFile("resources/tmx/Mapa3.tmx");
             break;
         default:
             std::cerr << "Error: Mapa no existente";
@@ -362,4 +364,16 @@ Vector2i Mapa::getPosicionEntidad(Entidad e){
     //cout << "Y: " << posicion.y << endl;
 
     return posicion;
+}
+
+bool Mapa::isColision(int x, int y){
+    bool res = false;
+    int _x = round(x)/16;
+    int _y = round(y)/16;
+
+    if(colisionMap[_x][_y] == true){
+        res = true;
+    }
+
+    return res;
 }
