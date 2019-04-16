@@ -58,9 +58,8 @@ void Arma::rotacionAtaque(RenderWindow& window, float dirMov, Vector2f entityCen
         dirMov = 1;
         espada.setPosition(entidadHitbox.getPosition().x +2, entidadHitbox.getPosition().y +3);
         ataqueHitbox.setPosition(entidadHitbox.getPosition().x +2, entidadHitbox.getPosition().y +3);
-
     }
-
+    dMov = dirMov;
 }
 
 void Arma::atacar(int opcion, std::vector<Enemigo*> enemigos, int nEnemigos){
@@ -79,4 +78,8 @@ Sprite Arma::getEspada(){
 
 Vector2f Arma::getMousePos(){
     return mousePos;
+}
+
+float Arma::getDireccionMov(){
+    return dMov;
 }

@@ -25,7 +25,7 @@ Jugador::Jugador(Vector2f pos){
 
 void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
-    actual->sprite.setScale(1.f*dirMov, 1.f);
+    actual->sprite.setScale(1.f*(arma->getDireccionMov()), 1.f);
 
 
     // MOVIMIENTO

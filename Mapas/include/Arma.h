@@ -15,15 +15,16 @@ class Arma
         virtual ~Arma();
         void update(Vector2f);
         void rotacionAtaque(RenderWindow&, float, Vector2f, RectangleShape);
-        void atacar(int, std::vector<Enemigo*>, int);
+        void atacar(int, vector<Enemigo*>, int);
 
         RectangleShape getHitbox();
         Sprite getEspada();
         Vector2f getMousePos();
+        float getDireccionMov();
     protected:
 
     private:
-        float dirMov;
+        float dMov;
         RectangleShape entidadHitbox;
         RectangleShape ataqueHitbox;
         Sprite espada; // Espada que se muestras encima de la hitbox.

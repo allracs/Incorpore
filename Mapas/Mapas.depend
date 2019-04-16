@@ -68,7 +68,7 @@
 	<cstddef>
 	<cstdarg>
 
-1554892110 D
+1555427551 D
 
 1554916111 source:/home/fv/FV/Incorpore/Mapas/game.cpp
 	"game.h"
@@ -83,7 +83,7 @@
 1554915439 source:/home/david/Documentos/Incorpore/Mapas/game.cpp
 	"game.h"
 
-1555339561 a-colisiones
+1555428013 a-colisiones
 	"game.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -122,6 +122,7 @@
 	<cstdarg>
 	<iostream>
 	"../include/Animacion.h"
+	"../include/Arma.h"
 
 1555406958 e/Animacion.h"
 
@@ -481,10 +482,10 @@
 1555006583 /home/fv/FV/Incorpore/Mapas/include/Animacion.h
 	<SFML/Graphics.hpp>
 
-1555416109 source:/home/fv/FV/Incorpore/Mapas/src/Enemigo.cpp
+1555433239 source:/home/fv/FV/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 
-1555416109 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
+1555433239 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	"Posicion.h"
 	<SFML/Graphics.hpp>
@@ -507,14 +508,14 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1555427684 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
+1555433239 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
 	<vector>
 	<iostream>
 
-1555427581 /home/fv/FV/Incorpore/Mapas/include/Juego.h
+1555433239 /home/fv/FV/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
@@ -532,7 +533,7 @@
 	"Animacion.h"
 	"Arma.h"
 
-1555348639 /home/fv/FV/Incorpore/Mapas/include/Mapa.h
+1555433239 /home/fv/FV/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
@@ -556,7 +557,7 @@
 	<android/log.h>
 	<assert.h>
 
-1555427684 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
+1555433568 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
@@ -565,7 +566,7 @@
 	<SFML/Graphics.hpp>
 	"../include/Juego.h"
 
-1555348639 source:/home/fv/FV/Incorpore/Mapas/src/Mapa.cpp
+1555433239 source:/home/fv/FV/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -1151,16 +1152,15 @@
 	<iostream>
 	<stdlib.h>
 
-1555427615 /home/fv/FV/Incorpore/Mapas/include/Arma.h
+1555433469 /home/fv/FV/Incorpore/Mapas/include/Arma.h
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
 	"Enemigo.h"
 
-1555427551 source:/home/fv/FV/Incorpore/Mapas/src/Arma.cpp
+1555433456 source:/home/fv/FV/Incorpore/Mapas/src/Arma.cpp
 	"../include/Arma.h"
 
-<<<<<<< HEAD
 1555429228 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Animacion.cpp
 	<iostream>
 	"../include/Animacion.h"
@@ -1295,7 +1295,7 @@
 	<cstdarg>
 
 1555430381 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Arma.cpp
-=======
+
 1555428013 /home/david/Documentos/Incorpore/Mapas/include/Arma.h
 	<SFML/Graphics.hpp>
 	<cmath>
@@ -1303,6 +1303,4 @@
 	"Enemigo.h"
 
 1555428013 source:/home/david/Documentos/Incorpore/Mapas/src/Arma.cpp
->>>>>>> mapa-colisiones
-	"../include/Arma.h"
 
