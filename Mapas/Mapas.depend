@@ -971,7 +971,7 @@
 
 1555406958 h"
 
-1555331828 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Mapa.h
+1555432830 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
@@ -995,18 +995,20 @@
 	<android/log.h>
 	<assert.h>
 
-1555331702 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Entidad.h
+1555432658 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
 	"Animacion.h"
 
-1555330849 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Jugador.h
-	"Entidad.h"
+1555432659 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Jugador.h
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
+	"Entidad.h"
+	"Enemigo.h"
 	"Animacion.h"
+	"Arma.h"
 
-1555331702 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Enemigo.h
+1555432830 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	"Posicion.h"
 	<SFML/Graphics.hpp>
@@ -1015,18 +1017,18 @@
 
 1555330849 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Posicion.h
 
-1555331702 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Enemigo.cpp
+1555433470 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 
-1555321071 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Entidad.cpp
+1555433796 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
 	<iostream>
 
-1555321071 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Hud.cpp
+1555432658 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
-1555331828 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Hud.h
+1555432658 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
@@ -1037,15 +1039,16 @@
 	<vector>
 	<iostream>
 
-1555331828 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Juego.h
+1555432830 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
 	"Enemigo.h"
+	"Arma.h"
 	"Hud.h"
 	"Mapa.h"
 
-1555321071 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Jugador.cpp
+1555433470 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
@@ -1054,7 +1057,7 @@
 	<SFML/Graphics.hpp>
 	"../include/Juego.h"
 
-1555322045 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Mapa.cpp
+1555433470 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -1303,4 +1306,13 @@
 	"Enemigo.h"
 
 1555428013 source:/home/david/Documentos/Incorpore/Mapas/src/Arma.cpp
+<<<<<<< HEAD
+=======
+
+1555432830 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Arma.h
+	<SFML/Graphics.hpp>
+	<cmath>
+	<iostream>
+	"Enemigo.h"
+>>>>>>> mapa-colisiones
 
