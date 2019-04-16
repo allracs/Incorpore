@@ -131,7 +131,7 @@ void Juego::render(){
     mapa->draw(*window, *jugador, enemigos, enemigos.size());
     hud->draw(*window);
     jugador->drawBoundingBoxes(*window);
-
+    /*
     for(int i = 0; i < enemigos.size(); i++){
         if(enemigos.at(i)->getBorrado() == false)
         enemigos.at(i)->draw(*window);
@@ -140,7 +140,7 @@ void Juego::render(){
     for(int i = 0; i < enemigos.size(); i++){
         if(enemigos.at(i)->getBorrado() == false)
         enemigos.at(i)->drawBoundingBoxes(*window);
-    }
+    }*/
 
     window->display();
 }
