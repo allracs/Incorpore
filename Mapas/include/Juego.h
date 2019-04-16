@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Jugador.h"
 #include "Enemigo.h"
+#include "Arma.h"
 #include "Hud.h"
 #include "Mapa.h"
 

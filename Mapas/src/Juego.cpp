@@ -98,7 +98,7 @@ void Juego::procesarEventos(){
             case sf::Event::MouseButtonPressed:
                 if(evento->mouseButton.button == Mouse::Left) {
                     cout << "HE PULSADO EL BOTÓN"<< endl;
-                    jugador->atacar(0, enemigos, nEnemigos);
+                    jugador->getArma().atacar(0, enemigos, nEnemigos);
                 }
                 break;
             default: break;

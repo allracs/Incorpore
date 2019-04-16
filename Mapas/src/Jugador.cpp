@@ -20,29 +20,11 @@ Jugador::Jugador(Vector2f pos){
     actual = &idle;
     actual->sprite.setPosition(pos);
 
-    // Hitbox de ataque (con la que el jugador ataca)
-    ataqueHitbox.setOutlineThickness(1);
-    ataqueHitbox.setOutlineColor(Color::Blue);
-    ataqueHitbox.setFillColor(Color::Transparent);
-    ataqueHitbox.setSize(Vector2f(11.f, 4.f));
-    ataqueHitbox.setOrigin(-8,2.f);
-    ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
-
-    // Cargar el sprite de la hitbox de ataque.
-    if(!swordText.loadFromFile("resources/sprites/sword.png"))
-        std::cout << "ERROR AL CARGAR LA TEXTURA: sword.png" << std::endl;
-    espada.setTexture(swordText);
-    espada.setOrigin(14,14);
-    espada.setPosition(pos.x +2, pos.y +3);
-    espada.setScale(-1.f, -1.f);
-
-
+    arma = new Arma(0, pos);
 }
 
 void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
-
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
-    rotacionAtaque(window);
     actual->sprite.setScale(1.f*dirMov, 1.f);
 
 
@@ -51,8 +33,9 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     //atacar();
     entidadHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);// mover la hitbox con la que el jugador ataca
-    espada.move(movement * delta); // para que la espada se mueva junto con el jugador.
-
+    arma->update(movement * delta); // para que la espada se mueva junto con el jugador.
+    arma->rotacionAtaque(window, dirMov, entityCenter, entidadHitbox);
+    ataqueHitbox = arma->getHitbox();
     moverColisionadores(movement * delta);
     procesarColisiones(nCol, colisiones);
 
@@ -86,7 +69,7 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
         }
         else{
             //Muerto
-            std::cout << "HAS PALMAO, FIN DE LA PARTIDA." << std::endl; //Cambiar por retorno a menu
+            cout << "HAS PALMAO, FIN DE LA PARTIDA." << endl; //Cambiar por retorno a menu
             exit(0);
         }
 
@@ -150,64 +133,21 @@ void Jugador::moverse(){
     colisiona_izquierda = false;
 }
 
-void Jugador::rotacionAtaque(RenderWindow& window) {
-    Vector2i pixelPos = Vector2i(Mouse::getPosition(window));
-
-    mousePos = window.mapPixelToCoords(pixelPos);
-
-    float PI = 3.14159265;
-
-    float dx = mousePos.x - entityCenter.x; // distancia x
-    float dy = mousePos.y - entityCenter.y; // distancia y
-
-
-    float rotation = (atan2(dy, dx)) * 180 / PI;
-    ataqueHitbox.setRotation(rotation);
-    espada.setRotation(rotation - 45.f); // hacer que la espada rote alrededor del jugador y se le añade 45 para que esté bien posicionada.
-    if(ataqueHitbox.getRotation() >= 90 && ataqueHitbox.getRotation() <= 270) {
-        dirMov = -1;
-        espada.setPosition(entidadHitbox.getPosition().x -2, entidadHitbox.getPosition().y +3);
-        ataqueHitbox.setPosition(entidadHitbox.getPosition().x -2, entidadHitbox.getPosition().y +3);
-
-    } else {
-        dirMov = 1;
-        espada.setPosition(entidadHitbox.getPosition().x +2, entidadHitbox.getPosition().y +3);
-        ataqueHitbox.setPosition(entidadHitbox.getPosition().x +2, entidadHitbox.getPosition().y +3);
-
-    }
-
-}
-
-
-void Jugador::atacar(int opcion, Enemigo** enemigos, int nEnemigos){
-    if(opcion == 0){
-        atacando = true;
-    } else if(opcion == 1){
-        atacando = false;
-    }
-
-    for(int i = 0; i < nEnemigos; i++){
-        enemigos[i]->serAtacado(ataqueHitbox);
-    }
-}
-
-
-Vector2f Jugador::getMousePos(){
-    return mousePos;
-}
-
 Vector2f Jugador::getMovement() {
-
     return movement;
+}
+
+Arma Jugador::getArma() {
+    return *arma;
 }
 
 void Jugador::draw(sf::RenderWindow &app) {
 
     if(ataqueHitbox.getRotation() >= 0 && ataqueHitbox.getRotation() <= 180) {
         app.draw(actual->sprite);
-        app.draw(espada);
+        app.draw(arma->getEspada());
     } else {
-        app.draw(espada);
+        app.draw(arma->getEspada());
         app.draw(actual->sprite);
     }
     app.draw(ataqueHitbox);
