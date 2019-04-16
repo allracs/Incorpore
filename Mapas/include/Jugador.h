@@ -21,7 +21,7 @@ class Jugador: public Entidad{
         void update(float, RenderWindow&, int, FloatRect*);
         void moverse();
         void atacar(int, Enemigo**, int);
-        bool recibeDmg(RectangleShape);
+        bool recibeDmg(RectangleShape, int);
         void rotacionAtaque(RenderWindow&);
         void draw(sf::RenderWindow &);
 

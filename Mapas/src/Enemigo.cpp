@@ -138,6 +138,10 @@ void Enemigo::serAtacado(sf::RectangleShape hitbox){
     }
 }
 
+int Enemigo::getVida(){
+    return vida;
+}
+
 void Enemigo::draw(sf::RenderWindow &app) {
     if(!deleteSprite){
         app.draw(entidadHitbox);

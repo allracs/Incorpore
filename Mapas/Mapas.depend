@@ -518,7 +518,7 @@
 1555413861 source:/home/fv/FV/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 
-1555336420 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
+1555416109 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	"Posicion.h"
 	<SFML/Graphics.hpp>
@@ -541,7 +541,7 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1555413740 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
+1555413881 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -556,7 +556,7 @@
 	"Hud.h"
 	"Mapa.h"
 
-1555413827 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
+1555416109 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 	<cmath>

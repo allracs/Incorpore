@@ -73,7 +73,7 @@ void Juego::gameLoop(){
 
         for(int i = 0; i < nEnemigos; i++) {
             enemigos[i]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[i]).x, mapa->getPosicionEntidad(*enemigos[i]).y), jugador->getAtaqueHitbox());
-            if(jugador->recibeDmg(enemigos[i]->getEntidadHitbox())){
+            if(jugador->recibeDmg(enemigos[i]->getEntidadHitbox(), enemigos[i]->getVida())){
                 hud->modificar_vida(1,2);
             }
 
