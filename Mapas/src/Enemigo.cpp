@@ -52,8 +52,8 @@ void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     ataqueHitbox.move(movement * delta);
     moverColisionadores(movement * delta);
     procesarColisiones(nCol, colisiones);
-
     actual->update(delta, movement);
+    compruebaColor();
 }
 
 void Enemigo::seguirCamino(Posicion a){
@@ -127,7 +127,7 @@ void Enemigo::serAtacado(sf::RectangleShape hitbox){
         if(vida>0){
             vida--;
             actual->sprite.setColor(sf::Color::Red);
-
+            cd.restart();
         }
 
         std::cout<<"Tiene de vida: "<<vida<<std::endl;
@@ -135,6 +135,14 @@ void Enemigo::serAtacado(sf::RectangleShape hitbox){
             deleteSprite = true;
             std::cout<<"Ha sido matado"<<std::endl;
         }
+    }
+}
+
+void Enemigo::compruebaColor(){
+    if(cd.getElapsedTime().asSeconds() >= 0.25){
+        actual->sprite.setColor(sf::Color::White);
+        cd.restart();
+
     }
 }
 
