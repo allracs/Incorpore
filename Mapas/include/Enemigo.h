@@ -18,6 +18,7 @@ class Enemigo : public Entidad{
         void serAtacado(sf::RectangleShape hitbox);
 
         int getVida();
+        bool getBorrado();
 
         void draw(sf::RenderWindow &app);
 

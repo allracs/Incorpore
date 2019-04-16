@@ -41,7 +41,7 @@ class Mapa{
         void mostrarMapaColisiones();
 
         //DRAW
-        void draw(RenderWindow&, Jugador*, Enemigo**, int);
+        void draw(RenderWindow&, Jugador, std::vector<Enemigo*>, int);
 
     private:
         int width, height, tilewidth, tileheight, gid;

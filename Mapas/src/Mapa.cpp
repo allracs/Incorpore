@@ -334,20 +334,18 @@ void Mapa::mostrarMapaColisiones(){
     cout <<  "------------------------" << endl;
 }
 
-void Mapa::draw(RenderWindow& target, Jugador* player, Enemigo** enemigos, int nEnemigos){
+void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enemigos, int nEnemigos){
     for(int l = 0; l < nCapas; l++){
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 if(mapSprite[l][y][x]!=NULL){
                     target.draw(*(mapSprite[l][y][x]));
                     if(l == 3){
-                        player->draw(target);
+                        player.draw(target);
 
                         for(int i = 0; i < nEnemigos; i++){
-                            enemigos[i]->draw(target);
+                            enemigos.at(i)->draw(target);
                         }
-
-
                     }
                 }
             }
@@ -381,3 +379,5 @@ Vector2f Mapa::generaPosicion(){
     Vector2f pos({randX*16, randY*16});
     return pos;
 }
+
+

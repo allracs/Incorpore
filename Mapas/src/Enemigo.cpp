@@ -149,3 +149,8 @@ void Enemigo::draw(sf::RenderWindow &app) {
     }
 }
 
+bool Enemigo::getBorrado()
+{
+    return deleteSprite;
+}
+

@@ -34,7 +34,7 @@ class Juego
         RenderStates *states;
         Clock frameClock;
         Jugador *jugador;
-        Enemigo **enemigos;
+        std::vector<Enemigo*> enemigos;
         Event *evento;
         Mapa *mapa;
         Hud *hud;

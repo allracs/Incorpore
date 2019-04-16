@@ -1194,3 +1194,139 @@
 1555427551 source:/home/fv/FV/Incorpore/Mapas/src/Arma.cpp
 	"../include/Arma.h"
 
+1555429228 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Animacion.cpp
+	<iostream>
+	"../include/Animacion.h"
+
+1555429228 /home/carlos/Escritorio/Incorpore/Mapas/include/Animacion.h
+	<SFML/Graphics.hpp>
+
+1555429228 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Astar.cpp
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<algorithm>
+	<math.h>
+	"../include/Astar.h"
+	"../include/Posicion.h"
+
+1555429228 /home/carlos/Escritorio/Incorpore/Mapas/include/Astar.h
+	<vector>
+	<string>
+	"Posicion.h"
+
+1555429228 /home/carlos/Escritorio/Incorpore/Mapas/include/Posicion.h
+
+1555429899 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Enemigo.cpp
+	"../include/Enemigo.h"
+
+1555429885 /home/carlos/Escritorio/Incorpore/Mapas/include/Enemigo.h
+	"Entidad.h"
+	"Posicion.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+	<vector>
+
+1555429228 /home/carlos/Escritorio/Incorpore/Mapas/include/Entidad.h
+	<SFML/Graphics.hpp>
+	"Animacion.h"
+
+1555429228 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Entidad.cpp
+	"../include/Entidad.h"
+	<iostream>
+
+1555429228 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Hud.cpp
+	<SFML/Graphics.hpp>
+	"../include/Hud.h"
+
+1555429228 /home/carlos/Escritorio/Incorpore/Mapas/include/Hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1555432327 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Juego.cpp
+	"../include/Juego.h"
+	"../include/Astar.h"
+	"../include/Posicion.h"
+	<vector>
+	<iostream>
+
+1555429358 /home/carlos/Escritorio/Incorpore/Mapas/include/Juego.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"Jugador.h"
+	"Enemigo.h"
+	"Arma.h"
+	"Hud.h"
+	"Mapa.h"
+
+1555429238 /home/carlos/Escritorio/Incorpore/Mapas/include/Jugador.h
+	<SFML/Graphics.hpp>
+	<cmath>
+	<iostream>
+	"Entidad.h"
+	"Enemigo.h"
+	"Animacion.h"
+	"Arma.h"
+
+1555430393 /home/carlos/Escritorio/Incorpore/Mapas/include/Arma.h
+	<SFML/Graphics.hpp>
+	<cmath>
+	<iostream>
+	"Enemigo.h"
+
+1555431406 /home/carlos/Escritorio/Incorpore/Mapas/include/Mapa.h
+	"tinyxml2.h"
+	"Entidad.h"
+	"Jugador.h"
+	"Enemigo.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1555429228 /home/carlos/Escritorio/Incorpore/Mapas/include/tinyxml2.h
+	<ctype.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stddef.h>
+	<cctype>
+	<climits>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<stdint.h>
+	<android/log.h>
+	<assert.h>
+
+1555429238 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Jugador.cpp
+	<iostream>
+	"../include/Jugador.h"
+
+1555429228 source:/home/carlos/Escritorio/Incorpore/Mapas/src/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+	"../include/Juego.h"
+
+1555431434 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Mapa.cpp
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+
+1555429228 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Posicion.cpp
+	"../include/Posicion.h"
+	<iostream>
+	<stdlib.h>
+
+1555429228 source:/home/carlos/Escritorio/Incorpore/Mapas/src/tinyxml2.cpp
+	"../include/tinyxml2.h"
+	<new>
+	<stddef.h>
+	<stdarg.h>
+	<cstddef>
+	<cstdarg>
+
+1555430381 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Arma.cpp
+	"../include/Arma.h"
+

@@ -15,7 +15,7 @@ class Arma
         virtual ~Arma();
         void update(Vector2f);
         void rotacionAtaque(RenderWindow&, float, Vector2f, RectangleShape);
-        void atacar(int, Enemigo**, int);
+        void atacar(int, std::vector<Enemigo*>, int);
 
         RectangleShape getHitbox();
         Sprite getEspada();

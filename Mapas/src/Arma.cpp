@@ -63,9 +63,9 @@ void Arma::rotacionAtaque(RenderWindow& window, float dirMov, Vector2f entityCen
 
 }
 
-void Arma::atacar(int opcion, Enemigo** enemigos, int nEnemigos){
+void Arma::atacar(int opcion, std::vector<Enemigo*> enemigos, int nEnemigos){
     for(int i = 0; i < nEnemigos; i++){
-        enemigos[i]->serAtacado(ataqueHitbox);
+        enemigos.at(i)->serAtacado(ataqueHitbox);
     }
 }
 

@@ -18,7 +18,7 @@ Juego* Juego::Instance(){
 Juego::Juego(){
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 3;
+    nEnemigos = 10;
 
     window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");
     window->setFramerateLimit(60);
@@ -40,10 +40,9 @@ Juego::Juego(){
 void Juego::cargaPlayer(){
 
     jugador = new Jugador(mapa->generaPosicion());
-    enemigos = new Enemigo*[nEnemigos];
 
     for(int i = 0; i < nEnemigos; i++){
-        enemigos[i] = new Enemigo(mapa->generaPosicion());
+        enemigos.push_back(new Enemigo(mapa->generaPosicion()));
     }
 
     view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
@@ -71,12 +70,25 @@ void Juego::gameLoop(){
 
         manejarIA();
 
-        for(int i = 0; i < nEnemigos; i++) {
-            enemigos[i]->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos[i]).x, mapa->getPosicionEntidad(*enemigos[i]).y), jugador->getAtaqueHitbox());
-            if(jugador->recibeDmg(enemigos[i]->getEntidadHitbox(), enemigos[i]->getVida())){
-                hud->modificar_vida(1,2);
-            }
 
+        if(enemigos.size() > 0)
+        {
+
+            for(int i = 0; i < enemigos.size(); i++) {
+
+                if(enemigos.at(i)->getBorrado() == false){
+                    std::cout << enemigos.size() << std::endl;
+                    enemigos.at(i)->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y), jugador->getAtaqueHitbox());
+
+                    if(jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida())){
+                        hud->modificar_vida(1,2);
+                    }
+
+                } else {
+                    delete enemigos.at(i);
+                    enemigos.erase(enemigos.begin()+i);
+                }
+            }
         }
 
         if(!centrado) {
@@ -98,7 +110,7 @@ void Juego::procesarEventos(){
             case sf::Event::MouseButtonPressed:
                 if(evento->mouseButton.button == Mouse::Left) {
                     cout << "HE PULSADO EL BOTÓN"<< endl;
-                    jugador->getArma().atacar(0, enemigos, nEnemigos);
+                    jugador->getArma().atacar(0, enemigos, enemigos.size());
                 }
                 break;
             default: break;
@@ -116,18 +128,19 @@ void Juego::render(){
     window->clear(Color(28,17,23,255));
     window->setView(view);
 
-    mapa->draw(*window, jugador, enemigos, nEnemigos);
+    mapa->draw(*window, *jugador, enemigos, enemigos.size());
     hud->draw(*window);
     jugador->drawBoundingBoxes(*window);
 
-    /*
-    for(int i = 0; i < nEnemigos; i++){
-        enemigos[i]->draw(*window);
+    for(int i = 0; i < enemigos.size(); i++){
+        if(enemigos.at(i)->getBorrado() == false)
+        enemigos.at(i)->draw(*window);
     }
 
-    for(int i = 0; i < nEnemigos; i++){
-        enemigos[i]->drawBoundingBoxes(*window);
-    }*/
+    for(int i = 0; i < enemigos.size(); i++){
+        if(enemigos.at(i)->getBorrado() == false)
+        enemigos.at(i)->drawBoundingBoxes(*window);
+    }
 
     window->display();
 }
@@ -142,9 +155,10 @@ void Juego::manejarIA(){
         // para cada enemigo crear Posicion y llamar a la IA
         // nEnemigos: numero de enemigos en el mapa
 
-        for(int a = 0; a < nEnemigos; a++){
-
-            Vector2i e = mapa->getPosicionEntidad(*enemigos[a]);
+        for(int a = 0; a < enemigos.size(); a++){
+        if(enemigos.at(a)->getBorrado() == false)
+        {
+            Vector2i e = mapa->getPosicionEntidad(*enemigos.at(a));
             Posicion pos_enemigo = Posicion(e.x, e.y);
             //asignar posicion al enemigo
             //se crea el astar
@@ -156,7 +170,7 @@ void Juego::manejarIA(){
 
             ////std::cout << path.size() << std::endl;
 
-            enemigos[a]->setPath(path);
+            enemigos.at(a)->setPath(path);
 
             // SEGUIR EL CAMINO (CON BUCLE INTERPOLADO)
             // mover a enemigos[a] hacia el siguiente punto
@@ -202,6 +216,7 @@ void Juego::manejarIA(){
                 //std::cout << std::endl;
             }
             */
+        }
 
         } //fin for each enemigo
     }
