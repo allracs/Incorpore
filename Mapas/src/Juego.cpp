@@ -132,9 +132,12 @@ void Juego::manejarIA(){
 
             Vector2i e = mapa->getPosicionEntidad(*enemigos[a]);
             Posicion pos_enemigo = Posicion(e.x, e.y);
+
+            //--------------------------------------------------------------
+
             //asignar posicion al enemigo
             //se crea el astar
-/*
+
             Astar *ia = new Astar(pos_jugador, pos_enemigo, mapa->getColisiones(), mapa->getHeight(), mapa->getWidth());
 
             //se llama a astar.mapear()
@@ -144,46 +147,71 @@ void Juego::manejarIA(){
             ////std::cout << path.size() << std::endl;
 
 
+            //---------- CAMINO DEL CENTRO DE CADA COLISIONADOR -------------
+            //---------------------------------------------------------------
+
+            Vector2i pos_Col_arr = enemigos[a]->getPosCol()[0];
+            Vector2i pos_Col_der = enemigos[a]->getPosCol()[1];
+            Vector2i pos_Col_aba = enemigos[a]->getPosCol()[2];
+            Vector2i pos_Col_izq = enemigos[a]->getPosCol()[3];
+            //std::cout << pos_Col_arr.x << std::endl;
+            Vector2i posXanyadir;
+            Posicion next = path.front();
+            bool flag = false;
+
+            //ver siguiente pos (next)
+            //si next es arriba o abajo:
+            if(pos_Col_arr.y - 1 == next.getY() || pos_Col_aba.y + 1 == next.getY()){
+                //mirar colIzq:
+                //si colIzq esta a la izquierda de pos_enemigo
+                if(pos_Col_izq.x + 1 == pos_enemigo.getX()){
+                    //posXanyadir = colIzq
+                    posXanyadir = pos_Col_der;
+                    flag = true;
+                }
+                //mirar colDer:
+                //si colDer esta a la derecha de pos_enemigo
+                else if(pos_Col_der.x - 1 == pos_enemigo.getX()){
+                    //posXanyadir = colDer
+                    posXanyadir = pos_Col_der;
+                    flag = true;
+                }
+
+            }
+            //si next es izquierda o derecha:
+            else if(pos_Col_izq.x + 1 == next.getX() || pos_Col_der.x - 1 == next.getX()){
+                //mirar colArr:
+                //si colArr esta a la arriba de pos_enemigo
+                if(pos_Col_arr.y + 1 == next.getY()){
+                    //posXanyadir = colArr
+                    posXanyadir = pos_Col_arr;
+                    flag = true;
+                }
+                //mirar colAba:
+                //si colAba esta a la abajo de pos_enemigo
+                else if(pos_Col_aba.x - 1 == next.getX()){
+                    //posXanyadir = colAba
+                    posXanyadir = pos_Col_aba;
+                    flag = true;
+                }
+
+            }
+
+
+            if(flag){
+                    path.insert(path.begin(), Posicion(posXanyadir.x, posXanyadir.y));
+            }
 
             enemigos[a]->setPath(path);
 
             delete ia;
 
 
-*/
-            //---------- CAMINO DEL CENTRO DE CADA COLISIONADOR -------------
-            //---------------------------------------------------------------
-
-            Vector2i *pos_Col = new Vector2i[4];
-            pos_Col = enemigos[a]->getPosCol();
-
-
-
-            /*  --SEGMENTATION FAULT--
-
-            std::vector< std::vector<Posicion> > caminosXcol;
-
-            for(int b = 0; b < 4; b++){
-                Astar iaa = Astar(Posicion(pos_Col[b].x, pos_Col[b].y),
-                                  pos_enemigo,
-                                  mapa->getColisiones(),
-                                  altura,
-                                  mapa->getWidth());
-
-                caminosXcol.push_back(iaa.mapear());
-            }
-
-
-
-
-            delete pos_Col;
-
-            */
-
             //-------------------------------------------------------------
 
             // SEGUIR EL CAMINO (CON BUCLE INTERPOLADO)
             // mover a enemigos[a] hacia el siguiente punto
+
             /*
             int flag = true;
             for(int a = 0; a < mapa->getHeight(); a++)
