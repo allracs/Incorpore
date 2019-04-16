@@ -67,7 +67,7 @@ void Juego::gameLoop(){
         procesarEventos();
         delta = frameClock.restart().asSeconds();
         jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
-
+        hud->compruebaTeclas();
         manejarIA();
 
 
