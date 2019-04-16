@@ -133,6 +133,8 @@ void Juego::manejarIA(){
             Vector2i e = mapa->getPosicionEntidad(*enemigos[a]);
             Posicion pos_enemigo = Posicion(e.x, e.y);
 
+            bool **mapaCol = mapa->getColisiones();
+
             //--------------------------------------------------------------
 
             //asignar posicion al enemigo
@@ -150,11 +152,10 @@ void Juego::manejarIA(){
             //---------- CAMINO DEL CENTRO DE CADA COLISIONADOR -------------
             //---------------------------------------------------------------
 
-            Vector2i pos_Col_arr = enemigos[a]->getPosCol()[0];
-            Vector2i pos_Col_der = enemigos[a]->getPosCol()[1];
-            Vector2i pos_Col_aba = enemigos[a]->getPosCol()[2];
-            Vector2i pos_Col_izq = enemigos[a]->getPosCol()[3];
-            //std::cout << pos_Col_arr.x << std::endl;
+            Vector2i pos_Col_arr, pos_Col_der, pos_Col_aba, pos_Col_izq;
+
+            enemigos[a]->getPosCol(pos_Col_arr, pos_Col_der, pos_Col_aba, pos_Col_izq);
+
             Vector2i posXanyadir;
             Posicion next = path.front();
             bool flag = false;
@@ -166,7 +167,7 @@ void Juego::manejarIA(){
                 //si colIzq esta a la izquierda de pos_enemigo
                 if(pos_Col_izq.x + 1 == pos_enemigo.getX()){
                     //posXanyadir = colIzq
-                    posXanyadir = pos_Col_der;
+                    posXanyadir = pos_Col_izq;
                     flag = true;
                 }
                 //mirar colDer:
@@ -202,12 +203,12 @@ void Juego::manejarIA(){
                     path.insert(path.begin(), Posicion(posXanyadir.x, posXanyadir.y));
             }
 
+            //-------------------------------------------------------------
+
             enemigos[a]->setPath(path);
 
             delete ia;
 
-
-            //-------------------------------------------------------------
 
             // SEGUIR EL CAMINO (CON BUCLE INTERPOLADO)
             // mover a enemigos[a] hacia el siguiente punto

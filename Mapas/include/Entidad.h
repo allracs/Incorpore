@@ -26,7 +26,7 @@ class Entidad{
         RectangleShape getEntidadHitbox();
         RectangleShape getAtaqueHitbox();
         Animacion* getActual();
-        Vector2i* getPosCol();
+        void getPosCol(Vector2i& arr, Vector2i& der, Vector2i& aba, Vector2i& izq);
 
         void draw(RenderWindow&);
         void drawBoundingBoxes(RenderWindow&);

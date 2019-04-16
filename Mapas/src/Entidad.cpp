@@ -136,7 +136,7 @@ Animacion* Entidad::getActual() {
     return actual;
 }
 
-Vector2i* Entidad::getPosCol() {
+void Entidad::getPosCol(Vector2i& arr, Vector2i& der, Vector2i& aba, Vector2i& izq) {
     Vector2f res[4];
     res[0] = cuadrado_arr->getPosition();
     res[1] = cuadrado_der->getPosition();
@@ -144,21 +144,20 @@ Vector2i* Entidad::getPosCol() {
     res[3] = cuadrado_izq->getPosition();
 
 
-    Vector2i ress[4];
+    //Vector2i arr, der, aba, izq;
 
-    ress[0].x = round(res[0].x)/16;
-    ress[0].y = round(res[0].y+0.05)/16;
+    arr.x = round(res[0].x)/16;
+    arr.y = round(res[0].y+0.05)/16;
 
-    ress[1].x = round(res[1].x)/16;
-    ress[1].y = round(res[1].y+0.05)/16;
+    der.x = round(res[1].x)/16;
+    der.y = round(res[1].y+0.05)/16;
 
-    ress[2].x = round(res[2].x)/16;
-    ress[2].y = round(res[2].y+0.05)/16;
+    aba.x = round(res[2].x)/16;
+    aba.y = round(res[2].y+0.05)/16;
 
-    ress[3].x = round(res[3].x)/16;
-    ress[3].y = round(res[3].y+0.05)/16;
+    izq.x = round(res[3].x)/16;
+    izq.y = round(res[3].y+0.05)/16;
 
-    return ress;
 }
 
 void Entidad::draw(RenderWindow& target) {
