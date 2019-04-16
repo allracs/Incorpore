@@ -24,8 +24,8 @@ Jugador::Jugador(Vector2f pos){
     ataqueHitbox.setOutlineThickness(1);
     ataqueHitbox.setOutlineColor(Color::Blue);
     ataqueHitbox.setFillColor(Color::Transparent);
-    ataqueHitbox.setSize(Vector2f(20.f, 4.f));
-    ataqueHitbox.setOrigin(0,2.f);
+    ataqueHitbox.setSize(Vector2f(11.f, 4.f));
+    ataqueHitbox.setOrigin(-8,2.f);
     ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
 
     // Cargar el sprite de la hitbox de ataque.
