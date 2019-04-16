@@ -88,14 +88,6 @@ Hud::Hud(){
 }
 
 void Hud::compruebaTeclas(){
-    if(Keyboard::isKeyPressed(Keyboard::Up)){
-        modificar_vida(1,1);
-    }
-    if(Keyboard::isKeyPressed(Keyboard::Down))
-    {
-        modificar_vida(1,2);
-    }
-
     ///HABILIDADES
     //borrar todas las habilidades
     if(Keyboard::isKeyPressed(Keyboard::D))
