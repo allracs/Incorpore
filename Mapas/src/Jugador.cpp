@@ -48,6 +48,7 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
     // MOVIMIENTO
     moverse(); // comprobar que el jugador se mueve
+    atacar();
     entidadHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);// mover la hitbox con la que el jugador ataca
     espada.move(movement * delta); // para que la espada se mueva junto con el jugador.
@@ -177,6 +178,15 @@ void Jugador::rotacionAtaque(RenderWindow& window) {
 
 }
 
+
+void Jugador::atacar(){
+
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+
+    }
+}
+
+
 Vector2f Jugador::getMousePos(){
     return mousePos;
 }
@@ -185,7 +195,6 @@ Vector2f Jugador::getMovement() {
 
     return movement;
 }
-
 
 void Jugador::draw(sf::RenderWindow &app) {
 

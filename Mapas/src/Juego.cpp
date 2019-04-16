@@ -5,6 +5,7 @@
 #include <iostream>
 
 using namespace sf;
+using namespace std;
 
 Juego* Juego::pinstance = 0;
 
@@ -91,6 +92,16 @@ void Juego::gameLoop(){
 void Juego::procesarEventos(){
     while(window->pollEvent(*evento)){
         switch(evento->type){
+            case sf::Event::Closed:
+                window->close();
+                break;
+            case sf::Event::MouseButtonReleased:
+                if(evento->mouseButton.button == Mouse::Left) {
+                    cout << "HE SOLTADO EL BOTÓN"<< endl;
+                    jugador->atacar();
+                }
+
+            default: break;
 
         }
     }

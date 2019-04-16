@@ -19,6 +19,7 @@ class Jugador: public Entidad{
 
         void update(float, RenderWindow&, int, FloatRect*);
         void moverse();
+        void atacar();
         bool recibeDmg(RectangleShape);
         void rotacionAtaque(RenderWindow&);
         void draw(sf::RenderWindow &);
@@ -28,6 +29,8 @@ class Jugador: public Entidad{
     private:
         float dirMov;
         int vidas;
+        bool atacando;
+
 
         sf::Sprite espada; // Espada que se muestras encima de la hitbox.
         sf::Texture swordText; // Textura para el sprite de la espada

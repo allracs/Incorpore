@@ -27,8 +27,6 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1555406958 
-
 1554834008 /home/david/Documentos/incorpore/Mapas/tinyxml2.h
 	<ctype.h>
 	<limits.h>
@@ -1151,7 +1149,7 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1555408764 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Juego.cpp
+1555411698 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -1166,7 +1164,7 @@
 	"Hud.h"
 	"Mapa.h"
 
-1555408764 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Jugador.h
+1555411994 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Jugador.h
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 	<cmath>
@@ -1197,7 +1195,7 @@
 	<android/log.h>
 	<assert.h>
 
-1555408764 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Jugador.cpp
+1555412045 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
