@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include "Animacion.h"
+#include "Enemigo.h"
 
 using namespace std;
 using namespace sf;
@@ -19,7 +20,7 @@ class Jugador: public Entidad{
 
         void update(float, RenderWindow&, int, FloatRect*);
         void moverse();
-        void atacar();
+        void atacar(int, Enemigo**, int);
         bool recibeDmg(RectangleShape);
         void rotacionAtaque(RenderWindow&);
         void draw(sf::RenderWindow &);

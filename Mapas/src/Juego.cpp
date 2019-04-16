@@ -95,12 +95,12 @@ void Juego::procesarEventos(){
             case sf::Event::Closed:
                 window->close();
                 break;
-            case sf::Event::MouseButtonReleased:
+            case sf::Event::MouseButtonPressed:
                 if(evento->mouseButton.button == Mouse::Left) {
-                    cout << "HE SOLTADO EL BOTÓN"<< endl;
-                    jugador->atacar();
+                    cout << "HE PULSADO EL BOTÓN"<< endl;
+                    jugador->atacar(0, enemigos, nEnemigos);
                 }
-
+                break;
             default: break;
 
         }

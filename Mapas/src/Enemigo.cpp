@@ -40,10 +40,10 @@ void Enemigo::setPath(std::vector<Posicion> p){
 void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones, Posicion pos_a, sf::RectangleShape enemigoHitbox){
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
 
-    if(cd.getElapsedTime().asSeconds()>=0.3f){
-        serAtacado(enemigoHitbox);
+    /*if(cd.getElapsedTime().asSeconds()>=0.3f){
+        //serAtacado(enemigoHitbox);
         cd.restart();
-    }
+    }*/
 
     // MOVIMIENTO
     seguirCamino(pos_a); // comprobar que el jugador se mueve
@@ -121,7 +121,7 @@ void Enemigo::seguirCamino(Posicion a){
 
 void Enemigo::serAtacado(sf::RectangleShape hitbox){
     //El enemigo muere cuando la hitbox le toca y hacemos click
-    if (hitbox.getGlobalBounds().intersects(entidadHitbox.getGlobalBounds()) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    if (hitbox.getGlobalBounds().intersects(entidadHitbox.getGlobalBounds()))
     {
 
         if(vida>0){
