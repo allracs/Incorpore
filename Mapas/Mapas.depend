@@ -748,14 +748,14 @@
 	<vector>
 	<iostream>
 
-1555407566 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Animacion.cpp
+1555434724 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Animacion.cpp
 	<iostream>
 	"../include/Animacion.h"
 
 1555330849 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Animacion.h
 	<SFML/Graphics.hpp>
 
-1555407566 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Astar.cpp
+1555434724 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Astar.cpp
 	<iostream>
 	<stdlib.h>
 	<vector>
@@ -773,7 +773,7 @@
 
 1555176949 h"
 
-1555407566 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Mapa.h
+1555434724 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
@@ -797,19 +797,19 @@
 	<android/log.h>
 	<assert.h>
 
-1555415132 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Entidad.h
+1555435974 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
 	"Animacion.h"
 	<math.h>
 
-1555407566 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Jugador.h
+1555434724 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Jugador.h
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
 	"Animacion.h"
 
-1555407566 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Enemigo.h
+1555434724 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	"Posicion.h"
 	<SFML/Graphics.hpp>
@@ -818,29 +818,29 @@
 
 1555330849 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Posicion.h
 
-1555407566 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Enemigo.cpp
+1555434724 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 
-1555415140 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Entidad.cpp
+1555440213 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
 	<iostream>
 
-1555407566 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Hud.cpp
+1555434724 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
-1555407566 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Hud.h
+1555434724 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
-1555432537 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Juego.cpp
+1555439602 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
 	<vector>
 	<iostream>
 
-1555407566 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Juego.h
+1555434724 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
@@ -848,7 +848,7 @@
 	"Hud.h"
 	"Mapa.h"
 
-1555407566 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Jugador.cpp
+1555434724 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
@@ -857,7 +857,7 @@
 	<SFML/Graphics.hpp>
 	"../include/Juego.h"
 
-1555407566 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Mapa.cpp
+1555434724 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>

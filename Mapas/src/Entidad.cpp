@@ -69,25 +69,25 @@ void Entidad::procesarColisiones(int nColisiones, FloatRect* colisiones){
         //INFERIOR
         if(cuadrado_arr->getGlobalBounds().intersects(colisiones[i])){
             setColision(2);
-            cout <<  "Arriba" << endl;
+            //cout <<  "Arriba" << endl;
         }
 
         //SUPERIOR
         if(cuadrado_abj->getGlobalBounds().intersects(colisiones[i])){
             setColision(1);
-            cout <<  "Abajo" << endl;
+            //cout <<  "Abajo" << endl;
         }
 
         //IZQUIERDA
         if(cuadrado_der->getGlobalBounds().intersects(colisiones[i])){
             setColision(3);
-            cout <<  "Der" << endl;
+            //cout <<  "Der" << endl;
         }
 
         //DERECHA
         if(cuadrado_izq->getGlobalBounds().intersects(colisiones[i])){
             setColision(4);
-            cout <<  "Izq" << endl;
+            //cout <<  "Izq" << endl;
         }
     }
 }
@@ -149,13 +149,13 @@ void Entidad::getPosCol(Vector2i& arr, Vector2i& der, Vector2i& aba, Vector2i& i
     arr.x = round(res[0].x)/16;
     arr.y = round(res[0].y+0.05)/16;
 
-    der.x = round(res[1].x)/16;
+    der.x = round(res[1].x+1)/16;
     der.y = round(res[1].y+0.05)/16;
 
     aba.x = round(res[2].x)/16;
-    aba.y = round(res[2].y+0.05)/16;
+    aba.y = round(res[2].y+1.05)/16;
 
-    izq.x = round(res[3].x)/16;
+    izq.x = round(res[3].x-1)/16;
     izq.y = round(res[3].y+0.05)/16;
 
 }

@@ -159,44 +159,82 @@ void Juego::manejarIA(){
             Vector2i posXanyadir;
             Posicion next = path.front();
             bool flag = false;
-
+/*
             //ver siguiente pos (next)
             //si next es arriba o abajo:
             if(pos_Col_arr.y - 1 == next.getY() || pos_Col_aba.y + 1 == next.getY()){
-                //mirar colIzq:
-                //si colIzq esta a la izquierda de pos_enemigo
-                if(pos_Col_izq.x + 1 == pos_enemigo.getX()){
-                    //posXanyadir = colIzq
-                    posXanyadir = pos_Col_izq;
-                    flag = true;
-                }
-                //mirar colDer:
-                //si colDer esta a la derecha de pos_enemigo
-                else if(pos_Col_der.x - 1 == pos_enemigo.getX()){
-                    //posXanyadir = colDer
-                    posXanyadir = pos_Col_der;
-                    flag = true;
-                }
+                //comprobar que en las esquinas hay una colision
+                if(mapaCol[e.x-1][e.y-1] || mapaCol[e.x+1][e.y-1]){
+                    //mirar colIzq:
+                    //si colIzq esta a la izquierda de pos_enemigo
+                    if(pos_Col_izq.x + 1 == pos_enemigo.getX()){
+                        //posXanyadir = colIzq
+                        posXanyadir = pos_Col_izq;
+                        flag = true;
+                    }
+                    //mirar colDer:
+                    //si colDer esta a la derecha de pos_enemigo
+                    else if(pos_Col_der.x - 1 == pos_enemigo.getX()){
+                        //posXanyadir = colDer
+                        posXanyadir = pos_Col_der;
+                        flag = true;
+                    }
 
+                }
             }
             //si next es izquierda o derecha:
             else if(pos_Col_izq.x + 1 == next.getX() || pos_Col_der.x - 1 == next.getX()){
-                //mirar colArr:
-                //si colArr esta a la arriba de pos_enemigo
-                if(pos_Col_arr.y + 1 == next.getY()){
-                    //posXanyadir = colArr
-                    posXanyadir = pos_Col_arr;
-                    flag = true;
+                if(mapaCol[e.x-1][e.y+1] || mapaCol[e.x+1][e.y+1]){
+                    //mirar colArr:
+                    //si colArr esta a la arriba de pos_enemigo
+                    if(pos_Col_arr.y + 1 == next.getY()){
+                        //posXanyadir = colArr
+                        posXanyadir = pos_Col_arr;
+                        flag = true;
+                    }
+                    //mirar colAba:
+                    //si colAba esta a la abajo de pos_enemigo
+                    else if(pos_Col_aba.x - 1 == next.getX()){
+                        //posXanyadir = colAba
+                        posXanyadir = pos_Col_aba;
+                        flag = true;
+                    }
                 }
-                //mirar colAba:
-                //si colAba esta a la abajo de pos_enemigo
-                else if(pos_Col_aba.x - 1 == next.getX()){
-                    //posXanyadir = colAba
-                    posXanyadir = pos_Col_aba;
-                    flag = true;
-                }
-
             }
+*/
+
+
+
+
+
+            //ver siguiente pos (next)
+            //comprobar que en las esquinas hay una colision
+            if(e.x-1>=0 && e.y-1>=0 && mapaCol[e.y-1][e.x-1] && e.x == next.getX() && e.y-1 == next.getY()){
+                std::cout << "colision arriba izq" << std::endl;
+                if(mapaCol[pos_Col_izq.x][pos_Col_izq.y-1]){
+                    //posXanyadir = pos_Col_izq;
+                    /** TODO: MOVER A LA DERECHA*/
+                    flag = true;
+                }
+            }
+            /*if(mapaCol[e.x+1][e.y-1]){
+                std::cout << "colision arriba der" << std::endl;
+                //si next es arriba o abajo:
+                if(pos_Col_arr.y - 1 == next.getY() || pos_Col_aba.y + 1 == next.getY()){
+
+                    //mirar colDer:
+                    //si colDer esta a la derecha de pos_enemigo
+                    if(pos_Col_der.x - 1 == pos_enemigo.getX()){
+                        //posXanyadir = colDer
+                        posXanyadir = pos_Col_der;
+                        flag = true;
+                    }
+
+                }
+            }*/
+
+
+
 
 
             if(flag){
