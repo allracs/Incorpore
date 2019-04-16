@@ -16,7 +16,7 @@ class Enemigo : public Entidad{
         void update(float, RenderWindow&, int, FloatRect*, Posicion, sf::RectangleShape enemigoHitbox);
         void seguirCamino(Posicion);
         void serAtacado(sf::RectangleShape hitbox);
-
+        void compruebaColor();
         int getVida();
 
         void draw(sf::RenderWindow &app);
