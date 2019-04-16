@@ -123,7 +123,8 @@ void Juego::manejarIA(){
 
         Vector2i v = mapa->getPosicionEntidad(*jugador);
         Posicion pos_jugador = Posicion(v.x, v.y);
-
+        int altura = mapa->getHeight();
+        int anchura = mapa->getWidth();
         // para cada enemigo crear Posicion y llamar a la IA
         // nEnemigos: numero de enemigos en el mapa
 
@@ -133,15 +134,47 @@ void Juego::manejarIA(){
             Posicion pos_enemigo = Posicion(e.x, e.y);
             //asignar posicion al enemigo
             //se crea el astar
-            Astar ia = Astar(pos_jugador, pos_enemigo, mapa->getColisiones(), mapa->getHeight(), mapa->getWidth());
+/*
+            Astar *ia = new Astar(pos_jugador, pos_enemigo, mapa->getColisiones(), mapa->getHeight(), mapa->getWidth());
 
             //se llama a astar.mapear()
 
-            std::vector<Posicion> path = ia.mapear();
+            std::vector<Posicion> path = ia->mapear();
 
             ////std::cout << path.size() << std::endl;
 
+
+
             enemigos[a]->setPath(path);
+
+            delete ia;
+
+
+*/
+            //---------- CAMINO DEL CENTRO DE CADA COLISIONADOR -------------
+            //---------------------------------------------------------------
+
+            Vector2i *pos_Col = new Vector2i[4];
+            pos_Col = enemigos[a]->getPosCol();
+
+
+
+            std::vector< std::vector<Posicion> > caminosXcol;
+
+            for(int b = 0; b < 4; b++){
+                Astar *iaa = new Astar(pos_jugador, pos_enemigo, mapa->getColisiones(), mapa->getHeight(), mapa->getWidth());
+
+                caminosXcol.push_back(iaa->mapear());
+
+                delete iaa;
+            }
+
+
+
+
+            delete pos_Col;
+
+            //-------------------------------------------------------------
 
             // SEGUIR EL CAMINO (CON BUCLE INTERPOLADO)
             // mover a enemigos[a] hacia el siguiente punto

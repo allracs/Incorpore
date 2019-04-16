@@ -2,6 +2,7 @@
 #define ENTIDAD_H
 #include <SFML/Graphics.hpp>
 #include "Animacion.h"
+#include <math.h>
 using namespace sf;
 
 class Entidad{
@@ -25,6 +26,7 @@ class Entidad{
         RectangleShape getEntidadHitbox();
         RectangleShape getAtaqueHitbox();
         Animacion* getActual();
+        Vector2i* getPosCol();
 
         void draw(RenderWindow&);
         void drawBoundingBoxes(RenderWindow&);

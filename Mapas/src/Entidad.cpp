@@ -44,17 +44,17 @@ void Entidad::setColisionadores(){
     cuadrado_arr->setOrigin(Vector2f(11/2, 0.75/2));
     cuadrado_arr->setPosition(entidadHitbox.getGlobalBounds().left + 6.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 - 1.5);
 
-    cuadrado_izq->setSize(Vector2f(0.75, 5.5));
-    cuadrado_izq->setOrigin(Vector2f(0.75/2, 5.5/2));
-    cuadrado_izq->setPosition(entidadHitbox.getGlobalBounds().left, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 0.99);
-
     cuadrado_abj->setSize(Vector2f(11, 0.75));
     cuadrado_abj->setOrigin(Vector2f(11/2, 0.75/2));
     cuadrado_abj->setPosition(entidadHitbox.getGlobalBounds().left + 6.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height + 1.8);
 
-    cuadrado_der->setSize(Vector2f(0.75, 5.5));
-    cuadrado_der->setOrigin(Vector2f(0.75/2, 5.5/2));
-    cuadrado_der->setPosition(entidadHitbox.getGlobalBounds().left + entidadHitbox.getGlobalBounds().width - 0.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 0.99);
+    cuadrado_izq->setSize(Vector2f(0.75, 6));
+    cuadrado_izq->setOrigin(Vector2f(0.75/2, 6/2));
+    cuadrado_izq->setPosition(entidadHitbox.getGlobalBounds().left, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 3.4);
+
+    cuadrado_der->setSize(Vector2f(0.75, 6));
+    cuadrado_der->setOrigin(Vector2f(0.75/2, 6/2));
+    cuadrado_der->setPosition(entidadHitbox.getGlobalBounds().left + entidadHitbox.getGlobalBounds().width - 0.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 3.4);
 }
 
 void Entidad::moverColisionadores(Vector2f mov){
@@ -134,6 +134,31 @@ RectangleShape Entidad::getAtaqueHitbox(){
 
 Animacion* Entidad::getActual() {
     return actual;
+}
+
+Vector2i* Entidad::getPosCol() {
+    Vector2f res[4];
+    res[0] = cuadrado_arr->getPosition();
+    res[1] = cuadrado_der->getPosition();
+    res[2] = cuadrado_abj->getPosition();
+    res[3] = cuadrado_izq->getPosition();
+
+
+    Vector2i ress[4];
+
+    ress[0].x = round(res[0].x)/16;
+    ress[0].y = round(res[0].y+0.05)/16;
+
+    ress[1].x = round(res[1].x)/16;
+    ress[1].y = round(res[1].y+0.05)/16;
+
+    ress[2].x = round(res[2].x)/16;
+    ress[2].y = round(res[2].y+0.05)/16;
+
+    ress[3].x = round(res[3].x)/16;
+    ress[3].y = round(res[3].y+0.05)/16;
+
+    return ress;
 }
 
 void Entidad::draw(RenderWindow& target) {
