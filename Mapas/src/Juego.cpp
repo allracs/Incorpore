@@ -162,15 +162,16 @@ void Juego::manejarIA(){
             Posicion pos_enemigo = Posicion(e.x, e.y);
             //asignar posicion al enemigo
             //se crea el astar
-            Astar ia = Astar(pos_jugador, pos_enemigo, mapa->getColisiones(), mapa->getHeight(), mapa->getWidth());
+            Astar *ia = new Astar(pos_jugador, pos_enemigo, mapa->getColisiones(), mapa->getHeight(), mapa->getWidth());
 
             //se llama a astar.mapear()
 
-            std::vector<Posicion> path = ia.mapear();
+            std::vector<Posicion> path = ia->mapear();
 
             ////std::cout << path.size() << std::endl;
 
             enemigos.at(a)->setPath(path);
+            delete ia;
 
             // SEGUIR EL CAMINO (CON BUCLE INTERPOLADO)
             // mover a enemigos[a] hacia el siguiente punto
