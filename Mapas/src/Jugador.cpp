@@ -24,16 +24,16 @@ Jugador::Jugador(Vector2f pos){
     ataqueHitbox.setOutlineThickness(1);
     ataqueHitbox.setOutlineColor(Color::Blue);
     ataqueHitbox.setFillColor(Color::Transparent);
-    ataqueHitbox.setSize(Vector2f(20.f, 12.f));
-    ataqueHitbox.setOrigin(0,6.f);
-    ataqueHitbox.setPosition(pos);
+    ataqueHitbox.setSize(Vector2f(20.f, 4.f));
+    ataqueHitbox.setOrigin(0,2.f);
+    ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
 
     // Cargar el sprite de la hitbox de ataque.
     if(!swordText.loadFromFile("resources/sprites/sword.png"))
         std::cout << "ERROR AL CARGAR LA TEXTURA: sword.png" << std::endl;
     espada.setTexture(swordText);
     espada.setOrigin(14,14);
-    espada.setPosition(ataqueHitbox.getPosition().x +2, ataqueHitbox.getPosition().y +3);
+    espada.setPosition(pos.x +2, pos.y +3);
     espada.setScale(-1.f, -1.f);
 
 
@@ -165,11 +165,14 @@ void Jugador::rotacionAtaque(RenderWindow& window) {
     espada.setRotation(rotation - 45.f); // hacer que la espada rote alrededor del jugador y se le añade 45 para que esté bien posicionada.
     if(ataqueHitbox.getRotation() >= 90 && ataqueHitbox.getRotation() <= 270) {
         dirMov = -1;
-        espada.setPosition(ataqueHitbox.getPosition().x -2, ataqueHitbox.getPosition().y +3);
+        espada.setPosition(entidadHitbox.getPosition().x -2, entidadHitbox.getPosition().y +3);
+        ataqueHitbox.setPosition(entidadHitbox.getPosition().x -2, entidadHitbox.getPosition().y +3);
 
     } else {
         dirMov = 1;
-        espada.setPosition(ataqueHitbox.getPosition().x +2, ataqueHitbox.getPosition().y +3);
+        espada.setPosition(entidadHitbox.getPosition().x +2, entidadHitbox.getPosition().y +3);
+        ataqueHitbox.setPosition(entidadHitbox.getPosition().x +2, entidadHitbox.getPosition().y +3);
+
     }
 
 }
