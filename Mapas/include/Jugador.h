@@ -24,6 +24,7 @@ class Jugador: public Entidad{
 
         Vector2f getMovement();
         Arma getArma();
+        int getVidas();
     private:
         float dirMov;
         int vidas;

@@ -34,7 +34,7 @@ class Mapa{
         Vector2i getPosicionEntidad(Entidad);
         Vector2f generaPosicion();
         bool isColision(int,int);
-
+        void colocaConsumibles();
         FloatRect* getBounds();
 
         //MOSTRAMOS POR PANTALLA
@@ -46,7 +46,7 @@ class Mapa{
     private:
         int width, height, tilewidth, tileheight, gid;
         int nObj, maxObj;
-        int cofre, calavera;
+        int cofre, calavera, pocion, pocionmini;
         int* antorcha, *caja, *cajadoble, *columna;
         int nColisiones;
 

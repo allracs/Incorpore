@@ -19,7 +19,7 @@ Mapa::Mapa(){
     creaSprite();
     posicionaObjetos();
     colisiones();
-    mostrarMapaColisiones();
+    //mostrarMapaColisiones();
 }
 
 Mapa::~Mapa(){
@@ -47,6 +47,9 @@ void Mapa::cargaObjetos(){
 
     columna[0] = 190-1;
     columna[1] = 206-1;
+
+    pocion = 189 -1;
+    pocionmini = 216 -1;
 
 }
 
@@ -267,6 +270,29 @@ void Mapa::generaObjetos(int j, int k, int no){
 
 }
 
+void Mapa::colocaConsumibles(){
+    int random = rand() % 100 +1;
+    Vector2f pos;
+
+    do{
+        pos = generaPosicion();
+    }while(isColision(pos.x/16, pos.y/16));
+
+    int x = pos.x/16;
+    int y = pos.y/16;
+
+    if(random < 20){
+        mapSprite[3][y][x] = new Sprite(texturaTileset,tilesetSprite[pocion].getTextureRect());
+        mapSprite[3][y][x]->setPosition(x*tilewidth,y*tileheight);
+    }
+    else{
+        mapSprite[3][y][x] = new Sprite(texturaTileset,tilesetSprite[pocionmini].getTextureRect());
+        mapSprite[3][y][x]->setPosition(x*tilewidth,y*tileheight);
+    }
+
+
+}
+
 void Mapa::colisiones(){
     int n = 0;
 
@@ -375,7 +401,7 @@ Vector2f Mapa::generaPosicion(){
         randX = rand() % getWidth();
         randY = rand() % getHeight();
     }while(isColision(randX,randY));
-    cout <<"X: "<< randX << ", " <<"Y: "<< randY << " --> " << isColision(randX,randY) << endl;
+    //cout <<"X: "<< randX << ", " <<"Y: "<< randY << " --> " << isColision(randX,randY) << endl;
     Vector2f pos({randX*16, randY*16});
     return pos;
 }

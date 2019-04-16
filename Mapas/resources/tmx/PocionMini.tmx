@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2017.07.26" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="16" tileheight="16" nextobjectid="1">
+  <tileset firstgid="1">
+  <image source="resources/tileset.png"/>
+ </tileset>
+ <layer name="Objetos" width="1" height="1">
+  <data>
+   <tile gid="216"/>
+  </data>
+ </layer>
+</map>

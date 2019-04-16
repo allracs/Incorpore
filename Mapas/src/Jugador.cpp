@@ -46,26 +46,33 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
     Vector2f enemyPos = enemigoHitbox.getPosition();
     bool res = false;
     if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5 && vida > 0){
-        cout << "Recibe daño" << endl;
         res = true;
         vidas--;
-        if(vidas > 0){
+        if(vidas > 0){/*
             //colisiona por la derecha
             if(playerCenter.x > enemyPos.x){
-                 //actual->sprite.move(16,0);
+                actual->sprite.move(8,0);
+                entidadHitbox.move(8,0);
+                moverColisionadores({8,0});
             }
             //colisiona por la izquierda
             if(playerCenter.x < enemyPos.x){
-                 //actual->sprite.move(-16,0);
+                 actual->sprite.move(-8,0);
+                 entidadHitbox.move(-8,0);
+                 moverColisionadores({-8,0});
             }
             //colisiona por arriba
             if(playerCenter.y < enemyPos.y){
-                //actual->sprite.move(0,-16);
+                actual->sprite.move(0,-8);
+                entidadHitbox.move(0,-8);
+                moverColisionadores({0,-8});
             }
             //colisiona por debajo
             if(playerCenter.y > enemyPos.y){
-                //actual->sprite.move(0,16);
-            }
+                actual->sprite.move(0,8);
+                entidadHitbox.move(0,8);
+                moverColisionadores({0,8});
+            }*/
         }
         else{
             //Muerto
@@ -152,6 +159,10 @@ void Jugador::draw(sf::RenderWindow &app) {
     }
     app.draw(ataqueHitbox);
 
+}
+
+int Jugador::getVidas(){
+    return vidas;
 }
 
 

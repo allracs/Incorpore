@@ -18,7 +18,7 @@ Juego* Juego::Instance(){
 Juego::Juego(){
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 10;
+    nEnemigos = 5;
 
     window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");
     window->setFramerateLimit(60);
@@ -52,6 +52,7 @@ void Juego::cargaPlayer(){
 
 void Juego::cargaMapa(){
     mapa = new Mapa;
+    pocion = new Consumible(mapa->generaPosicion());
 }
 
 void Juego::cargarHUD(){
@@ -69,7 +70,12 @@ void Juego::gameLoop(){
         jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
         hud->compruebaTeclas();
         manejarIA();
-
+        if(jugador->getVidas() < 10 && pocion->isConsumible()){
+           if(pocion->consume(jugador->getEntidadHitbox())){
+                hud->modificar_vida(1,1);
+           }
+           //delete pocion;
+        }
 
         if(enemigos.size() > 0)
         {
@@ -77,7 +83,7 @@ void Juego::gameLoop(){
             for(int i = 0; i < enemigos.size(); i++) {
 
                 if(enemigos.at(i)->getBorrado() == false){
-                    std::cout << enemigos.size() << std::endl;
+                  //  std::cout << enemigos.size() << std::endl;
                     enemigos.at(i)->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y), jugador->getAtaqueHitbox());
 
                     if(jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida())){
@@ -109,7 +115,7 @@ void Juego::procesarEventos(){
                 break;
             case sf::Event::MouseButtonPressed:
                 if(evento->mouseButton.button == Mouse::Left) {
-                    cout << "HE PULSADO EL BOTÓN"<< endl;
+                    //cout << "HE PULSADO EL BOTÓN"<< endl;
                     jugador->getArma().atacar(0, enemigos, enemigos.size());
                 }
                 break;
@@ -129,6 +135,8 @@ void Juego::render(){
     window->setView(view);
 
     mapa->draw(*window, *jugador, enemigos, enemigos.size());
+
+    pocion->draw(*window);
     hud->draw(*window);
     jugador->drawBoundingBoxes(*window);
     /*

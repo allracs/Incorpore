@@ -5,6 +5,7 @@
 #include "Arma.h"
 #include "Hud.h"
 #include "Mapa.h"
+#include "Consumible.h"
 
 using namespace sf;
 
@@ -38,6 +39,7 @@ class Juego
         Event *evento;
         Mapa *mapa;
         Hud *hud;
+        Consumible *pocion;
         View view;
 
         bool centrado;
