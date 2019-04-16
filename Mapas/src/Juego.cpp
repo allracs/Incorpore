@@ -159,20 +159,26 @@ void Juego::manejarIA(){
 
 
 
+            /*  --SEGMENTATION FAULT--
+
             std::vector< std::vector<Posicion> > caminosXcol;
 
             for(int b = 0; b < 4; b++){
-                Astar *iaa = new Astar(pos_jugador, pos_enemigo, mapa->getColisiones(), mapa->getHeight(), mapa->getWidth());
+                Astar iaa = Astar(Posicion(pos_Col[b].x, pos_Col[b].y),
+                                  pos_enemigo,
+                                  mapa->getColisiones(),
+                                  altura,
+                                  mapa->getWidth());
 
-                caminosXcol.push_back(iaa->mapear());
-
-                delete iaa;
+                caminosXcol.push_back(iaa.mapear());
             }
 
 
 
 
             delete pos_Col;
+
+            */
 
             //-------------------------------------------------------------
 
