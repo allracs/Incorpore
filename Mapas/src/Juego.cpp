@@ -1,12 +1,14 @@
 #include "../include/Juego.h"
 #include "../include/Astar.h"
 #include "../include/Posicion.h"
+#include "../include/Menu.h"
+#include "../include/MaquinaEstados.h"
 #include <vector>
 #include <iostream>
 
 using namespace sf;
 using namespace std;
-
+/*
 Juego* Juego::pinstance = 0;
 
 Juego* Juego::Instance(){
@@ -14,15 +16,17 @@ Juego* Juego::Instance(){
         pinstance = new Juego;
     return pinstance;
 }
-
-Juego::Juego(){
+*/
+Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Estado {maquina, window, cambio}
+{
+    std::cout << "Juego inciado" << std::endl;
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
     nEnemigos = 5;
-
+    /*
     window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");
-    window->setFramerateLimit(60);
-
+    m_window.setFramerateLimit(60);
+    */
     evento = new Event;
 
     view.setSize(dimensiones.x, dimensiones.y);
@@ -31,11 +35,70 @@ Juego::Juego(){
     centrado = false;
     godMode = false;
 
+    sf::Clock frameClock;
+
 
     cargaMapa();
     cargaPlayer();
     cargarHUD();
-    gameLoop();
+    //gameLoop();
+}
+
+
+void Juego::pause()
+{
+    std::cout << "Juego pausa" << std::endl;
+}
+
+void Juego::resume()
+{
+    std::cout << "Juego resume" << std::endl;
+}
+
+void Juego::update()
+{
+        procesarEventos();
+        delta = frameClock.restart().asSeconds();
+        if(pausa == false)
+        {
+        jugador->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds());
+        hud->compruebaTeclas();
+        manejarIA();
+        if(jugador->getVidas() < 10 && pocion->isConsumible()){
+           if(pocion->consume(jugador->getEntidadHitbox())){
+                hud->modificar_vida(1,1);
+           }
+           //delete pocion;
+        }
+
+        if(enemigos.size() > 0)
+        {
+
+            for(int i = 0; i < enemigos.size(); i++) {
+
+                if(enemigos.at(i)->getBorrado() == false){
+                  //  std::cout << enemigos.size() << std::endl;
+                    enemigos.at(i)->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y), jugador->getAtaqueHitbox());
+
+                    if(!godMode && jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida())){
+                        hud->modificar_vida(1,2);
+                    }
+
+                } else {
+                    delete enemigos.at(i);
+                    enemigos.erase(enemigos.begin()+i);
+                }
+            }
+        }
+
+        if(!centrado) {
+            setView();
+            centrado = true;
+        }
+
+        setView();
+        //render();
+        }
 }
 
 void Juego::cargaPlayer(){
@@ -62,57 +125,11 @@ void Juego::cargarHUD(){
     hud->setPosicionHabilidades(view.getCenter().x - hud->getPiezaHabilidades().getGlobalBounds().width/2, view.getCenter().y + dimensiones.y/10 - hud->getPiezaHabilidades().getGlobalBounds().height);
 }
 
-void Juego::gameLoop(){
-    sf::Clock frameClock;
-
-    while(window->isOpen()){
-        procesarEventos();
-        delta = frameClock.restart().asSeconds();
-        jugador->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds());
-        hud->compruebaTeclas();
-        manejarIA();
-        if(jugador->getVidas() < 10 && pocion->isConsumible()){
-           if(pocion->consume(jugador->getEntidadHitbox())){
-                hud->modificar_vida(1,1);
-           }
-           //delete pocion;
-        }
-
-        if(enemigos.size() > 0)
-        {
-
-            for(int i = 0; i < enemigos.size(); i++) {
-
-                if(enemigos.at(i)->getBorrado() == false){
-                  //  std::cout << enemigos.size() << std::endl;
-                    enemigos.at(i)->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y), jugador->getAtaqueHitbox());
-
-                    if(!godMode && jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida())){
-                        hud->modificar_vida(1,2);
-                    }
-
-                } else {
-                    delete enemigos.at(i);
-                    enemigos.erase(enemigos.begin()+i);
-                }
-            }
-        }
-
-        if(!centrado) {
-            setView();
-            centrado = true;
-        }
-
-        setView();
-        render();
-    }
-}
-
 void Juego::procesarEventos(){
-    while(window->pollEvent(*evento)){
+    while(m_window.pollEvent(*evento)){
         switch(evento->type){
             case sf::Event::Closed:
-                window->close();
+                m_window.close();
                 break;
             case sf::Event::MouseButtonPressed:
                 if(evento->mouseButton.button == Mouse::Left) {
@@ -121,41 +138,53 @@ void Juego::procesarEventos(){
                 }
                 break;
             case sf::Event::KeyPressed:
-                if(evento->key.code == sf::Keyboard::G){
+                if(evento->key.code == sf::Keyboard::G)
+                {
                 changeMode();
+                }
+                if(evento->key.code == sf::Keyboard::Escape)
+                {
+                    if(pausa == false)
+                    {
+                        pausa = true;
+                    }
+                    else
+                    {
+                        pausa = false;
+                    }
+
+                }
+                default: break;
             }
-            default: break;
 
         }
     }
-}
 
 void Juego::setView(){
     view.move(jugador->getMovement() * delta);
     hud->move(jugador->getMovement() * delta);
 }
 
-void Juego::render(){
-    window->clear(Color(28,17,23,255));
-    window->setView(view);
+void Juego::draw(){
+    m_window.clear(Color(28,17,23,255));
+    m_window.setView(view);
 
-    mapa->draw(*window, *jugador, enemigos, enemigos.size());
+    mapa->draw(m_window, *jugador, enemigos, enemigos.size());
 
-    pocion->draw(*window);
-    hud->draw(*window);
-    jugador->drawBoundingBoxes(*window);
-    /*
+    pocion->draw(m_window);
+    hud->draw(m_window);
+    jugador->drawBoundingBoxes(m_window);
     for(int i = 0; i < enemigos.size(); i++){
         if(enemigos.at(i)->getBorrado() == false)
-        enemigos.at(i)->draw(*window);
+        enemigos.at(i)->draw(m_window);
     }
 
     for(int i = 0; i < enemigos.size(); i++){
         if(enemigos.at(i)->getBorrado() == false)
-        enemigos.at(i)->drawBoundingBoxes(*window);
-    }*/
+        enemigos.at(i)->drawBoundingBoxes(m_window);
+    }
 
-    window->display();
+    m_window.display();
 }
 
 void Juego::changeMode(){

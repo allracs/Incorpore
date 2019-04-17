@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="../Mapas" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics" />
@@ -29,6 +30,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="../Mapas" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -44,15 +46,19 @@
 		<Unit filename="Mapas.depend" />
 		<Unit filename="Mapas.layout" />
 		<Unit filename="include/Animacion.h" />
+		<Unit filename="include/Aplicacion.h" />
 		<Unit filename="include/Arma.h" />
 		<Unit filename="include/Astar.h" />
 		<Unit filename="include/Consumible.h" />
 		<Unit filename="include/Enemigo.h" />
 		<Unit filename="include/Entidad.h" />
+		<Unit filename="include/Estado.h" />
 		<Unit filename="include/Hud.h" />
 		<Unit filename="include/Juego.h" />
 		<Unit filename="include/Jugador.h" />
 		<Unit filename="include/Mapa.h" />
+		<Unit filename="include/MaquinaEstados.h" />
+		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Posicion.h" />
 		<Unit filename="include/tinyxml2.h" />
 		<Unit filename="resources/hud/coolvetica.ttf" />
@@ -76,15 +82,19 @@
 		<Unit filename="resources/tmx/Mapa3.tmx" />
 		<Unit filename="resources/tmx/tileset.png" />
 		<Unit filename="src/Animacion.cpp" />
+		<Unit filename="src/Aplicacion.cpp" />
 		<Unit filename="src/Arma.cpp" />
 		<Unit filename="src/Astar.cpp" />
 		<Unit filename="src/Consumible.cpp" />
 		<Unit filename="src/Enemigo.cpp" />
 		<Unit filename="src/Entidad.cpp" />
+		<Unit filename="src/Estado.cpp" />
 		<Unit filename="src/Hud.cpp" />
 		<Unit filename="src/Juego.cpp" />
 		<Unit filename="src/Jugador.cpp" />
 		<Unit filename="src/Mapa.cpp" />
+		<Unit filename="src/MaquinaEstados.cpp" />
+		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Posicion.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/tinyxml2.cpp" />

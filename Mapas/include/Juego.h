@@ -6,22 +6,34 @@
 #include "Hud.h"
 #include "Mapa.h"
 #include "Consumible.h"
+#include "Estado.h"
+
+
 
 using namespace sf;
 
-class Juego
+class MaquinaEstados;
+
+class Juego : public Estado
 {
     public:
-        static Juego* Instance();
-        Juego();
+        //static Juego* Instance();
+        Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio = true);
+
+        void pause();
+        void resume();
+        void update();
+        void draw();
+
+
         void cargaPlayer();
         void cargaMapa();
         void cargarHUD();
-        void gameLoop();
+        //void gameLoop();
 
         void procesarEventos();
         void setView();
-        void render();
+        //void render();
         void changeMode();
 
         Vector2f generaPosicion();
@@ -32,7 +44,7 @@ class Juego
 
         void manejarIA();
 
-        RenderWindow *window;
+        //RenderWindow *window;
         RenderStates *states;
         Clock frameClock;
         Jugador *jugador;
@@ -46,4 +58,7 @@ class Juego
         bool centrado, godMode;
         float delta;
         int nEnemigos;
+
+        //pausa
+        bool pausa = false;
 };

@@ -1,12 +1,15 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "../include/Juego.h"
+#include "../include/Aplicacion.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]){
 
-    Juego *partida = Juego::Instance();
+    //Juego *partida = Juego::Instance();
+
+    Aplicacion aplicacion;
+    aplicacion.run();
 
     return 0;
 }

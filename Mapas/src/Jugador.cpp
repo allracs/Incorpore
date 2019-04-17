@@ -27,7 +27,6 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
     actual->sprite.setScale(1.f*(arma->getDireccionMov()), 1.f);
 
-
     // MOVIMIENTO
     moverse(); // comprobar que el jugador se mueve
     //atacar();
@@ -88,6 +87,7 @@ void Jugador::moverse(){
     movement = Vector2f(0.f, 0.f);
 
     if (Keyboard::isKeyPressed(Keyboard::W) && colisiona_abajo != true){
+            std::cout << "hola" << std::endl;
         movement.y -= speed;
         if (actual != &run){
             //cout << "CAMBIAMOS A RUN" << endl;
