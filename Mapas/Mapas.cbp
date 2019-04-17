@@ -44,7 +44,9 @@
 		<Unit filename="Mapas.depend" />
 		<Unit filename="Mapas.layout" />
 		<Unit filename="include/Animacion.h" />
+		<Unit filename="include/Arma.h" />
 		<Unit filename="include/Astar.h" />
+		<Unit filename="include/Consumible.h" />
 		<Unit filename="include/Enemigo.h" />
 		<Unit filename="include/Entidad.h" />
 		<Unit filename="include/Hud.h" />
@@ -74,7 +76,9 @@
 		<Unit filename="resources/tmx/Mapa3.tmx" />
 		<Unit filename="resources/tmx/tileset.png" />
 		<Unit filename="src/Animacion.cpp" />
+		<Unit filename="src/Arma.cpp" />
 		<Unit filename="src/Astar.cpp" />
+		<Unit filename="src/Consumible.cpp" />
 		<Unit filename="src/Enemigo.cpp" />
 		<Unit filename="src/Entidad.cpp" />
 		<Unit filename="src/Hud.cpp" />
