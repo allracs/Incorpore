@@ -29,6 +29,7 @@ Juego::Juego(){
     view.zoom(0.2f);
 
     centrado = false;
+    godMode = false;
 
 
     cargaMapa();
@@ -86,7 +87,7 @@ void Juego::gameLoop(){
                   //  std::cout << enemigos.size() << std::endl;
                     enemigos.at(i)->update(delta, *window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y), jugador->getAtaqueHitbox());
 
-                    if(jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida())){
+                    if(!godMode && jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida())){
                         hud->modificar_vida(1,2);
                     }
 
@@ -119,6 +120,10 @@ void Juego::procesarEventos(){
                     jugador->getArma().atacar(0, enemigos, enemigos.size());
                 }
                 break;
+            case sf::Event::KeyPressed:
+                if(evento->key.code == sf::Keyboard::G){
+                changeMode();
+            }
             default: break;
 
         }
@@ -151,6 +156,16 @@ void Juego::render(){
     }*/
 
     window->display();
+}
+
+void Juego::changeMode(){
+    if(godMode){
+        godMode = false;
+        std::cout << "GODMODE DESACTIVADO" << std::endl;
+    } else {
+        godMode = true;
+        std::cout << "GODMODE ACTIVADO" << std::endl;
+    }
 }
 
 void Juego::manejarIA(){

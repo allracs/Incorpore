@@ -22,6 +22,7 @@ class Juego
         void procesarEventos();
         void setView();
         void render();
+        void changeMode();
 
         Vector2f generaPosicion();
 
@@ -42,7 +43,7 @@ class Juego
         Consumible *pocion;
         View view;
 
-        bool centrado;
+        bool centrado, godMode;
         float delta;
         int nEnemigos;
 };

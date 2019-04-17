@@ -1,4 +1,4 @@
-#include "Consumible.h"
+#include "../include/Consumible.h"
 
 Consumible::Consumible(sf::Vector2f pos){
     srand(time(0));
