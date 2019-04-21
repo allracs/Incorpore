@@ -47,6 +47,6 @@ Juego roguelike 2D desarrollado con C++ usando la librería [SMFL](https://www.s
 1. Abrir codeblocks
 
 2. "Open project"
- - File > Open > {folderPath}/Army-moves/Army-moves.cbp
+ - File > Open > {folderPath}/Incorpore/Incorpore.cbp
  - Project mode: DEBUG (Build target)
  - Compile, execute and have fun ^^
