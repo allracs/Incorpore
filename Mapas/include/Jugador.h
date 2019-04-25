@@ -30,6 +30,8 @@ class Jugador: public Entidad{
         int vidas;
         bool atacando;
 
+        sf::Clock cInterp;
+
         Arma* arma;
         Vector2f playerCenter; // centro del jugador
         Vector2f movement; // movimiento del jugador

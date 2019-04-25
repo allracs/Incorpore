@@ -45,9 +45,12 @@ void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* col
         cd.restart();
     }*/
 
-    // MOVIMIENTO
-    seguirCamino(pos_a); // comprobar que el jugador se mueve
-
+    // MOVIMIENTO con interpolacion
+    if(cInterp.getElapsedTime().asMilliseconds() >= 1000/15)
+    {
+        seguirCamino(pos_a); // comprobar que el jugador se mueve
+        cInterp.restart();
+    }
     entidadHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);
     moverColisionadores(movement * delta);

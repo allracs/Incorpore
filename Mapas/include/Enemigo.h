@@ -31,7 +31,7 @@ class Enemigo : public Entidad{
         int vida;
          //Matar al enemigo
         bool deleteSprite;
-        sf::Clock cd;
+        sf::Clock cd, cInterp;
 };
 
 #endif // ENEMY_H

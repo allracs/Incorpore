@@ -26,9 +26,12 @@ Jugador::Jugador(Vector2f pos){
 void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
     actual->sprite.setScale(1.f*(arma->getDireccionMov()), 1.f);
-
-    // MOVIMIENTO
-    moverse(); // comprobar que el jugador se mueve
+    // MOVIMIENTO con interpolacion
+    if(cInterp.getElapsedTime().asMilliseconds() >= 1000/15)
+    {
+        moverse(); // comprobar que el jugador se mueve
+        cInterp.restart();
+    }
     //atacar();
     entidadHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);// mover la hitbox con la que el jugador ataca
