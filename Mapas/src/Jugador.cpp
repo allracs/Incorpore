@@ -50,7 +50,7 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
     if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5 && vida > 0){
         res = true;
         vidas--;
-        if(vidas > 0){/*
+        if(vidas > 0){/* RETROCESO
             //colisiona por la derecha
             if(playerCenter.x > enemyPos.x){
                 actual->sprite.move(8,0);

@@ -24,6 +24,12 @@ Mapa::Mapa(){
 
 Mapa::~Mapa(){
     //Destructor
+    for(int a = 0; a < 2; a++){
+        delete portalVerde[a];
+        delete portalMorado[a];
+	}
+	delete portalMorado;
+	delete portalVerde;
 }
 
 void Mapa::cargaObjetos(){
@@ -31,6 +37,14 @@ void Mapa::cargaObjetos(){
     cajadoble = new int[2];
     columna = new int[2];
     antorcha = new int[2];
+
+    portalVerde = new int *[2];
+    portalMorado = new int *[2];
+	for(int a = 0; a < 2; a++){
+        portalVerde[a] = new int[2];
+        portalMorado[a] = new int[2];
+	}
+
 
     antorcha[0] = 154-1;
     antorcha[1] = 170-1;
@@ -50,6 +64,16 @@ void Mapa::cargaObjetos(){
 
     pocion = 189 -1;
     pocionmini = 216 -1;
+
+    portalMorado[0][0] = 410-1;
+    portalMorado[0][1] = 411-1;
+    portalMorado[1][0] = 426-1;
+    portalMorado[1][1] = 427-1;
+
+    portalVerde[0][0] = 412-1;
+    portalVerde[0][1] = 412-1;
+    portalVerde[1][0] = 428-1;
+    portalVerde[1][1] = 429-1;
 
 }
 
