@@ -37,7 +37,7 @@ void Enemigo::setPath(std::vector<Posicion> p){
     path = p;
 }
 
-void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones, Posicion pos_a, sf::RectangleShape enemigoHitbox){
+void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones, Posicion pos_a, sf::RectangleShape enemigoHitbox, std::vector<Proyectil> proyectiles){
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
 
     /*if(cd.getElapsedTime().asSeconds()>=0.3f){
@@ -57,6 +57,9 @@ void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     procesarColisiones(nCol, colisiones);
     actual->update(delta, movement);
     compruebaColor();
+    for(int i=0; i<proyectiles.size(); i++){
+        serAtacado(proyectiles.at(i).getColision());
+    }
 }
 
 void Enemigo::seguirCamino(Posicion a){

@@ -109,7 +109,7 @@ void Juego::update()
 
                 if(enemigos.at(i)->getBorrado() == false){
                   //  std::cout << enemigos.size() << std::endl;
-                    enemigos.at(i)->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y), jugador->getAtaqueHitbox());
+                    enemigos.at(i)->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y), jugador->getAtaqueHitbox(), jugador->getProyectiles());
 
                     if(!godMode && jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida())){
                         hud->modificar_vida(1,2);
@@ -165,7 +165,7 @@ void Juego::procesarEventos(){
             case sf::Event::MouseButtonPressed:
                 if(evento->mouseButton.button == Mouse::Left) {
                     //cout << "HE PULSADO EL BOTÓN"<< endl;
-                    jugador->getArma().atacar(0, enemigos, enemigos.size());
+                    jugador->getArma().atacar(enemigos, enemigos.size());
                 }
                 break;
             case sf::Event::KeyReleased:

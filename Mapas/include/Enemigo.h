@@ -2,6 +2,7 @@
 #define ENEMY_H
 #include "Entidad.h"
 #include "Posicion.h"
+#include "Proyectil.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
@@ -13,7 +14,7 @@ class Enemigo : public Entidad{
         Enemigo(Vector2f);
         void setPath(std::vector<Posicion>);
         void update(float, RenderWindow&, int, FloatRect*);
-        void update(float, RenderWindow&, int, FloatRect*, Posicion, sf::RectangleShape enemigoHitbox);
+        void update(float, RenderWindow&, int, FloatRect*, Posicion, sf::RectangleShape enemigoHitbox, std::vector<Proyectil> proyectiles);
         void seguirCamino(Posicion);
         void serAtacado(sf::RectangleShape hitbox);
         void compruebaColor();

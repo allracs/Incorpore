@@ -47,8 +47,16 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
     //Tecla para activar el ataque a distancia
     if(Keyboard::isKeyPressed(Keyboard::K)){
-       crearProyectil();
+        if(CDarma.getElapsedTime().asSeconds()>=2.f){
+            CDarma.restart();
+            if(arma->getOpcion()==0){
+                cambiarArma(1);
+            } else {
+                cambiarArma(0);
+            }
+        }
     }
+    disparar();
     for(int i=0; i<proyectiles.size(); i++){
         proyectiles[i].update();
     }
@@ -154,12 +162,24 @@ void Jugador::moverse(){
     colisiona_izquierda = false;
 }
 
+void Jugador::disparar(){
+    if(arma->getOpcion()==1){
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+        crearProyectil();
+    }
+    }
+}
+
 Vector2f Jugador::getMovement() {
     return movement;
 }
 
 Arma Jugador::getArma() {
     return *arma;
+}
+
+std::vector<Proyectil> Jugador::getProyectiles(){
+    return proyectiles;
 }
 
 void Jugador::crearProyectil(){
@@ -170,9 +190,17 @@ void Jugador::crearProyectil(){
     sf::Vector2f prueba(aimDirNorm.x*15, aimDirNorm.y*15);
 
 
-    Proyectil pr(3, arma->getHitbox().getPosition()+prueba, aimDirNorm);
+    Proyectil pr(arma->getHitbox().getPosition()+prueba, aimDirNorm);
     proyectiles.push_back(pr);
 }
+
+void Jugador::cambiarArma(int opcion){
+
+    delete arma;
+    arma=new Arma(opcion, entityCenter);
+
+}
+
 
 void Jugador::draw(sf::RenderWindow &app) {
     if(ataqueHitbox.getRotation() >= 0 && ataqueHitbox.getRotation() <= 180) {
@@ -192,6 +220,7 @@ void Jugador::draw(sf::RenderWindow &app) {
 int Jugador::getVidas(){
     return vidas;
 }
+
 
 
 

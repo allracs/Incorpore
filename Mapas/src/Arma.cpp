@@ -4,8 +4,41 @@ using namespace sf;
 
 Arma::Arma(int opcion, Vector2f pos)
 {
+    tipo=opcion;
     // 0: Melee 1: Distancia "a implementar ataque a distancia fisico y magico"
-    if(opcion == 0){
+//    if(tipo == 0){
+//        ataqueHitbox.setOutlineThickness(1);
+//        ataqueHitbox.setOutlineColor(Color::Blue);
+//        ataqueHitbox.setFillColor(Color::Transparent);
+//        ataqueHitbox.setSize(Vector2f(11.f, 4.f));
+//        ataqueHitbox.setOrigin(-8,2.f);
+//        ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
+//
+//        // Cargar el sprite de la hitbox de ataque.
+//        if(!textura.loadFromFile("resources/sprites/sword.png"))
+//            cout << "ERROR AL CARGAR LA TEXTURA: sword.png" << endl;
+//        espada.setTexture(textura);
+//        espada.setOrigin(14,14);
+//        espada.setPosition(pos.x +2, pos.y +3);
+//        espada.setScale(-1.f, -1.f);
+//    } else if(tipo == 1){
+//            ataqueHitbox.setOutlineThickness(1);
+//        ataqueHitbox.setOutlineColor(Color::Blue);
+//        ataqueHitbox.setFillColor(Color::Transparent);
+//        ataqueHitbox.setSize(Vector2f(11.f, 4.f));
+//        ataqueHitbox.setOrigin(-8,2.f);
+//        ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
+//
+//        // Cargar el sprite de la hitbox de ataque.
+//        if(!textura.loadFromFile("resources/sprites/baston.png"))
+//            cout << "ERROR AL CARGAR LA TEXTURA: baston.png" << endl;
+//        espada.setTexture(textura);
+//        espada.setOrigin(14,14);
+//        espada.setPosition(pos.x +2, pos.y +3);
+//        espada.setScale(-1.f, -1.f);
+//
+//    }
+
         ataqueHitbox.setOutlineThickness(1);
         ataqueHitbox.setOutlineColor(Color::Blue);
         ataqueHitbox.setFillColor(Color::Transparent);
@@ -14,32 +47,18 @@ Arma::Arma(int opcion, Vector2f pos)
         ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
 
         // Cargar el sprite de la hitbox de ataque.
-        if(!textura.loadFromFile("resources/sprites/sword.png"))
+      if(tipo==0){
+            if(!textura.loadFromFile("resources/sprites/sword.png"))
             cout << "ERROR AL CARGAR LA TEXTURA: sword.png" << endl;
-        espada.setTexture(textura);
-        espada.setOrigin(14,14);
-        espada.setPosition(pos.x +2, pos.y +3);
-        espada.setScale(-1.f, -1.f);
-    } else if(opcion == 1){
-            ataqueHitbox.setOutlineThickness(1);
-        ataqueHitbox.setOutlineColor(Color::Blue);
-        ataqueHitbox.setFillColor(Color::Transparent);
-        ataqueHitbox.setSize(Vector2f(11.f, 4.f));
-        ataqueHitbox.setOrigin(-8,2.f);
-        ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
-
-        // Cargar el sprite de la hitbox de ataque.
-        if(!textura.loadFromFile("resources/sprites/baston.png"))
+      } else if(tipo==1){
+            if(!textura.loadFromFile("resources/sprites/baston.png"))
             cout << "ERROR AL CARGAR LA TEXTURA: baston.png" << endl;
+      }
         espada.setTexture(textura);
         espada.setOrigin(14,14);
         espada.setPosition(pos.x +2, pos.y +3);
         espada.setScale(-1.f, -1.f);
 
-
-
-
-    }
 }
 
 Arma::~Arma()
@@ -81,13 +100,19 @@ void Arma::rotacionAtaque(RenderWindow& window, float dirMov, Vector2f entityCen
     dMov = dirMov;
 }
 
-void Arma::atacar(int opcion, std::vector<Enemigo*> enemigos, int nEnemigos){
-    for(int i = 0; i < nEnemigos; i++){
+void Arma::atacar(std::vector<Enemigo*> enemigos, int nEnemigos){
+    if(tipo==0){
+        for(int i = 0; i < nEnemigos; i++){
         enemigos.at(i)->serAtacado(ataqueHitbox);
+        }
     }
 }
 
 
+
+int Arma::getOpcion(){
+    return tipo;
+}
 
 RectangleShape Arma::getHitbox(){
     return ataqueHitbox;
@@ -104,3 +129,4 @@ Vector2f Arma::getMousePos(){
 float Arma::getDireccionMov(){
     return dMov;
 }
+
