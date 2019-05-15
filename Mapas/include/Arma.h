@@ -16,7 +16,6 @@ class Arma
         void update(Vector2f);
         void rotacionAtaque(RenderWindow&, float, Vector2f, RectangleShape);
         void atacar(int, vector<Enemigo*>, int);
-
         RectangleShape getHitbox();
         Sprite getEspada();
         Vector2f getMousePos();

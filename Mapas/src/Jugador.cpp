@@ -20,7 +20,8 @@ Jugador::Jugador(Vector2f pos){
     actual = &idle;
     actual->sprite.setPosition(pos);
 
-    arma = new Arma(0, pos);
+    arma = new Arma(1, pos);
+
 }
 
 void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
@@ -42,6 +43,17 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     procesarColisiones(nCol, colisiones);
 
     actual->update(delta, movement);
+
+
+    //Tecla para activar el ataque a distancia
+    if(Keyboard::isKeyPressed(Keyboard::K)){
+       crearProyectil();
+    }
+    for(int i=0; i<proyectiles.size(); i++){
+        proyectiles[i].update();
+    }
+
+
 }
 
 bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
@@ -151,8 +163,19 @@ Arma Jugador::getArma() {
     return *arma;
 }
 
-void Jugador::draw(sf::RenderWindow &app) {
+void Jugador::crearProyectil(){
 
+
+    sf::Vector2f aimDir = arma->getMousePos() - entityCenter;
+    sf::Vector2f aimDirNorm = aimDir/(float)sqrt(pow(aimDir.x,2)+pow(aimDir.y,2));
+    sf::Vector2f prueba(aimDirNorm.x*15, aimDirNorm.y*15);
+
+
+    Proyectil pr(3, arma->getHitbox().getPosition()+prueba, aimDirNorm);
+    proyectiles.push_back(pr);
+}
+
+void Jugador::draw(sf::RenderWindow &app) {
     if(ataqueHitbox.getRotation() >= 0 && ataqueHitbox.getRotation() <= 180) {
         app.draw(actual->sprite);
         app.draw(arma->getEspada());
@@ -161,6 +184,9 @@ void Jugador::draw(sf::RenderWindow &app) {
         app.draw(actual->sprite);
     }
     app.draw(ataqueHitbox);
+    for(int i=0; i<proyectiles.size(); i++){
+        proyectiles[i].draw(app);
+    }
 
 }
 

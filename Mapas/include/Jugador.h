@@ -9,6 +9,7 @@
 #include "Enemigo.h"
 #include "Animacion.h"
 #include "Arma.h"
+#include "Proyectil.h"
 
 using namespace std;
 using namespace sf;
@@ -21,6 +22,7 @@ class Jugador: public Entidad{
         void moverse();
         bool recibeDmg(RectangleShape, int);
         void draw(sf::RenderWindow &);
+        void crearProyectil();
 
         Vector2f getMovement();
         Arma getArma();
@@ -33,8 +35,9 @@ class Jugador: public Entidad{
         sf::Clock cInterp;
 
         Arma* arma;
-        Vector2f playerCenter; // centro del jugador
+//        Vector2f playerCenter; // centro del jugador
         Vector2f movement; // movimiento del jugador
         Clock dmgCD;
+        std::vector<Proyectil> proyectiles;
 };
 #endif

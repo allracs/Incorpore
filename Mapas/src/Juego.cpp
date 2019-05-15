@@ -184,6 +184,7 @@ void Juego::draw(){
         enemigos.at(i)->drawBoundingBoxes(m_window);
     }
 
+
     m_window.display();
 }
 

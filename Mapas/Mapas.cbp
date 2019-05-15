@@ -60,6 +60,7 @@
 		<Unit filename="include/MaquinaEstados.h" />
 		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Posicion.h" />
+		<Unit filename="include/Proyectil.h" />
 		<Unit filename="include/tinyxml2.h" />
 		<Unit filename="resources/hud/coolvetica.ttf" />
 		<Unit filename="resources/hud/habilidades.png" />
@@ -96,6 +97,7 @@
 		<Unit filename="src/MaquinaEstados.cpp" />
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Posicion.cpp" />
+		<Unit filename="src/Proyectil.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/tinyxml2.cpp" />
 		<Extensions>
