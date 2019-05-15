@@ -62,7 +62,7 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
     if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5 && vida > 0){
         res = true;
         vidas--;
-        if(vidas > 0){/*
+        if(vidas > 0){/* RETROCESO
             //colisiona por la derecha
             if(playerCenter.x > enemyPos.x){
                 actual->sprite.move(8,0);
@@ -102,7 +102,6 @@ void Jugador::moverse(){
     movement = Vector2f(0.f, 0.f);
 
     if (Keyboard::isKeyPressed(Keyboard::W) && colisiona_abajo != true){
-            std::cout << "hola" << std::endl;
         movement.y -= speed;
         if (actual != &run){
             //cout << "CAMBIAMOS A RUN" << endl;
