@@ -90,7 +90,6 @@ void Jugador::moverse(){
     movement = Vector2f(0.f, 0.f);
 
     if (Keyboard::isKeyPressed(Keyboard::W) && colisiona_abajo != true){
-            std::cout << "hola" << std::endl;
         movement.y -= speed;
         if (actual != &run){
             //cout << "CAMBIAMOS A RUN" << endl;

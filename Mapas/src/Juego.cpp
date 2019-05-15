@@ -8,25 +8,14 @@
 
 using namespace sf;
 using namespace std;
-/*
-Juego* Juego::pinstance = 0;
 
-Juego* Juego::Instance(){
-    if(pinstance == 0)
-        pinstance = new Juego;
-    return pinstance;
-}
-*/
 Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Estado {maquina, window, cambio}
 {
     std::cout << "Juego inciado" << std::endl;
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
     nEnemigos = 5;
-    /*
-    window = new RenderWindow(VideoMode(dimensiones.x, dimensiones.y), "Incorpore");
-    m_window.setFramerateLimit(60);
-    */
+
     evento = new Event;
 
     view.setSize(dimensiones.x, dimensiones.y);
@@ -48,17 +37,59 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
 void Juego::pause()
 {
     std::cout << "Juego pausa" << std::endl;
+    selPausa = 0;
+
+    capaPausa = new sf::RectangleShape;
+    capaPausa->setSize({dimensiones.x, dimensiones.y});
+    capaPausa->setOrigin(jugador->getSprite().getPosition().x, jugador->getSprite().getPosition().y);
+    capaPausa->setPosition({0,0});
+    capaPausa->setFillColor(sf::Color(0,0,0,180));
+
+    fuente = new sf::Font;
+    fuente->loadFromFile("resources/menu/manaspc.ttf");
+
+    textopausa = new sf::Text;
+    textopausa->setFont(*fuente);
+    textopausa->setString("- pausa -");
+    textopausa->setScale({0.2,0.2});
+    textopausa->setOrigin(textopausa->getGlobalBounds().width/2,0);
+    textopausa->setColor(sf::Color::White);
+    textopausa->setPosition(view.getCenter().x - 18, view.getCenter().y - 40);
+
+    continuar = new sf::Text;
+    continuar->setFont(*fuente);
+    continuar->setString("continuar");
+    continuar->setScale({0.18,0.18});
+    continuar->setColor(sf::Color::Red);
+    continuar->setPosition(view.getCenter().x - 19, view.getCenter().y - 10);
+
+    salir = new sf::Text;
+    salir->setFont(*fuente);
+    salir->setString("salir");
+    salir->setScale({0.18,0.18});
+    salir->setColor(sf::Color::White);
+    salir->setPosition(view.getCenter().x - 11, view.getCenter().y + 10);
+
+
+
 }
 
 void Juego::resume()
 {
     std::cout << "Juego resume" << std::endl;
+    delete capaPausa;
+    delete fuente;
+    delete textopausa;
+    delete continuar;
+    delete salir;
 }
 
 void Juego::update()
 {
+
         procesarEventos();
         delta = frameClock.restart().asSeconds();
+
         if(pausa == false)
         {
         jugador->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds());
@@ -137,7 +168,7 @@ void Juego::procesarEventos(){
                     jugador->getArma().atacar(0, enemigos, enemigos.size());
                 }
                 break;
-            case sf::Event::KeyPressed:
+            case sf::Event::KeyReleased:
                 if(evento->key.code == sf::Keyboard::G)
                 {
                 changeMode();
@@ -147,14 +178,53 @@ void Juego::procesarEventos(){
                     if(pausa == false)
                     {
                         pausa = true;
+                        pause();
                     }
                     else
                     {
                         pausa = false;
+                        resume();
                     }
 
                 }
-                default: break;
+                if(evento->key.code == sf::Keyboard::Up)
+                {
+                    if(selPausa == 1 && pausa)
+                    {
+                        selPausa = 0;
+                        continuar->setColor(sf::Color::Red);
+                        salir->setColor(sf::Color::White);
+                    }
+                }
+                if(evento->key.code == sf::Keyboard::Down)
+                {
+                    if(selPausa == 0 && pausa)
+                    {
+                        selPausa = 1;
+                        continuar->setColor(sf::Color::White);
+                        salir->setColor(sf::Color::Red);
+                    }
+                }
+                if(evento->key.code == sf::Keyboard::Space)
+                {
+                    if(selPausa == 0 && pausa)
+                    {
+                        pausa = false;
+                    }
+                    if(selPausa == 1 && pausa)
+                    {
+                        pausa = false;
+                        view.setSize(dimensiones.x, dimensiones.y);
+                        view.setCenter(dimensiones.x/2, dimensiones.y/2);
+                        view.zoom(1.0f);
+                        m_siguiente = MaquinaEstados::build<Menu>(m_maquina, m_window, true);
+                    }
+                }
+
+
+
+            default: break;
+
             }
 
         }
@@ -182,6 +252,14 @@ void Juego::draw(){
     for(int i = 0; i < enemigos.size(); i++){
         if(enemigos.at(i)->getBorrado() == false)
         enemigos.at(i)->drawBoundingBoxes(m_window);
+    }
+
+    if(pausa)
+    {
+        m_window.draw(*capaPausa);
+        m_window.draw(*textopausa);
+        m_window.draw(*continuar);
+        m_window.draw(*salir);
     }
 
     m_window.display();

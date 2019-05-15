@@ -61,4 +61,10 @@ class Juego : public Estado
 
         //pausa
         bool pausa = false;
+        int selPausa;
+        sf::RectangleShape *capaPausa;
+        sf::Font *fuente;
+        sf::Text *textopausa;
+        sf::Text *continuar;
+        sf::Text *salir;
 };
