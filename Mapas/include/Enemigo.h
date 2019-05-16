@@ -13,8 +13,8 @@ class Enemigo : public Entidad{
         Enemigo(Vector2f);
         void setPath(std::vector<Posicion>);
         void update(float, RenderWindow&, int, FloatRect*);
-        void update(float, RenderWindow&, int, FloatRect*, Posicion, sf::RectangleShape enemigoHitbox, std::vector<Proyectil*>);
-        void seguirCamino(Posicion);
+        void update(float, RenderWindow&, int, FloatRect*, Posicion, sf::RectangleShape enemigoHitbox, std::vector<Proyectil*>, bool*);
+        void seguirCamino(Posicion, bool*);
         bool serAtacado(sf::RectangleShape hitbox);
         void compruebaColor();
         int getVida();
@@ -31,7 +31,7 @@ class Enemigo : public Entidad{
         int vida;
          //Matar al enemigo
         bool deleteSprite;
-        sf::Clock cd, cInterp;
+        sf::Clock cd, cInterp, cmov;
 };
 
 #endif // ENEMY_H

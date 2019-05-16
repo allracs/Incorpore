@@ -13,7 +13,7 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
 {
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 1;
+    nEnemigos = 5;
 
     evento = new Event;
 
@@ -131,8 +131,26 @@ void Juego::update()
             for(int i = 0; i < enemigos.size(); i++) {
 
                 if(enemigos.at(i)->getBorrado() == false){
-                  //  std::cout << enemigos.size() << std::endl;
-                    enemigos.at(i)->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds(), Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y), jugador->getAtaqueHitbox(), jugador->getArma().getProyectiles());
+
+                    //esquinas
+                    sf::Vector2i posmap = mapa->getPosicionEntidad(*enemigos[i]);
+                    bool **coli = mapa->getColisiones();
+                    bool esquinas[4];
+                    if(posmap.x-1 != -1 && posmap.y-1 != -1)
+                    {
+                        esquinas[0] = coli[posmap.y-1][posmap.x-1];
+                        esquinas[1] = coli[posmap.y-1][posmap.x+1];
+                        esquinas[2] = coli[posmap.y+1][posmap.x-1];
+                        esquinas[3] = coli[posmap.y+1][posmap.x+1];
+                    }
+                    //--------
+
+
+                    enemigos.at(i)->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds(),
+                                           Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y),
+                                           jugador->getAtaqueHitbox(),
+                                           jugador->getArma().getProyectiles(),
+                                           esquinas);
 
                     if(!godMode && jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida())){
                         hud->modificar_vida(1,2);
