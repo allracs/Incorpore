@@ -12,7 +12,12 @@ class Proyectil
         void draw(sf::RenderWindow &window);
         sf::RectangleShape getColision();
 
+        void setHacolisionado(bool val);
+        bool getHacolsionado();
+
+
     private:
+        bool haColisionado;
         sf::RectangleShape colision;
         sf::Clock reloj;
         int cooldown;

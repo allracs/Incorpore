@@ -38,13 +38,8 @@ void Enemigo::setPath(std::vector<Posicion> p){
     path = p;
 }
 
-void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones, Posicion pos_a, sf::RectangleShape enemigoHitbox, std::vector<Proyectil> proyectiles){
+void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones, Posicion pos_a, sf::RectangleShape enemigoHitbox, std::vector<Proyectil*> proyectiles){
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
-
-    /*if(cd.getElapsedTime().asSeconds()>=0.3f){
-        //serAtacado(enemigoHitbox);
-        cd.restart();
-    }*/
 
     // MOVIMIENTO con interpolacion
     if(cInterp.getElapsedTime().asMilliseconds() >= 1000/15)
@@ -61,11 +56,9 @@ void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
 
     for(int i= 0; i< proyectiles.size(); i++) {
-        serAtacado(proyectiles.at(i).getColision());
-        /*
-        if(proyectiles.at(i).getColision().getGlobalBounds().intersects(entidadHitbox.getGlobalBounds())) {
-            std::cout << "LE HA DADO" << std::endl;
-        }*/
+        if(serAtacado(proyectiles.at(i)->getColision())) {
+            proyectiles.at(i)->setHacolisionado(true);
+        }
     }
 
 
@@ -134,7 +127,8 @@ void Enemigo::seguirCamino(Posicion a){
     colisiona_izquierda = false;
 }
 
-void Enemigo::serAtacado(sf::RectangleShape hitbox){
+bool Enemigo::serAtacado(sf::RectangleShape hitbox){
+    bool res = false;
 
     if (hitbox.getGlobalBounds().intersects(entidadHitbox.getGlobalBounds()))
     {
@@ -143,6 +137,7 @@ void Enemigo::serAtacado(sf::RectangleShape hitbox){
             vida--;
             actual->sprite.setColor(sf::Color::Red);
             cd.restart();
+            res = true;
         }
 
         std::cout<<"Tiene de vida: "<<vida<<std::endl;
@@ -151,6 +146,8 @@ void Enemigo::serAtacado(sf::RectangleShape hitbox){
             std::cout<<"Ha sido matado"<<std::endl;
         }
     }
+
+    return res;
 }
 
 void Enemigo::compruebaColor(){

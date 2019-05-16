@@ -218,7 +218,7 @@ void Jugador::draw(sf::RenderWindow &app) {
     app.draw(ataqueHitbox);
 
     for(int i = 0; i < arma->getProyectiles().size(); i++) {
-        arma->getProyectiles().at(i).draw(app);
+        arma->getProyectiles().at(i)->draw(app);
     }
 
 

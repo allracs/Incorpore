@@ -68,9 +68,17 @@ Arma::~Arma()
 }
 
 void Arma::update(Vector2f vDir){
+
+//    std::cout << "TAM PROYECTILES: " << proyectiles.size() << std::endl;
+
     espada.move(vDir);
     for(int i = 0; i < proyectiles.size(); i++) {
-        proyectiles.at(i).update();
+        if(proyectiles.at(i)->getHacolsionado() == true) {
+            delete proyectiles.at(i);
+            proyectiles.erase(proyectiles.begin()+i);
+        } else {
+            proyectiles.at(i)->update();
+        }
     }
 }
 
@@ -120,7 +128,7 @@ void Arma::crearProyectil(sf::Vector2f entityCenter) {
     sf::Vector2f aimDirNorm = aimDir/(float)sqrt(pow(aimDir.x,2)+pow(aimDir.y,2));
     sf::Vector2f pos(aimDirNorm.x*15, aimDirNorm.y*15);
 
-    Proyectil pr(ataqueHitbox.getPosition() + pos, aimDirNorm);
+    Proyectil *pr = new Proyectil(ataqueHitbox.getPosition() + pos, aimDirNorm);
     proyectiles.push_back(pr);
 }
 
@@ -137,7 +145,7 @@ Sprite Arma::getEspada(){
     return espada;
 }
 
-std::vector<Proyectil> Arma::getProyectiles() {
+std::vector<Proyectil*> Arma::getProyectiles() {
     return proyectiles;
 }
 

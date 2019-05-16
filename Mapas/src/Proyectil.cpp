@@ -13,6 +13,8 @@ Proyectil::Proyectil(sf::Vector2f posicion, sf::Vector2f dir)
     colision.setOrigin(colision.getOrigin().x + 2, colision.getOrigin().y + 2);
     colision.setPosition(posicion.x, posicion.y);
     currVel = dir*maxSpeed;
+    haColisionado = false;
+
 
 }
 
@@ -28,6 +30,14 @@ void Proyectil::update(){
 
 sf::RectangleShape Proyectil::getColision(){
     return colision;
+}
+
+void Proyectil::setHacolisionado(bool val) {
+    haColisionado = val;
+}
+
+bool Proyectil::getHacolsionado() {
+    return haColisionado;
 }
 
 

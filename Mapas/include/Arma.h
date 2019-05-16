@@ -22,7 +22,7 @@ class Arma
 
         RectangleShape getHitbox();
         Sprite getEspada();
-        std::vector<Proyectil> getProyectiles();
+        std::vector<Proyectil*> getProyectiles();
         Vector2f getMousePos();
         float getDireccionMov();
         int getOpcion();
@@ -35,7 +35,7 @@ class Arma
         Sprite espada; // Espada que se muestras encima de la hitbox.
         Texture textura; // Textura para el sprite de la espada
         int tipo;
-        vector<Proyectil> proyectiles;
+        vector<Proyectil*> proyectiles;
 
         Vector2f mousePos;
 };
