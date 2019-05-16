@@ -59,8 +59,9 @@ class Juego : public Estado
         float delta;
         int nEnemigos;
 
-        //pausa
+        //menu pausa y muerte
         bool pausa = false;
+        bool reintentar = false;
         int selPausa;
         sf::RectangleShape *capaPausa;
         sf::Font *fuente;

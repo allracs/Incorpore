@@ -116,6 +116,15 @@ void Menu::procesar_eventos()
                     }
                     break;
 
+                case sf::Keyboard::W:
+                    if(opcion_seleccionada == 0)
+                    {
+                        opcion_seleccionada = 2;
+                    }else{
+                        opcion_seleccionada -= 1;
+                    }
+                    break;
+
                 case sf::Keyboard::Down:
                     if(opcion_seleccionada == 2)
                     {
@@ -124,6 +133,16 @@ void Menu::procesar_eventos()
                         opcion_seleccionada += 1;
                     }
                     break;
+
+                case sf::Keyboard::S:
+                    if(opcion_seleccionada == 2)
+                    {
+                        opcion_seleccionada = 0;
+                    }else{
+                        opcion_seleccionada += 1;
+                    }
+                    break;
+
                 case sf::Keyboard::Space:
                     if(opcion_seleccionada == 0)
                     {
@@ -139,6 +158,7 @@ void Menu::procesar_eventos()
                         m_window.close();
                     }
                     break;
+
                 case sf::Keyboard::Escape:
                     if(menuprincipal == true)
                     {
@@ -147,6 +167,8 @@ void Menu::procesar_eventos()
                     if(menuprincipal == false){
                         menuprincipal = true;
                     }
+                    break;
+                default:
                     break;
             }
             break;
@@ -164,6 +186,8 @@ void Menu::procesar_eventos()
                         m_maquina.quit();
                         m_window.close();
                     }
+                    break;
+                default:
                     break;
         }
     }
@@ -249,7 +273,7 @@ void Menu::setColorOp()
 {
     botones->clear();
 
-    if(opcion_seleccionada ==0)
+    if(opcion_seleccionada == 0)
     {
         jugar->setColor(sf::Color::Red);
        opciones->setColor(sf::Color::White);
@@ -257,7 +281,7 @@ void Menu::setColorOp()
        salir->setColor(sf::Color::White);
        salir->setScale(1,1);
     }
-    else if(opcion_seleccionada ==1)
+    else if(opcion_seleccionada == 1)
     {
         jugar->setColor(sf::Color::White);
         jugar->setScale(1,1);
@@ -265,7 +289,7 @@ void Menu::setColorOp()
        salir->setColor(sf::Color::White);
          salir->setScale(1,1);
     }
-    else if(opcion_seleccionada ==2)
+    else if(opcion_seleccionada == 2)
     {
         jugar->setColor(sf::Color::White);
         jugar->setScale(1,1);
@@ -273,7 +297,7 @@ void Menu::setColorOp()
        opciones->setScale(1,1);
        salir->setColor(sf::Color::Red);
     }
-    else if(seleccion ==3)
+    else if(seleccion == 3)
     {
         jugar->setColor(sf::Color::White);
         jugar->setScale(1,1);
