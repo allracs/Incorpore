@@ -13,7 +13,7 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
 {
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 5;
+    nEnemigos = 1;
 
     evento = new Event;
 
@@ -126,8 +126,7 @@ void Juego::update()
            //delete pocion;
         }
 
-        if(enemigos.size() > 0)
-        {
+        if(enemigos.size() > 0){
 
             for(int i = 0; i < enemigos.size(); i++) {
 
@@ -143,6 +142,12 @@ void Juego::update()
                     delete enemigos.at(i);
                     enemigos.erase(enemigos.begin()+i);
                 }
+            }
+        }
+        else{
+            mapa->generaPortales();
+            if(jugador->cogePortal(mapa->getBoundsPortales())){
+                std::cout << "COMPAÑEROS DE MAQUINA DE ESTADOS, METEDME TRANSICIÓN" << std::endl;
             }
         }
 

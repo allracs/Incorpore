@@ -24,10 +24,6 @@ Mapa::Mapa(){
 
 Mapa::~Mapa(){
     //Destructor
-    for(int a = 0; a < 2; a++){
-        delete portalVerde[a];
-        delete portalMorado[a];
-	}
 	delete portalMorado;
 	delete portalVerde;
 }
@@ -37,14 +33,8 @@ void Mapa::cargaObjetos(){
     cajadoble = new int[2];
     columna = new int[2];
     antorcha = new int[2];
-
-    portalVerde = new int *[2];
-    portalMorado = new int *[2];
-	for(int a = 0; a < 2; a++){
-        portalVerde[a] = new int[2];
-        portalMorado[a] = new int[2];
-	}
-
+    portalVerde = new int [2];
+    portalMorado = new int [2];
 
     antorcha[0] = 154-1;
     antorcha[1] = 170-1;
@@ -65,28 +55,29 @@ void Mapa::cargaObjetos(){
     pocion = 189 -1;
     pocionmini = 216 -1;
 
-    portalMorado[0][0] = 410-1;
-    portalMorado[0][1] = 411-1;
-    portalMorado[1][0] = 426-1;
-    portalMorado[1][1] = 427-1;
+    portalMorado[0] = 353-1;
+    portalMorado[1] = 369-1;
 
-    portalVerde[0][0] = 412-1;
-    portalVerde[0][1] = 412-1;
-    portalVerde[1][0] = 428-1;
-    portalVerde[1][1] = 429-1;
+    portalVerde[0] = 357-1;
+    portalVerde[1] = 373-1;
 
 }
 
 void Mapa::leerMapa(int n){
+    tipo = 0;
+    n= 3;
     switch(n){
         case 1:
             docXML.LoadFile("resources/tmx/Mapa.tmx");
+            tipo = 1;
             break;
         case 2:
             docXML.LoadFile("resources/tmx/Mapa2.tmx");
+            tipo = 2;
             break;
         case 3:
             docXML.LoadFile("resources/tmx/Mapa3.tmx");
+            tipo = 3;
             break;
         default:
             std::cerr << "Error: Mapa no existente";
@@ -240,6 +231,50 @@ void Mapa::posicionaObjetos(){
     }
 }
 
+void Mapa::generaPortales(){
+    int x;
+    int y;
+    switch(tipo){
+        case 1:
+            x = 10;
+            y = 5;
+        break;
+        case 2:
+            x = 10;
+            y = 4;
+        break;
+        case 3:
+            x = 10;
+            y = 9;
+        break;
+        default:
+            std::cerr << "Error: No se han podido crear Portales";
+        break;
+    }
+        //Verde
+        mapSprite[6][y-1][x] = new Sprite(texturaTileset,tilesetSprite[portalVerde[0]].getTextureRect());
+        mapSprite[6][y-1][x]->setPosition(x*tilewidth,(y-1)*tileheight);
+
+        mapSprite[3][y][x] = new Sprite(texturaTileset,tilesetSprite[portalVerde[1]].getTextureRect());
+        mapSprite[3][y][x]->setPosition(x*tilewidth,y*tileheight);
+
+        //Morado
+        mapSprite[6][y-1][x+2] = new Sprite(texturaTileset,tilesetSprite[portalMorado[0]].getTextureRect());
+        mapSprite[6][y-1][x+2]->setPosition((x+2)*tilewidth,(y-1)*tileheight);
+
+        mapSprite[3][y][x+2] = new Sprite(texturaTileset,tilesetSprite[portalMorado[1]].getTextureRect());
+        mapSprite[3][y][x+2]->setPosition((x+2)*tilewidth,y*tileheight);
+
+
+        colisionPortales = new FloatRect[4];
+
+        colisionPortales[0] = mapSprite[6][y-1][x]->getGlobalBounds();
+        colisionPortales[1] = mapSprite[3][y][x]->getGlobalBounds();
+        colisionPortales[2] = mapSprite[6][y-1][x+2]->getGlobalBounds();
+        colisionPortales[3] = mapSprite[3][y][x+2]->getGlobalBounds();
+
+}
+
 void Mapa::generaObjetos(int j, int k, int no){
     //srand(time(NULL));
     while(nObj == no) {
@@ -371,6 +406,11 @@ int Mapa::getNumColisiones(){
 FloatRect* Mapa::getBounds(){
     return colision;
 }
+
+FloatRect* Mapa::getBoundsPortales(){
+    return colisionPortales;
+}
+
 
 void Mapa::mostrarMapaColisiones(){
     cout << endl << "Mapa de colisiones:" << endl;

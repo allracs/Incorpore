@@ -36,7 +36,8 @@ class Mapa{
         bool isColision(int,int);
         void colocaConsumibles();
         FloatRect* getBounds();
-
+        void generaPortales();
+        FloatRect* getBoundsPortales();
         //MOSTRAMOS POR PANTALLA
         void mostrarMapaColisiones();
 
@@ -47,8 +48,7 @@ class Mapa{
         int width, height, tilewidth, tileheight, gid;
         int nObj, maxObj;
         int cofre, calavera, pocion, pocionmini;
-        int *antorcha, *caja, *cajadoble, *columna;
-        int **portalVerde, **portalMorado;
+        int *antorcha, *caja, *cajadoble, *columna, *portalVerde, *portalMorado;
         int nColisiones;
 
         int nCapas = 0; //Numero de capas del tileset
@@ -69,6 +69,8 @@ class Mapa{
 
         bool** colisionMap; //true = colision
         FloatRect* colision; //Bounding Boxes de las Colisiones
+        FloatRect* colisionPortales;
         Vector2i posicion;
+        int tipo;
 
 };

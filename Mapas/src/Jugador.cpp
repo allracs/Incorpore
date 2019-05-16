@@ -64,6 +64,19 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
 }
 
+bool Jugador::cogePortal(FloatRect* colisiones){
+    bool res = false;
+   for(int i = 0; i < 4; i++){
+        if(cuadrado_arr->getGlobalBounds().intersects(colisiones[i])||
+           cuadrado_abj->getGlobalBounds().intersects(colisiones[i])||
+           cuadrado_der->getGlobalBounds().intersects(colisiones[i])||
+           cuadrado_izq->getGlobalBounds().intersects(colisiones[i])){
+            res = true;
+        }
+    }
+    return res;
+}
+
 bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
     Vector2f enemyPos = enemigoHitbox.getPosition();
     bool res = false;
