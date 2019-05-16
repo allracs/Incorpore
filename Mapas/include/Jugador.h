@@ -22,14 +22,15 @@ class Jugador: public Entidad{
         void moverse();
         bool recibeDmg(RectangleShape, int);
         void draw(sf::RenderWindow &);
+        /*
         void crearProyectil();
         void cambiarArma(int opcion);
         void disparar();
+        */
 
         Vector2f getMovement();
         Arma getArma();
         int getVidas();
-        std::vector<Proyectil> getProyectiles();
     private:
         float dirMov;
         int vidas;
@@ -42,6 +43,6 @@ class Jugador: public Entidad{
 //        Vector2f playerCenter; // centro del jugador
         Vector2f movement; // movimiento del jugador
         Clock dmgCD;
-        std::vector<Proyectil> proyectiles;
+
 };
 #endif

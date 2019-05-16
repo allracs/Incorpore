@@ -1,7 +1,6 @@
 #ifndef PROYECTIL_H
 #define PROYECTIL_H
 #include <SFML/Graphics.hpp>
-#include "Enemigo.h"
 
 
 class Proyectil

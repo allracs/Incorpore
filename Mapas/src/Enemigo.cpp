@@ -1,4 +1,5 @@
 #include "../include/Enemigo.h"
+#include "Proyectil.h"
 
 Enemigo::Enemigo(Vector2f pos){
     entityCenter = pos;
@@ -57,9 +58,17 @@ void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     procesarColisiones(nCol, colisiones);
     actual->update(delta, movement);
     compruebaColor();
-    for(int i=0; i<proyectiles.size(); i++){
+
+
+    for(int i= 0; i< proyectiles.size(); i++) {
         serAtacado(proyectiles.at(i).getColision());
+        /*
+        if(proyectiles.at(i).getColision().getGlobalBounds().intersects(entidadHitbox.getGlobalBounds())) {
+            std::cout << "LE HA DADO" << std::endl;
+        }*/
     }
+
+
 }
 
 void Enemigo::seguirCamino(Posicion a){
@@ -126,7 +135,7 @@ void Enemigo::seguirCamino(Posicion a){
 }
 
 void Enemigo::serAtacado(sf::RectangleShape hitbox){
-    //El enemigo muere cuando la hitbox le toca y hacemos click
+
     if (hitbox.getGlobalBounds().intersects(entidadHitbox.getGlobalBounds()))
     {
 

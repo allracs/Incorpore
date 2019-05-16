@@ -4,6 +4,7 @@
 #include <cmath>
 #include <iostream>
 #include "Enemigo.h"
+#include "Proyectil.h"
 using namespace std;
 using namespace sf;
 
@@ -16,8 +17,12 @@ class Arma
         void update(Vector2f);
         void rotacionAtaque(RenderWindow&, float, Vector2f, RectangleShape);
         void atacar(vector<Enemigo*>, int);
+        void crearProyectil(sf::Vector2f centro);
+
+
         RectangleShape getHitbox();
         Sprite getEspada();
+        std::vector<Proyectil> getProyectiles();
         Vector2f getMousePos();
         float getDireccionMov();
         int getOpcion();
@@ -30,6 +35,7 @@ class Arma
         Sprite espada; // Espada que se muestras encima de la hitbox.
         Texture textura; // Textura para el sprite de la espada
         int tipo;
+        vector<Proyectil> proyectiles;
 
         Vector2f mousePos;
 };

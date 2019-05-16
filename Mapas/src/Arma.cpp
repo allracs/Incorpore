@@ -53,6 +53,7 @@ Arma::Arma(int opcion, Vector2f pos)
       } else if(tipo==1){
             if(!textura.loadFromFile("resources/sprites/baston.png"))
             cout << "ERROR AL CARGAR LA TEXTURA: baston.png" << endl;
+
       }
         espada.setTexture(textura);
         espada.setOrigin(14,14);
@@ -68,6 +69,9 @@ Arma::~Arma()
 
 void Arma::update(Vector2f vDir){
     espada.move(vDir);
+    for(int i = 0; i < proyectiles.size(); i++) {
+        proyectiles.at(i).update();
+    }
 }
 
 
@@ -103,11 +107,22 @@ void Arma::rotacionAtaque(RenderWindow& window, float dirMov, Vector2f entityCen
 void Arma::atacar(std::vector<Enemigo*> enemigos, int nEnemigos){
     if(tipo==0){
         for(int i = 0; i < nEnemigos; i++){
-        enemigos.at(i)->serAtacado(ataqueHitbox);
+            enemigos.at(i)->serAtacado(ataqueHitbox);
         }
+    } else if(tipo == 1) {
+
     }
+
 }
 
+void Arma::crearProyectil(sf::Vector2f entityCenter) {
+    sf::Vector2f aimDir = mousePos - entityCenter;
+    sf::Vector2f aimDirNorm = aimDir/(float)sqrt(pow(aimDir.x,2)+pow(aimDir.y,2));
+    sf::Vector2f pos(aimDirNorm.x*15, aimDirNorm.y*15);
+
+    Proyectil pr(ataqueHitbox.getPosition() + pos, aimDirNorm);
+    proyectiles.push_back(pr);
+}
 
 
 int Arma::getOpcion(){
@@ -120,6 +135,10 @@ RectangleShape Arma::getHitbox(){
 
 Sprite Arma::getEspada(){
     return espada;
+}
+
+std::vector<Proyectil> Arma::getProyectiles() {
+    return proyectiles;
 }
 
 Vector2f Arma::getMousePos(){
