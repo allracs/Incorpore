@@ -22,11 +22,7 @@ class Jugador: public Entidad{
         void moverse();
         bool recibeDmg(RectangleShape, int);
         void draw(sf::RenderWindow &);
-        /*
-        void crearProyectil();
         void cambiarArma(int opcion);
-        void disparar();
-        */
 
         Vector2f getMovement();
         Arma getArma();

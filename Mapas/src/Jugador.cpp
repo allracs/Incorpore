@@ -50,7 +50,7 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
 
     //Tecla para activar el ataque a distancia
-   /* if(Keyboard::isKeyPressed(Keyboard::K)){
+    if(Keyboard::isKeyPressed(Keyboard::K)){
         if(CDarma.getElapsedTime().asSeconds()>=2.f){
             CDarma.restart();
             if(arma->getOpcion()==0){
@@ -59,11 +59,7 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
                 cambiarArma(0);
             }
         }
-    } */
-//    disparar();
-//    for(int i=0; i<proyectiles.size(); i++){
-//        proyectiles[i].update();
-//    }
+    }
 
 
 }
@@ -168,15 +164,7 @@ void Jugador::moverse(){
     colisiona_izquierda = false;
 }
 
-/*
-void Jugador::disparar(){
-    if(arma->getOpcion()==1){
-        if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-            crearProyectil();
-        }
-    }
-}
-*/
+
 
 Vector2f Jugador::getMovement() {
     return movement;
@@ -185,26 +173,16 @@ Vector2f Jugador::getMovement() {
 Arma Jugador::getArma() {
     return *arma;
 }
-/*
-void Jugador::crearProyectil(){
-    sf::Vector2f aimDir = arma->getMousePos() - entityCenter;
-    sf::Vector2f aimDirNorm = aimDir/(float)sqrt(pow(aimDir.x,2)+pow(aimDir.y,2));
-    sf::Vector2f prueba(aimDirNorm.x*15, aimDirNorm.y*15);
 
 
-    Proyectil pr(arma->getHitbox().getPosition()+prueba, aimDirNorm);
-    proyectiles.push_back(pr);
-}
-*/
 
-/*
 void Jugador::cambiarArma(int opcion){
 
     delete arma;
     arma=new Arma(opcion, entityCenter);
 
 }
-*/
+
 
 
 void Jugador::draw(sf::RenderWindow &app) {
