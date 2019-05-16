@@ -11,7 +11,6 @@ using namespace std;
 
 Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Estado {maquina, window, cambio}
 {
-    std::cout << "Juego inciado" << std::endl;
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
     nEnemigos = 5;
@@ -36,7 +35,6 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
 
 void Juego::pause()
 {
-    std::cout << "Juego pausa" << std::endl;
     selPausa = 0;
 
     capaPausa = new sf::RectangleShape;
@@ -48,35 +46,61 @@ void Juego::pause()
     fuente = new sf::Font;
     fuente->loadFromFile("resources/menu/manaspc.ttf");
 
-    textopausa = new sf::Text;
-    textopausa->setFont(*fuente);
-    textopausa->setString("- pausa -");
-    textopausa->setScale({0.2,0.2});
-    textopausa->setOrigin(textopausa->getGlobalBounds().width/2,0);
-    textopausa->setColor(sf::Color::White);
-    textopausa->setPosition(view.getCenter().x - 18, view.getCenter().y - 40);
 
-    continuar = new sf::Text;
-    continuar->setFont(*fuente);
-    continuar->setString("continuar");
-    continuar->setScale({0.18,0.18});
-    continuar->setColor(sf::Color::Red);
-    continuar->setPosition(view.getCenter().x - 19, view.getCenter().y - 10);
+    if(jugador->getVidas() <= 0)
+    {
+        textopausa = new sf::Text;
+        textopausa->setFont(*fuente);
+        textopausa->setString("- has muerto -");
+        textopausa->setScale({0.2,0.2});
+        textopausa->setOrigin(textopausa->getGlobalBounds().width/2,0);
+        textopausa->setColor(sf::Color::White);
+        textopausa->setPosition(view.getCenter().x -20, view.getCenter().y - 40);
 
-    salir = new sf::Text;
-    salir->setFont(*fuente);
-    salir->setString("salir");
-    salir->setScale({0.18,0.18});
-    salir->setColor(sf::Color::White);
-    salir->setPosition(view.getCenter().x - 11, view.getCenter().y + 10);
+        continuar = new sf::Text;
+        continuar->setFont(*fuente);
+        continuar->setString("reintentar");
+        continuar->setScale({0.18,0.18});
+        continuar->setColor(sf::Color::Red);
+        continuar->setPosition(view.getCenter().x -15, view.getCenter().y - 10);
 
+        salir = new sf::Text;
+        salir->setFont(*fuente);
+        salir->setString("salir");
+        salir->setScale({0.18,0.18});
+        salir->setColor(sf::Color::White);
+        salir->setPosition(view.getCenter().x -7, view.getCenter().y + 10);
 
+        reintentar = true;
+    }
+    else
+    {
+        textopausa = new sf::Text;
+        textopausa->setFont(*fuente);
+        textopausa->setString("- pausa -");
+        textopausa->setScale({0.2,0.2});
+        textopausa->setOrigin(textopausa->getGlobalBounds().width/2,0);
+        textopausa->setColor(sf::Color::White);
+        textopausa->setPosition(view.getCenter().x - 18, view.getCenter().y - 40);
 
+        continuar = new sf::Text;
+        continuar->setFont(*fuente);
+        continuar->setString("continuar");
+        continuar->setScale({0.18,0.18});
+        continuar->setColor(sf::Color::Red);
+        continuar->setPosition(view.getCenter().x - 19, view.getCenter().y - 10);
+
+        salir = new sf::Text;
+        salir->setFont(*fuente);
+        salir->setString("salir");
+        salir->setScale({0.18,0.18});
+        salir->setColor(sf::Color::White);
+        salir->setPosition(view.getCenter().x - 11, view.getCenter().y + 10);
+    }
 }
 
 void Juego::resume()
 {
-    std::cout << "Juego resume" << std::endl;
     delete capaPausa;
     delete fuente;
     delete textopausa;
@@ -129,6 +153,14 @@ void Juego::update()
 
         setView();
         //render();
+
+        if(jugador->getVidas() <= 0)
+        {
+            pause();
+            pausa = true;
+        }
+
+
         }
 }
 
@@ -153,7 +185,7 @@ void Juego::cargaMapa(){
 void Juego::cargarHUD(){
     hud = new Hud();
     hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 2, view.getCenter().y - dimensiones.y/10 + 2);
-    hud->setPosicionHabilidades(view.getCenter().x - hud->getPiezaHabilidades().getGlobalBounds().width/2, view.getCenter().y + dimensiones.y/10 - hud->getPiezaHabilidades().getGlobalBounds().height);
+    hud->setPosicionHabilidades(view.getCenter().x + 22, view.getCenter().y - 70);
 }
 
 void Juego::procesarEventos(){
@@ -187,7 +219,7 @@ void Juego::procesarEventos(){
                     }
 
                 }
-                if(evento->key.code == sf::Keyboard::Up)
+                if(evento->key.code == sf::Keyboard::Up || evento->key.code == sf::Keyboard::W)
                 {
                     if(selPausa == 1 && pausa)
                     {
@@ -196,7 +228,7 @@ void Juego::procesarEventos(){
                         salir->setColor(sf::Color::White);
                     }
                 }
-                if(evento->key.code == sf::Keyboard::Down)
+                if(evento->key.code == sf::Keyboard::Down || evento->key.code == sf::Keyboard::S)
                 {
                     if(selPausa == 0 && pausa)
                     {
@@ -204,9 +236,17 @@ void Juego::procesarEventos(){
                         continuar->setColor(sf::Color::White);
                         salir->setColor(sf::Color::Red);
                     }
+
+
                 }
                 if(evento->key.code == sf::Keyboard::Space)
                 {
+                    if(selPausa == 0 && pausa && reintentar)
+                    {
+                        pausa = false;
+                        reintentar = false;
+                        m_siguiente = MaquinaEstados::build<Juego>(m_maquina, m_window, true);
+                    }
                     if(selPausa == 0 && pausa)
                     {
                         pausa = false;

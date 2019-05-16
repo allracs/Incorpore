@@ -1188,7 +1188,7 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1557941265 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Juego.cpp
+1558002849 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -1197,7 +1197,7 @@
 	<vector>
 	<iostream>
 
-1557939262 /home/carlos/Escritorio/Incorpore/Mapas/include/Juego.h
+1557999258 /home/carlos/Escritorio/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
@@ -1247,7 +1247,7 @@
 	<android/log.h>
 	<assert.h>
 
-1557939944 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Jugador.cpp
+1557998650 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
@@ -1538,7 +1538,7 @@
 	<iostream>
 	<memory>
 
-1557940339 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Menu.cpp
+1558000741 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Menu.cpp
 	"Menu.h"
 	"MaquinaEstados.h"
 	<memory>

@@ -76,11 +76,13 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
                 moverColisionadores({0,8});
             }*/
         }
+        /*
         else{
             //Muerto
             cout << "HAS PALMAO, FIN DE LA PARTIDA." << endl; //Cambiar por retorno a menu
             exit(0);
         }
+        */
 
         dmgCD.restart();
     }
