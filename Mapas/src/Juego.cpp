@@ -193,6 +193,9 @@ void Juego::update()
                     pausa = false;
                     reintentar = false;
                     hayPortales = false;
+                    colisionaPortal = false;
+                    delete fuente;
+                    delete texportal;
                     delete portal;
                     delete mapa;
                     cargaMapa();

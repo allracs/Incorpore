@@ -1489,7 +1489,7 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1558095752 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Juego.cpp
+1558096387 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
