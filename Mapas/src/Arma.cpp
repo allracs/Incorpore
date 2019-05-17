@@ -13,6 +13,7 @@ Arma::Arma(int opcion, Vector2f pos)
         ataqueHitbox.setOrigin(-8,2.f);
         ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
 
+
         // Cargar el sprite de la hitbox de ataque.
       if(tipo==0){
             if(!textura.loadFromFile("resources/sprites/sword.png"))
@@ -26,6 +27,8 @@ Arma::Arma(int opcion, Vector2f pos)
         espada.setOrigin(14,14);
         espada.setPosition(pos.x +2, pos.y +3);
         espada.setScale(-1.f, -1.f);
+
+        cambiado = false;
 
 }
 
@@ -44,6 +47,31 @@ void Arma::update(Vector2f vDir, int nCol, FloatRect* colisiones){
         } else {
             proyectiles.at(i)->update(nCol, colisiones);
         }
+    }
+
+    terminAnim();
+
+}
+
+
+void Arma::empezarAnim(){
+    // reinicio el reloj
+    // cambio el sprite
+    std::cout << "SE LLAMA AL MÉTODO EMPEZAR ANIM" << std::endl;
+    animAtaque.restart();
+    if(!textura.loadFromFile("resources/sprites/ataque.png"))
+        cout << "ERROR AL CARGAR LA TEXTURA: atque.png" << endl;
+    espada.setTexture(textura);
+    cambiado = true;
+}
+
+void Arma::terminAnim() {
+    if(animAtaque.getElapsedTime().asSeconds() >= 0.2f && cambiado){
+        animAtaque.restart();
+        if(!textura.loadFromFile("resources/sprites/sword.png"))
+            cout << "ERROR AL CARGAR LA TEXTURA: atque.png" << endl;
+        espada.setTexture(textura);
+        cambiado = false;
     }
 }
 
@@ -82,6 +110,7 @@ void Arma::atacar(std::vector<Enemigo*> enemigos, int nEnemigos){
         for(int i = 0; i < nEnemigos; i++){
             enemigos.at(i)->serAtacado(ataqueHitbox);
         }
+
     }
 }
 

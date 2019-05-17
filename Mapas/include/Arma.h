@@ -19,6 +19,9 @@ class Arma
         void atacar(vector<Enemigo*>, int);
         void crearProyectil(sf::Vector2f centro);
 
+        void empezarAnim();
+        void terminAnim();
+
 
         RectangleShape getHitbox();
         Sprite getEspada();
@@ -38,6 +41,9 @@ class Arma
         vector<Proyectil*> proyectiles;
         sf::Clock CDdisparo;
         Vector2f mousePos;
+
+        sf::Clock animAtaque;
+        bool cambiado;
 };
 
 #endif // ARMA_H

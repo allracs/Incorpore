@@ -210,6 +210,11 @@ Arma Jugador::getArma() {
     return *arma;
 }
 
+Arma* Jugador::getPuntArma() {
+    return arma;
+}
+
+
 void Jugador::cambiarArma(int opcion){
 
     delete arma;

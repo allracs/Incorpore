@@ -27,6 +27,7 @@ class Jugador: public Entidad{
         bool cogePortal(FloatRect);
         Vector2f getMovement();
         Arma getArma();
+        Arma* getPuntArma();
         int getVidas();
     private:
         float dirMov;

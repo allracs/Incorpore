@@ -269,8 +269,11 @@ void Juego::procesarEventos(){
                 break;
             case sf::Event::MouseButtonPressed:
                 if(evento->mouseButton.button == Mouse::Left) {
-                    //cout << "HE PULSADO EL BOTÓN"<< endl;
+                    // AÑADIR COOLDOWN AL ATAQUE A MELÉ
                     jugador->getArma().atacar(enemigos, enemigos.size());
+                    if(jugador->getArma().getOpcion() == 0){
+                        jugador->getPuntArma()->empezarAnim();
+                    }
                 }
                 break;
             case sf::Event::KeyReleased:
