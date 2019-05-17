@@ -2,6 +2,7 @@
 #include "Entidad.h"
 #include "Jugador.h"
 #include "Enemigo.h"
+#include "Antorcha.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace sf;
@@ -36,13 +37,14 @@ class Mapa{
         bool isColision(int,int);
         void colocaConsumibles();
         FloatRect* getBounds();
-        sf::Vector2i generaPortales();
+        Vector2i generaPortales();
         FloatRect* getBoundsPortales();
+        vector<Antorcha*> getAntorchas();
         //MOSTRAMOS POR PANTALLA
         void mostrarMapaColisiones();
 
         //DRAW
-        void draw(RenderWindow&, Jugador, std::vector<Enemigo*>, int);
+        void draw(RenderWindow&, Jugador, vector<Enemigo*>, int);
 
     private:
         int width, height, tilewidth, tileheight, gid;
@@ -71,6 +73,7 @@ class Mapa{
         FloatRect* colision; //Bounding Boxes de las Colisiones
         FloatRect* colisionPortales;
         Vector2i posicion;
+        Vector2f posAnt;
         int tipo;
-
+        vector<Antorcha*> antorchas;
 };

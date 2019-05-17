@@ -783,47 +783,51 @@
 
 1558095088 e/Jugador.h"
 
-1555344617 source:/home/fv/FV/Incorpore/Mapas/src/Animacion.cpp
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Animacion.cpp
 	<iostream>
 	"../include/Animacion.h"
 
-1555006583 /home/fv/FV/Incorpore/Mapas/include/Animacion.h
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Animacion.h
 	<SFML/Graphics.hpp>
 
-1555433239 source:/home/fv/FV/Incorpore/Mapas/src/Enemigo.cpp
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
+	"Proyectil.h"
 
-1555433239 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	"Posicion.h"
-	<SFML/Graphics.hpp>
+	"Proyectil.h"
 	<iostream>
 	<vector>
 
-1555336420 /home/fv/FV/Incorpore/Mapas/include/Entidad.h
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
 	"Animacion.h"
+	"Proyectil.h"
 
-1555329273 source:/home/fv/FV/Incorpore/Mapas/src/Entidad.cpp
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
 	<iostream>
 
-1555348639 source:/home/fv/FV/Incorpore/Mapas/src/Hud.cpp
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
-1555341529 /home/fv/FV/Incorpore/Mapas/include/Hud.h
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
-1555433239 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
+1558113204 source:/home/fv/FV/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
+	"../include/Menu.h"
+	"../include/MaquinaEstados.h"
 	<vector>
 	<iostream>
 
-1555433239 /home/fv/FV/Incorpore/Mapas/include/Juego.h
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
@@ -831,8 +835,11 @@
 	"Arma.h"
 	"Hud.h"
 	"Mapa.h"
+	"Consumible.h"
+	"Estado.h"
+	"Portal.h"
 
-1555427629 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Jugador.h
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
@@ -840,12 +847,14 @@
 	"Enemigo.h"
 	"Animacion.h"
 	"Arma.h"
+	"Proyectil.h"
 
-1555433239 /home/fv/FV/Incorpore/Mapas/include/Mapa.h
+1558112997 /home/fv/FV/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
 	"Enemigo.h"
+	"Antorcha.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
@@ -865,16 +874,16 @@
 	<android/log.h>
 	<assert.h>
 
-1555433568 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
-1555009328 source:/home/fv/FV/Incorpore/Mapas/src/main.cpp
+1557922417 source:/home/fv/FV/Incorpore/Mapas/src/main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
-	"../include/Juego.h"
+	"../include/Aplicacion.h"
 
-1555433239 source:/home/fv/FV/Incorpore/Mapas/src/Mapa.cpp
+1558113031 source:/home/fv/FV/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -1686,7 +1695,7 @@
 	<iostream>
 	<stdlib.h>
 
-1555322088 source:/home/fv/FV/Incorpore/Mapas/src/Astar.cpp
+1555433913 source:/home/fv/FV/Incorpore/Mapas/src/Astar.cpp
 	<iostream>
 	<stdlib.h>
 	<vector>
@@ -1802,13 +1811,14 @@
 	<iostream>
 	<stdlib.h>
 
-1555433469 /home/fv/FV/Incorpore/Mapas/include/Arma.h
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Arma.h
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
 	"Enemigo.h"
+	"Proyectil.h"
 
-1555433456 source:/home/fv/FV/Incorpore/Mapas/src/Arma.cpp
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Arma.cpp
 	"../include/Arma.h"
 
 1558094090 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Animacion.cpp
@@ -2799,4 +2809,81 @@
 
 1558106940 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Portal.cpp
 	"Portal.h"
+
+1557922417 source:/home/fv/FV/Incorpore/Mapas/src/Aplicacion.cpp
+	"Aplicacion.h"
+
+1557922417 /home/fv/FV/Incorpore/Mapas/include/Aplicacion.h
+	"MaquinaEstados.h"
+	"Menu.h"
+	<SFML/Graphics.hpp>
+
+1558107697 /home/fv/FV/Incorpore/Mapas/include/MaquinaEstados.h
+	<SFML/Graphics.hpp>
+	<memory>
+	<stack>
+	<string>
+
+1557922417 /home/fv/FV/Incorpore/Mapas/include/Menu.h
+	<SFML/Graphics.hpp>
+	"Estado.h"
+
+1557922417 /home/fv/FV/Incorpore/Mapas/include/Estado.h
+	<SFML/Graphics.hpp>
+	<memory>
+
+1557922417 source:/home/fv/FV/Incorpore/Mapas/src/Consumible.cpp
+	"../include/Consumible.h"
+
+1557922417 /home/fv/FV/Incorpore/Mapas/include/Consumible.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"time.h"
+
+1557922417 source:/home/fv/FV/Incorpore/Mapas/src/Estado.cpp
+	"Estado.h"
+
+1557922417 source:/home/fv/FV/Incorpore/Mapas/src/MaquinaEstados.cpp
+	"MaquinaEstados.h"
+	"Estado.h"
+	<iostream>
+	<memory>
+
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Proyectil.h
+	<SFML/Graphics.hpp>
+
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Bala.cpp
+	"Bala.h"
+
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Bala.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<stdlib.h>
+	<vector>
+	"Enemigo.h"
+
+1558107706 /home/fv/FV/Incorpore/Mapas/include/Portal.h
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Menu.cpp
+	"Menu.h"
+	"MaquinaEstados.h"
+	<memory>
+	<iostream>
+	"Juego.h"
+
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Portal.cpp
+	"Portal.h"
+
+1558107706 source:/home/fv/FV/Incorpore/Mapas/src/Proyectil.cpp
+	"Proyectil.h"
+	<iostream>
+
+1558112960 source:/home/fv/FV/Incorpore/Mapas/src/Antorcha.cpp
+	"Antorcha.h"
+
+1558112711 /home/fv/FV/Incorpore/Mapas/include/Antorcha.h
+	<SFML/Graphics.hpp>
+	<iostream>
 
