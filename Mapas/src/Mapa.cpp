@@ -269,7 +269,7 @@ void Mapa::posicionaObjetos(){
     }
 }
 
-void Mapa::generaPortales(){
+sf::Vector2i Mapa::generaPortales(){
     int x;
     int y;
     switch(tipo){
@@ -289,27 +289,10 @@ void Mapa::generaPortales(){
             std::cerr << "Error: No se han podido crear Portales";
         break;
     }
-        //Verde
-        mapSprite[6][y-1][x] = new Sprite(texturaTileset,tilesetSprite[portalVerde[0]].getTextureRect());
-        mapSprite[6][y-1][x]->setPosition(x*tilewidth,(y-1)*tileheight);
-
-        mapSprite[3][y][x] = new Sprite(texturaTileset,tilesetSprite[portalVerde[1]].getTextureRect());
-        mapSprite[3][y][x]->setPosition(x*tilewidth,y*tileheight);
-
-        //Morado
-        mapSprite[6][y-1][x+2] = new Sprite(texturaTileset,tilesetSprite[portalMorado[0]].getTextureRect());
-        mapSprite[6][y-1][x+2]->setPosition((x+2)*tilewidth,(y-1)*tileheight);
-
-        mapSprite[3][y][x+2] = new Sprite(texturaTileset,tilesetSprite[portalMorado[1]].getTextureRect());
-        mapSprite[3][y][x+2]->setPosition((x+2)*tilewidth,y*tileheight);
 
 
-        colisionPortales = new FloatRect[4];
-
-        colisionPortales[0] = mapSprite[6][y-1][x]->getGlobalBounds();
-        colisionPortales[1] = mapSprite[3][y][x]->getGlobalBounds();
-        colisionPortales[2] = mapSprite[6][y-1][x+2]->getGlobalBounds();
-        colisionPortales[3] = mapSprite[3][y][x+2]->getGlobalBounds();
+    sf::Vector2i pos(x,y);
+    return pos;
 
 }
 
@@ -444,11 +427,6 @@ int Mapa::getNumColisiones(){
 FloatRect* Mapa::getBounds(){
     return colision;
 }
-
-FloatRect* Mapa::getBoundsPortales(){
-    return colisionPortales;
-}
-
 
 void Mapa::mostrarMapaColisiones(){
     cout << endl << "Mapa de colisiones:" << endl;

@@ -22,6 +22,7 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
 
     centrado = false;
     godMode = false;
+    hayPortales = false;
 
     sf::Clock frameClock;
 
@@ -110,6 +111,9 @@ void Juego::resume()
 
 void Juego::update()
 {
+        if(hayPortales){
+            portal->update();
+        }
 
         procesarEventos();
         delta = frameClock.restart().asSeconds();
@@ -163,12 +167,18 @@ void Juego::update()
             }
         }
         else{
-            mapa->generaPortales();
-            if(jugador->cogePortal(mapa->getBoundsPortales())){
+            if(!hayPortales){
+                portal = new Portal(1,mapa->generaPortales());
+                hayPortales = true;
+            }
+
+            if(jugador->cogePortal(portal->getPortal().getGlobalBounds())){
                 entraPortales = true;
                 pausa = false;
                 reintentar = false;
                 delete mapa;
+                delete portal;
+                hayPortales = false;
                 cargaMapa();
                 cargaPlayer();
                 cargarHUD();
@@ -333,7 +343,9 @@ void Juego::draw(){
         if(enemigos.at(i)->getBorrado() == false)
         enemigos.at(i)->drawBoundingBoxes(m_window);
     }
-
+    if(hayPortales){
+        portal->draw(m_window);
+    }
     if(pausa)
     {
         m_window.draw(*capaPausa);
@@ -341,7 +353,6 @@ void Juego::draw(){
         m_window.draw(*continuar);
         m_window.draw(*salir);
     }
-
     m_window.display();
 }
 

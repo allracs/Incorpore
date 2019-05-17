@@ -86,13 +86,13 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
 }
 
-bool Jugador::cogePortal(FloatRect* colisiones){
+bool Jugador::cogePortal(FloatRect portal){
     bool res = false;
    for(int i = 0; i < 4; i++){
-        if(cuadrado_arr->getGlobalBounds().intersects(colisiones[i])||
-           cuadrado_abj->getGlobalBounds().intersects(colisiones[i])||
-           cuadrado_der->getGlobalBounds().intersects(colisiones[i])||
-           cuadrado_izq->getGlobalBounds().intersects(colisiones[i])){
+        if(cuadrado_arr->getGlobalBounds().intersects(portal)||
+           cuadrado_abj->getGlobalBounds().intersects(portal)||
+           cuadrado_der->getGlobalBounds().intersects(portal)||
+           cuadrado_izq->getGlobalBounds().intersects(portal)){
                 if(Keyboard::isKeyPressed(Keyboard::E)){
                     res = true;
                 }

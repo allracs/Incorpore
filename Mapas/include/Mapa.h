@@ -36,7 +36,7 @@ class Mapa{
         bool isColision(int,int);
         void colocaConsumibles();
         FloatRect* getBounds();
-        void generaPortales();
+        sf::Vector2i generaPortales();
         FloatRect* getBoundsPortales();
         //MOSTRAMOS POR PANTALLA
         void mostrarMapaColisiones();

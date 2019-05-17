@@ -24,7 +24,7 @@ class Jugador: public Entidad{
         bool recibeDmg(RectangleShape, int);
         void draw(sf::RenderWindow &);
         void cambiarArma(int opcion);
-        bool cogePortal(FloatRect*);
+        bool cogePortal(FloatRect);
         Vector2f getMovement();
         Arma getArma();
         int getVidas();

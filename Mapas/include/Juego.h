@@ -7,6 +7,7 @@
 #include "Mapa.h"
 #include "Consumible.h"
 #include "Estado.h"
+#include "Portal.h"
 
 
 
@@ -69,6 +70,8 @@ class Juego : public Estado
         sf::Text *continuar;
         sf::Text *salir;
 
+        bool hayPortales;
         //portales
         bool entraPortales = false;
+        Portal *portal;
 };
