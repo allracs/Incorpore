@@ -78,5 +78,6 @@ class Juego : public Estado
         bool pulsaE = false;
         sf::Text *texportal;
         bool colisionaPortal = false;
+        int nNivel;
 
 };
