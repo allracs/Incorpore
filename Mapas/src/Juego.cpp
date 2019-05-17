@@ -184,7 +184,7 @@ void Juego::update()
                     texportal->setFont(*fuente);
                     texportal->setString("pulsa E para avanzar");
                     texportal->setScale(0.2, 0.2);
-                    texportal->setPosition(jugador->getSprite().getPosition().x-30, jugador->getSprite().getPosition().y - 56);
+                    texportal->setPosition(jugador->getSprite().getPosition().x+8, jugador->getSprite().getPosition().y - 56);
                 }else{
                     colisionaPortal = false;
                 }
@@ -399,7 +399,7 @@ void Juego::draw(){
         m_window.draw(*salir);
     }
 
-    if(colisionaPortal)
+    if(colisionaPortal && !pausa)
     {
         m_window.draw(*texportal);
     }
