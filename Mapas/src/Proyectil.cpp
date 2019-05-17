@@ -13,9 +13,6 @@ Proyectil::Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation)
     std::cout << "POSICION: " << colision.getPosition().x << " ," << colision.getPosition().y << std::endl;
     sprite.setPosition(posicion);
 
-
-
-
     colision = sf::RectangleShape(sf::Vector2f(4,4));
     colision.setFillColor(sf::Color::Transparent);
     maxSpeed = 180.f;
