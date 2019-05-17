@@ -112,7 +112,8 @@ void Juego::resume()
 void Juego::update()
 {
         if(hayPortales){
-            portal->update();
+            portalVerde->update();
+            portalMorado->update();
         }
 
         procesarEventos();
@@ -168,12 +169,13 @@ void Juego::update()
         }
         else{
             if(!hayPortales){
-                portal = new Portal(1,mapa->generaPortales());
+                portalVerde = new Portal(1,mapa->generaPortales());
+                portalMorado = new Portal(2,mapa->generaPortales());
                 hayPortales = true;
 
             }else{
 
-                if(jugador->cogePortal(portal->getPortal().getGlobalBounds()))
+                if(jugador->cogePortal(portalVerde->getPortal().getGlobalBounds())||jugador->cogePortal(portalMorado->getPortal().getGlobalBounds()))
                 {
                     colisionaPortal = true;
                     fuente = new sf::Font;
@@ -196,7 +198,8 @@ void Juego::update()
                     colisionaPortal = false;
                     delete fuente;
                     delete texportal;
-                    delete portal;
+                    delete portalVerde;
+                    delete portalMorado;
                     delete mapa;
                     cargaMapa();
                     cargaPlayer();
@@ -374,7 +377,8 @@ void Juego::draw(){
         enemigos.at(i)->drawBoundingBoxes(m_window);
     }
     if(hayPortales){
-        portal->draw(m_window);
+        portalVerde->draw(m_window);
+        portalMorado->draw(m_window);
     }
     if(pausa)
     {

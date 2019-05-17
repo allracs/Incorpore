@@ -72,7 +72,8 @@ class Juego : public Estado
 
         bool hayPortales;
         //portales
-        Portal *portal;
+        Portal *portalVerde;
+        Portal *portalMorado;
         bool entraPortales = false;
         bool pulsaE = false;
         sf::Text *texportal;

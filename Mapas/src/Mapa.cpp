@@ -103,7 +103,7 @@ void Mapa::cargaObjetos(){
 
 void Mapa::leerMapa(int n){
     tipo = 0;
-    //n= 3;
+    n= 3;
     switch(n){
         case 1:
             docXML.LoadFile("resources/tmx/Mapa.tmx");

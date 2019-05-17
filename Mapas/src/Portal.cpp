@@ -1,6 +1,6 @@
 #include "Portal.h"
 
-Portal::Portal(int tipo, sf::Vector2i){
+Portal::Portal(int tipo, sf::Vector2i pos){
     sprite = new sf::Sprite;
 
     ancho = 200;
@@ -13,8 +13,14 @@ Portal::Portal(int tipo, sf::Vector2i){
                 std::cerr << "Error cargando la imagen de textura";
                 exit(0);
             }
+            sprite->setPosition(pos.x*16, pos.y*16);
         break;
         case 2:
+            if (!tex.loadFromFile("resources/sprites/portal2.png")){
+                std::cerr << "Error cargando la imagen de textura";
+                exit(0);
+            }
+            sprite->setPosition((pos.x+3)*16, pos.y*16);
         break;
         default:
         break;
@@ -27,7 +33,6 @@ Portal::Portal(int tipo, sf::Vector2i){
     sprite->setTextureRect(dim);
     sprite->setOrigin(ancho/2, alto/2);
     sprite->scale(0.1,0.1);
-    sprite->setPosition(10*16, 24);
 }
 
 Portal::~Portal()
