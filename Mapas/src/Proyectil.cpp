@@ -18,7 +18,7 @@ Proyectil::Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation)
 
     colision = sf::RectangleShape(sf::Vector2f(4,4));
     colision.setFillColor(sf::Color::Transparent);
-    maxSpeed = 100.f;
+    maxSpeed = 180.f;
     cooldown = 0;
     reloj = sf::Clock();
     autodestruccion = sf::Clock();
