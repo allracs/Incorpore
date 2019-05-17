@@ -10,7 +10,7 @@ using namespace std;
 
 class Mapa{
     public:
-        Mapa();
+        Mapa(int);
         ~Mapa();
         void leerMapa(int);
         void cargaObjetos();

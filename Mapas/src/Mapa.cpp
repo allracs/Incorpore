@@ -8,10 +8,17 @@ using namespace sf;
 using namespace tinyxml2;
 using namespace std;
 
-Mapa::Mapa(){
+Mapa::Mapa(int nivel){
+    std::cout << "NIVEL: " << nivel << std::endl;
     srand(time(NULL));
-    int random = rand() % 3 +1; //Un random del 1 al 2 (no existe el caso 0)
-    leerMapa(random);
+    if(nivel < 4){
+        int random = rand() % 3 +1; //Un random del 1 al 2 (no existe el caso 0)
+        leerMapa(random);
+    }
+    else{
+        leerMapa(4);
+    }
+
     if(tipo != 4)
         cargaObjetos();
     setDatos();

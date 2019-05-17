@@ -13,7 +13,8 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
 {
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 1;
+    nEnemigos = 0;
+    nNivel = 1;
 
     evento = new Event;
 
@@ -190,6 +191,13 @@ void Juego::update()
                 }
 
                 if(pulsaE){
+                    if(nNivel < 4){
+                        nNivel++;
+                    }
+                    else{
+                        nNivel = 1;
+                    }
+
                     pulsaE = false;
                     entraPortales = true;
                     pausa = false;
@@ -253,7 +261,7 @@ void Juego::cargaPlayer(){
 
 
 void Juego::cargaMapa(){
-    mapa = new Mapa;
+    mapa = new Mapa(nNivel);
     pocion = new Consumible(mapa->generaPosicion());
 }
 
