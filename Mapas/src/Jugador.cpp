@@ -93,7 +93,10 @@ bool Jugador::cogePortal(FloatRect* colisiones){
            cuadrado_abj->getGlobalBounds().intersects(colisiones[i])||
            cuadrado_der->getGlobalBounds().intersects(colisiones[i])||
            cuadrado_izq->getGlobalBounds().intersects(colisiones[i])){
-            res = true;
+                if(Keyboard::isKeyPressed(Keyboard::E)){
+                    res = true;
+                }
+
         }
     }
     return res;

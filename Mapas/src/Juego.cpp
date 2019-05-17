@@ -13,7 +13,7 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
 {
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 5;
+    nEnemigos = 1;
 
     evento = new Event;
 
