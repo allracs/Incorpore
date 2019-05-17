@@ -5,42 +5,9 @@ using namespace sf;
 Arma::Arma(int opcion, Vector2f pos)
 {
     tipo=opcion;
-    // 0: Melee 1: Distancia "a implementar ataque a distancia fisico y magico"
-//    if(tipo == 0){
-//        ataqueHitbox.setOutlineThickness(1);
-//        ataqueHitbox.setOutlineColor(Color::Blue);
-//        ataqueHitbox.setFillColor(Color::Transparent);
-//        ataqueHitbox.setSize(Vector2f(11.f, 4.f));
-//        ataqueHitbox.setOrigin(-8,2.f);
-//        ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
-//
-//        // Cargar el sprite de la hitbox de ataque.
-//        if(!textura.loadFromFile("resources/sprites/sword.png"))
-//            cout << "ERROR AL CARGAR LA TEXTURA: sword.png" << endl;
-//        espada.setTexture(textura);
-//        espada.setOrigin(14,14);
-//        espada.setPosition(pos.x +2, pos.y +3);
-//        espada.setScale(-1.f, -1.f);
-//    } else if(tipo == 1){
-//            ataqueHitbox.setOutlineThickness(1);
-//        ataqueHitbox.setOutlineColor(Color::Blue);
-//        ataqueHitbox.setFillColor(Color::Transparent);
-//        ataqueHitbox.setSize(Vector2f(11.f, 4.f));
-//        ataqueHitbox.setOrigin(-8,2.f);
-//        ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
-//
-//        // Cargar el sprite de la hitbox de ataque.
-//        if(!textura.loadFromFile("resources/sprites/baston.png"))
-//            cout << "ERROR AL CARGAR LA TEXTURA: baston.png" << endl;
-//        espada.setTexture(textura);
-//        espada.setOrigin(14,14);
-//        espada.setPosition(pos.x +2, pos.y +3);
-//        espada.setScale(-1.f, -1.f);
-//
-//    }
 
         ataqueHitbox.setOutlineThickness(1);
-        ataqueHitbox.setOutlineColor(Color::Blue);
+        ataqueHitbox.setOutlineColor(Color::Transparent);
         ataqueHitbox.setFillColor(Color::Transparent);
         ataqueHitbox.setSize(Vector2f(11.f, 4.f));
         ataqueHitbox.setOrigin(-8,2.f);
@@ -67,9 +34,7 @@ Arma::~Arma()
     //dtor
 }
 
-void Arma::update(Vector2f vDir){
-
-//    std::cout << "TAM PROYECTILES: " << proyectiles.size() << std::endl;
+void Arma::update(Vector2f vDir, int nCol, FloatRect* colisiones){
 
     espada.move(vDir);
     for(int i = 0; i < proyectiles.size(); i++) {
@@ -77,7 +42,7 @@ void Arma::update(Vector2f vDir){
             delete proyectiles.at(i);
             proyectiles.erase(proyectiles.begin()+i);
         } else {
-            proyectiles.at(i)->update();
+            proyectiles.at(i)->update(nCol, colisiones);
         }
     }
 }
@@ -122,12 +87,23 @@ void Arma::atacar(std::vector<Enemigo*> enemigos, int nEnemigos){
 
 void Arma::crearProyectil(sf::Vector2f entityCenter) {
     if(tipo==1){
-       sf::Vector2f aimDir = mousePos - entityCenter;
-    sf::Vector2f aimDirNorm = aimDir/(float)sqrt(pow(aimDir.x,2)+pow(aimDir.y,2));
-    sf::Vector2f pos(aimDirNorm.x*15, aimDirNorm.y*15);
 
-    Proyectil *pr = new Proyectil(ataqueHitbox.getPosition() + pos, aimDirNorm);
-    proyectiles.push_back(pr);
+        if(CDdisparo.getElapsedTime().asSeconds()>=1.f){
+            CDdisparo.restart();
+            sf::Vector2f aimDir = mousePos - entityCenter;
+            sf::Vector2f aimDirNorm = aimDir/(float)sqrt(pow(aimDir.x,2)+pow(aimDir.y,2));
+            sf::Vector2f pos(aimDirNorm.x*15, aimDirNorm.y*15);
+
+            // ROTACION SPRITE:
+            float dx = mousePos.x - entityCenter.x; // distancia x
+            float dy = mousePos.y - entityCenter.y; // distancia y
+            float PI = 3.14159265;
+
+            float rotation=(atan2(dx,dy))*180/PI;
+
+            Proyectil *pr = new Proyectil(ataqueHitbox.getPosition() + pos, aimDirNorm, rotation);
+            proyectiles.push_back(pr);
+        }
     }
 }
 
