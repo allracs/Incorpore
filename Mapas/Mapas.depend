@@ -707,11 +707,12 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1558110943 /home/david/Documentos/Incorpore/Mapas/include/Mapa.h
+1558117569 /home/david/Documentos/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
 	"Enemigo.h"
+	"Antorcha.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
@@ -721,7 +722,7 @@
 
 1558091498 e/Hud.h"
 
-1558114417 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
+1558117569 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -746,7 +747,7 @@
 	<iostream>
 	<vector>
 
-1558116416 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1558117569 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -2886,4 +2887,11 @@
 1558112711 /home/fv/FV/Incorpore/Mapas/include/Antorcha.h
 	<SFML/Graphics.hpp>
 	<iostream>
+
+1558117569 /home/david/Documentos/Incorpore/Mapas/include/Antorcha.h
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1558117569 source:/home/david/Documentos/Incorpore/Mapas/src/Antorcha.cpp
+	"Antorcha.h"
 

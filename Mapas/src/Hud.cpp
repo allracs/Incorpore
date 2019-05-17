@@ -18,7 +18,7 @@ Hud::Hud(int vidas){
     pieza_vida = new Sprite(*vida);
     sprite_switch = new Sprite(*textureSwitch);
     sprite_switch->setScale(0.2,0.2);
-    arma = new Sprite(*espada);
+    arma = new Sprite(*baston);
     arma->setScale(0.75,0.75);
 
 
@@ -228,7 +228,7 @@ void Hud::setPosicionSwitch(int x,int y){
 }
 
 void Hud::cambiaArma(int n){
-    if(n == 0)
+    if(n == 1)
         arma->setTexture(*espada);
     else{
         arma->setTexture(*baston);
