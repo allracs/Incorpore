@@ -170,20 +170,40 @@ void Juego::update()
             if(!hayPortales){
                 portal = new Portal(1,mapa->generaPortales());
                 hayPortales = true;
+
+            }else{
+
+                if(jugador->cogePortal(portal->getPortal().getGlobalBounds()))
+                {
+                    colisionaPortal = true;
+                    fuente = new sf::Font;
+                    fuente->loadFromFile("resources/menu/manaspc.ttf");
+                    texportal = new sf::Text;
+                    texportal->setFont(*fuente);
+                    texportal->setString("pulsa E para avanzar");
+                    texportal->setScale(0.2, 0.2);
+                    texportal->setPosition(jugador->getSprite().getPosition().x, jugador->getSprite().getPosition().y - 3);
+                }else{
+                    colisionaPortal = false;
+                }
+
+                if(pulsaE){
+                    pulsaE = false;
+                    entraPortales = true;
+                    pausa = false;
+                    reintentar = false;
+                    hayPortales = false;
+                    delete portal;
+                    delete mapa;
+                    cargaMapa();
+                    cargaPlayer();
+                    cargarHUD();
+                    //std::cout<< jugador->getVidas()<<std::endl;
+                }
+
             }
 
-            if(jugador->cogePortal(portal->getPortal().getGlobalBounds())){
-                entraPortales = true;
-                pausa = false;
-                reintentar = false;
-                delete mapa;
-                delete portal;
-                hayPortales = false;
-                cargaMapa();
-                cargaPlayer();
-                cargarHUD();
-                //std::cout<< jugador->getVidas()<<std::endl;
-            }
+
         }
 
         if(!centrado) {
@@ -210,7 +230,7 @@ void Juego::cargaPlayer(){
     if(entraPortales)
     {
         std::cout<< jugador->getVidas()<<std::endl;
-        jugador = new Jugador(mapa->generaPosicion(), jugador->getVidas());
+        jugador = new Jugador(mapa->generaPosicion(), jugador->getVidas(), jugador->getArma().getOpcion());
         entraPortales = false;
     }
     else
@@ -251,6 +271,10 @@ void Juego::procesarEventos(){
                 }
                 break;
             case sf::Event::KeyReleased:
+                if(evento->key.code == sf::Keyboard::E && colisionaPortal)
+                {
+                    pulsaE = true;
+                }
                 if(evento->key.code == sf::Keyboard::G)
                 {
                 changeMode();
@@ -353,6 +377,12 @@ void Juego::draw(){
         m_window.draw(*continuar);
         m_window.draw(*salir);
     }
+
+    if(colisionaPortal)
+    {
+        m_window.draw(*texportal);
+    }
+
     m_window.display();
 }
 

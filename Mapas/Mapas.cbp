@@ -43,12 +43,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Mapas.depend" />
-		<Unit filename="Mapas.layout" />
 		<Unit filename="include/Animacion.h" />
 		<Unit filename="include/Aplicacion.h" />
 		<Unit filename="include/Arma.h" />
 		<Unit filename="include/Astar.h" />
+		<Unit filename="include/Bala.h" />
 		<Unit filename="include/Consumible.h" />
 		<Unit filename="include/Enemigo.h" />
 		<Unit filename="include/Entidad.h" />
@@ -59,6 +58,7 @@
 		<Unit filename="include/Mapa.h" />
 		<Unit filename="include/MaquinaEstados.h" />
 		<Unit filename="include/Menu.h" />
+		<Unit filename="include/Portal.h" />
 		<Unit filename="include/Posicion.h" />
 		<Unit filename="include/Proyectil.h" />
 		<Unit filename="include/tinyxml2.h" />
@@ -86,6 +86,7 @@
 		<Unit filename="src/Aplicacion.cpp" />
 		<Unit filename="src/Arma.cpp" />
 		<Unit filename="src/Astar.cpp" />
+		<Unit filename="src/Bala.cpp" />
 		<Unit filename="src/Consumible.cpp" />
 		<Unit filename="src/Enemigo.cpp" />
 		<Unit filename="src/Entidad.cpp" />
@@ -96,6 +97,7 @@
 		<Unit filename="src/Mapa.cpp" />
 		<Unit filename="src/MaquinaEstados.cpp" />
 		<Unit filename="src/Menu.cpp" />
+		<Unit filename="src/Portal.cpp" />
 		<Unit filename="src/Posicion.cpp" />
 		<Unit filename="src/Proyectil.cpp" />
 		<Unit filename="src/main.cpp" />

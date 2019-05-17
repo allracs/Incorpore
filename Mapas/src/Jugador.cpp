@@ -25,7 +25,7 @@ Jugador::Jugador(Vector2f pos){
 }
 
 
-Jugador::Jugador(Vector2f pos, int vida){
+Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
     entityCenter = pos;
     entidadHitbox.setPosition(pos);
     setColisionadores();
@@ -42,7 +42,7 @@ Jugador::Jugador(Vector2f pos, int vida){
     actual = &idle;
     actual->sprite.setPosition(pos);
 
-    arma = new Arma(1, pos);
+    arma = new Arma(tipoarma, pos);
 
 }
 
@@ -94,10 +94,7 @@ bool Jugador::cogePortal(FloatRect portal){
            cuadrado_abj->getGlobalBounds().intersects(portal)||
            cuadrado_der->getGlobalBounds().intersects(portal)||
            cuadrado_izq->getGlobalBounds().intersects(portal)){
-                if(Keyboard::isKeyPressed(Keyboard::E)){
                     res = true;
-                }
-
         }
     }
     return res;
