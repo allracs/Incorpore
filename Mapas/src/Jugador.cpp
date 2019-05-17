@@ -5,6 +5,7 @@ using namespace sf;
 
 Jugador::Jugador(Vector2f pos){
     entityCenter = pos;
+    mostrarTumba=false;
     entidadHitbox.setPosition(pos);
     setColisionadores();
     vidas = 10;
@@ -84,6 +85,9 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
         }
     }
 
+    if(Keyboard::isKeyPressed(Keyboard::M)){
+            muerteJugador();
+    }
 
 }
 
@@ -222,21 +226,36 @@ void Jugador::cambiarArma(int opcion){
 
 }
 
+void Jugador::muerteJugador(){
+    mostrarTumba=true;
+
+     if(!tTumba.loadFromFile("resources/sprites/muerte.png")){
+        std::cout<<"No se cargo la tumba"<<std::endl;
+    }
+    tumba.setTexture(tTumba);
+    tumba.setOrigin(16/2,20/2);
+    tumba.setPosition(entityCenter);
+
+}
+
+
 void Jugador::draw(sf::RenderWindow &app) {
-    if(ataqueHitbox.getRotation() >= 0 && ataqueHitbox.getRotation() <= 180) {
-        app.draw(actual->sprite);
-        app.draw(arma->getEspada());
+    if(mostrarTumba==true){
+        app.draw(tumba);
     } else {
-        app.draw(arma->getEspada());
-        app.draw(actual->sprite);
+        if(ataqueHitbox.getRotation() >= 0 && ataqueHitbox.getRotation() <= 180) {
+            app.draw(actual->sprite);
+            app.draw(arma->getEspada());
+        } else {
+            app.draw(arma->getEspada());
+            app.draw(actual->sprite);
+        }
+        app.draw(ataqueHitbox);
+
+        for(int i = 0; i < arma->getProyectiles().size(); i++) {
+            arma->getProyectiles().at(i)->draw(app);
+        }
     }
-    app.draw(ataqueHitbox);
-
-    for(int i = 0; i < arma->getProyectiles().size(); i++) {
-        arma->getProyectiles().at(i)->draw(app);
-    }
-
-
 }
 
 int Jugador::getVidas(){

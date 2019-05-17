@@ -222,6 +222,7 @@ void Juego::update()
 
         if(jugador->getVidas() <= 0)
         {
+            jugador->muerteJugador();
             pause();
             pausa = true;
         }
@@ -368,6 +369,7 @@ void Juego::setView(){
     view.move(jugador->getMovement() * delta);
     hud->move(jugador->getMovement() * delta);
 }
+
 
 void Juego::draw(){
     m_window.clear(Color(28,17,23,255));

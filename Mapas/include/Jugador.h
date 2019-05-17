@@ -33,10 +33,15 @@ class Jugador: public Entidad{
         float getCooldownAtaque();
         void restartCoolDownAtaque();
 
+        void muerteJugador();
     private:
         float dirMov;
         int vidas;
         bool atacando;
+        sf::Texture tTumba;
+        sf::Sprite tumba;
+        bool mostrarTumba;
+
 
         sf::Clock cInterp;
         sf::Clock CDarma;
