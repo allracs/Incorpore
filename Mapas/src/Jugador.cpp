@@ -42,7 +42,7 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     moverColisionadores(movement * delta);
     procesarColisiones(nCol, colisiones);
 
-    actual->update(delta, movement);
+    actual->update(movement, delta);
 
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
         arma->crearProyectil(entidadHitbox.getPosition());
@@ -129,6 +129,7 @@ void Jugador::moverse(){
         if (actual != &run){
             //cout << "CAMBIAMOS A RUN" << endl;
             actual = &run;
+            std::cout << "Entity center: " << entityCenter.x << ", " << entityCenter.y << std::endl;
             actual->sprite.setPosition(entityCenter);
         }
     }
@@ -177,8 +178,6 @@ void Jugador::moverse(){
     colisiona_izquierda = false;
 }
 
-
-
 Vector2f Jugador::getMovement() {
     return movement;
 }
@@ -187,15 +186,12 @@ Arma Jugador::getArma() {
     return *arma;
 }
 
-
-
 void Jugador::cambiarArma(int opcion){
 
     delete arma;
     arma=new Arma(opcion, entityCenter);
 
 }
-
 
 
 void Jugador::draw(sf::RenderWindow &app) {

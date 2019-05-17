@@ -32,25 +32,73 @@ void Animacion::setAnimacion(char* nTextura, IntRect firstF, IntRect finalF, int
 
 }
 
-void Animacion::update(float deltaTime, Vector2f movement)
+void Animacion::update(Vector2f movement, float mTime)
 {
-    totalTime += deltaTime;
-    if(totalTime >= switchTime) {
-        totalTime -= switchTime;
-
+    float delta = clock.getElapsedTime().asSeconds();
+    if(delta >= switchTime) {
+        clock.restart();
         if(actualFrame.left == finalF.left){
             actualFrame.left = firstF.left;
-            //::cout << "Cambiamos de frame0" << endl;
         } else {
             actualFrame.left += incremento;
-            //cout << "Cambiamos de frame" << endl;
         }
 
         sprite.setTextureRect(actualFrame);
     }
+    sprite.move(movement* mTime);
+}
 
-    //sprite.setPosition(playerCenter.x, playerCenter.y);
-    sprite.move(movement * deltaTime);
 
+// ANIMACION
+/*
+#include "Animation.h"
+
+Animation::Animation(sf::Texture spritesheet, float nx, float ny, float nw, float nh, int nmaxx)
+{
+    //ctor
+    sprite = new sf::Sprite(spritesheet);
+    x = nx;
+    y = ny;
+    w = nw;
+    h = nh;
+    nmax = nmaxx;
+    sprite->setTextureRect(sf::IntRect(x, y, w, h));
+}
+
+Animation::~Animation()
+{
+    //dtor
+    delete sprite;
+}
+
+void Animation::update()
+{
+    if(clock.getElapsedTime().asSeconds() >= 0.3)
+    {
+        clock.restart();
+        if(pos++ < nmax)
+        {
+            sprite->setTextureRect(sf::IntRect(x*pos, y, w, h));
+            sprite->setOrigin(w/2, h/2);
+        }
+        else if(pos == nmax)
+        {
+            pos = 0;
+        }
+    }
+}
+
+void Animation::draw(sf::RenderWindow& w)
+{
+    w.draw(*sprite);
+}
+
+void Animation::die()
+{
 
 }
+
+*/
+
+
+

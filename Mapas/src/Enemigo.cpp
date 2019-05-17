@@ -53,7 +53,7 @@ void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     ataqueHitbox.move(movement * delta);
     moverColisionadores(movement * delta);
     procesarColisiones(nCol, colisiones);
-    actual->update(delta, movement);
+    actual->update(movement, delta);
     compruebaColor();
 
 
