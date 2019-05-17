@@ -12,9 +12,9 @@ Jugador::Jugador(Vector2f pos){
     movement = Vector2f(0.f, 0.f);
 
     // Animaciones
-    idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28, 16, 28), IntRect(48, 28, 16, 28), 16, 0.1f);
+    idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28*5, 16, 28), IntRect(48, 28*5, 16, 28), 16, 0.1f);
     idle.sprite.setOrigin(9,20);
-    run.setAnimacion("resources/sprites/personajes.png", IntRect(64, 28, 16, 28), IntRect(112, 28, 16, 28), 16, 0.1f);
+    run.setAnimacion("resources/sprites/personajes.png", IntRect(64, 28*5, 16, 28), IntRect(112, 28*5, 16, 28), 16, 0.1f);
     run.sprite.setOrigin(9,20);
 
     actual = &idle;

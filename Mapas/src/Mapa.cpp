@@ -24,9 +24,6 @@ Mapa::Mapa(){
 
 Mapa::~Mapa(){
     //Destructor
-	delete portalMorado;
-	delete portalVerde;
-
 	delete caja;
     delete cajadoble;
     delete columna;
@@ -71,8 +68,6 @@ void Mapa::cargaObjetos(){
     cajadoble = new int[2];
     columna = new int[2];
     antorcha = new int[2];
-    portalVerde = new int [2];
-    portalMorado = new int [2];
 
     antorcha[0] = 154-1;
     antorcha[1] = 170-1;
@@ -89,15 +84,6 @@ void Mapa::cargaObjetos(){
 
     columna[0] = 190-1;
     columna[1] = 206-1;
-
-    pocion = 189 -1;
-    pocionmini = 216 -1;
-
-    portalMorado[0] = 353-1;
-    portalMorado[1] = 369-1;
-
-    portalVerde[0] = 357-1;
-    portalVerde[1] = 373-1;
 
 }
 
@@ -116,6 +102,10 @@ void Mapa::leerMapa(int n){
         case 3:
             docXML.LoadFile("resources/tmx/Mapa3.tmx");
             tipo = 3;
+            break;
+        case 4:
+            docXML.LoadFile("resources/tmx/Mapa_Boss.tmx");
+            tipo = 4;
             break;
         default:
             std::cerr << "Error: Mapa no existente";
@@ -275,15 +265,16 @@ sf::Vector2i Mapa::generaPortales(){
     switch(tipo){
         case 1:
             x = 10;
-            y = 5;
+            y = 1;
         break;
         case 2:
             x = 10;
-            y = 4;
+            y = 2;
         break;
         case 3:
+        case 4:
             x = 10;
-            y = 9;
+            y = 1;
         break;
         default:
             std::cerr << "Error: No se han podido crear Portales";

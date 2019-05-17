@@ -13,14 +13,14 @@ Portal::Portal(int tipo, sf::Vector2i pos){
                 std::cerr << "Error cargando la imagen de textura";
                 exit(0);
             }
-            sprite->setPosition(pos.x*16, pos.y*16);
+            sprite->setPosition(pos.x*16, pos.y*16+8);
         break;
         case 2:
             if (!tex.loadFromFile("resources/sprites/portal2.png")){
                 std::cerr << "Error cargando la imagen de textura";
                 exit(0);
             }
-            sprite->setPosition((pos.x+3)*16, pos.y*16);
+            sprite->setPosition((pos.x+4)*16, pos.y*16 +8);
         break;
         default:
         break;
