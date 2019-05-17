@@ -273,10 +273,21 @@ void Juego::procesarEventos(){
             case sf::Event::MouseButtonPressed:
                 if(evento->mouseButton.button == Mouse::Left) {
                     // AÑADIR COOLDOWN AL ATAQUE A MELÉ
-                    jugador->getArma().atacar(enemigos, enemigos.size());
-                    if(jugador->getArma().getOpcion() == 0){
-                        jugador->getPuntArma()->empezarAnim();
+                    if(jugador->getArma().getOpcion() == 0){ // SI EL ATAQUE ES A MELEE
+                         if(jugador->getCooldownAtaque() >= 1.f) {
+                            std::cout << "COOLDOWN ATAQUE: " << jugador->getCooldownAtaque() << std::endl;
+                            jugador->restartCoolDownAtaque();
+                            jugador->getArma().atacar(enemigos, enemigos.size());
+                            if(jugador->getArma().getOpcion() == 0){
+                                jugador->getPuntArma()->empezarAnim();
+                            }
+
+                        }
+                    } else if(jugador->getArma().getOpcion() == 1) { // SI EL ATAQUE ES A DISTANCIA
+                        std::cout << "ATAQUE A DISTANCIA" << std::endl;
+                        jugador->getArma().atacar(enemigos, enemigos.size());
                     }
+
                 }
                 break;
             case sf::Event::KeyReleased:

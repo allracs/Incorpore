@@ -57,7 +57,7 @@ void Arma::update(Vector2f vDir, int nCol, FloatRect* colisiones){
 void Arma::empezarAnim(){
     // reinicio el reloj
     // cambio el sprite
-    std::cout << "SE LLAMA AL MÉTODO EMPEZAR ANIM" << std::endl;
+//    std::cout << "SE LLAMA AL MÉTODO EMPEZAR ANIM" << std::endl;
     animAtaque.restart();
     if(!textura.loadFromFile("resources/sprites/ataque.png"))
         cout << "ERROR AL CARGAR LA TEXTURA: atque.png" << endl;

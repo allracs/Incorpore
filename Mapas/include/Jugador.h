@@ -29,6 +29,10 @@ class Jugador: public Entidad{
         Arma getArma();
         Arma* getPuntArma();
         int getVidas();
+
+        float getCooldownAtaque();
+        void restartCoolDownAtaque();
+
     private:
         float dirMov;
         int vidas;
@@ -41,6 +45,7 @@ class Jugador: public Entidad{
 //        Vector2f playerCenter; // centro del jugador
         Vector2f movement; // movimiento del jugador
         Clock dmgCD;
+        Clock meleCD;
 
 };
 #endif

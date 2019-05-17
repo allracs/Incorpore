@@ -222,7 +222,6 @@ void Jugador::cambiarArma(int opcion){
 
 }
 
-
 void Jugador::draw(sf::RenderWindow &app) {
     if(ataqueHitbox.getRotation() >= 0 && ataqueHitbox.getRotation() <= 180) {
         app.draw(actual->sprite);
@@ -244,7 +243,13 @@ int Jugador::getVidas(){
     return vidas;
 }
 
+float Jugador::getCooldownAtaque() {
+    return meleCD.getElapsedTime().asSeconds();
+}
 
+void Jugador::restartCoolDownAtaque() {
+    meleCD.restart();
+}
 
 
 
