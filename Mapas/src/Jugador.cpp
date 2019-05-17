@@ -47,6 +47,7 @@ Jugador::Jugador(Vector2f pos, int vida){
 }
 
 void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
+
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
     actual->sprite.setScale(1.f*(arma->getDireccionMov()), 1.f);
     // MOVIMIENTO con interpolacion
@@ -58,7 +59,7 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     //atacar();
     entidadHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);// mover la hitbox con la que el jugador ataca
-    arma->update(movement * delta); // para que la espada se mueva junto con el jugador.
+    arma->update(movement * delta, nCol, colisiones); // para que la espada se mueva junto con el jugador.
     arma->rotacionAtaque(window, dirMov, entityCenter, entidadHitbox);
     ataqueHitbox = arma->getHitbox();
     moverColisionadores(movement * delta);
@@ -202,6 +203,7 @@ void Jugador::moverse(){
     colisiona_derecha = false;
     colisiona_izquierda = false;
 }
+
 
 Vector2f Jugador::getMovement() {
     return movement;

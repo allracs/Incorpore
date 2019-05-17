@@ -2,6 +2,7 @@
 #define ENTIDAD_H
 #include <SFML/Graphics.hpp>
 #include "Animacion.h"
+#include "Proyectil.h"
 using namespace sf;
 
 class Entidad{

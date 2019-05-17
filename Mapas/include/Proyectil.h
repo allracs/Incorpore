@@ -6,14 +6,15 @@
 class Proyectil
 {
     public:
-        Proyectil(sf::Vector2f posicion, sf::Vector2f dir);
+        Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation);
         virtual ~Proyectil();
-        void update();
+        void update(int nCol, sf::FloatRect* colisiones);
         void draw(sf::RenderWindow &window);
         sf::RectangleShape getColision();
 
         void setHacolisionado(bool val);
         bool getHacolsionado();
+        void procesarColisiones(int nCol, sf::FloatRect*);
 
 
     private:
@@ -23,6 +24,9 @@ class Proyectil
         int cooldown;
         float maxSpeed;
         sf::Vector2f currVel;
+        sf::Clock autodestruccion;
+        sf::Texture textura;
+        sf::Sprite sprite;
 
 };
 
