@@ -19,7 +19,7 @@ class Jugador: public Entidad{
         Jugador(Vector2f pos);
         Jugador(Vector2f pos, int, int);
 
-        void update(float, RenderWindow&, int, FloatRect*);
+        int update(float, RenderWindow&, int, FloatRect*);
         void moverse();
         bool recibeDmg(RectangleShape, int);
         void draw(sf::RenderWindow &);

@@ -13,7 +13,7 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
 {
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 0;
+    nEnemigos = 1;
     nNivel = 1;
 
     evento = new Event;
@@ -122,7 +122,10 @@ void Juego::update()
 
         if(pausa == false)
         {
-        jugador->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds());
+            int arma = jugador->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds());
+            if(arma >= 0){
+                hud->cambiaArma(arma);
+            }
         hud->compruebaTeclas();
         manejarIA();
         if(jugador->getVidas() < 10 && pocion->isConsumible()){
@@ -234,7 +237,7 @@ void Juego::update()
 
 
         }
-        frameClock.restart();
+       // frameClock.restart();
 }
 
 
@@ -268,6 +271,7 @@ void Juego::cargaMapa(){
 void Juego::cargarHUD(){
     hud = new Hud(jugador->getVidas());
     hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 2, view.getCenter().y - dimensiones.y/10 + 2);
+    hud->setPosicionSwitch(view.getCenter().x + 100, view.getCenter().y - 45);
     hud->setPosicionHabilidades(view.getCenter().x + 22, view.getCenter().y - 70);
 }
 

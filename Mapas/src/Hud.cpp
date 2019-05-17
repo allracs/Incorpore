@@ -6,9 +6,21 @@ using namespace sf;
 Hud::Hud(int vidas){
     //PIEZA HUD VIDA
     vida = new Texture;
+    baston = new Texture;
+    espada = new Texture;
+    textureSwitch = new Texture;
+
     vida->loadFromFile("resources/hud/abilities.png");
+    baston->loadFromFile("resources/hud/baston.png");
+    espada->loadFromFile("resources/hud/sword.png");
+    textureSwitch->loadFromFile("resources/hud/change.png");
 
     pieza_vida = new Sprite(*vida);
+    sprite_switch = new Sprite(*textureSwitch);
+    sprite_switch->setScale(0.2,0.2);
+    arma = new Sprite(*espada);
+    arma->setScale(0.75,0.75);
+
 
     pieza_vida->setPosition(0,0);
     IntRect dim(0,0,295,66);
@@ -23,6 +35,12 @@ Hud::Hud(int vidas){
     texto_vida->setFont(*fuente);
     texto_vida->setString("HP");
     texto_vida->setScale(0.25, 0.25);
+
+    //Switch Arma
+    tecla_switch = new Text;
+    tecla_switch->setFont(*fuente);
+    tecla_switch->setString("Q");
+    tecla_switch->setScale(0.3, 0.3);
 
     //ARRAY DE CORAZONES
     textura_vida = new Texture;
@@ -137,6 +155,7 @@ void Hud::modificar_vida(int cantidad, int sr){
     }
 }
 
+
 void Hud::setHabilidad(int habilidad){
     if(habilidad == 1 && mejora_escudo_esta == false)
     {
@@ -199,6 +218,23 @@ void Hud::setPosicionVida(int x, int y){
     }
 }
 
+void Hud::setPosicionSwitch(int x,int y){
+    xVida = x;
+    yVida = y;
+    sprite_switch->setPosition(x,y);
+    arma->setPosition(sprite_switch->getPosition().x + sprite_switch->getGlobalBounds().width + 3, sprite_switch->getPosition().y);
+    tecla_switch->setPosition(sprite_switch->getPosition().x - sprite_switch->getGlobalBounds().width, sprite_switch->getPosition().y - 1);
+
+}
+
+void Hud::cambiaArma(int n){
+    if(n == 0)
+        arma->setTexture(*espada);
+    else{
+        arma->setTexture(*baston);
+    }
+}
+
 void Hud::setPosicionHabilidades(int x, int y){
     xHab = x;
     yHab = y;
@@ -247,6 +283,9 @@ void Hud::draw(RenderWindow& target){
     target.draw(*pieza_vida);
     target.draw(*texto_vida);
     target.draw(*pieza_habilidades);
+    target.draw(*tecla_switch);
+    target.draw(*arma);
+    target.draw(*sprite_switch);
 
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
@@ -262,6 +301,10 @@ void Hud::draw(RenderWindow& target){
 void Hud::move(Vector2f delta){
     pieza_vida->move(delta);
     texto_vida->move(delta);
+
+    tecla_switch->move(delta);
+    arma->move(delta);
+    sprite_switch->move(delta);
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
         cantidad_corazones->at(i).move(delta);

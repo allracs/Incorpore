@@ -17,7 +17,9 @@ public:
     void borradoHabilidades();
 
     void setPosicionVida(int, int);
+    void setPosicionSwitch(int, int);
     void setPosicionHabilidades(int, int);
+    void cambiaArma(int);
 
     Sprite getCorazon();
     Text getTextoVida();
@@ -32,9 +34,13 @@ public:
     void move(Vector2f);
 private:
     Text *texto_vida;
+    Text *tecla_switch;
     Font *fuente;
     Sprite* pieza_habilidades;
     Texture* habilidades;
+    Texture* baston;
+    Texture* espada;
+    Texture* textureSwitch;
     Sprite * pieza_vida;
     Texture* vida;
     //RectangleShape * pieza_habilidades;
@@ -48,7 +54,8 @@ private:
     Sprite *mana;
     Sprite *mejora_cofre;
     Sprite *espada_magica;
-
+    Sprite *sprite_switch;
+    Sprite *arma;
     bool mejora_escudo_esta = false;
     bool mejora_ataque_esta = false;
     bool rompe_escudos_esta = false;

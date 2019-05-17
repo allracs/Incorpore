@@ -48,7 +48,8 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
 
 }
 
-void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
+int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
+    int cambia = -1;
 
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
     actual->sprite.setScale(1.f*(arma->getDireccionMov()), 1.f);
@@ -72,7 +73,7 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
 
     //Tecla para activar el ataque a distancia
-    if(Keyboard::isKeyPressed(Keyboard::K)){
+    if(Keyboard::isKeyPressed(Keyboard::Q)){
         if(CDarma.getElapsedTime().asSeconds()>=2.f){
             CDarma.restart();
             if(arma->getOpcion()==0){
@@ -80,9 +81,10 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
             } else {
                 cambiarArma(0);
             }
+            cambia = arma->getOpcion();
         }
     }
-
+    return cambia;
 }
 
 bool Jugador::cogePortal(FloatRect portal){
