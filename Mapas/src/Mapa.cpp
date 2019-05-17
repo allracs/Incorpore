@@ -12,12 +12,14 @@ Mapa::Mapa(){
     srand(time(NULL));
     int random = rand() % 3 +1; //Un random del 1 al 2 (no existe el caso 0)
     leerMapa(random);
-    cargaObjetos();
+    if(tipo != 4)
+        cargaObjetos();
     setDatos();
     //getDatos();
     cargaTexturas();
     creaSprite();
-    posicionaObjetos();
+    if(tipo != 4)
+        posicionaObjetos();
     colisiones();
     //mostrarMapaColisiones();
 }
@@ -89,7 +91,6 @@ void Mapa::cargaObjetos(){
 
 void Mapa::leerMapa(int n){
     tipo = 0;
-    n= 3;
     switch(n){
         case 1:
             docXML.LoadFile("resources/tmx/Mapa.tmx");
@@ -104,7 +105,7 @@ void Mapa::leerMapa(int n){
             tipo = 3;
             break;
         case 4:
-            docXML.LoadFile("resources/tmx/Mapa_Boss.tmx");
+            docXML.LoadFile("resources/tmx/MapaBoss.tmx");
             tipo = 4;
             break;
         default:
@@ -436,6 +437,9 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 if(mapSprite[l][y][x]!=NULL){
+                    if(tipo == 4){
+                        player.draw(target);
+                    }
                     target.draw(*(mapSprite[l][y][x]));
                     if(l == 3){
                         player.draw(target);
