@@ -206,10 +206,7 @@ void Juego::update()
                     cargarHUD();
                     //std::cout<< jugador->getVidas()<<std::endl;
                 }
-
             }
-
-
         }
 
         if(!centrado) {
@@ -229,6 +226,7 @@ void Juego::update()
 
 
         }
+        frameClock.restart();
 }
 
 

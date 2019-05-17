@@ -1,11 +1,12 @@
 #include <iostream>
 #include "../include/Jugador.h"
+
 using namespace std;
 using namespace sf;
 
 Jugador::Jugador(Vector2f pos){
     entityCenter = pos;
-    mostrarTumba=false;
+    mostrarTumba = false;
     entidadHitbox.setPosition(pos);
     setColisionadores();
     vidas = 10;
@@ -21,7 +22,7 @@ Jugador::Jugador(Vector2f pos){
     actual = &idle;
     actual->sprite.setPosition(pos);
 
-    arma = new Arma(1, pos);
+    arma = new Arma(0, pos);
 
 }
 
@@ -31,7 +32,7 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
     entidadHitbox.setPosition(pos);
     setColisionadores();
     vidas = vida;
-    dirMov = 1.f;
+    dirMov = 0.6f;
     movement = Vector2f(0.f, 0.f);
 
     // Animaciones
@@ -52,11 +53,8 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
     actual->sprite.setScale(1.f*(arma->getDireccionMov()), 1.f);
     // MOVIMIENTO con interpolacion
-    if(cInterp.getElapsedTime().asMilliseconds() >= 1000/15)
-    {
-        moverse(); // comprobar que el jugador se mueve
-        cInterp.restart();
-    }
+
+    moverse(); // comprobar que el jugador se mueve
     //atacar();
     entidadHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);// mover la hitbox con la que el jugador ataca
@@ -67,27 +65,6 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
     procesarColisiones(nCol, colisiones);
 
     actual->update(movement, delta);
-
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-        arma->crearProyectil(entidadHitbox.getPosition());
-    }
-
-
-    //Tecla para activar el ataque a distancia
-    if(Keyboard::isKeyPressed(Keyboard::K)){
-        if(CDarma.getElapsedTime().asSeconds()>=2.f){
-            CDarma.restart();
-            if(arma->getOpcion()==0){
-                cambiarArma(1);
-            } else {
-                cambiarArma(0);
-            }
-        }
-    }
-
-    if(Keyboard::isKeyPressed(Keyboard::M)){
-            muerteJugador();
-    }
 
 }
 
@@ -110,39 +87,7 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
     if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5 && vida > 0){
         res = true;
         vidas--;
-        if(vidas > 0){/* RETROCESO
-            //colisiona por la derecha
-            if(playerCenter.x > enemyPos.x){
-                actual->sprite.move(8,0);
-                entidadHitbox.move(8,0);
-                moverColisionadores({8,0});
-            }
-            //colisiona por la izquierda
-            if(playerCenter.x < enemyPos.x){
-                 actual->sprite.move(-8,0);
-                 entidadHitbox.move(-8,0);
-                 moverColisionadores({-8,0});
-            }
-            //colisiona por arriba
-            if(playerCenter.y < enemyPos.y){
-                actual->sprite.move(0,-8);
-                entidadHitbox.move(0,-8);
-                moverColisionadores({0,-8});
-            }
-            //colisiona por debajo
-            if(playerCenter.y > enemyPos.y){
-                actual->sprite.move(0,8);
-                entidadHitbox.move(0,8);
-                moverColisionadores({0,8});
-            }*/
-        }
-        /*
-        else{
-            //Muerto
-            cout << "HAS PALMAO, FIN DE LA PARTIDA." << endl; //Cambiar por retorno a menu
-            exit(0);
-        }
-        */
+
 
         dmgCD.restart();
     }

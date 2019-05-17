@@ -41,13 +41,13 @@ void Entidad::setColision(int num){
 
 void Entidad::setColisionadores(){
     cuadrado_arr->setSize(Vector2f(11, 0.75));
-    cuadrado_arr->setPosition(entidadHitbox.getGlobalBounds().left + 1.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 - 0.5);
+    cuadrado_arr->setPosition(entidadHitbox.getGlobalBounds().left + 1.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 - 1.5);
     cuadrado_izq->setSize(Vector2f(0.75, 5.5));
-    cuadrado_izq->setPosition(entidadHitbox.getGlobalBounds().left, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 0.99);
+    cuadrado_izq->setPosition(entidadHitbox.getGlobalBounds().left - 1, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 0.99);
     cuadrado_abj->setSize(Vector2f(11, 0.75));
-    cuadrado_abj->setPosition(entidadHitbox.getGlobalBounds().left + 1.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height + 1.5);
+    cuadrado_abj->setPosition(entidadHitbox.getGlobalBounds().left + 1.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height + 2);
     cuadrado_der->setSize(Vector2f(0.75, 5.5));
-    cuadrado_der->setPosition(entidadHitbox.getGlobalBounds().left + entidadHitbox.getGlobalBounds().width - 0.5, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 0.99);
+    cuadrado_der->setPosition(entidadHitbox.getGlobalBounds().left + entidadHitbox.getGlobalBounds().width, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 + 0.99);
 }
 
 void Entidad::moverColisionadores(Vector2f mov){
@@ -136,13 +136,13 @@ void Entidad::draw(RenderWindow& target) {
 }
 
 void Entidad::drawBoundingBoxes(RenderWindow& target){
-    /*
-    target.draw(*cuadrado_der);
-    target.draw(*cuadrado_arr);
-    target.draw(*cuadrado_abj);
-    target.draw(*cuadrado_izq);
+
+    //target.draw(*cuadrado_der);
+    //target.draw(*cuadrado_arr);
+    //target.draw(*cuadrado_abj);
+    //target.draw(*cuadrado_izq);
     //target.draw(*cuadrado_cen);
-    */
+
 }
 
 void Entidad::showData(){
