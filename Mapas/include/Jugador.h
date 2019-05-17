@@ -17,6 +17,7 @@ using namespace sf;
 class Jugador: public Entidad{
     public:
         Jugador(Vector2f pos);
+        Jugador(Vector2f pos, int);
 
         void update(float, RenderWindow&, int, FloatRect*);
         void moverse();

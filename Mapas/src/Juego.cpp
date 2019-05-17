@@ -165,7 +165,14 @@ void Juego::update()
         else{
             mapa->generaPortales();
             if(jugador->cogePortal(mapa->getBoundsPortales())){
-                std::cout << "COMPAÑEROS DE MAQUINA DE ESTADOS, METEDME TRANSICIÓN" << std::endl;
+                entraPortales = true;
+                pausa = false;
+                reintentar = false;
+                delete mapa;
+                cargaMapa();
+                cargaPlayer();
+                cargarHUD();
+                //std::cout<< jugador->getVidas()<<std::endl;
             }
         }
 
@@ -187,9 +194,19 @@ void Juego::update()
         }
 }
 
+
 void Juego::cargaPlayer(){
 
-    jugador = new Jugador(mapa->generaPosicion());
+    if(entraPortales)
+    {
+        std::cout<< jugador->getVidas()<<std::endl;
+        jugador = new Jugador(mapa->generaPosicion(), jugador->getVidas());
+        entraPortales = false;
+    }
+    else
+    {
+        jugador = new Jugador(mapa->generaPosicion());
+    }
 
     for(int i = 0; i < nEnemigos; i++){
         enemigos.push_back(new Enemigo(mapa->generaPosicion()));
@@ -206,7 +223,7 @@ void Juego::cargaMapa(){
 }
 
 void Juego::cargarHUD(){
-    hud = new Hud();
+    hud = new Hud(jugador->getVidas());
     hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 2, view.getCenter().y - dimensiones.y/10 + 2);
     hud->setPosicionHabilidades(view.getCenter().x + 22, view.getCenter().y - 70);
 }

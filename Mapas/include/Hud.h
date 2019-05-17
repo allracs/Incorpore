@@ -1,12 +1,14 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+
+
 using namespace std;
 using namespace sf;
 
 class Hud{
 public:
-    Hud();
+    Hud(int vidas);
     ~Hud();
 
     void compruebaTeclas();
@@ -58,4 +60,5 @@ private:
 
     vector<Sprite> *cantidad_corazones;
     vector<Sprite> *vector_habilidades;
+
 };

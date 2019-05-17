@@ -26,6 +26,44 @@ Mapa::~Mapa(){
     //Destructor
 	delete portalMorado;
 	delete portalVerde;
+
+	delete caja;
+    delete cajadoble;
+    delete columna;
+    delete antorcha;
+    for(int i = 0; i <  nCapas; i++){
+        for(int j = 0; j < height; j++){
+            delete tileMap[i][j];
+        }
+        delete tileMap[i];
+
+    }
+	delete tileMap;
+
+    for(int i = 0; i < height; i++){
+        delete colisionMap[i];
+    }
+    delete colisionMap;
+
+
+    for(int i = 0; i < nCapas; i++){
+        for(int j = 0; j < height; j++){
+            for(int z = 0; z < width; z++){
+                delete mapSprite[i][j][z];
+            }
+            delete mapSprite[i][j];
+        }
+        delete mapSprite[i];
+    }
+    delete mapSprite;
+
+
+    //delete tilesetSprite;
+    delete colision;
+    delete colisionPortales;
+
+
+
 }
 
 void Mapa::cargaObjetos(){
@@ -65,7 +103,7 @@ void Mapa::cargaObjetos(){
 
 void Mapa::leerMapa(int n){
     tipo = 0;
-    n= 3;
+    //n= 3;
     switch(n){
         case 1:
             docXML.LoadFile("resources/tmx/Mapa.tmx");

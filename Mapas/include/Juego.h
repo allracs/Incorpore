@@ -68,4 +68,7 @@ class Juego : public Estado
         sf::Text *textopausa;
         sf::Text *continuar;
         sf::Text *salir;
+
+        //portales
+        bool entraPortales = false;
 };

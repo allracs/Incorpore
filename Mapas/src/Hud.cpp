@@ -3,7 +3,7 @@
 using namespace std;
 using namespace sf;
 
-Hud::Hud(){
+Hud::Hud(int vidas){
     //PIEZA HUD VIDA
     vida = new Texture;
     vida->loadFromFile("resources/hud/abilities.png");
@@ -37,7 +37,7 @@ Hud::Hud(){
 
     cantidad_corazones = new vector<Sprite>;
 
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < vidas; i++)
     {
         cantidad_corazones->push_back(*corazon);
     }

@@ -24,6 +24,28 @@ Jugador::Jugador(Vector2f pos){
 
 }
 
+
+Jugador::Jugador(Vector2f pos, int vida){
+    entityCenter = pos;
+    entidadHitbox.setPosition(pos);
+    setColisionadores();
+    vidas = vida;
+    dirMov = 1.f;
+    movement = Vector2f(0.f, 0.f);
+
+    // Animaciones
+    idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28, 16, 28), IntRect(48, 28, 16, 28), 16, 0.1f);
+    idle.sprite.setOrigin(9,20);
+    run.setAnimacion("resources/sprites/personajes.png", IntRect(64, 28, 16, 28), IntRect(112, 28, 16, 28), 16, 0.1f);
+    run.sprite.setOrigin(9,20);
+
+    actual = &idle;
+    actual->sprite.setPosition(pos);
+
+    arma = new Arma(1, pos);
+
+}
+
 void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
     actual->sprite.setScale(1.f*(arma->getDireccionMov()), 1.f);
