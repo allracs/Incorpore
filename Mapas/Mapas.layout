@@ -2,102 +2,132 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="src/Juego.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Animacion.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6965" topLine="195" />
-		</Cursor>
-		<Folding>
-			<Collapse line="189" />
-		</Folding>
-	</File>
-	<File name="src/Portal.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1519" topLine="25" />
+			<Cursor1 position="379" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include/Animacion.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Antorcha.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="618" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/MaquinaEstados.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1342" topLine="24" />
-		</Cursor>
-	</File>
-	<File name="src/Enemigo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2053" topLine="31" />
-		</Cursor>
-	</File>
-	<File name="include/Arma.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1170" topLine="8" />
-		</Cursor>
-	</File>
-	<File name="include/MaquinaEstados.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="925" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include/Estado.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="283" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/Proyectil.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="139" topLine="0" />
+			<Cursor1 position="376" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src/Animacion.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1130" topLine="14" />
+			<Cursor1 position="1188" topLine="28" />
 		</Cursor>
 	</File>
-	<File name="include/Entidad.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Hud.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="8" />
+			<Cursor1 position="6071" topLine="205" />
+		</Cursor>
+	</File>
+	<File name="src/Entidad.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="118" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/Arma.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="878" topLine="38" />
+		</Cursor>
+	</File>
+	<File name="src/Juego.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4769" topLine="150" />
+		</Cursor>
+	</File>
+	<File name="include/Mapa.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="129" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/Posicion.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="include/Entidad.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="855" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include/Jugador.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="863" topLine="0" />
+			<Cursor1 position="37" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Arma.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/main.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2350" topLine="75" />
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Entidad.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="resources/tmx/Mapa2.tmx" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="102" />
+			<Cursor1 position="14952" topLine="642" />
+		</Cursor>
+	</File>
+	<File name="include/Hud.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="655" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/Antorcha.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="297" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="resources/tmx/Mapa.tmx" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="467" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include/Enemigo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="944" topLine="0" />
+			<Cursor1 position="576" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Jugador.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="resources/tmx/Mapa3.tmx" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7503" topLine="214" />
+			<Cursor1 position="12776" topLine="540" />
 		</Cursor>
 	</File>
-	<File name="src/Mapa.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Arma.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1923" topLine="12" />
+			<Cursor1 position="525" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include/Juego.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Enemigo.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="674" topLine="9" />
+			<Cursor1 position="4533" topLine="14" />
+		</Cursor>
+		<Folding>
+			<Collapse line="58" />
+		</Folding>
+	</File>
+	<File name="src/Astar.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="685" />
 		</Cursor>
 	</File>
-	<File name="src/Aplicacion.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Jugador.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="383" topLine="0" />
+			<Cursor1 position="5013" topLine="125" />
+		</Cursor>
+	</File>
+	<File name="include/Juego.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="724" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="include/MaquinaEstados.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="265" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/Mapa.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6491" topLine="207" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

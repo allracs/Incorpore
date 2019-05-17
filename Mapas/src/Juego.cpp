@@ -119,6 +119,9 @@ void Juego::update()
         procesarEventos();
         delta = frameClock.restart().asSeconds();
 
+        for(int i = 0; i < mapa->getAntorchas().size(); i++){
+            mapa->getAntorchas().at(i)->update();
+        }
         if(pausa == false)
         {
         jugador->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds());

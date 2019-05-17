@@ -54,7 +54,10 @@ Mapa::~Mapa(){
     }
     delete mapSprite;
 
-
+    for(int i = 0; i < antorchas.size(); i++){
+        delete antorchas.at(i);
+    }
+    antorchas.clear();
     //delete tilesetSprite;
     delete colision;
    // delete colisionPortales;
@@ -243,7 +246,7 @@ void Mapa::posicionaObjetos(){
             if(colisionMap[i][j] == false && nObj < maxObj){
                 int random = rand() % 100;
                 //cout << random << endl;
-                if(random < 5 &&
+                if(random < 25 &&
                    colisionMap[i-1][j-1] == false &&
                    colisionMap[i][j-1] == false &&
                    colisionMap[i+1][j-1] == false &&
@@ -293,11 +296,16 @@ void Mapa::generaObjetos(int j, int k, int no){
         int random = rand() % 100;
         if(random >= 0 && random < 30){
             //Antorcha
-            mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
-            mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
+            posAnt.x = k*tilewidth;
+            posAnt.y = j*tileheight;
+            antorchas.push_back(new Antorcha(posAnt));
+            cout << "Jaja: " << k << ", " << j << endl;
 
-            mapSprite[6][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-            mapSprite[6][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
+            //mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
+            //mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
+
+            //mapSprite[6][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
+            //mapSprite[6][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
             nColisiones++;
         }
@@ -419,6 +427,10 @@ FloatRect* Mapa::getBounds(){
     return colision;
 }
 
+vector<Antorcha*> Mapa::getAntorchas(){
+    return antorchas;
+}
+
 void Mapa::mostrarMapaColisiones(){
     cout << endl << "Mapa de colisiones:" << endl;
     cout <<  "------------------------" << endl;
@@ -442,6 +454,14 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
 
                         for(int i = 0; i < nEnemigos; i++){
                             enemigos.at(i)->draw(target);
+                        }
+                    } else if(l == 2){
+                        for(int i = 0; i < antorchas.size(); i++){
+                            antorchas.at(i)->draw(target);
+                        }
+                    } else if(l == 6){
+                        for(int i = 0; i < antorchas.size(); i++){
+                            antorchas.at(i)->drawFire(target);
                         }
                     }
                 }
