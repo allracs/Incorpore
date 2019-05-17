@@ -66,6 +66,23 @@ void Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
     actual->update(movement, delta);
 
+     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+        arma->crearProyectil(entidadHitbox.getPosition());
+    }
+
+
+    //Tecla para activar el ataque a distancia
+    if(Keyboard::isKeyPressed(Keyboard::K)){
+        if(CDarma.getElapsedTime().asSeconds()>=2.f){
+            CDarma.restart();
+            if(arma->getOpcion()==0){
+                cambiarArma(1);
+            } else {
+                cambiarArma(0);
+            }
+        }
+    }
+
 }
 
 bool Jugador::cogePortal(FloatRect portal){
