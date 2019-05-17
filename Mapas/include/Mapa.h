@@ -48,7 +48,7 @@ class Mapa{
         int width, height, tilewidth, tileheight, gid;
         int nObj, maxObj;
         int cofre, calavera, pocion, pocionmini;
-        int *antorcha, *caja, *cajadoble, *columna, *portalVerde, *portalMorado;
+        int *antorcha, *caja, *cajadoble, *columna;
         int nColisiones;
 
         int nCapas = 0; //Numero de capas del tileset

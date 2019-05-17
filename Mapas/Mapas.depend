@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
 0 <<<<<<< HEAD
 
+<<<<<<< HEAD
 0 <<<<< Updated upstream
 
 1558095595 
@@ -130,6 +131,27 @@
 	<stdlib.h>
 	<vector>
 	"Enemigo.h"
+=======
+<<<<<<< HEAD
+0 <<<<< Updated upstream
+
+1558091498 
+
+1558101374 shed changes
+	<SFML/Graphics.hpp>
+	<iostream>
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+1558095595 
+=======
+1558091498 
+>>>>>>> Stashed changes
+=======
+1558095595 
+>>>>>>> Stashed changes
+>>>>>>> mapa-colisiones
+>>>>>>> mapa-colisiones
 
 1554842322 source:/home/david/Documentos/incorpore/Mapas/game.cpp
 	"game.h"
@@ -354,7 +376,11 @@
 1554915439 source:/home/david/Documentos/Incorpore/Mapas/entidad.cpp
 	"entidad.h"
 
+<<<<<<< HEAD
 1558101374 "
+=======
+1558101917 "
+>>>>>>> mapa-colisiones
 	<algorithm>
 	<math.h>
 	"../include/Astar.h"
@@ -513,7 +539,7 @@
 	<SFML/Graphics.hpp>
 	<vector>
 
-1558101917 /home/david/Documentos/Incorpore/Mapas/include/Mapa.h
+1558103352 /home/david/Documentos/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
@@ -527,7 +553,7 @@
 
 1558091498 e/Hud.h"
 
-1558102316 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
+1558104517 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -552,7 +578,7 @@
 	<iostream>
 	<vector>
 
-1558102279 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1558104474 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -573,7 +599,7 @@
 	"Estado.h"
 	"Portal.h"
 
-1558101917 /home/david/Documentos/Incorpore/Mapas/include/Jugador.h
+1558102768 /home/david/Documentos/Incorpore/Mapas/include/Jugador.h
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
@@ -583,7 +609,7 @@
 	"Arma.h"
 	"Proyectil.h"
 
-1558101917 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
+1558102768 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
@@ -808,6 +834,7 @@
 	<SFML/Graphics.hpp>
 	<SFML/Graphics.hpp>
 	"Animacion.h"
+<<<<<<< HEAD
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -824,6 +851,13 @@
 	<stdint.h>
 	<android/log.h>
 	<assert.h>
+=======
+>>>>>>> Stashed changes
+	"Proyectil.h"
+	<SFML/Graphics.hpp>
+	"Animacion.h"
+	"Proyectil.h"
+>>>>>>> mapa-colisiones
 
 1558091498 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
@@ -1046,7 +1080,16 @@
 	"Proyectil.h"
 
 1558101374 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Mapa.h
+<<<<<<< HEAD
+=======
 	"tinyxml2.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+>>>>>>> mapa-colisiones
+	"tinyxml2.h"
+	"Entidad.h"
+	"Jugador.h"
+	"Enemigo.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 	"tinyxml2.h"
@@ -1103,6 +1146,20 @@
 	"Enemigo.h"
 
 1557996422 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/tinyxml2.h
+	<ctype.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stddef.h>
+	<cctype>
+	<climits>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<stdint.h>
+	<android/log.h>
+	<assert.h>
 	<ctype.h>
 	<limits.h>
 	<stdio.h>
@@ -1311,6 +1368,8 @@
 	"../include/Entidad.h"
 	<iostream>
 	"../include/Entidad.h"
+<<<<<<< HEAD
+=======
 	<iostream>
 
 1558102323 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Jugador.cpp
@@ -1320,6 +1379,117 @@
 	"../include/Jugador.h"
 	<iostream>
 	"../include/Jugador.h"
+	<iostream>
+	"../include/Jugador.h"
+	<iostream>
+	"../include/Jugador.h"
+	<iostream>
+	"../include/Jugador.h"
+>>>>>>> mapa-colisiones
+	<iostream>
+
+1558102323 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Jugador.cpp
+	<iostream>
+	"../include/Jugador.h"
+	<iostream>
+	"../include/Jugador.h"
+	<iostream>
+	"../include/Jugador.h"
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+1558101374 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Mapa.cpp
+=======
+1558091498 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Mapa.cpp
+<<<<<<< Updated upstream
+=======
+>>>>>>> mapa-colisiones
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+>>>>>>> Stashed changes
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+
+<<<<<<< HEAD
+1558102561 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Juego.cpp
+=======
+1558095129 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Juego.cpp
+<<<<<<< Updated upstream
+>>>>>>> mapa-colisiones
+	"../include/Juego.h"
+=======
+>>>>>>> Stashed changes
+	"../include/Juego.h"
+	"../include/Astar.h"
+	"../include/Posicion.h"
+	<vector>
+	<iostream>
+	"../include/Juego.h"
+	"../include/Astar.h"
+	"../include/Posicion.h"
+	<vector>
+	<iostream>
+	"../include/Juego.h"
+	"../include/Astar.h"
+	"../include/Posicion.h"
+	<vector>
+	<iostream>
+	"../include/Juego.h"
+	"../include/Astar.h"
+	"../include/Posicion.h"
+	<vector>
+>>>>>>> mapa-colisiones
 	<iostream>
 	"../include/Jugador.h"
 	<iostream>
@@ -1343,6 +1513,13 @@
 	"math.h"
 
 1558102561 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Juego.cpp
+	"../include/Juego.h"
+	"../include/Astar.h"
+	"../include/Posicion.h"
+	"../include/Menu.h"
+	"../include/MaquinaEstados.h"
+	<vector>
+	<iostream>
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -1793,7 +1970,7 @@
 	"Enemigo.h"
 	"Proyectil.h"
 
-1558101917 source:/home/david/Documentos/Incorpore/Mapas/src/Arma.cpp
+1558102768 source:/home/david/Documentos/Incorpore/Mapas/src/Arma.cpp
 	"../include/Arma.h"
 
 1558104616 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Arma.h
@@ -2544,9 +2721,29 @@
 	"Proyectil.h"
 	<iostream>
 
+<<<<<<< HEAD
 1558092951 /home/david/Documentos/Incorpore/Mapas/include/Portal.h
+=======
+1558101917 ated upstream
+	"Enemigo.h"
 
-1558102182 source:/home/david/Documentos/Incorpore/Mapas/src/Portal.cpp
+<<<<<<< HEAD
+1558101917 /home/david/Documentos/Incorpore/Mapas/include/Portal.h
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+1558101917 /home/david/Documentos/Incorpore/Mapas/include/Portal.h
+=======
+=======
+>>>>>>> Stashed changes
+1558092951 /home/david/Documentos/Incorpore/Mapas/include/Portal.h
+>>>>>>> Stashed changes
+>>>>>>> mapa-colisiones
+	<SFML/Graphics.hpp>
+	<iostream>
+>>>>>>> mapa-colisiones
+
+1558103808 source:/home/david/Documentos/Incorpore/Mapas/src/Portal.cpp
 	"Portal.h"
 
 1558094125 /home/carlos/Escritorio/Incorpore/Mapas/include/Portal.h
@@ -2566,6 +2763,15 @@
 1558095595 source:/home/carlos/Escritorio/Incorpore/Mapas/src/Portal.cpp
 	"Portal.h"
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+1558095177 shed changes
+
+<<<<<<< Updated upstream
+>>>>>>> mapa-colisiones
+>>>>>>> mapa-colisiones
 1558101917 source:/home/david/Documentos/Incorpore/Mapas/src/Bala.cpp
 	"Bala.h"
 
@@ -2574,6 +2780,82 @@
 	<iostream>
 	<stdlib.h>
 	<vector>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+	"Enemigo.h"
+=======
+	<algorithm>
+	<math.h>
+	"../include/Astar.h"
+	"../include/Posicion.h"
+
+1557996422 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Astar.h
+	<vector>
+	<string>
+	"Posicion.h"
+
+1557996422 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Posicion.h
+
+1557996422 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Consumible.cpp
+	"../include/Consumible.h"
+
+1557996422 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Consumible.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"time.h"
+
+1558085664 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Enemigo.cpp
+	"../include/Enemigo.h"
+	"Proyectil.h"
+
+1558084636 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Enemigo.h
+	"Entidad.h"
+	"Posicion.h"
+	"Proyectil.h"
+	<iostream>
+	<vector>
+
+1558091498 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Entidad.h
+	<SFML/Graphics.hpp>
+	"Animacion.h"
+	"Proyectil.h"
+
+1558101475 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Animacion.h
+	<SFML/Graphics.hpp>
+
+1558091498 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Proyectil.h
+	<SFML/Graphics.hpp>
+
+1557996422 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Entidad.cpp
+	"../include/Entidad.h"
+	<iostream>
+
+1557996422 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Estado.cpp
+	"Estado.h"
+
+1558091498 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Hud.cpp
+	<SFML/Graphics.hpp>
+	"../include/Hud.h"
+
+1558091498 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Hud.h
+	<SFML/Graphics.hpp>
+	<vector>
+
+1557996422 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/main.cpp
+	<iostream>
+	<SFML/Graphics.hpp>
+	"../include/Aplicacion.h"
+
+1558101374 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Mapa.cpp
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+>>>>>>> mapa-colisiones
 
 1558101673 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Portal.h
 	<SFML/Graphics.hpp>
@@ -2588,12 +2870,28 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
+<<<<<<< HEAD
 1557996426 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Bala.cpp
 	"Bala.h"
+=======
+1558101374 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Juego.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	"Jugador.h"
+	"Enemigo.h"
+	"Arma.h"
+	"Hud.h"
+	"Mapa.h"
+	"Consumible.h"
+	"Estado.h"
+	"Portal.h"
+>>>>>>> mapa-colisiones
+>>>>>>> mapa-colisiones
 
 1557996426 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Bala.h
 	<SFML/Graphics.hpp>
 	<iostream>
+<<<<<<< HEAD
 	<stdlib.h>
 	<vector>
 	"Enemigo.h"
@@ -2605,6 +2903,10 @@
 	"Portal.h"
 
 1558101218 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Bala.cpp
+=======
+
+1557996426 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Bala.cpp
+>>>>>>> mapa-colisiones
 	"Bala.h"
 
 1558101218 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Bala.h
@@ -2614,10 +2916,26 @@
 	<vector>
 	"Enemigo.h"
 
+<<<<<<< HEAD
 1558101218 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Portal.h
 	<SFML/Graphics.hpp>
 	<iostream>
+=======
+1558101374 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Portal.cpp
+	"Portal.h"
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+=======
+	<vector>
+	"Enemigo.h"
+>>>>>>> mapa-colisiones
 
 1558104616 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Portal.cpp
 	"Portal.h"
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> mapa-colisiones
+>>>>>>> mapa-colisiones
 
