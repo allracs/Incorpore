@@ -9,15 +9,19 @@ Hud::Hud(int vidas){
     baston = new Texture;
     espada = new Texture;
     textureSwitch = new Texture;
+    textureEsquivar = new Texture;
 
     vida->loadFromFile("resources/hud/abilities.png");
     baston->loadFromFile("resources/hud/baston.png");
     espada->loadFromFile("resources/hud/sword.png");
     textureSwitch->loadFromFile("resources/hud/change.png");
+    textureEsquivar->loadFromFile("resources/hud/dodge.png");
 
     pieza_vida = new Sprite(*vida);
     sprite_switch = new Sprite(*textureSwitch);
     sprite_switch->setScale(0.2,0.2);
+    sprite_esquivar = new Sprite(*textureEsquivar);
+    sprite_esquivar->setScale(0.75,0.75);
     arma = new Sprite(*baston);
     arma->setScale(0.75,0.75);
 
@@ -41,6 +45,12 @@ Hud::Hud(int vidas){
     tecla_switch->setFont(*fuente);
     tecla_switch->setString("Q");
     tecla_switch->setScale(0.3, 0.3);
+
+    //Indicador esquivar
+    tecla_esquivar = new Text;
+    tecla_esquivar->setFont(*fuente);
+    tecla_esquivar->setString("LShift");
+    tecla_esquivar->setScale(0.3, 0.3);
 
 
     //ARRAY DE CORAZONES
@@ -226,6 +236,11 @@ void Hud::setPosicionSwitch(int x,int y){
     arma->setPosition(sprite_switch->getPosition().x + sprite_switch->getGlobalBounds().width + 3, sprite_switch->getPosition().y);
     tecla_switch->setPosition(sprite_switch->getPosition().x - sprite_switch->getGlobalBounds().width, sprite_switch->getPosition().y - 1);
 
+
+    //Esquivar
+    sprite_esquivar->setPosition(x-35,y);
+    tecla_esquivar->setPosition(sprite_switch->getPosition().x - sprite_switch->getGlobalBounds().width - 50, sprite_switch->getPosition().y - 1);
+
 }
 
 void Hud::cambiaArma(int n){
@@ -245,6 +260,7 @@ void Hud::setPosicionHabilidades(int x, int y){
        vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + (i*15.5),pieza_habilidades->getPosition().y});
     }
 }
+
 
 //GETTERS
 
@@ -287,6 +303,8 @@ void Hud::draw(RenderWindow& target){
     target.draw(*tecla_switch);
     target.draw(*arma);
     target.draw(*sprite_switch);
+    target.draw(*tecla_esquivar);
+    target.draw(*sprite_esquivar);
 
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
@@ -302,6 +320,9 @@ void Hud::draw(RenderWindow& target){
 void Hud::move(Vector2f delta){
     pieza_vida->move(delta);
     texto_vida->move(delta);
+
+    tecla_esquivar->move(delta);
+    sprite_esquivar->move(delta);
 
     tecla_switch->move(delta);
     arma->move(delta);

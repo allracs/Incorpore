@@ -2632,11 +2632,11 @@
 1557314233 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Estado.cpp
 	"Estado.h"
 
-1558199856 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Hud.cpp
+1558203348 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
-1558172506 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Hud.h
+1558202566 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
@@ -2680,7 +2680,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1558200453 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Jugador.cpp
+1558203386 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 

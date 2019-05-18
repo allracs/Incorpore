@@ -35,12 +35,14 @@ public:
 private:
     Text *texto_vida;
     Text *tecla_switch;
+    Text *tecla_esquivar;
     Font *fuente;
     Sprite* pieza_habilidades;
     Texture* habilidades;
     Texture* baston;
     Texture* espada;
     Texture* textureSwitch;
+    Texture* textureEsquivar;
     Sprite * pieza_vida;
     Texture* vida;
     //RectangleShape * pieza_habilidades;
@@ -55,6 +57,7 @@ private:
     Sprite *mejora_cofre;
     Sprite *espada_magica;
     Sprite *sprite_switch;
+    Sprite *sprite_esquivar;
     Sprite *arma;
     bool mejora_escudo_esta = false;
     bool mejora_ataque_esta = false;

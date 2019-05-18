@@ -165,19 +165,19 @@ void Jugador::esquivarInicio(){
         puedeEsquivar=false;
         cdEsquivar.restart();
         duracionEsquivar.restart();
-        std::cout<<"Esquivar ha empezado"<<std::endl;
+       // std::cout<<"Esquivar ha empezado"<<std::endl;
      }
 }
 
 void Jugador::controlarEsquivar(){
     if(duracionEsquivar.getElapsedTime().asSeconds()>=2.f){
-        std::cout<<"Esquivar ha terminado"<<std::endl;
+        //std::cout<<"Esquivar ha terminado"<<std::endl;
         esquivando=false;
         speed=75.f;
     }
     if(cdEsquivar.getElapsedTime().asSeconds()>=5.f){
         puedeEsquivar=true;
-        std::cout<<"Cooldown ha terminado"<<std::endl;
+        //std::cout<<"Cooldown ha terminado"<<std::endl;
     }
     if(esquivando){
         actual->sprite.setColor(sf::Color(105,105,105, 50));
