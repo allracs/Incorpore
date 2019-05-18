@@ -10,12 +10,16 @@ Hud::Hud(int vidas){
     espada = new Texture;
     textureSwitch = new Texture;
     textureEsquivar = new Texture;
+    teclaEsquivar = new Texture;
+    teclaSwitch = new Texture;
 
     vida->loadFromFile("resources/hud/abilities.png");
     baston->loadFromFile("resources/hud/baston.png");
     espada->loadFromFile("resources/hud/sword.png");
     textureSwitch->loadFromFile("resources/hud/change.png");
     textureEsquivar->loadFromFile("resources/hud/dodge.png");
+    teclaEsquivar->loadFromFile("resources/hud/shift.png");
+    teclaSwitch->loadFromFile("resources/hud/q.png");
 
     pieza_vida = new Sprite(*vida);
     sprite_switch = new Sprite(*textureSwitch);
@@ -32,7 +36,7 @@ Hud::Hud(int vidas){
     pieza_vida->scale(0.21, 0.15);
 
 
-    //TEXTO DE VIDA
+    // TEXTO DE VIDA
     texto_vida = new Text;
     fuente = new Font;
     fuente->loadFromFile("resources/hud/coolvetica.ttf");
@@ -40,17 +44,16 @@ Hud::Hud(int vidas){
     texto_vida->setString("HP");
     texto_vida->setScale(0.25, 0.25);
 
+
+
     //Switch Arma
-    tecla_switch = new Text;
-    tecla_switch->setFont(*fuente);
-    tecla_switch->setString("Q");
-    tecla_switch->setScale(0.3, 0.3);
+
+    tecla_switch = new Sprite(*teclaSwitch);
+    tecla_switch->setScale(0.5, 0.5);
 
     //Indicador esquivar
-    tecla_esquivar = new Text;
-    tecla_esquivar->setFont(*fuente);
-    tecla_esquivar->setString("LShift");
-    tecla_esquivar->setScale(0.3, 0.3);
+    tecla_esquivar = new Sprite(*teclaEsquivar);
+    tecla_esquivar->setScale(0.5, 0.5);
 
 
     //ARRAY DE CORAZONES
@@ -234,12 +237,12 @@ void Hud::setPosicionSwitch(int x,int y){
     yVida = y;
     sprite_switch->setPosition(x,y);
     arma->setPosition(sprite_switch->getPosition().x + sprite_switch->getGlobalBounds().width + 3, sprite_switch->getPosition().y);
-    tecla_switch->setPosition(sprite_switch->getPosition().x - sprite_switch->getGlobalBounds().width, sprite_switch->getPosition().y - 1);
+    tecla_switch->setPosition(sprite_switch->getPosition().x - sprite_switch->getGlobalBounds().width - 8, sprite_switch->getPosition().y - 3);
 
 
     //Esquivar
-    sprite_esquivar->setPosition(x-35,y);
-    tecla_esquivar->setPosition(sprite_switch->getPosition().x - sprite_switch->getGlobalBounds().width - 50, sprite_switch->getPosition().y - 1);
+    sprite_esquivar->setPosition(x-45,y);
+    tecla_esquivar->setPosition(sprite_switch->getPosition().x - sprite_switch->getGlobalBounds().width - 60, sprite_switch->getPosition().y - 3);
 
 }
 
