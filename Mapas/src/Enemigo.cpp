@@ -292,6 +292,7 @@ bool Enemigo::serAtacado(sf::RectangleShape hitbox){
         std::cout<<"Tiene de vida: "<<vida<<std::endl;
         if(vida==0){
             deleteSprite = true;
+            muerteEntidad();
             std::cout<<"Ha sido matado"<<std::endl;
         }
     }
@@ -315,6 +316,8 @@ void Enemigo::draw(sf::RenderWindow &app) {
     if(!deleteSprite){
         app.draw(entidadHitbox);
         app.draw(actual->sprite);
+    } else {
+        app.draw(tumba);
     }
 }
 

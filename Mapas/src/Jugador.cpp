@@ -84,6 +84,8 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
             cambia = arma->getOpcion();
         }
     }
+    compruebaColor();
+
     return cambia;
 }
 
@@ -106,6 +108,40 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
     if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5 && vida > 0){
         res = true;
         vidas--;
+        actual->sprite.setColor(sf::Color::Red);
+        if(vidas > 0){/* RETROCESO
+            //colisiona por la derecha
+            if(playerCenter.x > enemyPos.x){
+                actual->sprite.move(8,0);
+                entidadHitbox.move(8,0);
+                moverColisionadores({8,0});
+            }
+            //colisiona por la izquierda
+            if(playerCenter.x < enemyPos.x){
+                 actual->sprite.move(-8,0);
+                 entidadHitbox.move(-8,0);
+                 moverColisionadores({-8,0});
+            }
+            //colisiona por arriba
+            if(playerCenter.y < enemyPos.y){
+                actual->sprite.move(0,-8);
+                entidadHitbox.move(0,-8);
+                moverColisionadores({0,-8});
+            }
+            //colisiona por debajo
+            if(playerCenter.y > enemyPos.y){
+                actual->sprite.move(0,8);
+                entidadHitbox.move(0,8);
+                moverColisionadores({0,8});
+            }*/
+        }
+        /*
+        else{
+            //Muerto
+            cout << "HAS PALMAO, FIN DE LA PARTIDA." << endl; //Cambiar por retorno a menu
+            exit(0);
+        }
+        */
 
 
         dmgCD.restart();
@@ -169,6 +205,13 @@ void Jugador::moverse(){
     colisiona_izquierda = false;
 }
 
+void Jugador::compruebaColor(){
+    if(cd.getElapsedTime().asSeconds() >= 0.25){
+        actual->sprite.setColor(sf::Color::White);
+        cd.restart();
+
+    }
+}
 
 Vector2f Jugador::getMovement() {
     return movement;

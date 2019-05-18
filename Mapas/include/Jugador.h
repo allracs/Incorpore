@@ -26,6 +26,7 @@ class Jugador: public Entidad{
         void cambiarArma(int opcion);
         bool cogePortal(FloatRect);
         Vector2f getMovement();
+        void compruebaColor();
         Arma getArma();
         Arma* getPuntArma();
         int getVidas();
@@ -38,13 +39,11 @@ class Jugador: public Entidad{
         float dirMov;
         int vidas;
         bool atacando;
-        sf::Texture tTumba;
-        sf::Sprite tumba;
-        bool mostrarTumba;
 
 
         sf::Clock cInterp;
         sf::Clock CDarma;
+        sf::Clock cd;
 
         Arma* arma;
 //        Vector2f playerCenter; // centro del jugador

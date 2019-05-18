@@ -30,6 +30,8 @@ class Entidad{
         void draw(RenderWindow&);
         void drawBoundingBoxes(RenderWindow&);
         void showData();
+        void muerteEntidad();
+
     protected:
         RectangleShape *sprite;
         RectangleShape entidadHitbox;
@@ -49,6 +51,10 @@ class Entidad{
         bool colisiona_abajo = false;
         bool colisiona_derecha = false;
         bool colisiona_izquierda = false;
+
+         sf::Texture tTumba;
+        sf::Sprite tumba;
+        bool mostrarTumba;
 
         Vector2f entityCenter;
 

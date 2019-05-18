@@ -26,6 +26,8 @@ Entidad::Entidad(){
     cuadrado_cen->setFillColor(Color::Black);
 
     speed = 75.f;
+
+    mostrarTumba=false;
 }
 
 void Entidad::setColision(int num){
@@ -142,6 +144,19 @@ void Entidad::drawBoundingBoxes(RenderWindow& target){
     //target.draw(*cuadrado_abj);
     //target.draw(*cuadrado_izq);
     //target.draw(*cuadrado_cen);
+
+}
+
+
+void Entidad::muerteEntidad(){
+    mostrarTumba=true;
+
+     if(!tTumba.loadFromFile("resources/sprites/muerte.png")){
+        std::cout<<"No se cargo la tumba"<<std::endl;
+    }
+    tumba.setTexture(tTumba);
+    tumba.setOrigin(16/2,20/2);
+    tumba.setPosition(entityCenter);
 
 }
 
