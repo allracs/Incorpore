@@ -16,16 +16,15 @@ class Arma
         virtual ~Arma();
         void update(Vector2f, int nCol, FloatRect* colisiones);
         void rotacionAtaque(RenderWindow&, float, Vector2f, RectangleShape);
-        void atacar(vector<Enemigo*>, int);
+        void atacar(vector<Enemigo*>, int, float);
         void crearProyectil(sf::Vector2f centro);
 
         void empezarAnim();
         void terminAnim();
 
-
         RectangleShape getHitbox();
         Sprite getEspada();
-        std::vector<Proyectil*> getProyectiles();
+        vector<Proyectil*> getProyectiles();
         Vector2f getMousePos();
         float getDireccionMov();
         int getOpcion();
@@ -33,17 +32,20 @@ class Arma
 
     private:
         float dMov;
+        int tipo;
+        bool cambiado;
+
         RectangleShape entidadHitbox;
         RectangleShape ataqueHitbox;
         Sprite espada; // Espada que se muestras encima de la hitbox.
         Texture textura; // Textura para el sprite de la espada
-        int tipo;
+
         vector<Proyectil*> proyectiles;
-        sf::Clock CDdisparo;
+
         Vector2f mousePos;
 
-        sf::Clock animAtaque;
-        bool cambiado;
+        Clock animAtaque;
+        Clock CDdisparo;
 };
 
 #endif // ARMA_H

@@ -11,27 +11,27 @@ using namespace std;
 class Enemigo : public Entidad{
     public:
         Enemigo(Vector2f);
-        void setPath(std::vector<Posicion>);
+        void setPath(vector<Posicion>);
         void update(float, RenderWindow&, int, FloatRect*);
-        void update(float, RenderWindow&, int, FloatRect*, Posicion, sf::RectangleShape enemigoHitbox, std::vector<Proyectil*>, bool*);
+        void update(float, RenderWindow&, int, FloatRect*, Posicion, RectangleShape enemigoHitbox, vector<Proyectil*>, bool*, float);
         void seguirCamino(Posicion, bool*);
-        bool serAtacado(sf::RectangleShape hitbox);
+        bool serAtacado(RectangleShape, float);
         void compruebaColor();
+
         int getVida();
         bool getBorrado();
 
-        void draw(sf::RenderWindow &app);
+        void draw(RenderWindow &app);
 
 
 
     private:
         float dirMov;
-        Vector2f movement; //movimiento del enemigo
-        std::vector<Posicion> path;
-        int vida;
-         //Matar al enemigo
         bool deleteSprite;
-        sf::Clock cd, cInterp, cmov;
+
+        Vector2f movement; //movimiento del enemigo
+        vector<Posicion> path;
+        Clock cd, cInterp, cmov;
 };
 
 #endif // ENEMY_H

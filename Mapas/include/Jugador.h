@@ -21,15 +21,16 @@ class Jugador: public Entidad{
 
         int update(float, RenderWindow&, int, FloatRect*);
         void moverse();
-        bool recibeDmg(RectangleShape, int);
+        bool recibeDmg(RectangleShape, int, float);
         void draw(sf::RenderWindow &);
         void cambiarArma(int opcion);
         bool cogePortal(FloatRect);
-        Vector2f getMovement();
+
         void compruebaColor();
         Arma getArma();
         Arma* getPuntArma();
-        int getVidas();
+        Vector2f getMovement();
+        //int getVidas();
 
         //Esquivar
         void controlarEsquivar();
@@ -41,19 +42,18 @@ class Jugador: public Entidad{
         void muerteJugador();
     private:
         float dirMov;
-        int vidas;
         bool atacando;
 
         //Variables esquivar
         bool esquivando;
         bool puedeEsquivar;
-        sf::Clock cdEsquivar;
-        sf::Clock duracionEsquivar;
+        Clock cdEsquivar;
+        Clock duracionEsquivar;
 
 
-        sf::Clock cInterp;
-        sf::Clock CDarma;
-        sf::Clock cd;
+        Clock cInterp;
+        Clock CDarma;
+        Clock cd;
 
         Arma* arma;
 //        Vector2f playerCenter; // centro del jugador

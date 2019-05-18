@@ -9,13 +9,18 @@ Jugador::Jugador(Vector2f pos){
     mostrarTumba = false;
     entidadHitbox.setPosition(pos);
     setColisionadores();
-    vidas = 10;
+
+    hp = 10;
+    attack = 3;
+    defense = 2;
+    speed = 75.f;
+
     dirMov = 1.f;
     movement = Vector2f(0.f, 0.f);
 
     //Esquivar
-    esquivando=false;
-    puedeEsquivar=true;
+    esquivando = false;
+    puedeEsquivar = true;
 
     // Animaciones
     idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28*5, 16, 28), IntRect(48, 28*5, 16, 28), 16, 0.1f);
@@ -27,14 +32,16 @@ Jugador::Jugador(Vector2f pos){
     actual->sprite.setPosition(pos);
 
     arma = new Arma(0, pos);
-
 }
 
 Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
     entityCenter = pos;
     entidadHitbox.setPosition(pos);
     setColisionadores();
-    vidas = vida;
+
+    hp = vida;
+    attack = 3;
+    defense = 2;
     dirMov = 0.6f;
     movement = Vector2f(0.f, 0.f);
 
@@ -53,7 +60,6 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
     actual->sprite.setPosition(pos);
 
     arma = new Arma(tipoarma, pos);
-
 }
 
 int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
@@ -113,14 +119,14 @@ bool Jugador::cogePortal(FloatRect portal){
     return res;
 }
 
-bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
+bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida, float atkEnemigo){
     Vector2f enemyPos = enemigoHitbox.getPosition();
     bool res = false;
     if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5 && vida > 0 && !esquivando){
         res = true;
-        vidas--;
+        hp -= atkEnemigo - defense;
         actual->sprite.setColor(sf::Color::Red);
-        if(vidas > 0){/* RETROCESO
+        if(hp > 0){/* RETROCESO
             //colisiona por la derecha
             if(playerCenter.x > enemyPos.x){
                 actual->sprite.move(8,0);
@@ -303,9 +309,6 @@ void Jugador::draw(sf::RenderWindow &app) {
     }
 }
 
-int Jugador::getVidas(){
-    return vidas;
-}
 
 float Jugador::getCooldownAtaque() {
     return meleCD.getElapsedTime().asSeconds();

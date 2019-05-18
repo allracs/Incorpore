@@ -26,6 +26,10 @@ class Entidad{
         RectangleShape getEntidadHitbox();
         RectangleShape getAtaqueHitbox();
         Animacion* getActual();
+        float getHP();
+        float getAtaque();
+        float getDefensa();
+        float getVelocidad();
 
         void draw(RenderWindow&);
         void drawBoundingBoxes(RenderWindow&);
@@ -52,13 +56,13 @@ class Entidad{
         bool colisiona_derecha = false;
         bool colisiona_izquierda = false;
 
-         sf::Texture tTumba;
-        sf::Sprite tumba;
+        Texture tTumba;
+        Sprite tumba;
         bool mostrarTumba;
 
         Vector2f entityCenter;
 
-        float speed;
+        float hp, attack, defense, speed;
 };
 
 #endif // ENTIDAD_H

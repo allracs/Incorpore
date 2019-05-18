@@ -9,8 +9,7 @@
 using namespace sf;
 using namespace std;
 
-Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Estado {maquina, window, cambio}
-{
+Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Estado {maquina, window, cambio}{
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
     nEnemigos = 1;
@@ -35,8 +34,7 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
 }
 
 
-void Juego::pause()
-{
+void Juego::pause(){
     selPausa = 0;
 
     capaPausa = new sf::RectangleShape;
@@ -49,8 +47,7 @@ void Juego::pause()
     fuente->loadFromFile("resources/menu/manaspc.ttf");
 
 
-    if(jugador->getVidas() <= 0)
-    {
+    if(jugador->getHP() <= 0){
         textopausa = new sf::Text;
         textopausa->setFont(*fuente);
         textopausa->setString("- has muerto -");
@@ -74,9 +71,7 @@ void Juego::pause()
         salir->setPosition(view.getCenter().x -7, view.getCenter().y + 10);
 
         reintentar = true;
-    }
-    else
-    {
+    } else {
         textopausa = new sf::Text;
         textopausa->setFont(*fuente);
         textopausa->setString("- pausa -");
@@ -101,8 +96,7 @@ void Juego::pause()
     }
 }
 
-void Juego::resume()
-{
+void Juego::resume(){
     delete capaPausa;
     delete fuente;
     delete textopausa;
@@ -110,8 +104,7 @@ void Juego::resume()
     delete salir;
 }
 
-void Juego::update()
-{
+void Juego::update(){
         if(hayPortales){
             portalVerde->update();
             portalMorado->update();
@@ -123,122 +116,123 @@ void Juego::update()
         for(int i = 0; i < mapa->getAntorchas().size(); i++){
             mapa->getAntorchas().at(i)->update();
         }
-        if(pausa == false)
-        {
+
+        if(pausa == false){
             int arma = jugador->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds());
+
             if(arma >= 0){
                 hud->cambiaArma(arma);
             }
-        hud->compruebaTeclas();
-        manejarIA();
-        if(jugador->getVidas() < 10 && pocion->isConsumible()){
-           if(pocion->consume(jugador->getEntidadHitbox())){
-                hud->modificar_vida(1,1);
-           }
-           //delete pocion;
-        }
 
-        if(enemigos.size() > 0){
+            hud->compruebaTeclas();
+            manejarIA();
+            if(jugador->getHP() < 10 && pocion->isConsumible()){
+               if(pocion->consume(jugador->getEntidadHitbox())){
+                    hud->modificar_vida(1,1);
+               }
+               //delete pocion;
+            }
 
-            for(int i = 0; i < enemigos.size(); i++) {
+            if(enemigos.size() > 0){
 
-                if(enemigos.at(i)->getBorrado() == false){
+                for(int i = 0; i < enemigos.size(); i++) {
 
-                    //esquinas
-                    sf::Vector2i posmap = mapa->getPosicionEntidad(*enemigos[i]);
-                    bool **coli = mapa->getColisiones();
-                    bool esquinas[4];
-                    if(posmap.x-1 != -1 && posmap.y-1 != -1)
-                    {
-                        esquinas[0] = coli[posmap.y-1][posmap.x-1];
-                        esquinas[1] = coli[posmap.y-1][posmap.x+1];
-                        esquinas[2] = coli[posmap.y+1][posmap.x-1];
-                        esquinas[3] = coli[posmap.y+1][posmap.x+1];
+                    if(enemigos.at(i)->getBorrado() == false){
+
+                        //esquinas
+                        sf::Vector2i posmap = mapa->getPosicionEntidad(*enemigos[i]);
+                        bool **coli = mapa->getColisiones();
+                        bool esquinas[4];
+                        if(posmap.x-1 != -1 && posmap.y-1 != -1)
+                        {
+                            esquinas[0] = coli[posmap.y-1][posmap.x-1];
+                            esquinas[1] = coli[posmap.y-1][posmap.x+1];
+                            esquinas[2] = coli[posmap.y+1][posmap.x-1];
+                            esquinas[3] = coli[posmap.y+1][posmap.x+1];
+                        }
+                        //--------
+
+
+                        enemigos.at(i)->update(delta, m_window,
+                                               mapa->getNumColisiones(),
+                                               mapa->getBounds(),
+                                               Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y),
+                                               jugador->getAtaqueHitbox(),
+                                               jugador->getArma().getProyectiles(),
+                                               esquinas,
+                                               jugador->getAtaque());
+
+                        if(!godMode && jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida(), enemigos.at(i)->getAtaque())){
+                            hud->modificar_vida(1,2);
+                        }
+
+                    } else {
+                        delete enemigos.at(i);
+                        enemigos.erase(enemigos.begin()+i);
                     }
-                    //--------
-
-
-                    enemigos.at(i)->update(delta, m_window, mapa->getNumColisiones(), mapa->getBounds(),
-                                           Posicion(mapa->getPosicionEntidad(*enemigos.at(i)).x, mapa->getPosicionEntidad(*enemigos.at(i)).y),
-                                           jugador->getAtaqueHitbox(),
-                                           jugador->getArma().getProyectiles(),
-                                           esquinas);
-
-                    if(!godMode && jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida())){
-                        hud->modificar_vida(1,2);
-                    }
+                }
+            }
+            else {
+                if(!hayPortales){
+                    portalVerde = new Portal(1,mapa->generaPortales());
+                    portalMorado = new Portal(2,mapa->generaPortales());
+                    hayPortales = true;
 
                 } else {
-                    delete enemigos.at(i);
-                    enemigos.erase(enemigos.begin()+i);
-                }
-            }
-        }
-        else{
-            if(!hayPortales){
-                portalVerde = new Portal(1,mapa->generaPortales());
-                portalMorado = new Portal(2,mapa->generaPortales());
-                hayPortales = true;
 
-            }else{
-
-                if(jugador->cogePortal(portalVerde->getPortal().getGlobalBounds())||jugador->cogePortal(portalMorado->getPortal().getGlobalBounds()))
-                {
-                    colisionaPortal = true;
-                    fuente = new sf::Font;
-                    fuente->loadFromFile("resources/menu/manaspc.ttf");
-                    texportal = new sf::Text;
-                    texportal->setFont(*fuente);
-                    texportal->setString("pulsa E para avanzar");
-                    texportal->setScale(0.2, 0.2);
-                    texportal->setPosition(jugador->getSprite().getPosition().x+8, jugador->getSprite().getPosition().y - 56);
-                }else{
-                    colisionaPortal = false;
-                }
-
-                if(pulsaE){
-                    if(nNivel < 4){
-                        nNivel++;
-                    }
-                    else{
-                        nNivel = 1;
+                    if(jugador->cogePortal(portalVerde->getPortal().getGlobalBounds())||jugador->cogePortal(portalMorado->getPortal().getGlobalBounds()))
+                    {
+                        colisionaPortal = true;
+                        fuente = new sf::Font;
+                        fuente->loadFromFile("resources/menu/manaspc.ttf");
+                        texportal = new sf::Text;
+                        texportal->setFont(*fuente);
+                        texportal->setString("pulsa E para avanzar");
+                        texportal->setScale(0.2, 0.2);
+                        texportal->setPosition(jugador->getSprite().getPosition().x+8, jugador->getSprite().getPosition().y - 56);
+                    } else {
+                        colisionaPortal = false;
                     }
 
-                    pulsaE = false;
-                    entraPortales = true;
-                    pausa = false;
-                    reintentar = false;
-                    hayPortales = false;
-                    colisionaPortal = false;
-                    delete fuente;
-                    delete texportal;
-                    delete portalVerde;
-                    delete portalMorado;
-                    delete mapa;
-                    cargaMapa();
-                    cargaPlayer();
-                    cargarHUD();
-                    //std::cout<< jugador->getVidas()<<std::endl;
+                    if(pulsaE){
+                        if(nNivel < 4){
+                            nNivel++;
+                        } else {
+                            nNivel = 1;
+                        }
+
+                        pulsaE = false;
+                        entraPortales = true;
+                        pausa = false;
+                        reintentar = false;
+                        hayPortales = false;
+                        colisionaPortal = false;
+                        delete fuente;
+                        delete texportal;
+                        delete portalVerde;
+                        delete portalMorado;
+                        delete mapa;
+                        cargaMapa();
+                        cargaPlayer();
+                        cargarHUD();
+                        //std::cout<< jugador->getVidas()<<std::endl;
+                    }
                 }
             }
-        }
 
-        if(!centrado) {
+            if(!centrado){
+                setView();
+                centrado = true;
+            }
+
             setView();
-            centrado = true;
-        }
+            //render();
 
-        setView();
-        //render();
-
-        if(jugador->getVidas() <= 0)
-        {
-            jugador->muerteJugador();
-            pause();
-            pausa = true;
-        }
-
-
+            if(jugador->getHP() <= 0){
+                jugador->muerteJugador();
+                pause();
+                pausa = true;
+            }
         }
        // frameClock.restart();
 }
@@ -248,8 +242,8 @@ void Juego::cargaPlayer(){
 
     if(entraPortales)
     {
-        std::cout<< jugador->getVidas()<<std::endl;
-        jugador = new Jugador(mapa->generaPosicion(), jugador->getVidas(), jugador->getArma().getOpcion());
+        std::cout<< jugador->getHP()<<std::endl;
+        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion());
         entraPortales = false;
     }
     else
@@ -272,7 +266,7 @@ void Juego::cargaMapa(){
 }
 
 void Juego::cargarHUD(){
-    hud = new Hud(jugador->getVidas());
+    hud = new Hud(jugador->getHP());
     hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 2, view.getCenter().y - dimensiones.y/10 + 2);
     hud->setPosicionSwitch(view.getCenter().x + 100, view.getCenter().y - 45);
     hud->setPosicionHabilidades(view.getCenter().x + 22, view.getCenter().y - 70);
@@ -291,7 +285,7 @@ void Juego::procesarEventos(){
                          if(jugador->getCooldownAtaque() >= 1.f) {
                             //std::cout << "COOLDOWN ATAQUE: " << jugador->getCooldownAtaque() << std::endl;
                             jugador->restartCoolDownAtaque();
-                            jugador->getArma().atacar(enemigos, enemigos.size());
+                            jugador->getArma().atacar(enemigos, enemigos.size(), jugador->getAtaque());
                             if(jugador->getArma().getOpcion() == 0){
                                 jugador->getPuntArma()->empezarAnim();
                             }
@@ -299,7 +293,7 @@ void Juego::procesarEventos(){
                         }
                     } else if(jugador->getArma().getOpcion() == 1) { // SI EL ATAQUE ES A DISTANCIA
                        // std::cout << "ATAQUE A DISTANCIA" << std::endl;
-                        jugador->getArma().atacar(enemigos, enemigos.size());
+                        jugador->getArma().atacar(enemigos, enemigos.size(), jugador->getAtaque());
                     }
 
                 }

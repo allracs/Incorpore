@@ -1,5 +1,7 @@
 #include "../include/Enemigo.h"
 #include "Proyectil.h"
+using namespace sf;
+using namespace std;
 
 Enemigo::Enemigo(Vector2f pos){
     entityCenter = pos;
@@ -29,9 +31,12 @@ Enemigo::Enemigo(Vector2f pos){
     ataqueHitbox.setOrigin(0,6.f);
     ataqueHitbox.setPosition(pos);
 
-    speed = 30.f;
     deleteSprite = false;
-    vida = 3;
+
+    hp = 4;
+    attack = 3;
+    defense = 2;
+    speed = 30.f;
 }
 
 void Enemigo::setPath(std::vector<Posicion> p){
@@ -39,7 +44,7 @@ void Enemigo::setPath(std::vector<Posicion> p){
 }
 
 void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones, Posicion pos_a,
-                     sf::RectangleShape enemigoHitbox, std::vector<Proyectil*> proyectiles, bool* esquinas){
+                     sf::RectangleShape enemigoHitbox, std::vector<Proyectil*> proyectiles, bool* esquinas, float atkJugador){
 
     entityCenter = Vector2f(entidadHitbox.getPosition().x, entidadHitbox.getPosition().y);
 
@@ -58,7 +63,7 @@ void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
 
     for(int i= 0; i< proyectiles.size(); i++) {
-        if(serAtacado(proyectiles.at(i)->getColision())) {
+        if(serAtacado(proyectiles.at(i)->getColision(), atkJugador)) {
             proyectiles.at(i)->setHacolisionado(true);
         }
     }
@@ -276,24 +281,22 @@ void Enemigo::seguirCamino(Posicion a, bool* esquinas){
     colisiona_izquierda = false;
 }
 
-bool Enemigo::serAtacado(sf::RectangleShape hitbox){
+bool Enemigo::serAtacado(sf::RectangleShape hitbox, float atkJugador){
     bool res = false;
 
-    if (hitbox.getGlobalBounds().intersects(entidadHitbox.getGlobalBounds()))
-    {
-
-        if(vida>0){
-            vida--;
+    if (hitbox.getGlobalBounds().intersects(entidadHitbox.getGlobalBounds())){
+        if(hp > 0){
+            hp -= atkJugador - defense;
             actual->sprite.setColor(sf::Color::Red);
             cd.restart();
             res = true;
         }
 
-        std::cout<<"Tiene de vida: "<<vida<<std::endl;
-        if(vida==0){
+        cout << "Tiene de vida: "<< hp << endl;
+        if(hp == 0){
             deleteSprite = true;
             muerteEntidad();
-            std::cout<<"Ha sido matado"<<std::endl;
+            cout << "Ha sido matado" <<  endl;
         }
     }
 
@@ -309,7 +312,7 @@ void Enemigo::compruebaColor(){
 }
 
 int Enemigo::getVida(){
-    return vida;
+    return hp;
 }
 
 void Enemigo::draw(sf::RenderWindow &app) {

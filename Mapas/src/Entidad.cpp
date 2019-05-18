@@ -25,7 +25,10 @@ Entidad::Entidad(){
     cuadrado_cen = new RectangleShape({1,1});
     cuadrado_cen->setFillColor(Color::Black);
 
-    speed = 75.f;
+    /*hp = 4;
+    attack = 3;
+    defense = 2;
+    speed = 75.f;*/
 
     mostrarTumba=false;
 }
@@ -129,6 +132,22 @@ RectangleShape Entidad::getAtaqueHitbox(){
 
 Animacion* Entidad::getActual() {
     return actual;
+}
+
+float Entidad::getHP() {
+    return hp;
+}
+
+float Entidad::getAtaque() {
+    return attack;
+}
+
+float Entidad::getDefensa() {
+    return defense;
+}
+
+float Entidad::getVelocidad() {
+    return speed;
 }
 
 void Entidad::draw(RenderWindow& target) {
