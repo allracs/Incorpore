@@ -13,6 +13,10 @@ Jugador::Jugador(Vector2f pos){
     dirMov = 1.f;
     movement = Vector2f(0.f, 0.f);
 
+    //Esquivar
+    esquivando=false;
+    puedeEsquivar=true;
+
     // Animaciones
     idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28*5, 16, 28), IntRect(48, 28*5, 16, 28), 16, 0.1f);
     idle.sprite.setOrigin(9,20);
@@ -26,7 +30,6 @@ Jugador::Jugador(Vector2f pos){
 
 }
 
-
 Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
     entityCenter = pos;
     entidadHitbox.setPosition(pos);
@@ -35,11 +38,16 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
     dirMov = 0.6f;
     movement = Vector2f(0.f, 0.f);
 
+    //Esquivar
+    esquivando=false;
+    puedeEsquivar=true;
+
     // Animaciones
    idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28*5, 16, 28), IntRect(48, 28*5, 16, 28), 16, 0.1f);
     idle.sprite.setOrigin(9,20);
     run.setAnimacion("resources/sprites/personajes.png", IntRect(64, 28*5, 16, 28), IntRect(112, 28*5, 16, 28), 16, 0.1f);
     run.sprite.setOrigin(9,20);
+
 
     actual = &idle;
     actual->sprite.setPosition(pos);
@@ -67,10 +75,13 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
 
     actual->update(movement, delta);
 
+    //Esquivar
+    esquivarInicio();
+    controlarEsquivar();
+
      if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
         arma->crearProyectil(entidadHitbox.getPosition());
     }
-
 
     //Tecla para activar el ataque a distancia
     if(Keyboard::isKeyPressed(Keyboard::Q)){
@@ -105,7 +116,7 @@ bool Jugador::cogePortal(FloatRect portal){
 bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
     Vector2f enemyPos = enemigoHitbox.getPosition();
     bool res = false;
-    if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5 && vida > 0){
+    if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5 && vida > 0 && !esquivando){
         res = true;
         vidas--;
         actual->sprite.setColor(sf::Color::Red);
@@ -147,6 +158,33 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida){
         dmgCD.restart();
     }
 }
+
+void Jugador::esquivarInicio(){
+     if(Keyboard::isKeyPressed(Keyboard::LShift) && puedeEsquivar){
+        esquivando=true;
+        puedeEsquivar=false;
+        cdEsquivar.restart();
+        duracionEsquivar.restart();
+        std::cout<<"Esquivar ha empezado"<<std::endl;
+     }
+}
+
+void Jugador::controlarEsquivar(){
+    if(duracionEsquivar.getElapsedTime().asSeconds()>=2.f){
+        std::cout<<"Esquivar ha terminado"<<std::endl;
+        esquivando=false;
+        speed=75.f;
+    }
+    if(cdEsquivar.getElapsedTime().asSeconds()>=5.f){
+        puedeEsquivar=true;
+        std::cout<<"Cooldown ha terminado"<<std::endl;
+    }
+    if(esquivando){
+        actual->sprite.setColor(sf::Color(105,105,105, 50));
+        speed=100.f;
+    }
+}
+
 
 void Jugador::moverse(){
     movement = Vector2f(0.f, 0.f);
@@ -206,7 +244,7 @@ void Jugador::moverse(){
 }
 
 void Jugador::compruebaColor(){
-    if(cd.getElapsedTime().asSeconds() >= 0.25){
+    if(cd.getElapsedTime().asSeconds() >= 0.25 && !esquivando){
         actual->sprite.setColor(sf::Color::White);
         cd.restart();
 

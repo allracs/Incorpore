@@ -31,6 +31,10 @@ class Jugador: public Entidad{
         Arma* getPuntArma();
         int getVidas();
 
+        //Esquivar
+        void controlarEsquivar();
+        void esquivarInicio();
+
         float getCooldownAtaque();
         void restartCoolDownAtaque();
 
@@ -39,6 +43,12 @@ class Jugador: public Entidad{
         float dirMov;
         int vidas;
         bool atacando;
+
+        //Variables esquivar
+        bool esquivando;
+        bool puedeEsquivar;
+        sf::Clock cdEsquivar;
+        sf::Clock duracionEsquivar;
 
 
         sf::Clock cInterp;

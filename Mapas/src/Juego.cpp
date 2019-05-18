@@ -289,7 +289,7 @@ void Juego::procesarEventos(){
                     // AÑADIR COOLDOWN AL ATAQUE A MELÉ
                     if(jugador->getArma().getOpcion() == 0){ // SI EL ATAQUE ES A MELEE
                          if(jugador->getCooldownAtaque() >= 1.f) {
-                            std::cout << "COOLDOWN ATAQUE: " << jugador->getCooldownAtaque() << std::endl;
+                            //std::cout << "COOLDOWN ATAQUE: " << jugador->getCooldownAtaque() << std::endl;
                             jugador->restartCoolDownAtaque();
                             jugador->getArma().atacar(enemigos, enemigos.size());
                             if(jugador->getArma().getOpcion() == 0){
@@ -298,7 +298,7 @@ void Juego::procesarEventos(){
 
                         }
                     } else if(jugador->getArma().getOpcion() == 1) { // SI EL ATAQUE ES A DISTANCIA
-                        std::cout << "ATAQUE A DISTANCIA" << std::endl;
+                       // std::cout << "ATAQUE A DISTANCIA" << std::endl;
                         jugador->getArma().atacar(enemigos, enemigos.size());
                     }
 

@@ -42,6 +42,7 @@ Hud::Hud(int vidas){
     tecla_switch->setString("Q");
     tecla_switch->setScale(0.3, 0.3);
 
+
     //ARRAY DE CORAZONES
     textura_vida = new Texture;
     textura_vida->loadFromFile("resources/hud/heart-life.png");
