@@ -34,8 +34,11 @@ public:
     void move(Vector2f);
 private:
     Text *texto_vida;
-    Text *tecla_switch;
-    Text *tecla_esquivar;
+//    Text *tecla_switch;
+//    Text *tecla_esquivar;
+    Texture* teclaEsquivar;
+    Texture* teclaSwitch;
+
     Font *fuente;
     Sprite* pieza_habilidades;
     Texture* habilidades;
@@ -46,6 +49,8 @@ private:
     Sprite * pieza_vida;
     Texture* vida;
     //RectangleShape * pieza_habilidades;
+    Sprite* tecla_esquivar;
+    Sprite* tecla_switch;
 
     Texture *textura_vida;
     Sprite *corazon;
