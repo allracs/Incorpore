@@ -3451,7 +3451,18 @@
 	"Tumba.h"
 	<iostream>
 
+<<<<<<< Updated upstream
 1558282105 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Tumba.h
+=======
+1558291729 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Arma.h
+	<SFML/Graphics.hpp>
+	<cmath>
+	<iostream>
+	"Enemigo.h"
+	"Proyectil.h"
+
+1558280948 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Hud.h
+>>>>>>> Stashed changes
 	<SFML/Graphics.hpp>
 
 1558257377 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Antorcha.cpp
@@ -3466,13 +3477,74 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
+<<<<<<< Updated upstream
 1558289181 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Tumba.h
 	<SFML/Graphics.hpp>
+=======
+1558104895 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Portal.cpp
+	"Portal.h"
+
+1557996422 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Posicion.cpp
+	"../include/Posicion.h"
+	<iostream>
+	<stdlib.h>
+
+1558104339 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Proyectil.cpp
+	"Proyectil.h"
+	<iostream>
+
+1557996422 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/tinyxml2.cpp
+	"../include/tinyxml2.h"
+	<new>
+	<stddef.h>
+	<stdarg.h>
+	<cstddef>
+	<cstdarg>
+
+1558291838 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Arma.cpp
+	"../include/Arma.h"
+
+1558281542 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Enemigo.cpp
+	"../include/Enemigo.h"
+	"Proyectil.h"
+
+1558280948 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Hud.cpp
+	<SFML/Graphics.hpp>
+	"../include/Hud.h"
+
+1558292542 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Juego.cpp
+	"../include/Juego.h"
+	"../include/Astar.h"
+	"../include/Posicion.h"
+	"../include/Menu.h"
+	"../include/MaquinaEstados.h"
+	<vector>
+	<iostream>
+
+1558291878 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Jugador.cpp
+	<iostream>
+	"../include/Jugador.h"
+
+1558283238 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Mapa.cpp
+	"../include/Mapa.h"
+	<time.h>
+	<stdio.h>
+	<stdlib.h>
+	"math.h"
+>>>>>>> Stashed changes
 
 1558257377 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Potenciadores.cpp
 	"../include/Potenciadores.h"
 
+<<<<<<< Updated upstream
 1558291523 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Tumba.cpp
+=======
+1558281760 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Entidad.cpp
+	"../include/Entidad.h"
+	<iostream>
+
+1558291063 source:/mnt/hgfs/Universidad/FV/Incorpore/Mapas/src/Tumba.cpp
+>>>>>>> Stashed changes
 	"Tumba.h"
 	<iostream>
 

@@ -141,6 +141,18 @@ int Arma::getOpcion(){
     return tipo;
 }
 
+
+void Arma::cambiarArma(int opcion) {
+    if(opcion == 0) {
+        textura.loadFromFile("resources/sprites/sword.png");
+        tipo = opcion;
+    }
+    if(opcion == 1) {
+        textura.loadFromFile("resources/sprites/baston.png");
+        tipo = opcion;
+    }
+}
+
 RectangleShape Arma::getHitbox(){
     return ataqueHitbox;
 }
