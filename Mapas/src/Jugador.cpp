@@ -69,17 +69,21 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
     actual->sprite.setScale(1.f*(arma->getDireccionMov()), 1.f);
     // MOVIMIENTO con interpolacion
 
-    moverse(); // comprobar que el jugador se mueve
     //atacar();
+    if(cInterp.getElapsedTime().asMilliseconds() > 500/15)
+    {
+        moverse(); // comprobar que el jugador se mueve
+        cInterp.restart();
+    }
     entidadHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);// mover la hitbox con la que el jugador ataca
     arma->update(movement * delta, nCol, colisiones); // para que la espada se mueva junto con el jugador.
+    moverColisionadores(movement * delta);
+    actual->update(movement, delta);
+
     arma->rotacionAtaque(window, dirMov, entityCenter, entidadHitbox);
     ataqueHitbox = arma->getHitbox();
-    moverColisionadores(movement * delta);
     procesarColisiones(nCol, colisiones);
-
-    actual->update(movement, delta);
 
     //Esquivar
     esquivarInicio();
