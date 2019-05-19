@@ -101,6 +101,22 @@ void Entidad::setCenter(Vector2f centro){
     entityCenter = centro;
 }
 
+void Entidad::setHP(float valor){
+    hp = valor;
+}
+
+void Entidad::setAtaque(float valor){
+    attack = valor;
+}
+
+void Entidad::setDefensa(float valor){
+    defense = valor;
+}
+
+void Entidad::setVelocidad(float valor){
+    speed = valor;
+}
+
 RectangleShape Entidad::cuadradoder(){
     return *cuadrado_der;
 }

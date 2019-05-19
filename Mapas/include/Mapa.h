@@ -3,6 +3,7 @@
 #include "Jugador.h"
 #include "Enemigo.h"
 #include "Antorcha.h"
+#include "Potenciadores.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace sf;
@@ -33,13 +34,16 @@ class Mapa{
         bool** getColisiones();
         int getNumColisiones();
         Vector2i getPosicionEntidad(Entidad);
+        FloatRect* getBounds();
+        FloatRect* getBoundsPortales();
+        vector<Antorcha*> getAntorchas();
+        vector<Potenciadores*> getCofres();
+
         Vector2f generaPosicion();
         bool isColision(int,int);
         void colocaConsumibles();
-        FloatRect* getBounds();
         Vector2i generaPortales();
-        FloatRect* getBoundsPortales();
-        vector<Antorcha*> getAntorchas();
+
         //MOSTRAMOS POR PANTALLA
         void mostrarMapaColisiones();
 
@@ -76,4 +80,5 @@ class Mapa{
         Vector2f posAnt;
         int tipo;
         vector<Antorcha*> antorchas;
+        vector<Potenciadores*> potenciadores;
 };

@@ -21,6 +21,10 @@ class Entidad{
         void moverColisionadores(Vector2f);
         void procesarColisiones(int, FloatRect*);
         void setCenter(Vector2f);
+        void setHP(float);
+        void setAtaque(float);
+        void setDefensa(float);
+        void setVelocidad(float);
 
         Vector2f getCenter();
         RectangleShape getEntidadHitbox();

@@ -9,8 +9,6 @@
 #include "Estado.h"
 #include "Portal.h"
 
-
-
 using namespace sf;
 
 class MaquinaEstados;
@@ -26,7 +24,6 @@ class Juego : public Estado
         void update();
         void draw();
 
-
         void cargaPlayer();
         void cargaMapa();
         void cargarHUD();
@@ -36,6 +33,7 @@ class Juego : public Estado
         void setView();
         //void render();
         void changeMode();
+        void gestionaPotenciadores();
 
         Vector2f generaPosicion();
 
@@ -64,11 +62,11 @@ class Juego : public Estado
         bool pausa = false;
         bool reintentar = false;
         int selPausa;
-        sf::RectangleShape *capaPausa;
-        sf::Font *fuente;
-        sf::Text *textopausa;
-        sf::Text *continuar;
-        sf::Text *salir;
+        RectangleShape *capaPausa;
+        Font *fuente;
+        Text *textopausa;
+        Text *continuar;
+        Text *salir;
 
         bool hayPortales;
         //portales
@@ -76,8 +74,9 @@ class Juego : public Estado
         Portal *portalMorado;
         bool entraPortales = false;
         bool pulsaE = false;
-        sf::Text *texportal;
+        Text *texportal;
         bool colisionaPortal = false;
+        bool colisionaCofre = false;
         int nNivel;
 
 };

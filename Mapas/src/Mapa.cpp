@@ -96,7 +96,6 @@ void Mapa::cargaObjetos(){
 
     columna[0] = 190-1;
     columna[1] = 206-1;
-
 }
 
 void Mapa::leerMapa(int n){
@@ -295,29 +294,29 @@ sf::Vector2i Mapa::generaPortales(){
 
     sf::Vector2i pos(x,y);
     return pos;
-
 }
 
 void Mapa::generaObjetos(int j, int k, int no){
     //srand(time(NULL));
     while(nObj == no) {
         int random = rand() % 100;
-        if(random >= 0 && random < 30){
+        if(random >= 0 && random < 29){
             //Antorcha
             posAnt.x = k*tilewidth;
             posAnt.y = j*tileheight;
             antorchas.push_back(new Antorcha(posAnt));
-            cout << "Jaja: " << k << ", " << j << endl;
-
-            //mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[1]].getTextureRect());
-            //mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
-
-            //mapSprite[6][j-1][k] = new Sprite(texturaTileset,tilesetSprite[antorcha[0]].getTextureRect());
-            //mapSprite[6][j-1][k]->setPosition(k*tilewidth,(j-1)*tileheight);
             colisionMap[j][k] = true;
             nColisiones++;
         }
-        else if(random >= 30 && random < 53){
+        else  if(random >= 29 && random < 39){
+            //Cofres
+            posAnt.x = k*tilewidth;
+            posAnt.y = j*tileheight;
+            potenciadores.push_back(new Potenciadores(posAnt));
+            colisionMap[j][k] = true;
+            nColisiones++;
+        }
+        else if(random >= 39 && random < 59){
             //Caja
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[caja[1]].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
@@ -327,7 +326,7 @@ void Mapa::generaObjetos(int j, int k, int no){
             colisionMap[j][k] = true;
             nColisiones++;
         }
-        else if(random >= 53 && random < 68){
+        else if(random >= 59 && random < 74){
             //CajaDoble
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[1]].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
@@ -337,12 +336,12 @@ void Mapa::generaObjetos(int j, int k, int no){
             colisionMap[j][k] = true;
             nColisiones++;
         }
-        else if(random >= 68 && random < 90){
+        else if(random >= 74 && random < 89){
             //Calavera
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[calavera].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
         }
-        else if(random >= 90 && random < 100){
+        else if(random >= 89 && random < 100){
             //Columna
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[columna[1]].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
@@ -439,6 +438,11 @@ vector<Antorcha*> Mapa::getAntorchas(){
     return antorchas;
 }
 
+vector<Potenciadores*> Mapa::getCofres(){
+    return potenciadores;
+}
+
+
 void Mapa::mostrarMapaColisiones(){
     cout << endl << "Mapa de colisiones:" << endl;
     cout <<  "------------------------" << endl;
@@ -469,6 +473,9 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
                     } else if(l == 2){
                         for(int i = 0; i < antorchas.size(); i++){
                             antorchas.at(i)->draw(target);
+                        }
+                        for(int i = 0; i < potenciadores.size(); i++){
+                            potenciadores.at(i)->draw(target);
                         }
                     } else if(l == 6){
                         for(int i = 0; i < antorchas.size(); i++){

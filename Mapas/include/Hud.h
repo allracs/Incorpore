@@ -55,21 +55,21 @@ private:
     Texture *textura_vida;
     Sprite *corazon;
     Texture *textura_habilidades;
-    Sprite *mejora_escudo;
+
     Sprite *mejora_ataque;
-    Sprite *rompe_escudos;
-    Sprite *mana;
-    Sprite *mejora_cofre;
-    Sprite *espada_magica;
+    Sprite *debilita_defensa;
+    Sprite *debilita_velocidad;
+    Sprite *escudo;
+
     Sprite *sprite_switch;
     Sprite *sprite_esquivar;
     Sprite *arma;
-    bool mejora_escudo_esta = false;
+
     bool mejora_ataque_esta = false;
-    bool rompe_escudos_esta = false;
-    bool mana_esta = false;
-    bool mejora_cofre_esta = false;
-    bool espada_magica_esta = false;
+    bool debilita_defensa_esta = false;
+    bool debilita_velocidad_esta = false;
+    bool escudo_esta = false;
+
 
     int xVida, yVida, xHab, yHab;
 

@@ -81,34 +81,23 @@ Hud::Hud(int vidas){
 
     //mejora ataque
     mejora_ataque = new Sprite(*textura_habilidades);
-    mejora_ataque->setTextureRect(IntRect(306,1,61,61));
+    mejora_ataque->setTextureRect(IntRect(306, 1, 61, 61));
     mejora_ataque->setScale(0.2, 0.2);
 
-    //mejora cofre
-    mejora_cofre = new Sprite(*textura_habilidades);
-    mejora_cofre->setTextureRect(IntRect(61,122,61,61));
-    mejora_cofre->setScale(0.2, 0.2);
-
-    //mejora escudo
-    mejora_escudo = new Sprite(*textura_habilidades);
-    mejora_escudo->setTextureRect(IntRect(1,1,61,61));
-    mejora_escudo->setScale(0.2, 0.2);
-
     //rompe-escudos
-    rompe_escudos = new Sprite(*textura_habilidades);
-    rompe_escudos->setTextureRect(IntRect(61,61,61,61));
-    rompe_escudos->setScale(0.2, 0.2);
+    debilita_defensa = new Sprite(*textura_habilidades);
+    debilita_defensa->setTextureRect(IntRect(61, 61, 61, 61));
+    debilita_defensa->setScale(0.2, 0.2);
 
     //mana
-    mana = new Sprite(*textura_habilidades);
-    mana->setTextureRect(IntRect(122,1,61,61));
-    mana->setScale(0.2, 0.2);
+    debilita_velocidad = new Sprite(*textura_habilidades);
+    debilita_velocidad->setTextureRect(IntRect(306, 122, 61, 61));
+    debilita_velocidad->setScale(0.2, 0.2);
 
-    //espada magica
-    espada_magica = new Sprite(*textura_habilidades);
-    espada_magica->setTextureRect(IntRect(244,61,61,61));
-    espada_magica->setScale(0.2, 0.2);
-
+    //mejora escudo
+    escudo = new Sprite(*textura_habilidades);
+    escudo->setTextureRect(IntRect(61, 1, 61, 61));
+    escudo->setScale(0.2, 0.2);
 
     //PIEZA HUD HABILIDADES
     pieza_habilidades = new Sprite(*habilidades); // new RectangleShape({90,16});
@@ -122,35 +111,21 @@ Hud::Hud(int vidas){
 void Hud::compruebaTeclas(){
     ///HABILIDADES
     //borrar todas las habilidades
-    if(Keyboard::isKeyPressed(Keyboard::D))
-    {
+    if(Keyboard::isKeyPressed(Keyboard::D)){
         borradoHabilidades();
-    }
-    //coger habilidades
-    if(Keyboard::isKeyPressed(Keyboard::Num1))
-    {
+    } else if(Keyboard::isKeyPressed(Keyboard::Num1)){
         setHabilidad(1);
-    }
-    if(Keyboard::isKeyPressed(Keyboard::Num2))
-    {
+    } else if(Keyboard::isKeyPressed(Keyboard::Num2)){
         setHabilidad(2);
-    }
-    if(Keyboard::isKeyPressed(Keyboard::Num3))
-    {
+    } else if(Keyboard::isKeyPressed(Keyboard::Num3)){
         setHabilidad(3);
-    }
-    if(Keyboard::isKeyPressed(Keyboard::Num4))
-    {
+    } else if(Keyboard::isKeyPressed(Keyboard::Num4)){
         setHabilidad(4);
-    }
-    if(Keyboard::isKeyPressed(Keyboard::Num5))
-    {
+    }/* else if(Keyboard::isKeyPressed(Keyboard::Num5)){
         setHabilidad(5);
-    }
-    if(Keyboard::isKeyPressed(Keyboard::Num6))
-    {
+    } else if(Keyboard::isKeyPressed(Keyboard::Num6)){
         setHabilidad(6);
-    }
+    }*/
 }
 
 void Hud::modificar_vida(int cantidad, int sr){
@@ -171,51 +146,34 @@ void Hud::modificar_vida(int cantidad, int sr){
 
 
 void Hud::setHabilidad(int habilidad){
-    if(habilidad == 1 && mejora_escudo_esta == false)
-    {
-        vector_habilidades->push_back(*mejora_escudo);
-        mejora_escudo_esta = true;
-    }
-    if(habilidad == 2 && mejora_cofre_esta == false)
-    {
-        vector_habilidades->push_back(*mejora_cofre);
-        mejora_cofre_esta = true;
-    }
-    if(habilidad == 3 && mejora_ataque_esta == false)
-    {
+    if(habilidad == 1 && mejora_ataque_esta == false){
         vector_habilidades->push_back(*mejora_ataque);
         mejora_ataque_esta = true;
     }
-    if(habilidad == 4 && mana_esta == false)
-    {
-        vector_habilidades->push_back(*mana);
-        mana_esta = true;
+    if(habilidad == 2 && debilita_defensa_esta == false){
+        vector_habilidades->push_back(*debilita_defensa);
+        debilita_defensa_esta = true;
     }
-    if(habilidad == 5 && rompe_escudos_esta == false)
-    {
-        vector_habilidades->push_back(*rompe_escudos);
-        rompe_escudos_esta = true;
+    if(habilidad == 3 && debilita_velocidad_esta == false){
+        vector_habilidades->push_back(*debilita_velocidad);
+        debilita_velocidad_esta = true;
     }
-    if(habilidad == 6 && espada_magica_esta == false)
-    {
-        vector_habilidades->push_back(*espada_magica);
-        espada_magica_esta = true;
+    if(habilidad == 4 && escudo_esta == false){
+        vector_habilidades->push_back(*escudo);
+        escudo_esta = true;
     }
 
-    for(int i = 0; i < vector_habilidades->size(); i++)
-    {
-       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + 7 + (i*15.5),pieza_habilidades->getPosition().y + 4});
+    for(int i = 0; i < vector_habilidades->size(); i++){
+       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + 7 + (i*25.5),pieza_habilidades->getPosition().y + 4});
     }
 }
 
 void Hud::borradoHabilidades(){
     vector_habilidades->clear();
-    mejora_escudo_esta = false;
-    mejora_cofre_esta = false;
     mejora_ataque_esta = false;
-    mana_esta = false;
-    espada_magica_esta = false;
-    rompe_escudos_esta = false;
+    debilita_defensa_esta = false;
+    debilita_velocidad_esta = false;
+    escudo = false;
 }
 
 

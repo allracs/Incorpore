@@ -22,17 +22,16 @@ class Jugador: public Entidad{
         int update(float, RenderWindow&, int, FloatRect*);
         void moverse();
         bool recibeDmg(RectangleShape, int, float);
-        void draw(sf::RenderWindow &);
         void cambiarArma(int opcion);
         bool cogePortal(FloatRect);
+        bool cogeCofre(FloatRect);
 
         void compruebaColor();
+
         Arma getArma();
         Arma* getPuntArma();
         Vector2f getMovement();
-        //int getVidas();
 
-        //Esquivar
         void controlarEsquivar();
         void esquivarInicio();
 
@@ -40,17 +39,16 @@ class Jugador: public Entidad{
         void restartCoolDownAtaque();
 
         void muerteJugador();
+        void escudarse();
+        void draw(sf::RenderWindow &);
     private:
         float dirMov;
         bool atacando;
-
-        //Variables esquivar
         bool esquivando;
         bool puedeEsquivar;
+
         Clock cdEsquivar;
         Clock duracionEsquivar;
-
-
         Clock cInterp;
         Clock CDarma;
         Clock cd;

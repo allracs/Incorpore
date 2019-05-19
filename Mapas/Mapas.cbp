@@ -64,6 +64,7 @@
 		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Portal.h" />
 		<Unit filename="include/Posicion.h" />
+		<Unit filename="include/Potenciadores.h" />
 		<Unit filename="include/Proyectil.h" />
 		<Unit filename="include/tinyxml2.h" />
 		<Unit filename="resources/hud/abilities.png" />
@@ -130,6 +131,7 @@
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Portal.cpp" />
 		<Unit filename="src/Posicion.cpp" />
+		<Unit filename="src/Potenciadores.cpp" />
 		<Unit filename="src/Proyectil.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/tinyxml2.cpp" />

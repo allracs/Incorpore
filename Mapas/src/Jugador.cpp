@@ -108,11 +108,24 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
 
 bool Jugador::cogePortal(FloatRect portal){
     bool res = false;
-   for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 4; i++){
         if(cuadrado_arr->getGlobalBounds().intersects(portal)||
            cuadrado_abj->getGlobalBounds().intersects(portal)||
            cuadrado_der->getGlobalBounds().intersects(portal)||
            cuadrado_izq->getGlobalBounds().intersects(portal)){
+                    res = true;
+        }
+    }
+    return res;
+}
+
+bool Jugador::cogeCofre(FloatRect cofre){
+    bool res = false;
+    for(int i = 0; i < 4; i++){
+        if(cuadrado_arr->getGlobalBounds().intersects(cofre)||
+           cuadrado_abj->getGlobalBounds().intersects(cofre)||
+           cuadrado_der->getGlobalBounds().intersects(cofre)||
+           cuadrado_izq->getGlobalBounds().intersects(cofre)){
                     res = true;
         }
     }
@@ -277,6 +290,14 @@ void Jugador::cambiarArma(int opcion){
 
 }
 
+float Jugador::getCooldownAtaque() {
+    return meleCD.getElapsedTime().asSeconds();
+}
+
+void Jugador::restartCoolDownAtaque() {
+    meleCD.restart();
+}
+
 void Jugador::muerteJugador(){
     mostrarTumba=true;
 
@@ -289,6 +310,9 @@ void Jugador::muerteJugador(){
 
 }
 
+void Jugador::escudarse(){
+    cout << "No se cargo la tumba" << endl;
+}
 
 void Jugador::draw(sf::RenderWindow &app) {
     if(mostrarTumba==true){
@@ -308,21 +332,3 @@ void Jugador::draw(sf::RenderWindow &app) {
         }
     }
 }
-
-
-float Jugador::getCooldownAtaque() {
-    return meleCD.getElapsedTime().asSeconds();
-}
-
-void Jugador::restartCoolDownAtaque() {
-    meleCD.restart();
-}
-
-
-
-
-
-
-
-
-

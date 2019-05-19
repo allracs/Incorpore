@@ -46,7 +46,6 @@ void Juego::pause(){
     fuente = new sf::Font;
     fuente->loadFromFile("resources/menu/manaspc.ttf");
 
-
     if(jugador->getHP() <= 0){
         textopausa = new sf::Text;
         textopausa->setFont(*fuente);
@@ -126,6 +125,7 @@ void Juego::update(){
 
             hud->compruebaTeclas();
             manejarIA();
+            gestionaPotenciadores();
             if(jugador->getHP() < 10 && pocion->isConsumible()){
                if(pocion->consume(jugador->getEntidadHitbox())){
                     hud->modificar_vida(1,1);
@@ -189,7 +189,7 @@ void Juego::update(){
                         texportal->setFont(*fuente);
                         texportal->setString("pulsa E para avanzar");
                         texportal->setScale(0.2, 0.2);
-                        texportal->setPosition(jugador->getSprite().getPosition().x+8, jugador->getSprite().getPosition().y - 56);
+                        texportal->setPosition(jugador->getSprite().getPosition().x + 8, jugador->getSprite().getPosition().y - 56);
                     } else {
                         colisionaPortal = false;
                     }
@@ -299,62 +299,49 @@ void Juego::procesarEventos(){
                 }
                 break;
             case sf::Event::KeyReleased:
-                if(evento->key.code == sf::Keyboard::E && colisionaPortal)
-                {
+                if(evento->key.code == sf::Keyboard::E && colisionaPortal){
                     pulsaE = true;
                 }
-                if(evento->key.code == sf::Keyboard::G)
-                {
+                if(evento->key.code == sf::Keyboard::E && colisionaCofre){
+                    //pulsaE = true;
+                }
+                if(evento->key.code == sf::Keyboard::G){
                 changeMode();
                 }
-                if(evento->key.code == sf::Keyboard::Escape)
-                {
-                    if(pausa == false)
-                    {
+                if(evento->key.code == sf::Keyboard::Escape){
+                    if(pausa == false){
                         pausa = true;
                         pause();
                     }
-                    else
-                    {
+                    else{
                         pausa = false;
                         resume();
                     }
-
                 }
-                if(evento->key.code == sf::Keyboard::Up || evento->key.code == sf::Keyboard::W)
-                {
-                    if(selPausa == 1 && pausa)
-                    {
+                if(evento->key.code == sf::Keyboard::Up || evento->key.code == sf::Keyboard::W){
+                    if(selPausa == 1 && pausa){
                         selPausa = 0;
                         continuar->setColor(sf::Color::Red);
                         salir->setColor(sf::Color::White);
                     }
                 }
-                if(evento->key.code == sf::Keyboard::Down || evento->key.code == sf::Keyboard::S)
-                {
-                    if(selPausa == 0 && pausa)
-                    {
+                if(evento->key.code == sf::Keyboard::Down || evento->key.code == sf::Keyboard::S){
+                    if(selPausa == 0 && pausa){
                         selPausa = 1;
                         continuar->setColor(sf::Color::White);
                         salir->setColor(sf::Color::Red);
                     }
-
-
                 }
-                if(evento->key.code == sf::Keyboard::Space)
-                {
-                    if(selPausa == 0 && pausa && reintentar)
-                    {
+                if(evento->key.code == sf::Keyboard::Space){
+                    if(selPausa == 0 && pausa && reintentar){
                         pausa = false;
                         reintentar = false;
                         m_siguiente = MaquinaEstados::build<Juego>(m_maquina, m_window, true);
                     }
-                    if(selPausa == 0 && pausa)
-                    {
+                    if(selPausa == 0 && pausa){
                         pausa = false;
                     }
-                    if(selPausa == 1 && pausa)
-                    {
+                    if(selPausa == 1 && pausa){
                         pausa = false;
                         view.setSize(dimensiones.x, dimensiones.y);
                         view.setCenter(dimensiones.x/2, dimensiones.y/2);
@@ -362,13 +349,8 @@ void Juego::procesarEventos(){
                         m_siguiente = MaquinaEstados::build<Menu>(m_maquina, m_window, true);
                     }
                 }
-
-
-
             default: break;
-
             }
-
         }
     }
 
@@ -423,6 +405,14 @@ void Juego::changeMode(){
     } else {
         godMode = true;
         std::cout << "GODMODE ACTIVADO" << std::endl;
+    }
+}
+
+void Juego::gestionaPotenciadores(){
+    for(int i = 0; i < mapa->getCofres().size(); i++){
+        if(jugador->cogeCofre(mapa->getCofres()[i]->getCofre().getGlobalBounds())){
+            mapa->getCofres()[i]->abrirCofre(*jugador);
+        }
     }
 }
 
