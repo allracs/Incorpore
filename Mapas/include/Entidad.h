@@ -38,7 +38,7 @@ class Entidad{
         void draw(RenderWindow&);
         void drawBoundingBoxes(RenderWindow&);
         void showData();
-        void muerteEntidad();
+//        void muerteEntidad();
 
     protected:
         RectangleShape *sprite;
@@ -60,9 +60,9 @@ class Entidad{
         bool colisiona_derecha = false;
         bool colisiona_izquierda = false;
 
-        Texture tTumba;
-        Sprite tumba;
-        bool mostrarTumba;
+//        Texture tTumba;
+//        Sprite tumba;
+//        bool mostrarTumba;
 
         Vector2f entityCenter;
 

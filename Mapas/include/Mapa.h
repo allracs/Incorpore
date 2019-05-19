@@ -4,6 +4,7 @@
 #include "Enemigo.h"
 #include "Antorcha.h"
 #include "Potenciadores.h"
+#include "Tumba.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace sf;
@@ -48,7 +49,7 @@ class Mapa{
         void mostrarMapaColisiones();
 
         //DRAW
-        void draw(RenderWindow&, Jugador, vector<Enemigo*>, int);
+        void draw(RenderWindow&, Jugador, vector<Enemigo*>, int, std::vector<Tumba*>);
 
     private:
         int width, height, tilewidth, tileheight, gid;

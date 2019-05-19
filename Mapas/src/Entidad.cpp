@@ -30,7 +30,7 @@ Entidad::Entidad(){
     defense = 2;
     speed = 75.f;*/
 
-    mostrarTumba=false;
+//    mostrarTumba=false;
 }
 
 void Entidad::setColision(int num){
@@ -189,7 +189,7 @@ void Entidad::drawBoundingBoxes(RenderWindow& target){
 
 }
 
-
+/*
 void Entidad::muerteEntidad(){
     mostrarTumba=true;
 
@@ -201,6 +201,8 @@ void Entidad::muerteEntidad(){
     tumba.setPosition(entityCenter);
 
 }
+
+*/
 
 void Entidad::showData(){
     cout <<  "x: " << sprite->getPosition().x << endl;

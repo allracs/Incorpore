@@ -455,21 +455,26 @@ void Mapa::mostrarMapaColisiones(){
     cout <<  "------------------------" << endl;
 }
 
-void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enemigos, int nEnemigos){
+void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enemigos, int nEnemigos, std::vector<Tumba*> tumbas){
     for(int l = 0; l < nCapas; l++){
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 if(mapSprite[l][y][x]!=NULL){
+
                     if(tipo == 4){
                         player.draw(target);
                     }
                     target.draw(*(mapSprite[l][y][x]));
                     if(l == 3){
+                        for(int i = 0; i < tumbas.size(); i++) {
+                            tumbas.at(i)->draw(target);
+                        }
                         player.draw(target);
 
                         for(int i = 0; i < nEnemigos; i++){
                             enemigos.at(i)->draw(target);
                         }
+
                     } else if(l == 2){
                         for(int i = 0; i < antorchas.size(); i++){
                             antorchas.at(i)->draw(target);

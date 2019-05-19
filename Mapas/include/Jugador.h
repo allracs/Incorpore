@@ -53,6 +53,10 @@ class Jugador: public Entidad{
         Clock CDarma;
         Clock cd;
 
+        bool mostrarTumba;
+        sf::Texture tTumba;
+        sf::Sprite tumba;
+
         Arma* arma;
 //        Vector2f playerCenter; // centro del jugador
         Vector2f movement; // movimiento del jugador
