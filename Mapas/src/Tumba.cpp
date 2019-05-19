@@ -1,8 +1,11 @@
 #include "Tumba.h"
+#include <iostream>
 
 Tumba::Tumba(sf::Vector2f pos)
 {
+
     tTumba.loadFromFile("resources/sprites/blood.png");
+    tumba.setTexture(tTumba);
     tumba.setOrigin(136/2, 136/2);
     tumba.setScale(0.13f,0.13f);
 
