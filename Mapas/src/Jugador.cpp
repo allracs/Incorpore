@@ -42,6 +42,8 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
     hp = vida;
     attack = 3;
     defense = 2;
+    speed = 75.f;
+
     dirMov = 0.6f;
     movement = Vector2f(0.f, 0.f);
 
