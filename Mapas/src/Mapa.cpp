@@ -19,13 +19,13 @@ Mapa::Mapa(int nivel){
         leerMapa(4);
     }
 
-    if(tipo != 4)
+    if(tipo != 4 || true) //TODO quitar cuando no se haga delete de los objetos en el mapa 4
         cargaObjetos();
     setDatos();
     //getDatos();
     cargaTexturas();
     creaSprite();
-    if(tipo != 4)
+    if(tipo != 4 || true) //TODO quitar cuando no se haga delete de los objetos en el mapa 4
         posicionaObjetos();
     colisiones();
     //mostrarMapaColisiones();
@@ -55,7 +55,7 @@ Mapa::~Mapa(){
     for(int i = 0; i < nCapas; i++){
         for(int j = 0; j < height; j++){
             for(int z = 0; z < width; z++){
-                delete mapSprite[i][j][z];
+                delete mapSprite[i][j][z];          //TODO cuando sea el mapa 4 (tipo == 4) que no se borren los objetos generados porque no hay
             }
             delete mapSprite[i][j];
         }
@@ -313,8 +313,8 @@ void Mapa::generaObjetos(int j, int k, int no){
             posAnt.x = k*tilewidth;
             posAnt.y = j*tileheight;
             potenciadores.push_back(new Potenciadores(posAnt));
-            colisionMap[j][k] = true;
-            nColisiones++;
+            //colisionMap[j][k] = true;
+            //nColisiones++;
         }
         else if(random >= 39 && random < 59){
             //Caja

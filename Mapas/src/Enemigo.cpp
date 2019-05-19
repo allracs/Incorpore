@@ -73,79 +73,35 @@ void Enemigo::update(float delta, RenderWindow& window, int nCol, FloatRect* col
 
 void Enemigo::seguirCamino(Posicion a, bool* esquinas){
 
-    //aqui el enemigo sigue el camino
-    movement = Vector2f(0.f, 0.f);
-
-    Posicion head = path.front();
-    sf::Vector2f coordhead = {head.getX()*16+8, head.getY()*16+8};
-    sf::Vector2f coordnow = getCenter();
-
-    if (a.getY() > head.getY() && !colisiona_abajo){    // ABAJO
-        movement.y -= speed;
-        if (actual != &run){
-            //cout << "CAMBIAMOS A RUN" << endl;
-            actual = &run;
-            actual->sprite.setPosition(entityCenter);
-        }
-    }
-
-    if (a.getY() < head.getY() && !colisiona_arriba){   // ARRIBA
-        movement.y += speed;
-
-        if (actual != &run){
-            //cout << "CAMBIAMOS A RUN" << endl;
-            actual = &run;
-            actual->sprite.setPosition(entityCenter);
-        }
-    }
-
-    if(a.getX() > head.getX() && !colisiona_derecha){   // DERECHA
-        dirMov = -1.f;
-        movement.x -= speed;
-
-        if (actual != &run){
-            //cout << "CAMBIAMOS A RUN" << endl;
-            actual = &run;
-            actual->sprite.setPosition(entityCenter);
-        }
-        actual->sprite.setScale(1.f*dirMov, 1.f);
-    }
-
-    if (a.getX() < head.getX() && !colisiona_izquierda){    // IZQUIERDA
-        dirMov = 1.f;
-        movement.x += speed;
-
-        if (actual != &run){
-            //cout << "CAMBIAMOS A RUN" << endl;
-            actual = &run;
-            actual->sprite.setPosition(entityCenter);
-        }
-        actual->sprite.setScale(1.f*dirMov, 1.f);
-    }
-
-    /* COMPROBAR COLISIONES CON ESQUINAS */
-
-    // if -> head arriba : comprobar coordenadas (izq o der del siguiente) y cambiar movement.x
-        // if -> esquinas[0] y coordnow.x < coordhead.x : mover izq
-        // else if -> esquinas[1] y coordnow.x > coordhead.x : mover der
-
-    if(a.getX() == head.getX() && a.getY()-1 == head.getY())
+    if(path.size() > 0)
     {
-        if(esquinas[0] && coordnow.x < coordhead.x-0.5)
-        {
+        //aqui el enemigo sigue el camino
+        movement = Vector2f(0.f, 0.f);
 
-            dirMov = 1.f;
-            movement.x += speed;
+        Posicion head = path.front();
+        sf::Vector2f coordhead = {head.getX()*16+8, head.getY()*16+8};
+        sf::Vector2f coordnow = getCenter();
+
+        if (a.getY() > head.getY() && !colisiona_abajo){    // ABAJO
+            movement.y -= speed;
+            if (actual != &run){
+                //cout << "CAMBIAMOS A RUN" << endl;
+                actual = &run;
+                actual->sprite.setPosition(entityCenter);
+            }
+        }
+
+        if (a.getY() < head.getY() && !colisiona_arriba){   // ARRIBA
+            movement.y += speed;
 
             if (actual != &run){
                 //cout << "CAMBIAMOS A RUN" << endl;
                 actual = &run;
                 actual->sprite.setPosition(entityCenter);
             }
-            actual->sprite.setScale(1.f*dirMov, 1.f);
         }
-        else if(esquinas[1] && coordnow.x > coordhead.x+0.5)
-        {
+
+        if(a.getX() > head.getX() && !colisiona_derecha){   // DERECHA
             dirMov = -1.f;
             movement.x -= speed;
 
@@ -156,18 +112,8 @@ void Enemigo::seguirCamino(Posicion a, bool* esquinas){
             }
             actual->sprite.setScale(1.f*dirMov, 1.f);
         }
-    }
 
-    // if -> head abajo : comprobar coordenadas (izq o der del siguiente) y cambiar movement.x
-        // if ->  coordnow.x < coordhead.x : mover izq
-        // else if -> coordnow.x > coordhead.x : mover der
-
-
-    if(a.getX() == head.getX() && a.getY()+1 == head.getY())
-    {
-        if(esquinas[2] && coordnow.x < coordhead.x-0.5)
-        {
-
+        if (a.getX() < head.getX() && !colisiona_izquierda){    // IZQUIERDA
             dirMov = 1.f;
             movement.x += speed;
 
@@ -178,107 +124,164 @@ void Enemigo::seguirCamino(Posicion a, bool* esquinas){
             }
             actual->sprite.setScale(1.f*dirMov, 1.f);
         }
-        else if(esquinas[3] && coordnow.x > coordhead.x+0.5)
-        {
-            dirMov = -1.f;
-            movement.x -= speed;
 
-            if (actual != &run){
-                //cout << "CAMBIAMOS A RUN" << endl;
-                actual = &run;
-                actual->sprite.setPosition(entityCenter);
+        /* COMPROBAR COLISIONES CON ESQUINAS */
+
+        // if -> head arriba : comprobar coordenadas (izq o der del siguiente) y cambiar movement.x
+            // if -> esquinas[0] y coordnow.x < coordhead.x : mover izq
+            // else if -> esquinas[1] y coordnow.x > coordhead.x : mover der
+
+        if(a.getX() == head.getX() && a.getY()-1 == head.getY())
+        {
+            if(esquinas[0] && coordnow.x < coordhead.x-0.5)
+            {
+
+                dirMov = 1.f;
+                movement.x += speed;
+
+                if (actual != &run){
+                    //cout << "CAMBIAMOS A RUN" << endl;
+                    actual = &run;
+                    actual->sprite.setPosition(entityCenter);
+                }
+                actual->sprite.setScale(1.f*dirMov, 1.f);
             }
-            actual->sprite.setScale(1.f*dirMov, 1.f);
+            else if(esquinas[1] && coordnow.x > coordhead.x+0.5)
+            {
+                dirMov = -1.f;
+                movement.x -= speed;
+
+                if (actual != &run){
+                    //cout << "CAMBIAMOS A RUN" << endl;
+                    actual = &run;
+                    actual->sprite.setPosition(entityCenter);
+                }
+                actual->sprite.setScale(1.f*dirMov, 1.f);
+            }
         }
+
+        // if -> head abajo : comprobar coordenadas (izq o der del siguiente) y cambiar movement.x
+            // if ->  coordnow.x < coordhead.x : mover izq
+            // else if -> coordnow.x > coordhead.x : mover der
+
+
+        if(a.getX() == head.getX() && a.getY()+1 == head.getY())
+        {
+            if(esquinas[2] && coordnow.x < coordhead.x-0.5)
+            {
+
+                dirMov = 1.f;
+                movement.x += speed;
+
+                if (actual != &run){
+                    //cout << "CAMBIAMOS A RUN" << endl;
+                    actual = &run;
+                    actual->sprite.setPosition(entityCenter);
+                }
+                actual->sprite.setScale(1.f*dirMov, 1.f);
+            }
+            else if(esquinas[3] && coordnow.x > coordhead.x+0.5)
+            {
+                dirMov = -1.f;
+                movement.x -= speed;
+
+                if (actual != &run){
+                    //cout << "CAMBIAMOS A RUN" << endl;
+                    actual = &run;
+                    actual->sprite.setPosition(entityCenter);
+                }
+                actual->sprite.setScale(1.f*dirMov, 1.f);
+            }
+        }
+
+
+        // if -> head izquierda : comprobar coordenadas (arr o aba del siguiente) y cambiar movement.y
+            // if -> coordnow.y < coordhead.y : mover aba
+            // else if -> coordnow.y > coordhead.y : mover arr
+
+
+        if(a.getY() == head.getY() && a.getX()-1 == head.getX())
+        {
+            if(esquinas[0] && coordnow.y < coordhead.y-0.5)
+            {
+
+                dirMov = 1.f;
+                movement.y += speed;
+
+                if (actual != &run){
+                    //cout << "CAMBIAMOS A RUN" << endl;
+                    actual = &run;
+                    actual->sprite.setPosition(entityCenter);
+                }
+                actual->sprite.setScale(1.f*dirMov, 1.f);
+            }
+            else if(esquinas[2] && coordnow.y > coordhead.y+0.5)
+            {
+                dirMov = -1.f;
+                movement.y -= speed;
+
+                if (actual != &run){
+                    //cout << "CAMBIAMOS A RUN" << endl;
+                    actual = &run;
+                    actual->sprite.setPosition(entityCenter);
+                }
+                actual->sprite.setScale(1.f*dirMov, 1.f);
+            }
+        }
+
+
+
+        // if -> head derecha : comprobar coordenadas (arr o aba del siguiente) y cambiar movement.y
+            // if -> coordnow.y < coordhead.y : mover aba
+            // else if -> coordnow.y > coordhead.y : mover arr
+
+        if(a.getY() == head.getY() && a.getX()+1 == head.getX())
+        {
+            if(esquinas[2] && coordnow.y < coordhead.y-0.5)
+            {
+
+                dirMov = 1.f;
+                movement.y += speed;
+
+                if (actual != &run){
+                    //cout << "CAMBIAMOS A RUN" << endl;
+                    actual = &run;
+                    actual->sprite.setPosition(entityCenter);
+                }
+                actual->sprite.setScale(1.f*dirMov, 1.f);
+            }
+            else if(esquinas[3] && coordnow.y > coordhead.y+0.5)
+            {
+                dirMov = -1.f;
+                movement.y -= speed;
+
+                if (actual != &run){
+                    //cout << "CAMBIAMOS A RUN" << endl;
+                    actual = &run;
+                    actual->sprite.setPosition(entityCenter);
+                }
+                actual->sprite.setScale(1.f*dirMov, 1.f);
+            }
+        }
+
+
+
+        /* --------------------------------- */
+
+        if(movement.x == 0 & movement.y == 0) {
+            if (actual != &idle){
+                //cout << "CAMBIAMOS A IDLE" << endl;
+                actual = &idle;
+                actual->sprite.setPosition(entityCenter);
+                actual->sprite.setScale(1.f*dirMov, 1.f);
+            }
+        }
+
+        colisiona_abajo = false;
+        colisiona_arriba = false;
+        colisiona_derecha = false;
+        colisiona_izquierda = false;
     }
-
-
-    // if -> head izquierda : comprobar coordenadas (arr o aba del siguiente) y cambiar movement.y
-        // if -> coordnow.y < coordhead.y : mover aba
-        // else if -> coordnow.y > coordhead.y : mover arr
-
-
-    if(a.getY() == head.getY() && a.getX()-1 == head.getX())
-    {
-        if(esquinas[0] && coordnow.y < coordhead.y-0.5)
-        {
-
-            dirMov = 1.f;
-            movement.y += speed;
-
-            if (actual != &run){
-                //cout << "CAMBIAMOS A RUN" << endl;
-                actual = &run;
-                actual->sprite.setPosition(entityCenter);
-            }
-            actual->sprite.setScale(1.f*dirMov, 1.f);
-        }
-        else if(esquinas[2] && coordnow.y > coordhead.y+0.5)
-        {
-            dirMov = -1.f;
-            movement.y -= speed;
-
-            if (actual != &run){
-                //cout << "CAMBIAMOS A RUN" << endl;
-                actual = &run;
-                actual->sprite.setPosition(entityCenter);
-            }
-            actual->sprite.setScale(1.f*dirMov, 1.f);
-        }
-    }
-
-
-
-    // if -> head derecha : comprobar coordenadas (arr o aba del siguiente) y cambiar movement.y
-        // if -> coordnow.y < coordhead.y : mover aba
-        // else if -> coordnow.y > coordhead.y : mover arr
-
-    if(a.getY() == head.getY() && a.getX()+1 == head.getX())
-    {
-        if(esquinas[2] && coordnow.y < coordhead.y-0.5)
-        {
-
-            dirMov = 1.f;
-            movement.y += speed;
-
-            if (actual != &run){
-                //cout << "CAMBIAMOS A RUN" << endl;
-                actual = &run;
-                actual->sprite.setPosition(entityCenter);
-            }
-            actual->sprite.setScale(1.f*dirMov, 1.f);
-        }
-        else if(esquinas[3] && coordnow.y > coordhead.y+0.5)
-        {
-            dirMov = -1.f;
-            movement.y -= speed;
-
-            if (actual != &run){
-                //cout << "CAMBIAMOS A RUN" << endl;
-                actual = &run;
-                actual->sprite.setPosition(entityCenter);
-            }
-            actual->sprite.setScale(1.f*dirMov, 1.f);
-        }
-    }
-
-
-
-    /* --------------------------------- */
-
-    if(movement.x == 0 & movement.y == 0) {
-        if (actual != &idle){
-            //cout << "CAMBIAMOS A IDLE" << endl;
-            actual = &idle;
-            actual->sprite.setPosition(entityCenter);
-            actual->sprite.setScale(1.f*dirMov, 1.f);
-        }
-    }
-
-    colisiona_abajo = false;
-    colisiona_arriba = false;
-    colisiona_derecha = false;
-    colisiona_izquierda = false;
 }
 
 bool Enemigo::serAtacado(sf::RectangleShape hitbox, float atkJugador){
