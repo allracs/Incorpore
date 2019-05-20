@@ -47,6 +47,7 @@ class Arma
         vector<Proyectil*> proyectiles;
 
         Vector2f mousePos;
+        IntRect* dim;
 
         Clock animAtaque;
         Clock CDdisparo;
