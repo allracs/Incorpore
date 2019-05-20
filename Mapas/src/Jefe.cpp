@@ -6,6 +6,7 @@ Jefe::Jefe(sf::Vector2f ini)
     //ctor
     estado = 0;
     vida = 1;
+    atacando = false;
 
     posFdash = {-1.f, -1.f};
     collision = new sf::RectangleShape();
@@ -66,6 +67,7 @@ void Jefe::estados(sf::Vector2f posJ)
                 actual->sprite.setPosition(collision->getPosition());
                 cestados.restart();
                 estado = 1;
+                atacando = true;
             }
             break;
 
@@ -83,7 +85,7 @@ void Jefe::estados(sf::Vector2f posJ)
 
                 srand(time(NULL));
                 dirCaminar = rand() % 8;
-
+                atacando = false;
                 cestados.restart();
                 estado = 2;
                 actual = &idle;
@@ -320,6 +322,11 @@ bool Jefe::restarVida(std::vector<Proyectil*> pr)
 int Jefe::getVida()
 {
     return vida;
+}
+
+bool Jefe::getAtaque()
+{
+    return atacando;
 }
 
 sf::RectangleShape* Jefe::getCollision()

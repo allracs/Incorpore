@@ -201,7 +201,7 @@ void Jugador::moverse(){
         if (actual != &run){
             //cout << "CAMBIAMOS A RUN" << endl;
             actual = &run;
-            std::cout << "Entity center: " << entityCenter.x << ", " << entityCenter.y << std::endl;
+//            std::cout << "Entity center: " << entityCenter.x << ", " << entityCenter.y << std::endl;
             actual->sprite.setPosition(entityCenter);
         }
     }

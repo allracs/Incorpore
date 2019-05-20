@@ -22,6 +22,7 @@ class Jefe
         std::vector<Proyectil*> getBalas();
         void destruirBala(int);
         int getVida();
+        bool getAtaque();
 
     protected:
 
@@ -34,7 +35,7 @@ class Jefe
         sf::Vector2f posFdash, cd2dash;
 
         int estado, dirCaminar, vida;
-        bool finDash;
+        bool finDash, atacando;
 
         void dash();
         void caminar();

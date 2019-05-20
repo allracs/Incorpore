@@ -65,7 +65,7 @@ Menu::Menu(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Esta
         botones->push_back(*salir);
     }
 
-    std::cout << "Se inicializa el menu" << std::endl;
+//    std::cout << "Se inicializa el menu" << std::endl;
 }
 
 Menu::~Menu()
@@ -118,12 +118,12 @@ void Menu::recortes(int num)
 
 void Menu::pause()
 {
-    std::cout << "Menu pausa" << std::endl;
+//    std::cout << "Menu pausa" << std::endl;
 }
 
 void Menu::resume()
 {
-    std::cout << "Menu resume" << std::endl;
+  //  std::cout << "Menu resume" << std::endl;
 }
 
 void Menu::update()

@@ -9,7 +9,7 @@ using namespace tinyxml2;
 using namespace std;
 
 Mapa::Mapa(int nivel){
-    std::cout << "NIVEL: " << nivel << std::endl;
+//    std::cout << "NIVEL: " << nivel << std::endl;
     srand(time(NULL));
     if(nivel < 4){
         int random = rand() % 3 +1; //Un random del 1 al 2 (no existe el caso 0)
@@ -477,8 +477,9 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
                             tumbas.at(i)->draw(target);
                         }
 
-                        if(hayCofre)
-                        potenciadores->draw(target);
+                        if(hayCofre){
+                            potenciadores->draw(target);
+                        }
 
                         player.draw(target);
 

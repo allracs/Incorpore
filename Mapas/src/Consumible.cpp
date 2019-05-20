@@ -6,7 +6,7 @@ Consumible::Consumible(sf::Vector2f pos){
     int random = rand() % 100 + 1;
     if(random < 50){
         creaConsumible(pos);
-        std::cout << "Hay Consumible" << std::endl;
+//        std::cout << "Hay Consumible" << std::endl;
     }
     else{
         hayConsumible = false;
