@@ -141,26 +141,30 @@ void Hud::compruebaTeclas(){
 }
 
 void Hud::modificar_vida(int cantidad, int sr){
-    if(sr == 1 && cantidad_corazones->size() < 5)
-    {
-        for(int i = 0; i < cantidad; i++){
-            cantidad_corazones->push_back(*corazon);
+        if(sr == 1 && cantidad_corazones->size() < 5)
+        {
+            for(int i = 0; i < cantidad; i++){
+                cantidad_corazones->push_back(*corazon);
+            }
         }
-    }
-    if(sr == 2 && cantidad_corazones->size() > 0){
-        if(cantidad < 0){
-            updateHabilidades();
-            escudo_esta = false;
+        if(sr == 2 && cantidad_corazones->size() > 0){
+            if(cantidad < 0){
+                updateHabilidades();
+                escudo_esta = false;
+            }
+
+            for(int i = 0; i < cantidad; i++){
+                cantidad_corazones->pop_back();
+                if(cantidad_corazones->size() == 0)
+                break;
+            }
         }
 
-        for(int i = 0; i < cantidad; i++){
-            cantidad_corazones->pop_back();
+        for(int i = 0; i < cantidad_corazones->size(); i++){
+            cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + (corazon->getGlobalBounds().width -3)*i, pieza_vida->getPosition().y + 1.25});
         }
-    }
 
-    for(int i = 0; i < cantidad_corazones->size(); i++){
-        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + (corazon->getGlobalBounds().width -3)*i, pieza_vida->getPosition().y + 1.25});
-    }
+
 }
 
 void Hud::setHabilidad(int habilidad){
