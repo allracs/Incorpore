@@ -8,6 +8,7 @@
 #include "Consumible.h"
 #include "Estado.h"
 #include "Portal.h"
+#include "Tumba.h"
 
 using namespace sf;
 
@@ -48,6 +49,7 @@ class Juego : public Estado
         Clock frameClock;
         Jugador *jugador;
         std::vector<Enemigo*> enemigos;
+        std::vector<Tumba*> tumbas;
         Event *evento;
         Mapa *mapa;
         Hud *hud;

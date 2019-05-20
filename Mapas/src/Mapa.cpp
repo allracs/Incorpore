@@ -300,7 +300,7 @@ void Mapa::generaObjetos(int j, int k, int no){
     //srand(time(NULL));
     while(nObj == no) {
         int random = rand() % 100;
-        if(random >= 0 && random < 29){
+        if(random >= 0 && random < 29 && tipo != 4){
             //Antorcha
             posAnt.x = k*tilewidth;
             posAnt.y = j*tileheight;
@@ -319,7 +319,7 @@ void Mapa::generaObjetos(int j, int k, int no){
             //colisionMap[j][k] = true;
             //nColisiones++;
         }
-        else if(random >= 39 && random < 59){
+        else if(random >= 39 && random < 59 && tipo != 4){
             //Caja
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[caja[1]].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
@@ -329,7 +329,7 @@ void Mapa::generaObjetos(int j, int k, int no){
             colisionMap[j][k] = true;
             nColisiones++;
         }
-        else if(random >= 59 && random < 74){
+        else if(random >= 59 && random < 74 && tipo != 4){
             //CajaDoble
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[cajadoble[1]].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
@@ -339,12 +339,12 @@ void Mapa::generaObjetos(int j, int k, int no){
             colisionMap[j][k] = true;
             nColisiones++;
         }
-        else if(random >= 74 && random < 89){
+        else if(random >= 74 && random < 89 && tipo != 4){
             //Calavera
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[calavera].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
         }
-        else if(random >= 89 && random < 100){
+        else if(random >= 89 && random < 100 && tipo != 4){
             //Columna
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[columna[1]].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
@@ -458,22 +458,27 @@ void Mapa::mostrarMapaColisiones(){
     cout <<  "------------------------" << endl;
 }
 
-void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enemigos, int nEnemigos){
+void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enemigos, int nEnemigos, std::vector<Tumba*> tumbas){
     for(int l = 0; l < nCapas; l++){
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 if(mapSprite[l][y][x]!=NULL){
+
                     if(tipo == 4){
                         player.draw(target);
                     }
                     target.draw(*(mapSprite[l][y][x]));
                     if(l == 3){
+                        for(int i = 0; i < tumbas.size(); i++) {
+                            tumbas.at(i)->draw(target);
+                        }
                         potenciadores->draw(target);
                         player.draw(target);
 
                         for(int i = 0; i < nEnemigos; i++){
                             enemigos.at(i)->draw(target);
                         }
+
                     } else if(l == 2){
                         for(int i = 0; i < antorchas.size(); i++){
                             antorchas.at(i)->draw(target);

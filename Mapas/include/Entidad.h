@@ -61,9 +61,9 @@ class Entidad{
         bool colisiona_derecha = false;
         bool colisiona_izquierda = false;
 
-        Texture tTumba;
-        Sprite tumba;
-        bool mostrarTumba;
+//        Texture tTumba;
+//        Sprite tumba;
+//        bool mostrarTumba;
 
         Vector2f entityCenter;
 

@@ -167,6 +167,7 @@ void Juego::update(){
                         }
 
                     } else {
+                        tumbas.push_back(new Tumba(enemigos.at(i)->getCenter()));
                         delete enemigos.at(i);
                         enemigos.erase(enemigos.begin()+i);
                     }
@@ -264,6 +265,7 @@ void Juego::cargaPlayer(){
 void Juego::cargaMapa(){
     mapa = new Mapa(nNivel);
     pocion = new Consumible(mapa->generaPosicion());
+    tumbas.clear();
 }
 
 void Juego::cargarHUD(){
@@ -370,11 +372,12 @@ void Juego::draw(){
     m_window.clear(Color(28,17,23,255));
     m_window.setView(view);
 
-    mapa->draw(m_window, *jugador, enemigos, enemigos.size());
+    mapa->draw(m_window, *jugador, enemigos, enemigos.size(), tumbas);
 
     pocion->draw(m_window);
     hud->draw(m_window);
     jugador->drawBoundingBoxes(m_window);
+
     for(int i = 0; i < enemigos.size(); i++){
         if(enemigos.at(i)->getBorrado() == false)
         enemigos.at(i)->draw(m_window);
@@ -384,6 +387,7 @@ void Juego::draw(){
         if(enemigos.at(i)->getBorrado() == false)
         enemigos.at(i)->drawBoundingBoxes(m_window);
     }
+
     if(hayPortales){
         portalVerde->draw(m_window);
         portalMorado->draw(m_window);

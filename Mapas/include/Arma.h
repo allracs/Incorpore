@@ -28,6 +28,10 @@ class Arma
         Vector2f getMousePos();
         float getDireccionMov();
         int getOpcion();
+
+
+        void cambiarArma(int tipo);
+
     protected:
 
     private:

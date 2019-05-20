@@ -286,9 +286,15 @@ Arma* Jugador::getPuntArma() {
 }
 
 void Jugador::cambiarArma(int opcion){
-
+    /*
     delete arma;
     arma=new Arma(opcion, entityCenter);
+    */
+    if(arma->getOpcion() == 1) {
+        arma->cambiarArma(0);
+    } else {
+        arma->cambiarArma(1);
+    }
 
 }
 
