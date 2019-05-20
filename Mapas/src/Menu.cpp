@@ -128,6 +128,7 @@ void Menu::resume()
 
 void Menu::update()
 {
+    cambio();
     eventos_raton();
     evento = new sf::Event;
     procesar_eventos();
