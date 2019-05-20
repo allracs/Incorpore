@@ -139,11 +139,13 @@ void Jefe::dash()
             {
                 collision->move(xe * time.asMilliseconds(), ye * time.asMilliseconds());
                 actual->sprite.move(xe * time.asMilliseconds(), ye * time.asMilliseconds());
+                actual->sprite.setScale({-1.f, 1.f});
             }
             else                            //si el jugador esta abajo - derecha
             {
                 collision->move(xe * time.asMilliseconds(), -ye * time.asMilliseconds());
                 actual->sprite.move(xe * time.asMilliseconds(), -ye * time.asMilliseconds());
+                actual->sprite.setScale({-1.f, 1.f});
             }
         }
         else
@@ -152,11 +154,13 @@ void Jefe::dash()
             {
                 collision->move(-xe * time.asMilliseconds(), ye * time.asMilliseconds());
                 actual->sprite.move(-xe * time.asMilliseconds(), ye * time.asMilliseconds());
+                actual->sprite.setScale({1.f, 1.f});
             }
             else                            //si el jugador esta abajo - izquierda
             {
                 collision->move(-xe * time.asMilliseconds(), -ye * time.asMilliseconds());
                 actual->sprite.move(-xe * time.asMilliseconds(), -ye * time.asMilliseconds());
+                actual->sprite.setScale({1.f, 1.f});
             }
         }
     }
@@ -187,6 +191,7 @@ void Jefe::caminar()
         case 0:
             x = -1;
             y = -1;
+            actual->sprite.setScale({1.f, 1.f});
             break;
 
         case 1:
@@ -196,15 +201,18 @@ void Jefe::caminar()
         case 2:
             x = 1;
             y = -1;
+            actual->sprite.setScale({-1.f, 1.f});
             break;
 
         case 3:
             x = 1;
+            actual->sprite.setScale({-1.f, 1.f});
             break;
 
         case 4:
             x = 1;
             y = 1;
+            actual->sprite.setScale({-1.f, 1.f});
             break;
 
         case 5:
@@ -214,10 +222,12 @@ void Jefe::caminar()
         case 6:
             x = -1;
             y = 1;
+            actual->sprite.setScale({1.f, 1.f});
             break;
 
         case 7:
             x = -1;
+            actual->sprite.setScale({1.f, 1.f});
             break;
     }
 
