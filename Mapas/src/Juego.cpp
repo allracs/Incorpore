@@ -186,16 +186,32 @@ void Juego::update(){
                                             mapa->getNumColisiones(),
                                             mapa->getBounds());
 
+
+                        if(!godMode && jefes.at(a)->getAtaque() && jugador->recibeDmg(*jefes.at(a)->getCollision(), jefes.at(a)->getVida(), 1.f)){
+                            hud->modificar_vida(1,2);
+                            break;
+                        }
+                        for(int i = 0; i < jefes.at(a)->getBalas().size(); i++)
+                        {
+                            if(!godMode && jugador->recibeDmg(jefes.at(a)->getBalas().at(i)->getColision(), jefes.at(a)->getVida(), 1.f)){
+                                hud->modificar_vida(1,2);
+                                jefes.at(a)->getBalas().at(i)->setHacolisionado(true);
+                                break;
+                            }
+                        }
                         if(jefes.at(a)->restarVida(jugador->getPuntArma()->getProyectiles()))
                         {
                             delete jefes.at(a);
                             jefes.erase(jefes.begin()+a);
+                            break;
                         }
                         if(jefes.at(a)->getVida()==0)
                         {
                             delete jefes.at(a);
                             jefes.erase(jefes.begin()+a);
+                            break;
                         }
+
                     }
                 }
 
