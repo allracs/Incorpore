@@ -19,7 +19,7 @@ Jefe::Jefe(sf::Vector2f ini)
 
     srand(time(NULL));
     dirCaminar = rand() % 8;
-    idle.setAnimacion("resources/sprites/medussa.png", sf::IntRect(0,0,56,60), sf::IntRect(444,0,56,60), 56, 0.2f);
+    idle.setAnimacion("resources/sprites/medusa-idle.png", sf::IntRect(0,0,48,56), sf::IntRect(384,0,48,56), 48, 0.1f);
     idle.sprite.setOrigin(56/2, 60/2);
 
 
