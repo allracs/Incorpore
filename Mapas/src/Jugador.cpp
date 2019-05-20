@@ -36,6 +36,7 @@ Jugador::Jugador(Vector2f pos){
 
 Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int ataque, int defensa, float velocidad){
     entityCenter = pos;
+    mostrarTumba = false;
     entidadHitbox.setPosition(pos);
     setColisionadores();
 
