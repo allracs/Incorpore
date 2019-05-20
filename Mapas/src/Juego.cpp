@@ -185,6 +185,17 @@ void Juego::update(){
                         jefes.at(a)->update(jugador->getCenter(),
                                             mapa->getNumColisiones(),
                                             mapa->getBounds());
+
+                        if(jefes.at(a)->restarVida(jugador->getPuntArma()->getProyectiles()))
+                        {
+                            delete jefes.at(a);
+                            jefes.erase(jefes.begin()+a);
+                        }
+                        if(jefes.at(a)->getVida()==0)
+                        {
+                            delete jefes.at(a);
+                            jefes.erase(jefes.begin()+a);
+                        }
                     }
                 }
 
@@ -315,6 +326,7 @@ void Juego::procesarEventos(){
                             //std::cout << "COOLDOWN ATAQUE: " << jugador->getCooldownAtaque() << std::endl;
                             jugador->restartCoolDownAtaque();
                             jugador->getArma().atacar(enemigos, enemigos.size(), jugador->getAtaque());
+                            jugador->getArma().atacar(jefes, jefes.size());
                             if(jugador->getArma().getOpcion() == 0){
                                 jugador->getPuntArma()->empezarAnim();
                             }

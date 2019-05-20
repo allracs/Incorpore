@@ -114,6 +114,15 @@ void Arma::atacar(std::vector<Enemigo*> enemigos, int nEnemigos, float atkJugado
     }
 }
 
+void Arma::atacar(std::vector<Jefe*> enemigos, int nEnemigos){
+    if(tipo==0){
+        for(int i = 0; i < nEnemigos; i++){
+            enemigos.at(i)->restarVida(ataqueHitbox);
+        }
+
+    }
+}
+
 void Arma::crearProyectil(sf::Vector2f entityCenter) {
     if(tipo==1){
 
@@ -130,7 +139,7 @@ void Arma::crearProyectil(sf::Vector2f entityCenter) {
 
             float rotation=(atan2(dx,dy))*180/PI;
 
-            Proyectil *pr = new Proyectil(ataqueHitbox.getPosition() + pos, aimDirNorm, rotation);
+            Proyectil *pr = new Proyectil(ataqueHitbox.getPosition() + pos, aimDirNorm, rotation, 1);
             proyectiles.push_back(pr);
         }
     }

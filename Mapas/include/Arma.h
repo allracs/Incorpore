@@ -5,6 +5,8 @@
 #include <iostream>
 #include "Enemigo.h"
 #include "Proyectil.h"
+#include "Jefe.h"
+
 using namespace std;
 using namespace sf;
 
@@ -17,6 +19,7 @@ class Arma
         void update(Vector2f, int nCol, FloatRect* colisiones);
         void rotacionAtaque(RenderWindow&, float, Vector2f, RectangleShape);
         void atacar(vector<Enemigo*>, int, float);
+        void atacar(vector<Jefe*>, int);
         void crearProyectil(sf::Vector2f centro);
 
         void empezarAnim();
