@@ -470,6 +470,9 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
 
                     if(tipo == 4){
                         player.draw(target);
+                        for(int i = 0; i < nEnemigos; i++){
+                            enemigos.at(i)->draw(target);
+                        }
                     }
                     target.draw(*(mapSprite[l][y][x]));
                     if(l == 3){

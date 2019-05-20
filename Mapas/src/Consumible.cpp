@@ -25,7 +25,7 @@ void Consumible::creaConsumible(sf::Vector2f pos){
     int random = rand() % 100 + 1;
     sf::IntRect dim(117,212,7,11);
 
-    if(random < 100){
+    if(random < 20){
         tipo = 2;
         dim.left = 196;
         dim.top = 180;
