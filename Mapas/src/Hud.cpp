@@ -276,7 +276,7 @@ void Hud::setPosicionHabilidades(int x, int y){
 
 }
 
-void Hud::cambioNivel(int hs,int ha,int hd){
+void Hud::cambioNivel(int hs,int ha,int hd, bool shield){
     if(hs > 0){
         setHabilidad(3);
         textoSpeed->setString(to_string(hs));
@@ -288,6 +288,10 @@ void Hud::cambioNivel(int hs,int ha,int hd){
     if(hd > 0){
         setHabilidad(2);
         textoDef->setString(to_string(hd));
+    }
+
+    if(shield){
+        setHabilidad(4);
     }
 
 

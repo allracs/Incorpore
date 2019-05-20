@@ -21,7 +21,7 @@ public:
     void setPosicionHabilidades(int, int);
     void cambiaArma(int);
     void updateTeclas(bool,bool);
-    void cambioNivel(int,int,int);
+    void cambioNivel(int,int,int, bool);
     Sprite getCorazon();
     Text getTextoVida();
     Sprite getPiezaVida();

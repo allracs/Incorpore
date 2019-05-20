@@ -273,7 +273,7 @@ void Juego::update(){
                         cargaMapa();
                         cargaPlayer();
                         cargarHUD();
-                        hud->cambioNivel(hSpeed,hAttack,hDef);
+                        hud->cambioNivel(hSpeed,hAttack,hDef,jugador->getEscudo());
                         //std::cout<< jugador->getVidas()<<std::endl;
                     }
                 }
@@ -303,7 +303,7 @@ void Juego::cargaPlayer(){
     {
 //        std::cout<< jugador->getHP()<<std::endl;
 //        std::cout<< jugador->getHP()<<std::endl;
-        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), mejora, jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad());
+        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), mejora, jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad(), jugador->getEscudo());
         entraPortales = false;
     }
     else
@@ -378,7 +378,6 @@ void Juego::procesarEventos(){
                 if(evento->key.code == sf::Keyboard::E && colisionaCofre){
                     if(!cofreAbierto){
                         int tipo = rand() % 4 + 1;
-                        tipo = 1;
                         mapa->getCofre()->abrirCofre(*jugador, tipo);
                         if(tipo == 1){
                             mejora++;
