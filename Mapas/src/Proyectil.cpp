@@ -12,7 +12,7 @@ Proyectil::Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation, in
         }
     } else if(tipo==2)
     {
-        if(!textura.loadFromFile("resources/sprites/EnergyBall.png")){
+        if(!textura.loadFromFile("resources/sprites/bolaEnemigo.png")){
             std::cout<<"No se cargo el sprite de la bola de energia sideral"<<std::endl;
         }
     }
@@ -21,7 +21,10 @@ Proyectil::Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation, in
     if(tipo==1)
     sprite.setOrigin(10/2, 5/2);
     else
-    sprite.setOrigin(10, 5);
+    {
+        sprite.setOrigin(10, 5);
+        sprite.setScale({0.6,0.6});
+    }
 
     std::cout << "POSICION: " << colision.getPosition().x << " ," << colision.getPosition().y << std::endl;
     sprite.setPosition(posicion);
