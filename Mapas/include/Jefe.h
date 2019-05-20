@@ -41,6 +41,7 @@ class Jefe
 
         Animacion idle;
         Animacion run;
+        Animacion disparar;
         Animacion* actual;
 
 };
