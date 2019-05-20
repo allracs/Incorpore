@@ -138,8 +138,16 @@ void Juego::update(){
                         jugador->setHP(jugador->getHP() + 1);
                     }
                     else{
-                        hud->modificar_vida(2,1);
-                        jugador->setHP(jugador->getHP() + 2);
+                        if(jugador->getHP() == 4){
+                            jugador->setHP(jugador->getHP() + 1);
+                            hud->modificar_vida(1,1);
+                        }
+                        else{
+                            jugador->setHP(jugador->getHP() + 2);
+                            hud->modificar_vida(2,1);
+                        }
+
+
                     }
 
                }
