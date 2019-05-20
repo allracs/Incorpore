@@ -122,10 +122,7 @@ void Juego::update(){
             if(arma >= 0){
                 hud->cambiaArma(arma);
             }
-
             hud->compruebaTeclas();
-
-
             hud->updateTeclas(jugador->puedeCambiarArma(),jugador->flagEsquivar());
             manejarIA();
             gestionaPotenciadores();
@@ -273,9 +270,9 @@ void Juego::cargaMapa(){
 
 void Juego::cargarHUD(){
     hud = new Hud(jugador->getHP());
-    hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 2, view.getCenter().y - dimensiones.y/10 + 2);
-    hud->setPosicionSwitch(view.getCenter().x + 100, view.getCenter().y - 45);
-    hud->setPosicionHabilidades(view.getCenter().x + 22, view.getCenter().y - 70);
+    hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 5, view.getCenter().y - dimensiones.y/10 + 2);
+    hud->setPosicionSwitch(view.getCenter().x + 95, view.getCenter().y - 67);
+    hud->setPosicionHabilidades(view.getCenter().x - 172, view.getCenter().y + 50);
 }
 
 void Juego::procesarEventos(){

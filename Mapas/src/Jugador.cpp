@@ -10,7 +10,7 @@ Jugador::Jugador(Vector2f pos){
     entidadHitbox.setPosition(pos);
     setColisionadores();
 
-    hp = 10;
+    hp = 5;
     attack = 3;
     defense = 2;
     speed = 75.f;

@@ -1013,7 +1013,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1558356886 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
+1558359911 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
@@ -1044,7 +1044,7 @@
 	<iostream>
 	<vector>
 
-1558356677 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1558358866 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -1076,7 +1076,7 @@
 	"Arma.h"
 	"Proyectil.h"
 
-1558357084 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
+1558359303 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
