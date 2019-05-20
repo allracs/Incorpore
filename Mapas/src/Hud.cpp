@@ -212,6 +212,23 @@ void Hud::cambiaArma(int n){
     }
 }
 
+void Hud::updateTeclas(bool cambio, bool dash){
+    if(cambio){
+        tecla_switch->setColor(Color::White);
+    }
+    else{
+        tecla_switch->setColor(Color(50,50,50,180));
+    }
+
+    if(dash){
+        tecla_esquivar->setColor(Color::White);
+    }
+    else{
+        tecla_esquivar->setColor(Color(50,50,50,180));
+    }
+
+}
+
 void Hud::setPosicionHabilidades(int x, int y){
     xHab = x;
     yHab = y;

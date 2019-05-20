@@ -95,9 +95,16 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
         arma->crearProyectil(entidadHitbox.getPosition());
     }
 
+    if(CDarma.getElapsedTime().asSeconds() >= 2.f || inicioArma){
+        flagArma = true;
+    }
+    else{
+        flagArma = false;
+    }
+
     //Tecla para activar el ataque a distancia
     if(Keyboard::isKeyPressed(Keyboard::Q)){
-        if(CDarma.getElapsedTime().asSeconds()>=2.f){
+        if(flagArma || inicioArma){
             CDarma.restart();
             if(arma->getOpcion()==0){
                 cambiarArma(1);
@@ -105,6 +112,7 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
                 cambiarArma(0);
             }
             cambia = arma->getOpcion();
+            inicioArma = false;
         }
     }
     compruebaColor();
@@ -316,6 +324,13 @@ void Jugador::muerteJugador(){
 
 void Jugador::escudarse(){
     cout << "No se cargo la tumba" << endl;
+}
+bool Jugador::flagEsquivar(){
+    return puedeEsquivar;
+}
+
+bool Jugador::puedeCambiarArma(){
+    return flagArma;
 }
 
 void Jugador::draw(sf::RenderWindow &app) {

@@ -35,6 +35,7 @@ class Juego : public Estado
         //void render();
         void changeMode();
         void gestionaPotenciadores();
+        bool puedeEsquivar();
 
         Vector2f generaPosicion();
 
@@ -81,5 +82,7 @@ class Juego : public Estado
         bool colisionaCofre = false;
         bool cofreAbierto = false;
         int nNivel;
+        bool activaQ = false;;
+        bool activaShift = false;
 
 };

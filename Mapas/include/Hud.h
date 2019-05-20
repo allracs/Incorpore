@@ -20,7 +20,7 @@ public:
     void setPosicionSwitch(int, int);
     void setPosicionHabilidades(int, int);
     void cambiaArma(int);
-
+    void updateTeclas(bool,bool);
     Sprite getCorazon();
     Text getTextoVida();
     Sprite getPiezaVida();

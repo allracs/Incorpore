@@ -37,7 +37,8 @@ class Jugador: public Entidad{
 
         float getCooldownAtaque();
         void restartCoolDownAtaque();
-
+        bool puedeCambiarArma();
+        bool flagEsquivar();
         void muerteJugador();
         void escudarse();
         void draw(sf::RenderWindow &);
@@ -46,6 +47,8 @@ class Jugador: public Entidad{
         bool atacando;
         bool esquivando;
         bool puedeEsquivar;
+        bool flagArma;
+        bool inicioArma = true;
 
         Clock cdEsquivar;
         Clock duracionEsquivar;

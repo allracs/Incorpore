@@ -124,6 +124,9 @@ void Juego::update(){
             }
 
             hud->compruebaTeclas();
+
+
+            hud->updateTeclas(jugador->puedeCambiarArma(),jugador->flagEsquivar());
             manejarIA();
             gestionaPotenciadores();
             if(jugador->getHP() < 10 && pocion->isConsumible()){
