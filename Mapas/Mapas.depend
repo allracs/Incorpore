@@ -998,7 +998,7 @@
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 
-1558356158 /home/david/Documentos/Incorpore/Mapas/include/Hud.h
+1558361869 /home/david/Documentos/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
@@ -1013,13 +1013,13 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1558359911 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
+1558361859 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
 1558203348 e/Hud.h"
 
-1558354030 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
+1558360680 source:/home/david/Documentos/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -1044,7 +1044,7 @@
 	<iostream>
 	<vector>
 
-1558358866 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1558362438 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -1053,7 +1053,7 @@
 	<vector>
 	<iostream>
 
-1558355439 /home/david/Documentos/Incorpore/Mapas/include/Juego.h
+1558362332 /home/david/Documentos/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
@@ -1066,7 +1066,7 @@
 	"Portal.h"
 	"Tumba.h"
 
-1558356974 /home/david/Documentos/Incorpore/Mapas/include/Jugador.h
+1558361062 /home/david/Documentos/Incorpore/Mapas/include/Jugador.h
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
@@ -1076,7 +1076,7 @@
 	"Arma.h"
 	"Proyectil.h"
 
-1558359303 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
+1558360824 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 

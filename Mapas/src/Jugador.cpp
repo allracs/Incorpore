@@ -34,15 +34,15 @@ Jugador::Jugador(Vector2f pos){
     arma = new Arma(0, pos);
 }
 
-Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
+Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int ataque, int defensa, float velocidad){
     entityCenter = pos;
     entidadHitbox.setPosition(pos);
     setColisionadores();
 
     hp = vida;
-    attack = 3;
-    defense = 2;
-    speed = 75.f;
+    attack = ataque;
+    defense = defensa;
+    speed = velocidad;
 
     dirMov = 0.6f;
     movement = Vector2f(0.f, 0.f);

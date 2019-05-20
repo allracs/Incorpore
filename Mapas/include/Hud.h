@@ -8,7 +8,7 @@ using namespace sf;
 
 class Hud{
 public:
-    Hud(int vidas);
+    Hud(int vidas, int, int, int);
     ~Hud();
 
     void compruebaTeclas();
@@ -21,6 +21,7 @@ public:
     void setPosicionHabilidades(int, int);
     void cambiaArma(int);
     void updateTeclas(bool,bool);
+    void cambioNivel(int,int,int);
     Sprite getCorazon();
     Text getTextoVida();
     Sprite getPiezaVida();

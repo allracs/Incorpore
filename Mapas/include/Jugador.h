@@ -17,7 +17,7 @@ using namespace sf;
 class Jugador: public Entidad{
     public:
         Jugador(Vector2f pos);
-        Jugador(Vector2f pos, int, int);
+        Jugador(Vector2f pos, int, int, int, int, float);
 
         int update(float, RenderWindow&, int, FloatRect*);
         void moverse();
@@ -42,6 +42,7 @@ class Jugador: public Entidad{
         void muerteJugador();
         void escudarse();
         void draw(sf::RenderWindow &);
+
     private:
         float dirMov;
         bool atacando;

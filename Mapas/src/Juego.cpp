@@ -14,7 +14,9 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
     dimensiones = Vector2i(1280, 720);
     nEnemigos = 1;
     nNivel = 1;
-
+    hAttack = 0;
+    hSpeed = 0;
+    hDef = 0;
     evento = new Event;
 
     view.setSize(dimensiones.x, dimensiones.y);
@@ -245,7 +247,7 @@ void Juego::cargaPlayer(){
     if(entraPortales)
     {
         std::cout<< jugador->getHP()<<std::endl;
-        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion());
+        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad());
         entraPortales = false;
     }
     else
@@ -269,7 +271,8 @@ void Juego::cargaMapa(){
 }
 
 void Juego::cargarHUD(){
-    hud = new Hud(jugador->getHP());
+
+    hud = new Hud(jugador->getHP(), hSpeed, hDef, hAttack);
     hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 5, view.getCenter().y - dimensiones.y/10 + 2);
     hud->setPosicionSwitch(view.getCenter().x + 95, view.getCenter().y - 67);
     hud->setPosicionHabilidades(view.getCenter().x - 172, view.getCenter().y + 50);
@@ -310,6 +313,7 @@ void Juego::procesarEventos(){
                         int tipo = rand() % 4 + 1;
                         mapa->getCofre()->abrirCofre(*jugador, tipo);
                         hud->setHabilidad(tipo);
+                        contadorHabilidades(tipo);
                         cofreAbierto = true;
                     }
                 }
@@ -361,6 +365,20 @@ void Juego::procesarEventos(){
             }
         }
     }
+
+void Juego::contadorHabilidades(int tipo){
+    switch(tipo){
+        case 1:
+            hAttack++;
+            break;
+        case 2:
+            hDef++;
+            break;
+        case 3:
+            hSpeed++;
+            break;
+    }
+}
 
 void Juego::setView(){
     view.move(jugador->getMovement() * delta);

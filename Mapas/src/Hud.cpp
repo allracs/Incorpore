@@ -3,7 +3,7 @@
 using namespace std;
 using namespace sf;
 
-Hud::Hud(int vidas){
+Hud::Hud(int vidas,int hs,int hd, int ha){
     //PIEZA HUD VIDA
     vida = new Texture;
     baston = new Texture;
@@ -103,6 +103,7 @@ Hud::Hud(int vidas){
     pieza_habilidades = new Sprite(*habilidades); // new RectangleShape({90,16});
     pieza_habilidades->setOrigin(pieza_habilidades->getOrigin().x/2, pieza_habilidades->getOrigin().x/2);
 
+    cambioNivel(hs,ha,hd);
 
 }
 
@@ -237,6 +238,17 @@ void Hud::setPosicionHabilidades(int x, int y){
     }
 }
 
+void Hud::cambioNivel(int hs,int ha,int hd){
+    if(hs > 0){
+        setHabilidad(3);
+    }
+    if(ha > 0){
+        setHabilidad(1);
+    }
+    if(hd > 0){
+        setHabilidad(2);
+    }
+}
 
 //GETTERS
 

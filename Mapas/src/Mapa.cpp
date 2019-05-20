@@ -69,6 +69,7 @@ Mapa::~Mapa(){
     antorchas.clear();
     //delete tilesetSprite;
     delete colision;
+    if(hayCofre)
     delete potenciadores;
    // delete colisionPortales;
 
@@ -308,7 +309,7 @@ void Mapa::generaObjetos(int j, int k, int no){
             colisionMap[j][k] = true;
             nColisiones++;
         }
-        else  if(random >= 100 && random < 39){
+        else  if(random >= 0 && random < 50){
             //Cofres
             if(!hayCofre){
                 posAnt.x = k*tilewidth;
@@ -344,7 +345,7 @@ void Mapa::generaObjetos(int j, int k, int no){
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[calavera].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
         }
-        else if(random >= 89 && random < 100 && tipo != 4){
+        else if(random >= 0 && random < 100 && tipo != 4){
             //Columna
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[columna[1]].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);

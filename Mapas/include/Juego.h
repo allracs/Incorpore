@@ -36,7 +36,7 @@ class Juego : public Estado
         void changeMode();
         void gestionaPotenciadores();
         bool puedeEsquivar();
-
+        void contadorHabilidades(int);
         Vector2f generaPosicion();
 
         Vector2i dimensiones;
@@ -84,5 +84,6 @@ class Juego : public Estado
         int nNivel;
         bool activaQ = false;;
         bool activaShift = false;
+        int hSpeed, hAttack, hDef;
 
 };
