@@ -75,7 +75,7 @@ Menu::~Menu()
 
 void Menu::cambio()
 {
-    if(clkmenu.getElapsedTime().asSeconds() > 0.15)
+    if(clkmenu.getElapsedTime().asSeconds() > 0.08)
     {
         if(linea == 3 && num > 5)
         {
