@@ -419,7 +419,8 @@ void Juego::changeMode(){
 }
 
 void Juego::gestionaPotenciadores(){
-    if(jugador->cogeCofre(mapa->getCofre()->getCofre().getGlobalBounds())){
+
+    if(mapa->existeCofre() && jugador->cogeCofre(mapa->getCofre()->getCofre().getGlobalBounds())){
             colisionaCofre = true;
     }
 }

@@ -308,7 +308,7 @@ void Mapa::generaObjetos(int j, int k, int no){
             colisionMap[j][k] = true;
             nColisiones++;
         }
-        else  if(random >= 29 && random < 39){
+        else  if(random >= 100 && random < 39){
             //Cofres
             if(!hayCofre){
                 posAnt.x = k*tilewidth;
@@ -441,6 +441,9 @@ vector<Antorcha*> Mapa::getAntorchas(){
     return antorchas;
 }
 
+bool Mapa::existeCofre(){
+    return hayCofre;
+}
 Potenciadores* Mapa::getCofre(){
     return potenciadores;
 }
@@ -472,7 +475,10 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
                         for(int i = 0; i < tumbas.size(); i++) {
                             tumbas.at(i)->draw(target);
                         }
+
+                        if(hayCofre)
                         potenciadores->draw(target);
+
                         player.draw(target);
 
                         for(int i = 0; i < nEnemigos; i++){

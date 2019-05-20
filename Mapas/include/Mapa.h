@@ -50,7 +50,7 @@ class Mapa{
 
         //DRAW
         void draw(RenderWindow&, Jugador, vector<Enemigo*>, int, std::vector<Tumba*>);
-
+        bool existeCofre();
     private:
         int width, height, tilewidth, tileheight, gid;
         int nObj, maxObj;
@@ -83,4 +83,5 @@ class Mapa{
         vector<Antorcha*> antorchas;
         Potenciadores* potenciadores;
         bool hayCofre = false;
+
 };

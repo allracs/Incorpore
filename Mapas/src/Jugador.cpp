@@ -114,26 +114,22 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
 
 bool Jugador::cogePortal(FloatRect portal){
     bool res = false;
-    for(int i = 0; i < 4; i++){
-        if(cuadrado_arr->getGlobalBounds().intersects(portal)||
-           cuadrado_abj->getGlobalBounds().intersects(portal)||
-           cuadrado_der->getGlobalBounds().intersects(portal)||
-           cuadrado_izq->getGlobalBounds().intersects(portal)){
-                    res = true;
+    if(cuadrado_arr->getGlobalBounds().intersects(portal)||
+       cuadrado_abj->getGlobalBounds().intersects(portal)||
+       cuadrado_der->getGlobalBounds().intersects(portal)||
+       cuadrado_izq->getGlobalBounds().intersects(portal)){
+                res = true;
         }
-    }
     return res;
 }
 
 bool Jugador::cogeCofre(FloatRect cofre){
     bool res = false;
-    for(int i = 0; i < 4; i++){
-        if(cuadrado_arr->getGlobalBounds().intersects(cofre)||
-           cuadrado_abj->getGlobalBounds().intersects(cofre)||
-           cuadrado_der->getGlobalBounds().intersects(cofre)||
-           cuadrado_izq->getGlobalBounds().intersects(cofre)){
-                    res = true;
-        }
+    if(cuadrado_arr->getGlobalBounds().intersects(cofre)||
+       cuadrado_abj->getGlobalBounds().intersects(cofre)||
+       cuadrado_der->getGlobalBounds().intersects(cofre)||
+       cuadrado_izq->getGlobalBounds().intersects(cofre)){
+                res = true;
     }
     return res;
 }
