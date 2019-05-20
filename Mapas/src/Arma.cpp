@@ -26,7 +26,7 @@ Arma::Arma(int opcion, int mejora, Vector2f pos)
         mejorarArma(mejora);
     }
 
-    cout << "M: " << mejora << endl;
+    //cout << "M: " << mejora << endl;
 
     if(tipo == 0) {
         texturaActual = texturaMelee;
@@ -184,7 +184,7 @@ void Arma::mejorarArma(int mejora) {
         texturaActual = texturaRange;
     }
 
-    cout << "Me: " << mejora << endl;
+    //cout << "Me: " << mejora << endl;
 }
 
 

@@ -505,7 +505,6 @@ void Juego::draw(){
         m_window.draw(*texcofre);
     }
 
-
     m_window.display();
 }
 

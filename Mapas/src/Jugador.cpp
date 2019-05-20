@@ -188,7 +188,7 @@ void Jugador::controlarEsquivar(){
     }
     if(esquivando){
         actual->sprite.setColor(sf::Color(105,105,105, 50));
-        std::cout << "entra en esquivando" << std::endl;
+        //std::cout << "entra en esquivando" << std::endl;
         speed = spd + 25.f;
     }
 }
