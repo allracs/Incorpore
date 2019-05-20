@@ -173,6 +173,10 @@ float Entidad::getVelocidad() {
     return speed;
 }
 
+float Entidad::getVel() {
+    return spd;
+}
+
 void Entidad::draw(RenderWindow& target) {
     //target.draw(entidadHitbox);
     //target.draw(actual->sprite);

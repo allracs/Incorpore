@@ -34,6 +34,7 @@ class Entidad{
         float getAtaque();
         float getDefensa();
         float getVelocidad();
+        float getVel();
 
         void draw(RenderWindow&);
         void drawBoundingBoxes(RenderWindow&);
