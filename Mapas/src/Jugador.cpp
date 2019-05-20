@@ -192,7 +192,7 @@ void Jugador::controlarEsquivar(){
     if(duracionEsquivar.getElapsedTime().asSeconds()>=2.f){
         //std::cout<<"Esquivar ha terminado"<<std::endl;
         esquivando=false;
-        //speed = 75.f;
+        speed = 75.f;
     }
     if(cdEsquivar.getElapsedTime().asSeconds()>=5.f){
         puedeEsquivar=true;
@@ -200,7 +200,7 @@ void Jugador::controlarEsquivar(){
     }
     if(esquivando){
         actual->sprite.setColor(sf::Color(105,105,105, 50));
-        speed += 25.f;
+        speed = 100.f;
     }
 }
 

@@ -1044,7 +1044,7 @@
 	<iostream>
 	<vector>
 
-1558353987 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1558354070 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
