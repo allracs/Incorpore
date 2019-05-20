@@ -81,6 +81,7 @@ class Juego : public Estado
         bool entraPortales = false;
         bool pulsaE = false;
         Text *texportal;
+        Text *texcofre;
         bool colisionaPortal = false;
         bool colisionaCofre = false;
         bool cofreAbierto = false;

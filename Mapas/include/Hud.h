@@ -66,15 +66,18 @@ private:
     Sprite *sprite_esquivar;
     Sprite *arma;
 
+    Text *textoAttack, *textoDef, *textoSpeed;
     bool mejora_ataque_esta = false;
     bool debilita_defensa_esta = false;
     bool debilita_velocidad_esta = false;
     bool escudo_esta = false;
 
+    int nAtaque, nDef, nSpeed;
 
     int xVida, yVida, xHab, yHab;
 
     vector<Sprite> *cantidad_corazones;
     vector<Sprite> *vector_habilidades;
+    vector<int> *vector_tipos;
 
 };

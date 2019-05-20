@@ -23,9 +23,9 @@ Jugador::Jugador(Vector2f pos){
     puedeEsquivar = true;
 
     // Animaciones
-    idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28*5, 16, 28), IntRect(48, 28*5, 16, 28), 16, 0.1f);
+    idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28*3, 16, 28), IntRect(48, 28*3, 16, 28), 16, 0.1f);
     idle.sprite.setOrigin(9,20);
-    run.setAnimacion("resources/sprites/personajes.png", IntRect(64, 28*5, 16, 28), IntRect(112, 28*5, 16, 28), 16, 0.1f);
+    run.setAnimacion("resources/sprites/personajes.png", IntRect(64, 28*3, 16, 28), IntRect(112, 28*3, 16, 28), 16, 0.1f);
     run.sprite.setOrigin(9,20);
 
     actual = &idle;
@@ -39,7 +39,7 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int ataque, int defensa, 
     mostrarTumba = false;
     entidadHitbox.setPosition(pos);
     setColisionadores();
-
+    mostrarTumba = false;
     hp = vida;
     attack = ataque;
     defense = defensa;
@@ -53,9 +53,9 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int ataque, int defensa, 
     puedeEsquivar=true;
 
     // Animaciones
-   idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28*5, 16, 28), IntRect(48, 28*5, 16, 28), 16, 0.1f);
+    idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28*3, 16, 28), IntRect(48, 28*3, 16, 28), 16, 0.1f);
     idle.sprite.setOrigin(9,20);
-    run.setAnimacion("resources/sprites/personajes.png", IntRect(64, 28*5, 16, 28), IntRect(112, 28*5, 16, 28), 16, 0.1f);
+    run.setAnimacion("resources/sprites/personajes.png", IntRect(64, 28*3, 16, 28), IntRect(112, 28*3, 16, 28), 16, 0.1f);
     run.sprite.setOrigin(9,20);
 
 
@@ -78,15 +78,15 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
         moverse(); // comprobar que el jugador se mueve
         cInterp.restart();
     }
+    moverColisionadores(movement * delta);
+    procesarColisiones(nCol, colisiones);
     entidadHitbox.move(movement * delta); // mover al jugador.
     ataqueHitbox.move(movement * delta);// mover la hitbox con la que el jugador ataca
     arma->update(movement * delta, nCol, colisiones); // para que la espada se mueva junto con el jugador.
-    moverColisionadores(movement * delta);
     actual->update(movement, delta);
 
     arma->rotacionAtaque(window, dirMov, entityCenter, entidadHitbox);
     ataqueHitbox = arma->getHitbox();
-    procesarColisiones(nCol, colisiones);
 
     //Esquivar
     esquivarInicio();

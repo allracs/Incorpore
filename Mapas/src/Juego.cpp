@@ -26,6 +26,9 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
     godMode = false;
     hayPortales = false;
 
+    fuente = new sf::Font;
+    fuente->loadFromFile("resources/menu/manaspc.ttf");
+
     sf::Clock frameClock;
 
 
@@ -208,8 +211,6 @@ void Juego::update(){
                     if(jugador->cogePortal(portalVerde->getPortal().getGlobalBounds())||jugador->cogePortal(portalMorado->getPortal().getGlobalBounds()))
                     {
                         colisionaPortal = true;
-                        fuente = new sf::Font;
-                        fuente->loadFromFile("resources/menu/manaspc.ttf");
                         texportal = new sf::Text;
                         texportal->setFont(*fuente);
                         texportal->setString("pulsa E para avanzar");
@@ -233,7 +234,6 @@ void Juego::update(){
                         hayPortales = false;
                         colisionaPortal = false;
                         cofreAbierto = false;
-                        delete fuente;
                         delete texportal;
                         delete portalVerde;
                         delete portalMorado;
@@ -465,6 +465,12 @@ void Juego::draw(){
         m_window.draw(*texportal);
     }
 
+    if(colisionaCofre && !pausa && !cofreAbierto)
+    {
+        m_window.draw(*texcofre);
+    }
+
+
     m_window.display();
 }
 
@@ -482,6 +488,14 @@ void Juego::gestionaPotenciadores(){
 
     if(mapa->existeCofre() && jugador->cogeCofre(mapa->getCofre()->getCofre().getGlobalBounds())){
             colisionaCofre = true;
+            texcofre = new sf::Text;
+            texcofre->setFont(*fuente);
+            texcofre->setString("pulsa E para abrir");
+            texcofre->setScale(0.2, 0.2);
+            texcofre->setPosition(mapa->getCofre()->getCofre().getPosition().x -32, mapa->getCofre()->getCofre().getPosition().y - 24);
+    }
+    else{
+        colisionaCofre = false;
     }
 }
 
