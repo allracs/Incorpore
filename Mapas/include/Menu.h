@@ -27,6 +27,9 @@ class Menu : public Estado
         void procesar_eventos();
         void eventos_raton();
 
+        void cambio();
+        void recortes(int);
+
     protected:
 
     private:
@@ -53,6 +56,9 @@ class Menu : public Estado
         bool sel_raton = false;
         bool sel_teclado = true;
         int opcion_seleccionada = 0;
+        sf::Clock clkmenu;
+        int num = 1;
+        int linea = 1;
     };
 
 #endif // MENU_H
