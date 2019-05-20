@@ -16,7 +16,7 @@ Potenciadores::Potenciadores(Vector2f pos){
     sprite->setTexture(tex);
     sprite->setTextureRect(IntRect(16, 1, 16, 16));
     sprite->setOrigin(8, 8);
-    cout << "Jaja: " << pos.x/16 << " , " << pos.y/16 << endl;
+//    cout << "Jaja: " << pos.x/16 << " , " << pos.y/16 << endl;
 }
 
 Potenciadores::~Potenciadores(){
@@ -48,7 +48,7 @@ void Potenciadores::gestionarHabilidades(Jugador& jugador, int tipo){
             jugador.escudarse();
         break;
     }
-    jugador.showStats();
+//    jugador.showStats();
 }
 
 Sprite Potenciadores::getCofre(){

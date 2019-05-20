@@ -269,7 +269,8 @@ void Juego::cargaPlayer(){
 
     if(entraPortales)
     {
-        std::cout<< jugador->getHP()<<std::endl;
+//        std::cout<< jugador->getHP()<<std::endl;
+//        std::cout<< jugador->getHP()<<std::endl;
         jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), mejora, jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad());
         entraPortales = false;
     }
@@ -434,10 +435,6 @@ void Juego::draw(){
     hud->draw(m_window);
     jugador->drawBoundingBoxes(m_window);
 
-    for(int i = 0; i < enemigos.size(); i++){
-        if(enemigos.at(i)->getBorrado() == false)
-        enemigos.at(i)->draw(m_window);
-    }
 
     for(int i = 0; i < enemigos.size(); i++){
         if(enemigos.at(i)->getBorrado() == false)

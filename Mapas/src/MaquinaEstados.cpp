@@ -6,7 +6,7 @@
 
 MaquinaEstados::MaquinaEstados(): m_resume {false}, m_corriendo {false}
 {
-    std::cout << "Maquina de estados iniciada" << std::endl;
+//    std::cout << "Maquina de estados iniciada" << std::endl;
 }
 
 MaquinaEstados::~MaquinaEstados()
