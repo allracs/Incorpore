@@ -45,7 +45,7 @@ void Entidad::setColision(int num){
 }
 
 void Entidad::setColisionadores(){
-    cuadrado_arr->setSize(Vector2f(8, 0.75));
+    cuadrado_arr->setSize(Vector2f(6, 0.75));
     cuadrado_arr->setOrigin(cuadrado_arr->getGlobalBounds().width/2, cuadrado_arr->getGlobalBounds().height/2);
     cuadrado_arr->setPosition(entidadHitbox.getPosition().x, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height/2 - 1.5);
 
@@ -53,9 +53,9 @@ void Entidad::setColisionadores(){
     cuadrado_izq->setOrigin(cuadrado_izq->getGlobalBounds().width/2, cuadrado_izq->getGlobalBounds().height/2);
     cuadrado_izq->setPosition(entidadHitbox.getGlobalBounds().left - 0.5, entidadHitbox.getPosition().y + 4);
 
-    cuadrado_abj->setSize(Vector2f(8, 0.75));
+    cuadrado_abj->setSize(Vector2f(6, 0.75));
     cuadrado_abj->setOrigin(cuadrado_abj->getGlobalBounds().width/2, cuadrado_abj->getGlobalBounds().height/2);
-    cuadrado_abj->setPosition(entidadHitbox.getPosition().x, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height + 2);
+    cuadrado_abj->setPosition(entidadHitbox.getPosition().x, entidadHitbox.getGlobalBounds().top + entidadHitbox.getGlobalBounds().height + 4);
 
     cuadrado_der->setSize(Vector2f(0.75, 5.5));
     cuadrado_der->setOrigin(cuadrado_der->getGlobalBounds().width/2, cuadrado_der->getGlobalBounds().height/2);
@@ -180,10 +180,10 @@ void Entidad::draw(RenderWindow& target) {
 }
 
 void Entidad::drawBoundingBoxes(RenderWindow& target){
-    //target.draw(*cuadrado_der);
-    //target.draw(*cuadrado_arr);
-    //target.draw(*cuadrado_abj);
-    //target.draw(*cuadrado_izq);
+    target.draw(*cuadrado_der);
+    target.draw(*cuadrado_arr);
+    target.draw(*cuadrado_abj);
+    target.draw(*cuadrado_izq);
     //target.draw(*cuadrado_cen);
 }
 

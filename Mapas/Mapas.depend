@@ -976,7 +976,7 @@
 	"Animacion.h"
 	"Proyectil.h"
 
-1558348439 source:/home/david/Documentos/Incorpore/Mapas/src/Entidad.cpp
+1558368253 source:/home/david/Documentos/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
 	<iostream>
 
@@ -998,7 +998,7 @@
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 
-1558364099 /home/david/Documentos/Incorpore/Mapas/include/Hud.h
+1558365195 /home/david/Documentos/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
@@ -1013,9 +1013,10 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1558363745 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
+1558366147 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
+	<string>
 	<iostream>
 
 1558203348 e/Hud.h"
@@ -1045,7 +1046,7 @@
 	<iostream>
 	<vector>
 
-1558363885 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1558368183 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -1054,7 +1055,7 @@
 	<vector>
 	<iostream>
 
-1558363885 /home/david/Documentos/Incorpore/Mapas/include/Juego.h
+1558366877 /home/david/Documentos/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
@@ -1078,7 +1079,7 @@
 	"Arma.h"
 	"Proyectil.h"
 
-1558360824 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
+1558368318 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 

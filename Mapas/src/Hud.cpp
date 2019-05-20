@@ -78,6 +78,7 @@ Hud::Hud(int vidas,int hs,int hd, int ha){
 
     //ARRAY HABILIDADES
     vector_habilidades = new vector<Sprite>;
+    vector_tipos = new vector<int>;
     textura_habilidades = new Texture;
     textura_habilidades->loadFromFile("resources/hud/habilidades.png");
 
@@ -117,6 +118,9 @@ Hud::Hud(int vidas,int hs,int hd, int ha){
     textoSpeed = new Text;
     textoSpeed->setFont(*fuente);
     textoSpeed->setScale(0.25, 0.25);
+    nAtaque = ha;
+    nDef = hd;
+    nSpeed = hs;
 }
 
 void Hud::compruebaTeclas(){
@@ -173,6 +177,7 @@ void Hud::setHabilidad(int habilidad){
         vector_habilidades->push_back(*escudo);
         escudo_esta = true;
     }
+    vector_tipos->push_back(habilidad);
     for(int i = 0; i < vector_habilidades->size(); i++){
        vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + 50 + (i*(vector_habilidades->at(i).getGlobalBounds().width+1)),pieza_habilidades->getPosition().y + 4});
     }
@@ -245,8 +250,20 @@ void Hud::setPosicionHabilidades(int x, int y){
     pieza_habilidades->setPosition(x,y);
     for(int i = 0; i < vector_habilidades->size(); i++)
     {
-       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + (i*15.5),pieza_habilidades->getPosition().y});
+        vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + (i*15.5),pieza_habilidades->getPosition().y});
+        switch(vector_tipos->at(i)){
+            case 1:
+                textoAttack->setPosition({vector_habilidades->at(i).getPosition().x,vector_habilidades->at(i).getPosition().y - 10});
+                break;
+            case 2:
+                textoDef->setPosition({vector_habilidades->at(i).getPosition().x,vector_habilidades->at(i).getPosition().y - 10});
+                break;
+            case 3:
+                textoSpeed->setPosition({vector_habilidades->at(i).getPosition().x,vector_habilidades->at(i).getPosition().y - 10});
+                break;
+        }
     }
+
 }
 
 void Hud::cambioNivel(int hs,int ha,int hd){
@@ -262,6 +279,10 @@ void Hud::cambioNivel(int hs,int ha,int hd){
         setHabilidad(2);
         textoDef->setString(to_string(hd));
     }
+
+    nAtaque = ha;
+    nDef = hd;
+    nSpeed = hs;
 }
 
 //GETTERS
@@ -307,7 +328,17 @@ void Hud::draw(RenderWindow& target){
     target.draw(*tecla_esquivar);
     target.draw(*sprite_esquivar);
 
+    if(nSpeed > 0){
+        target.draw(*textoSpeed);
+    }
 
+    if(nDef > 0){
+        target.draw(*textoDef);
+    }
+
+    if(nAtaque > 0){
+        target.draw(*textoAttack);
+    }
 
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
@@ -323,6 +354,9 @@ void Hud::draw(RenderWindow& target){
 void Hud::move(Vector2f delta){
     pieza_vida->move(delta);
     texto_vida->move(delta);
+    textoAttack->move(delta);
+    textoDef->move(delta);
+    textoSpeed->move(delta);
 
     tecla_esquivar->move(delta);
     sprite_esquivar->move(delta);
