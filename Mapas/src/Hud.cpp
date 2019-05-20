@@ -146,7 +146,9 @@ void Hud::compruebaTeclas(){
 void Hud::modificar_vida(int cantidad, int sr){
     if(sr == 1 && cantidad_corazones->size() < 5)
     {
-        cantidad_corazones->push_back(*corazon);
+        for(int i = 0; i < cantidad; i++){
+            cantidad_corazones->push_back(*corazon);
+        }
     }
     if(sr == 2 && cantidad_corazones->size() > 0)
     {

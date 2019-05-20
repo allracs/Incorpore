@@ -131,9 +131,17 @@ void Juego::update(){
             hud->updateTeclas(jugador->puedeCambiarArma(),jugador->flagEsquivar());
             manejarIA();
             gestionaPotenciadores();
-            if(jugador->getHP() < 10 && pocion->isConsumible()){
+            if(jugador->getHP() < 5 && pocion->isConsumible()){
                if(pocion->consume(jugador->getEntidadHitbox())){
-                    hud->modificar_vida(1,1);
+                    if(pocion->getTipo() == 1){
+                        hud->modificar_vida(1,1);
+                        jugador->setHP(jugador->getHP() + 1);
+                    }
+                    else{
+                        hud->modificar_vida(2,1);
+                        jugador->setHP(jugador->getHP() + 2);
+                    }
+
                }
                //delete pocion;
             }

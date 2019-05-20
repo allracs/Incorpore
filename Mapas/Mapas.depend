@@ -1021,7 +1021,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1558374551 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
+1558377011 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 	<string>
@@ -1054,7 +1054,7 @@
 	<iostream>
 	<vector>
 
-1558375462 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1558376987 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -2572,7 +2572,7 @@
 	"Proyectil.h"
 	"Jefe.h"
 
-1558374637 source:/home/david/Documentos/Incorpore/Mapas/src/Arma.cpp
+1558376189 source:/home/david/Documentos/Incorpore/Mapas/src/Arma.cpp
 	"../include/Arma.h"
 
 1558373392 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Arma.h
@@ -2583,12 +2583,12 @@
 	"Proyectil.h"
 	"Jefe.h"
 
-1558101917 /home/david/Documentos/Incorpore/Mapas/include/Consumible.h
+1558376808 /home/david/Documentos/Incorpore/Mapas/include/Consumible.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"time.h"
 
-1558375082 source:/home/david/Documentos/Incorpore/Mapas/src/Consumible.cpp
+1558376800 source:/home/david/Documentos/Incorpore/Mapas/src/Consumible.cpp
 	"../include/Consumible.h"
 
 1557922417 e/Consumible.h"
@@ -3749,7 +3749,7 @@
 	"Animacion.h"
 	"Proyectil.h"
 
-1558374637 /home/david/Documentos/Incorpore/Mapas/include/Jefe.h
+1558376051 /home/david/Documentos/Incorpore/Mapas/include/Jefe.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	<stdlib.h>
@@ -3759,7 +3759,7 @@
 
 1558363883 /mnt/hgfs/Universidad/FV/Incorpore/Mapas/include/Jefe.h
 
-1558374637 source:/home/david/Documentos/Incorpore/Mapas/src/Jefe.cpp
+1558376051 source:/home/david/Documentos/Incorpore/Mapas/src/Jefe.cpp
 	"Jefe.h"
 	<math.h>
 
