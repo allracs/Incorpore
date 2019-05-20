@@ -4,7 +4,7 @@
 using namespace std;
 using namespace sf;
 
-Jugador::Jugador(Vector2f pos){
+Jugador::Jugador(Vector2f pos, int mejora){
     entityCenter = pos;
     mostrarTumba = false;
     entidadHitbox.setPosition(pos);
@@ -32,10 +32,10 @@ Jugador::Jugador(Vector2f pos){
     actual = &idle;
     actual->sprite.setPosition(pos);
 
-    arma = new Arma(0, pos);
+    arma = new Arma(0, mejora, pos);
 }
 
-Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int ataque, int defensa, float velocidad){
+Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int mejora, int ataque, int defensa, float velocidad){
     entityCenter = pos;
     mostrarTumba = false;
     entidadHitbox.setPosition(pos);
@@ -64,7 +64,7 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int ataque, int defensa, 
     actual = &idle;
     actual->sprite.setPosition(pos);
 
-    arma = new Arma(tipoarma, pos);
+    arma = new Arma(tipoarma, mejora, pos);
 }
 
 int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* colisiones){
@@ -267,7 +267,7 @@ Vector2f Jugador::getMovement() {
     return movement;
 }
 
-Arma Jugador::getArma() {
+Arma& Jugador::getArma() {
     return *arma;
 }
 

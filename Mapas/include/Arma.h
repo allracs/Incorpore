@@ -5,6 +5,8 @@
 #include <iostream>
 #include "Enemigo.h"
 #include "Proyectil.h"
+#include "Jefe.h"
+
 using namespace std;
 using namespace sf;
 
@@ -12,11 +14,12 @@ using namespace sf;
 class Arma
 {
     public:
-        Arma(int, Vector2f);
+        Arma(int, int, Vector2f);
         virtual ~Arma();
         void update(Vector2f, int nCol, FloatRect* colisiones);
         void rotacionAtaque(RenderWindow&, float, Vector2f, RectangleShape);
         void atacar(vector<Enemigo*>, int, float);
+        void atacar(vector<Jefe*>, int);
         void crearProyectil(sf::Vector2f centro);
 
         void empezarAnim();
@@ -30,8 +33,8 @@ class Arma
         int getOpcion();
 
 
-        void cambiarArma(int tipo);
-
+        void cambiarArma(int);
+        void mejorarArma(int);
     protected:
 
     private:
@@ -42,7 +45,7 @@ class Arma
         RectangleShape entidadHitbox;
         RectangleShape ataqueHitbox;
         Sprite espada; // Espada que se muestras encima de la hitbox.
-        Texture textura; // Textura para el sprite de la espada
+        Texture texturaActual, texturaMelee, texturaRange, texturaAtaque; // Textura para el sprite de la espada
 
         vector<Proyectil*> proyectiles;
 

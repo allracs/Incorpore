@@ -6,7 +6,7 @@
 class Proyectil
 {
     public:
-        Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation);
+        Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation, int tipo);
         virtual ~Proyectil();
         void update(int nCol, sf::FloatRect* colisiones);
         void draw(sf::RenderWindow &window);

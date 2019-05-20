@@ -16,10 +16,12 @@ class Jefe
         virtual ~Jefe();
         void update(sf::Vector2f,int,sf::FloatRect*);
         void draw(sf::RenderWindow&);
-        bool restarVida();
+        bool restarVida(sf::RectangleShape);
+        bool restarVida(std::vector<Proyectil*>);
         sf::RectangleShape* getCollision();
         std::vector<Proyectil*> getBalas();
         void destruirBala(int);
+        int getVida();
 
     protected:
 

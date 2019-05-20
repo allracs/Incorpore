@@ -21,6 +21,8 @@ class Potenciadores
 
         void draw(sf::RenderWindow&);
     protected:
+        bool primera = true;
+
         Sprite *sprite;
         Texture tex;
     private:

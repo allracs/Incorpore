@@ -185,6 +185,17 @@ void Juego::update(){
                         jefes.at(a)->update(jugador->getCenter(),
                                             mapa->getNumColisiones(),
                                             mapa->getBounds());
+
+                        if(jefes.at(a)->restarVida(jugador->getPuntArma()->getProyectiles()))
+                        {
+                            delete jefes.at(a);
+                            jefes.erase(jefes.begin()+a);
+                        }
+                        if(jefes.at(a)->getVida()==0)
+                        {
+                            delete jefes.at(a);
+                            jefes.erase(jefes.begin()+a);
+                        }
                     }
                 }
 
@@ -259,12 +270,12 @@ void Juego::cargaPlayer(){
     if(entraPortales)
     {
         std::cout<< jugador->getHP()<<std::endl;
-        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad());
+        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), mejora, jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad());
         entraPortales = false;
     }
     else
     {
-        jugador = new Jugador(mapa->generaPosicion());
+        jugador = new Jugador(mapa->generaPosicion(), mejora);
     }
 
     for(int i = 0; i < nEnemigos; i++){
@@ -315,6 +326,7 @@ void Juego::procesarEventos(){
                             //std::cout << "COOLDOWN ATAQUE: " << jugador->getCooldownAtaque() << std::endl;
                             jugador->restartCoolDownAtaque();
                             jugador->getArma().atacar(enemigos, enemigos.size(), jugador->getAtaque());
+                            jugador->getArma().atacar(jefes, jefes.size());
                             if(jugador->getArma().getOpcion() == 0){
                                 jugador->getPuntArma()->empezarAnim();
                             }
@@ -334,6 +346,10 @@ void Juego::procesarEventos(){
                     if(!cofreAbierto){
                         int tipo = rand() % 4 + 1;
                         mapa->getCofre()->abrirCofre(*jugador, tipo);
+                        if(tipo == 1){
+                            mejora++;
+                            jugador->getArma().mejorarArma(mejora);
+                        }
                         hud->setHabilidad(tipo);
                         contadorHabilidades(tipo);
                         cofreAbierto = true;

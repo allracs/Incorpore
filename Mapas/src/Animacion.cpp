@@ -50,6 +50,7 @@ void Animacion::update(Vector2f movement, float mTime)
 
 void Animacion::update()
 {
+    std::cout << "DISPARO" << std::endl;
     float delta = clock.getElapsedTime().asSeconds();
     if(delta >= switchTime) {
         clock.restart();
