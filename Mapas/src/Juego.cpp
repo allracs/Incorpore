@@ -273,7 +273,7 @@ void Juego::update(){
                         cargaMapa();
                         cargaPlayer();
                         cargarHUD();
-                        hud->cambioNivel(hSpeed,hAttack,hDef);
+                        hud->cambioNivel(hSpeed,hAttack,hDef,jugador->getEscudo());
                         //std::cout<< jugador->getVidas()<<std::endl;
                     }
                 }
@@ -303,7 +303,7 @@ void Juego::cargaPlayer(){
     {
 //        std::cout<< jugador->getHP()<<std::endl;
 //        std::cout<< jugador->getHP()<<std::endl;
-        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), mejora, jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad());
+        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), mejora, jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad(), jugador->getEscudo());
         entraPortales = false;
     }
     else

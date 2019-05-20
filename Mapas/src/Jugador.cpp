@@ -36,12 +36,12 @@ Jugador::Jugador(Vector2f pos, int mejora){
     arma = new Arma(0, mejora, pos);
 }
 
-Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int mejora, int ataque, int defensa, float velocidad){
+Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int mejora, int ataque, int defensa, float velocidad, bool shield){
     entityCenter = pos;
     mostrarTumba = false;
     entidadHitbox.setPosition(pos);
     setColisionadores();
-    escudo = false;
+    escudo = shield;
     mostrarTumba = false;
     hp = vida;
     attack = ataque;
