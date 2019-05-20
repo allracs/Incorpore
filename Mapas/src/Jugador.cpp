@@ -10,7 +10,7 @@ Jugador::Jugador(Vector2f pos){
     entidadHitbox.setPosition(pos);
     setColisionadores();
 
-    hp = 10;
+    hp = 5;
     attack = 3;
     defense = 2;
     speed = 75.f;
@@ -34,15 +34,15 @@ Jugador::Jugador(Vector2f pos){
     arma = new Arma(0, pos);
 }
 
-Jugador::Jugador(Vector2f pos, int vida, int tipoarma){
+Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int ataque, int defensa, float velocidad){
     entityCenter = pos;
     entidadHitbox.setPosition(pos);
     setColisionadores();
 
     hp = vida;
-    attack = 3;
-    defense = 2;
-    speed = 75.f;
+    attack = ataque;
+    defense = defensa;
+    speed = velocidad;
 
     dirMov = 0.6f;
     movement = Vector2f(0.f, 0.f);
@@ -95,9 +95,16 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
         arma->crearProyectil(entidadHitbox.getPosition());
     }
 
+    if(CDarma.getElapsedTime().asSeconds() >= 2.f || inicioArma){
+        flagArma = true;
+    }
+    else{
+        flagArma = false;
+    }
+
     //Tecla para activar el ataque a distancia
     if(Keyboard::isKeyPressed(Keyboard::Q)){
-        if(CDarma.getElapsedTime().asSeconds()>=2.f){
+        if(flagArma || inicioArma){
             CDarma.restart();
             if(arma->getOpcion()==0){
                 cambiarArma(1);
@@ -105,6 +112,7 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
                 cambiarArma(0);
             }
             cambia = arma->getOpcion();
+            inicioArma = false;
         }
     }
     compruebaColor();
@@ -114,26 +122,22 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
 
 bool Jugador::cogePortal(FloatRect portal){
     bool res = false;
-    for(int i = 0; i < 4; i++){
-        if(cuadrado_arr->getGlobalBounds().intersects(portal)||
-           cuadrado_abj->getGlobalBounds().intersects(portal)||
-           cuadrado_der->getGlobalBounds().intersects(portal)||
-           cuadrado_izq->getGlobalBounds().intersects(portal)){
-                    res = true;
+    if(cuadrado_arr->getGlobalBounds().intersects(portal)||
+       cuadrado_abj->getGlobalBounds().intersects(portal)||
+       cuadrado_der->getGlobalBounds().intersects(portal)||
+       cuadrado_izq->getGlobalBounds().intersects(portal)){
+                res = true;
         }
-    }
     return res;
 }
 
 bool Jugador::cogeCofre(FloatRect cofre){
     bool res = false;
-    for(int i = 0; i < 4; i++){
-        if(cuadrado_arr->getGlobalBounds().intersects(cofre)||
-           cuadrado_abj->getGlobalBounds().intersects(cofre)||
-           cuadrado_der->getGlobalBounds().intersects(cofre)||
-           cuadrado_izq->getGlobalBounds().intersects(cofre)){
-                    res = true;
-        }
+    if(cuadrado_arr->getGlobalBounds().intersects(cofre)||
+       cuadrado_abj->getGlobalBounds().intersects(cofre)||
+       cuadrado_der->getGlobalBounds().intersects(cofre)||
+       cuadrado_izq->getGlobalBounds().intersects(cofre)){
+                res = true;
     }
     return res;
 }
@@ -178,8 +182,6 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida, float atkEnemigo
             exit(0);
         }
         */
-
-
         dmgCD.restart();
     }
 }
@@ -198,7 +200,7 @@ void Jugador::controlarEsquivar(){
     if(duracionEsquivar.getElapsedTime().asSeconds()>=2.f){
         //std::cout<<"Esquivar ha terminado"<<std::endl;
         esquivando=false;
-        speed=75.f;
+        speed = 75.f;
     }
     if(cdEsquivar.getElapsedTime().asSeconds()>=5.f){
         puedeEsquivar=true;
@@ -206,7 +208,7 @@ void Jugador::controlarEsquivar(){
     }
     if(esquivando){
         actual->sprite.setColor(sf::Color(105,105,105, 50));
-        speed=100.f;
+        speed = 100.f;
     }
 }
 
@@ -272,7 +274,6 @@ void Jugador::compruebaColor(){
     if(cd.getElapsedTime().asSeconds() >= 0.25 && !esquivando){
         actual->sprite.setColor(sf::Color::White);
         cd.restart();
-
     }
 }
 
@@ -287,7 +288,6 @@ Arma Jugador::getArma() {
 Arma* Jugador::getPuntArma() {
     return arma;
 }
-
 
 void Jugador::cambiarArma(int opcion){
     /*
@@ -324,6 +324,13 @@ void Jugador::muerteJugador(){
 
 void Jugador::escudarse(){
     cout << "No se cargo la tumba" << endl;
+}
+bool Jugador::flagEsquivar(){
+    return puedeEsquivar;
+}
+
+bool Jugador::puedeCambiarArma(){
+    return flagArma;
 }
 
 void Jugador::draw(sf::RenderWindow &app) {

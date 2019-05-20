@@ -180,13 +180,11 @@ void Entidad::draw(RenderWindow& target) {
 }
 
 void Entidad::drawBoundingBoxes(RenderWindow& target){
-
     //target.draw(*cuadrado_der);
     //target.draw(*cuadrado_arr);
     //target.draw(*cuadrado_abj);
     //target.draw(*cuadrado_izq);
     //target.draw(*cuadrado_cen);
-
 }
 
 /*
@@ -209,4 +207,11 @@ void Entidad::showData(){
     cout <<  "y: " << sprite->getPosition().y << endl;
     cout <<  "width: " << sprite->getSize().x << endl;
     cout <<  "height: " << sprite->getSize().x << endl;
+}
+
+void Entidad::showStats(){
+    cout <<  "HP: " << hp << endl;
+    cout <<  "ATK: " << attack << endl;
+    cout <<  "DEF: " << defense << endl;
+    cout <<  "SPD: " << speed << endl;
 }

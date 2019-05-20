@@ -69,6 +69,8 @@ Mapa::~Mapa(){
     antorchas.clear();
     //delete tilesetSprite;
     delete colision;
+    if(hayCofre)
+    delete potenciadores;
    // delete colisionPortales;
 
 
@@ -291,7 +293,6 @@ sf::Vector2i Mapa::generaPortales(){
         break;
     }
 
-
     sf::Vector2i pos(x,y);
     return pos;
 }
@@ -308,11 +309,14 @@ void Mapa::generaObjetos(int j, int k, int no){
             colisionMap[j][k] = true;
             nColisiones++;
         }
-        else  if(random >= 29 && random < 39){
+        else  if(random >= 0 && random < 50){
             //Cofres
-            posAnt.x = k*tilewidth;
-            posAnt.y = j*tileheight;
-            potenciadores.push_back(new Potenciadores(posAnt));
+            if(!hayCofre){
+                posAnt.x = k*tilewidth;
+                posAnt.y = j*tileheight;
+                potenciadores = new Potenciadores(posAnt);
+                hayCofre = true;
+            }
             //colisionMap[j][k] = true;
             //nColisiones++;
         }
@@ -341,7 +345,7 @@ void Mapa::generaObjetos(int j, int k, int no){
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[calavera].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
         }
-        else if(random >= 89 && random < 100 && tipo != 4){
+        else if(random >= 0 && random < 100 && tipo != 4){
             //Columna
             mapSprite[3][j][k] = new Sprite(texturaTileset,tilesetSprite[columna[1]].getTextureRect());
             mapSprite[3][j][k]->setPosition(k*tilewidth,j*tileheight);
@@ -438,7 +442,10 @@ vector<Antorcha*> Mapa::getAntorchas(){
     return antorchas;
 }
 
-vector<Potenciadores*> Mapa::getCofres(){
+bool Mapa::existeCofre(){
+    return hayCofre;
+}
+Potenciadores* Mapa::getCofre(){
     return potenciadores;
 }
 
@@ -469,6 +476,10 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
                         for(int i = 0; i < tumbas.size(); i++) {
                             tumbas.at(i)->draw(target);
                         }
+
+                        if(hayCofre)
+                        potenciadores->draw(target);
+
                         player.draw(target);
 
                         for(int i = 0; i < nEnemigos; i++){
@@ -478,9 +489,6 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
                     } else if(l == 2){
                         for(int i = 0; i < antorchas.size(); i++){
                             antorchas.at(i)->draw(target);
-                        }
-                        for(int i = 0; i < potenciadores.size(); i++){
-                            potenciadores.at(i)->draw(target);
                         }
                     } else if(l == 6){
                         for(int i = 0; i < antorchas.size(); i++){

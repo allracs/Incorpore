@@ -14,7 +14,9 @@ Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Es
     dimensiones = Vector2i(1280, 720);
     nEnemigos = 1;
     nNivel = 1;
-
+    hAttack = 0;
+    hSpeed = 0;
+    hDef = 0;
     evento = new Event;
 
     view.setSize(dimensiones.x, dimensiones.y);
@@ -122,8 +124,8 @@ void Juego::update(){
             if(arma >= 0){
                 hud->cambiaArma(arma);
             }
-
             hud->compruebaTeclas();
+            hud->updateTeclas(jugador->puedeCambiarArma(),jugador->flagEsquivar());
             manejarIA();
             gestionaPotenciadores();
             if(jugador->getHP() < 10 && pocion->isConsumible()){
@@ -208,6 +210,7 @@ void Juego::update(){
                         reintentar = false;
                         hayPortales = false;
                         colisionaPortal = false;
+                        cofreAbierto = false;
                         delete fuente;
                         delete texportal;
                         delete portalVerde;
@@ -244,7 +247,7 @@ void Juego::cargaPlayer(){
     if(entraPortales)
     {
         std::cout<< jugador->getHP()<<std::endl;
-        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion());
+        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad());
         entraPortales = false;
     }
     else
@@ -268,10 +271,11 @@ void Juego::cargaMapa(){
 }
 
 void Juego::cargarHUD(){
-    hud = new Hud(jugador->getHP());
-    hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 2, view.getCenter().y - dimensiones.y/10 + 2);
-    hud->setPosicionSwitch(view.getCenter().x + 100, view.getCenter().y - 45);
-    hud->setPosicionHabilidades(view.getCenter().x + 22, view.getCenter().y - 70);
+
+    hud = new Hud(jugador->getHP(), hSpeed, hDef, hAttack);
+    hud->setPosicionVida(view.getCenter().x - dimensiones.x/10 + 5, view.getCenter().y - dimensiones.y/10 + 2);
+    hud->setPosicionSwitch(view.getCenter().x + 95, view.getCenter().y - 67);
+    hud->setPosicionHabilidades(view.getCenter().x - 172, view.getCenter().y + 50);
 }
 
 void Juego::procesarEventos(){
@@ -281,23 +285,23 @@ void Juego::procesarEventos(){
                 m_window.close();
                 break;
             case sf::Event::MouseButtonPressed:
-                if(evento->mouseButton.button == Mouse::Left) {
+                if(!pausa){
+                    if(evento->mouseButton.button == Mouse::Left){
                     // AÑADIR COOLDOWN AL ATAQUE A MELÉ
                     if(jugador->getArma().getOpcion() == 0){ // SI EL ATAQUE ES A MELEE
-                         if(jugador->getCooldownAtaque() >= 1.f) {
+                         if(jugador->getCooldownAtaque() >= 1.f){
                             //std::cout << "COOLDOWN ATAQUE: " << jugador->getCooldownAtaque() << std::endl;
                             jugador->restartCoolDownAtaque();
                             jugador->getArma().atacar(enemigos, enemigos.size(), jugador->getAtaque());
                             if(jugador->getArma().getOpcion() == 0){
                                 jugador->getPuntArma()->empezarAnim();
                             }
-
                         }
-                    } else if(jugador->getArma().getOpcion() == 1) { // SI EL ATAQUE ES A DISTANCIA
+                    } else if(jugador->getArma().getOpcion() == 1){ // SI EL ATAQUE ES A DISTANCIA
                        // std::cout << "ATAQUE A DISTANCIA" << std::endl;
                         jugador->getArma().atacar(enemigos, enemigos.size(), jugador->getAtaque());
                     }
-
+                }
                 }
                 break;
             case sf::Event::KeyReleased:
@@ -305,7 +309,13 @@ void Juego::procesarEventos(){
                     pulsaE = true;
                 }
                 if(evento->key.code == sf::Keyboard::E && colisionaCofre){
-                    //pulsaE = true;
+                    if(!cofreAbierto){
+                        int tipo = rand() % 4 + 1;
+                        mapa->getCofre()->abrirCofre(*jugador, tipo);
+                        hud->setHabilidad(tipo);
+                        contadorHabilidades(tipo);
+                        cofreAbierto = true;
+                    }
                 }
                 if(evento->key.code == sf::Keyboard::G){
                 changeMode();
@@ -355,6 +365,20 @@ void Juego::procesarEventos(){
             }
         }
     }
+
+void Juego::contadorHabilidades(int tipo){
+    switch(tipo){
+        case 1:
+            hAttack++;
+            break;
+        case 2:
+            hDef++;
+            break;
+        case 3:
+            hSpeed++;
+            break;
+    }
+}
 
 void Juego::setView(){
     view.move(jugador->getMovement() * delta);
@@ -413,10 +437,9 @@ void Juego::changeMode(){
 }
 
 void Juego::gestionaPotenciadores(){
-    for(int i = 0; i < mapa->getCofres().size(); i++){
-        if(jugador->cogeCofre(mapa->getCofres()[i]->getCofre().getGlobalBounds())){
-            mapa->getCofres()[i]->abrirCofre(*jugador);
-        }
+
+    if(mapa->existeCofre() && jugador->cogeCofre(mapa->getCofre()->getCofre().getGlobalBounds())){
+            colisionaCofre = true;
     }
 }
 

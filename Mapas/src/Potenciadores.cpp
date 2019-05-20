@@ -23,13 +23,12 @@ Potenciadores::~Potenciadores(){
     //dtor
 }
 
-void Potenciadores::abrirCofre(Jugador jugador){
+void Potenciadores::abrirCofre(Jugador& jugador, int tipo){
     sprite->setTextureRect(IntRect(16, 16, 16, 16));
-    int random = rand() % 3;
-    gestionarHabilidades(jugador, random + 1);
+    gestionarHabilidades(jugador, tipo);
 }
 
-void Potenciadores::gestionarHabilidades(Jugador jugador, int tipo){
+void Potenciadores::gestionarHabilidades(Jugador& jugador, int tipo){
     switch(tipo){
         case 1:
             //Atk up
@@ -48,16 +47,18 @@ void Potenciadores::gestionarHabilidades(Jugador jugador, int tipo){
         break;
         case 4:
             //Bubble
-            jugador.escudarse();
+            //jugador.escudarse();
+            cout << "Jajasaludos" << endl;
 
         break;
     }
+    jugador.showStats();
 }
 
 Sprite Potenciadores::getCofre(){
     return *sprite;
 }
 
-void Potenciadores::draw(sf::RenderWindow &window){
+void Potenciadores::draw(RenderWindow& window){
     window.draw(*sprite);
 }

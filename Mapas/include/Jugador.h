@@ -17,7 +17,7 @@ using namespace sf;
 class Jugador: public Entidad{
     public:
         Jugador(Vector2f pos);
-        Jugador(Vector2f pos, int, int);
+        Jugador(Vector2f pos, int, int, int, int, float);
 
         int update(float, RenderWindow&, int, FloatRect*);
         void moverse();
@@ -37,15 +37,19 @@ class Jugador: public Entidad{
 
         float getCooldownAtaque();
         void restartCoolDownAtaque();
-
+        bool puedeCambiarArma();
+        bool flagEsquivar();
         void muerteJugador();
         void escudarse();
         void draw(sf::RenderWindow &);
+
     private:
         float dirMov;
         bool atacando;
         bool esquivando;
         bool puedeEsquivar;
+        bool flagArma;
+        bool inicioArma = true;
 
         Clock cdEsquivar;
         Clock duracionEsquivar;

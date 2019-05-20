@@ -35,7 +35,8 @@ class Juego : public Estado
         //void render();
         void changeMode();
         void gestionaPotenciadores();
-
+        bool puedeEsquivar();
+        void contadorHabilidades(int);
         Vector2f generaPosicion();
 
         Vector2i dimensiones;
@@ -79,6 +80,10 @@ class Juego : public Estado
         Text *texportal;
         bool colisionaPortal = false;
         bool colisionaCofre = false;
+        bool cofreAbierto = false;
         int nNivel;
+        bool activaQ = false;;
+        bool activaShift = false;
+        int hSpeed, hAttack, hDef;
 
 };

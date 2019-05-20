@@ -38,7 +38,7 @@ class Mapa{
         FloatRect* getBounds();
         FloatRect* getBoundsPortales();
         vector<Antorcha*> getAntorchas();
-        vector<Potenciadores*> getCofres();
+        Potenciadores* getCofre();
 
         Vector2f generaPosicion();
         bool isColision(int,int);
@@ -50,7 +50,7 @@ class Mapa{
 
         //DRAW
         void draw(RenderWindow&, Jugador, vector<Enemigo*>, int, std::vector<Tumba*>);
-
+        bool existeCofre();
     private:
         int width, height, tilewidth, tileheight, gid;
         int nObj, maxObj;
@@ -81,5 +81,7 @@ class Mapa{
         Vector2f posAnt;
         int tipo;
         vector<Antorcha*> antorchas;
-        vector<Potenciadores*> potenciadores;
+        Potenciadores* potenciadores;
+        bool hayCofre = false;
+
 };

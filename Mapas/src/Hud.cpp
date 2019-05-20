@@ -3,7 +3,7 @@
 using namespace std;
 using namespace sf;
 
-Hud::Hud(int vidas){
+Hud::Hud(int vidas,int hs,int hd, int ha){
     //PIEZA HUD VIDA
     vida = new Texture;
     baston = new Texture;
@@ -65,7 +65,7 @@ Hud::Hud(int vidas){
 
     corazon = new Sprite;
     corazon->setTexture(*textura_vida);
-    corazon->setScale({0.015,0.015});
+    corazon->setScale({0.02,0.02});
 
     cantidad_corazones = new vector<Sprite>;
 
@@ -101,17 +101,16 @@ Hud::Hud(int vidas){
 
     //PIEZA HUD HABILIDADES
     pieza_habilidades = new Sprite(*habilidades); // new RectangleShape({90,16});
-    //pieza_habilidades->setFillColor(Color(28,17,23,255));
     pieza_habilidades->setOrigin(pieza_habilidades->getOrigin().x/2, pieza_habilidades->getOrigin().x/2);
-    pieza_habilidades->setTextureRect(dim);
-    pieza_habilidades->scale(0.35, 0.3);
+
+    cambioNivel(hs,ha,hd);
 
 }
 
 void Hud::compruebaTeclas(){
     ///HABILIDADES
     //borrar todas las habilidades
-    if(Keyboard::isKeyPressed(Keyboard::D)){
+    if(Keyboard::isKeyPressed(Keyboard::Z)){
         borradoHabilidades();
     } else if(Keyboard::isKeyPressed(Keyboard::Num1)){
         setHabilidad(1);
@@ -129,7 +128,7 @@ void Hud::compruebaTeclas(){
 }
 
 void Hud::modificar_vida(int cantidad, int sr){
-    if(sr == 1 && cantidad_corazones->size() < 10)
+    if(sr == 1 && cantidad_corazones->size() < 5)
     {
         cantidad_corazones->push_back(*corazon);
     }
@@ -140,7 +139,7 @@ void Hud::modificar_vida(int cantidad, int sr){
 
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
-        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + 15 + (i * 4), pieza_vida->getPosition().y + 1.25});
+        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + (corazon->getGlobalBounds().width -3)*i, pieza_vida->getPosition().y + 1.25});
     }
 }
 
@@ -164,7 +163,7 @@ void Hud::setHabilidad(int habilidad){
     }
 
     for(int i = 0; i < vector_habilidades->size(); i++){
-       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + 7 + (i*25.5),pieza_habilidades->getPosition().y + 4});
+       vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + 50 + (i*(vector_habilidades->at(i).getGlobalBounds().width+1)),pieza_habilidades->getPosition().y + 4});
     }
 }
 
@@ -173,7 +172,7 @@ void Hud::borradoHabilidades(){
     mejora_ataque_esta = false;
     debilita_defensa_esta = false;
     debilita_velocidad_esta = false;
-    escudo = false;
+    escudo_esta = false;
 }
 
 
@@ -186,7 +185,7 @@ void Hud::setPosicionVida(int x, int y){
     texto_vida->setPosition(pieza_vida->getPosition().x + 4, pieza_vida->getPosition().y);
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
-        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + 15 + (i * 4), pieza_vida->getPosition().y + 1.25});
+        cantidad_corazones->at(i).setPosition({pieza_vida->getPosition().x + (corazon->getGlobalBounds().width -3)*i, pieza_vida->getPosition().y + 1.25});
     }
 }
 
@@ -212,6 +211,23 @@ void Hud::cambiaArma(int n){
     }
 }
 
+void Hud::updateTeclas(bool cambio, bool dash){
+    if(cambio){
+        tecla_switch->setColor(Color::White);
+    }
+    else{
+        tecla_switch->setColor(Color(50,50,50,180));
+    }
+
+    if(dash){
+        tecla_esquivar->setColor(Color::White);
+    }
+    else{
+        tecla_esquivar->setColor(Color(50,50,50,180));
+    }
+
+}
+
 void Hud::setPosicionHabilidades(int x, int y){
     xHab = x;
     yHab = y;
@@ -222,6 +238,17 @@ void Hud::setPosicionHabilidades(int x, int y){
     }
 }
 
+void Hud::cambioNivel(int hs,int ha,int hd){
+    if(hs > 0){
+        setHabilidad(3);
+    }
+    if(ha > 0){
+        setHabilidad(1);
+    }
+    if(hd > 0){
+        setHabilidad(2);
+    }
+}
 
 //GETTERS
 
@@ -258,9 +285,8 @@ int Hud::getCantidadHabilidades(){
 }
 
 void Hud::draw(RenderWindow& target){
-    target.draw(*pieza_vida);
-    target.draw(*texto_vida);
-    target.draw(*pieza_habilidades);
+    //target.draw(*pieza_vida);
+    //target.draw(*texto_vida);
     target.draw(*tecla_switch);
     target.draw(*arma);
     target.draw(*sprite_switch);

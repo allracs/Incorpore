@@ -14,14 +14,14 @@ Menu::Menu(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Esta
 
     //titulo
     titulofuente = new sf::Font;
-    titulofuente->loadFromFile("resources/menu/never.ttf");
+    titulofuente->loadFromFile("resources/menu/Blockheads.ttf");
     titulo = new sf::Text;
     titulo->setFont(*titulofuente);
     titulo->setString("INCORPORE");
     titulo->setCharacterSize(150);
     //titulo->setPosition({500,50});
-    titulo->setPosition({500,100});
-    titulo->setScale(0.9,0.9);
+    titulo->setPosition({430,100});
+    titulo->setScale(1,1);
     titulo->setColor(sf::Color::White);
 
     //fuente
@@ -36,7 +36,7 @@ Menu::Menu(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Esta
 
     //strings
     jugar->setString("Jugar");
-    opciones->setString("Opciones");
+    opciones->setString("Controles");
     salir->setString("Salir");
 
     //fondo
