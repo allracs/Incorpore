@@ -362,7 +362,7 @@ void Juego::procesarEventos(){
                 if(evento->key.code == sf::Keyboard::E && colisionaCofre){
                     if(!cofreAbierto){
                         int tipo = rand() % 4 + 1;
-                        tipo = 1;
+                        tipo = 3;
                         mapa->getCofre()->abrirCofre(*jugador, tipo);
                         if(tipo == 1){
                             mejora++;
@@ -371,6 +371,7 @@ void Juego::procesarEventos(){
                         hud->setHabilidad(tipo);
                         contadorHabilidades(tipo);
                         cofreAbierto = true;
+                        jugador->showStats();
                     }
                 }
                 if(evento->key.code == sf::Keyboard::G){

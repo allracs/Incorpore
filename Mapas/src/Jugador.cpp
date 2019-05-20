@@ -14,6 +14,7 @@ Jugador::Jugador(Vector2f pos, int mejora){
     attack = 3;
     defense = 2;
     speed = 75.f;
+    spd = speed;
     escudo = false;
 
     dirMov = 1.f;
@@ -46,6 +47,7 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int mejora, int ataque, i
     attack = ataque;
     defense = defensa;
     speed = velocidad;
+    spd = speed;
 
     dirMov = 0.6f;
     movement = Vector2f(0.f, 0.f);
@@ -119,8 +121,6 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
         }
     }
     compruebaColor();
-
-
 
     return cambia;
 }
