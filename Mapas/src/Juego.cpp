@@ -167,8 +167,8 @@ void Juego::update(){
                                                esquinas,
                                                jugador->getAtaque());
 
-                        if(!godMode && jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida(), enemigos.at(i)->getAtaque())){
-                            hud->modificar_vida(1,2);
+                        if(!godMode){
+                            hud->modificar_vida(jugador->recibeDmg(enemigos.at(i)->getEntidadHitbox(), enemigos.at(i)->getVida(), enemigos.at(i)->getAtaque()),2);
                         }
 
                     } else {
