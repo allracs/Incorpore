@@ -111,7 +111,7 @@ Hud::Hud(int vidas){
 void Hud::compruebaTeclas(){
     ///HABILIDADES
     //borrar todas las habilidades
-    if(Keyboard::isKeyPressed(Keyboard::D)){
+    if(Keyboard::isKeyPressed(Keyboard::Z)){
         borradoHabilidades();
     } else if(Keyboard::isKeyPressed(Keyboard::Num1)){
         setHabilidad(1);
@@ -173,7 +173,7 @@ void Hud::borradoHabilidades(){
     mejora_ataque_esta = false;
     debilita_defensa_esta = false;
     debilita_velocidad_esta = false;
-    escudo = false;
+    escudo_esta = false;
 }
 
 

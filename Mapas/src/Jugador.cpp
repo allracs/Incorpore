@@ -178,8 +178,6 @@ bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida, float atkEnemigo
             exit(0);
         }
         */
-
-
         dmgCD.restart();
     }
 }
@@ -198,7 +196,7 @@ void Jugador::controlarEsquivar(){
     if(duracionEsquivar.getElapsedTime().asSeconds()>=2.f){
         //std::cout<<"Esquivar ha terminado"<<std::endl;
         esquivando=false;
-        speed=75.f;
+        //speed = 75.f;
     }
     if(cdEsquivar.getElapsedTime().asSeconds()>=5.f){
         puedeEsquivar=true;
@@ -206,7 +204,7 @@ void Jugador::controlarEsquivar(){
     }
     if(esquivando){
         actual->sprite.setColor(sf::Color(105,105,105, 50));
-        speed=100.f;
+        speed += 25.f;
     }
 }
 
@@ -272,7 +270,6 @@ void Jugador::compruebaColor(){
     if(cd.getElapsedTime().asSeconds() >= 0.25 && !esquivando){
         actual->sprite.setColor(sf::Color::White);
         cd.restart();
-
     }
 }
 
@@ -287,7 +284,6 @@ Arma Jugador::getArma() {
 Arma* Jugador::getPuntArma() {
     return arma;
 }
-
 
 void Jugador::cambiarArma(int opcion){
 

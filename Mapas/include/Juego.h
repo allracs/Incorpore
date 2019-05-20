@@ -77,6 +77,7 @@ class Juego : public Estado
         Text *texportal;
         bool colisionaPortal = false;
         bool colisionaCofre = false;
+        bool cofreAbierto = false;
         int nNivel;
 
 };

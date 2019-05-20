@@ -14,8 +14,8 @@ class Potenciadores
     public:
         Potenciadores(Vector2f);
         virtual ~Potenciadores();
-        void abrirCofre(Jugador);
-        void gestionarHabilidades(Jugador, int);
+        void abrirCofre(Jugador&, int);
+        void gestionarHabilidades(Jugador&, int);
 
         Sprite getCofre();
 

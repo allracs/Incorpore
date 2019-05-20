@@ -294,15 +294,13 @@ bool Enemigo::serAtacado(sf::RectangleShape hitbox, float atkJugador){
             cd.restart();
             res = true;
         }
-
-        cout << "Tiene de vida: "<< hp << endl;
-        if(hp == 0){
+        if(hp <= 0){
             deleteSprite = true;
             muerteEntidad();
             cout << "Ha sido matado" <<  endl;
         }
+        cout << "Tiene de vida: "<< hp << endl;
     }
-
     return res;
 }
 

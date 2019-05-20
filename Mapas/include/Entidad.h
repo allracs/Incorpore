@@ -37,8 +37,9 @@ class Entidad{
 
         void draw(RenderWindow&);
         void drawBoundingBoxes(RenderWindow&);
-        void showData();
         void muerteEntidad();
+        void showData();
+        void showStats();
 
     protected:
         RectangleShape *sprite;

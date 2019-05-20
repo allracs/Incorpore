@@ -37,7 +37,7 @@ class Mapa{
         FloatRect* getBounds();
         FloatRect* getBoundsPortales();
         vector<Antorcha*> getAntorchas();
-        vector<Potenciadores*> getCofres();
+        Potenciadores* getCofre();
 
         Vector2f generaPosicion();
         bool isColision(int,int);
@@ -80,5 +80,6 @@ class Mapa{
         Vector2f posAnt;
         int tipo;
         vector<Antorcha*> antorchas;
-        vector<Potenciadores*> potenciadores;
+        Potenciadores* potenciadores;
+        bool hayCofre = false;
 };

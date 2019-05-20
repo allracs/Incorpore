@@ -207,6 +207,7 @@ void Juego::update(){
                         reintentar = false;
                         hayPortales = false;
                         colisionaPortal = false;
+                        cofreAbierto = false;
                         delete fuente;
                         delete texportal;
                         delete portalVerde;
@@ -279,23 +280,23 @@ void Juego::procesarEventos(){
                 m_window.close();
                 break;
             case sf::Event::MouseButtonPressed:
-                if(evento->mouseButton.button == Mouse::Left) {
+                if(!pausa){
+                    if(evento->mouseButton.button == Mouse::Left){
                     // AÑADIR COOLDOWN AL ATAQUE A MELÉ
                     if(jugador->getArma().getOpcion() == 0){ // SI EL ATAQUE ES A MELEE
-                         if(jugador->getCooldownAtaque() >= 1.f) {
+                         if(jugador->getCooldownAtaque() >= 1.f){
                             //std::cout << "COOLDOWN ATAQUE: " << jugador->getCooldownAtaque() << std::endl;
                             jugador->restartCoolDownAtaque();
                             jugador->getArma().atacar(enemigos, enemigos.size(), jugador->getAtaque());
                             if(jugador->getArma().getOpcion() == 0){
                                 jugador->getPuntArma()->empezarAnim();
                             }
-
                         }
-                    } else if(jugador->getArma().getOpcion() == 1) { // SI EL ATAQUE ES A DISTANCIA
+                    } else if(jugador->getArma().getOpcion() == 1){ // SI EL ATAQUE ES A DISTANCIA
                        // std::cout << "ATAQUE A DISTANCIA" << std::endl;
                         jugador->getArma().atacar(enemigos, enemigos.size(), jugador->getAtaque());
                     }
-
+                }
                 }
                 break;
             case sf::Event::KeyReleased:
@@ -303,7 +304,12 @@ void Juego::procesarEventos(){
                     pulsaE = true;
                 }
                 if(evento->key.code == sf::Keyboard::E && colisionaCofre){
-                    //pulsaE = true;
+                    if(!cofreAbierto){
+                        int tipo = rand() % 4 + 1;
+                        mapa->getCofre()->abrirCofre(*jugador, tipo);
+                        hud->setHabilidad(tipo);
+                        cofreAbierto = true;
+                    }
                 }
                 if(evento->key.code == sf::Keyboard::G){
                 changeMode();
@@ -409,10 +415,8 @@ void Juego::changeMode(){
 }
 
 void Juego::gestionaPotenciadores(){
-    for(int i = 0; i < mapa->getCofres().size(); i++){
-        if(jugador->cogeCofre(mapa->getCofres()[i]->getCofre().getGlobalBounds())){
-            mapa->getCofres()[i]->abrirCofre(*jugador);
-        }
+    if(jugador->cogeCofre(mapa->getCofre()->getCofre().getGlobalBounds())){
+            colisionaCofre = true;
     }
 }
 

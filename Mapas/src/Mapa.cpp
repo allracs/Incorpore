@@ -69,6 +69,7 @@ Mapa::~Mapa(){
     antorchas.clear();
     //delete tilesetSprite;
     delete colision;
+    delete potenciadores;
    // delete colisionPortales;
 
 
@@ -291,7 +292,6 @@ sf::Vector2i Mapa::generaPortales(){
         break;
     }
 
-
     sf::Vector2i pos(x,y);
     return pos;
 }
@@ -310,9 +310,12 @@ void Mapa::generaObjetos(int j, int k, int no){
         }
         else  if(random >= 29 && random < 39){
             //Cofres
-            posAnt.x = k*tilewidth;
-            posAnt.y = j*tileheight;
-            potenciadores.push_back(new Potenciadores(posAnt));
+            if(!hayCofre){
+                posAnt.x = k*tilewidth;
+                posAnt.y = j*tileheight;
+                potenciadores = new Potenciadores(posAnt);
+                hayCofre = true;
+            }
             //colisionMap[j][k] = true;
             //nColisiones++;
         }
@@ -438,7 +441,7 @@ vector<Antorcha*> Mapa::getAntorchas(){
     return antorchas;
 }
 
-vector<Potenciadores*> Mapa::getCofres(){
+Potenciadores* Mapa::getCofre(){
     return potenciadores;
 }
 
@@ -465,6 +468,7 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
                     }
                     target.draw(*(mapSprite[l][y][x]));
                     if(l == 3){
+                        potenciadores->draw(target);
                         player.draw(target);
 
                         for(int i = 0; i < nEnemigos; i++){
@@ -473,9 +477,6 @@ void Mapa::draw(RenderWindow& target, Jugador player, std::vector<Enemigo*> enem
                     } else if(l == 2){
                         for(int i = 0; i < antorchas.size(); i++){
                             antorchas.at(i)->draw(target);
-                        }
-                        for(int i = 0; i < potenciadores.size(); i++){
-                            potenciadores.at(i)->draw(target);
                         }
                     } else if(l == 6){
                         for(int i = 0; i < antorchas.size(); i++){
