@@ -2,14 +2,27 @@
 #include <iostream>
 
 
-Proyectil::Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation)
+Proyectil::Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation, int tipo)
 {
     //ctor
-    if(!textura.loadFromFile("resources/sprites/EnergyBall.png")){
-        std::cout<<"No se cargo el sprite de la bola de energia sideral"<<std::endl;
+    if(tipo==1)
+    {
+        if(!textura.loadFromFile("resources/sprites/EnergyBall.png")){
+            std::cout<<"No se cargo el sprite de la bola de energia sideral"<<std::endl;
+        }
+    } else if(tipo==2)
+    {
+        if(!textura.loadFromFile("resources/sprites/EnergyBall.png")){
+            std::cout<<"No se cargo el sprite de la bola de energia sideral"<<std::endl;
+        }
     }
+
     sprite.setTexture(textura);
+    if(tipo==1)
     sprite.setOrigin(10/2, 5/2);
+    else
+    sprite.setOrigin(10, 5);
+
     std::cout << "POSICION: " << colision.getPosition().x << " ," << colision.getPosition().y << std::endl;
     sprite.setPosition(posicion);
 

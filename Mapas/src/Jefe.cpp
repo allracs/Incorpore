@@ -5,7 +5,7 @@ Jefe::Jefe(sf::Vector2f ini)
 {
     //ctor
     estado = 0;
-    vida = 8;
+    vida = 1;
 
     posFdash = {-1.f, -1.f};
     collision = new sf::RectangleShape();
@@ -14,15 +14,16 @@ Jefe::Jefe(sf::Vector2f ini)
     collision->setFillColor(sf::Color::Red);
     collision->setPosition(ini);
 
-    idle.setAnimacion("resources/sprites/personajes.png", IntRect(0, 28*5, 16, 28), IntRect(48, 28*5, 16, 28), 16, 0.1f);
-    idle.sprite.setOrigin(9,20);
-
     srand(time(NULL));
     dirCaminar = rand() % 8;
-    idle.setAnimacion("resources/sprites/medusa-idle.png", sf::IntRect(0,0,48,56), sf::IntRect(384,0,48,56), 48, 0.1f);
-    idle.sprite.setOrigin(56/2, 60/2);
-    idle.sprite.setScale({0.7f, 0.7f});
 
+    idle.setAnimacion("resources/sprites/medusa-idle.png", sf::IntRect(0,0,48,56), sf::IntRect(384,0,48,56), 48, 0.1f);
+    idle.sprite.setOrigin(48/2, 48/2);
+    idle.sprite.setScale({0.65f, 0.65f});
+
+    disparar.setAnimacion("resources/sprites/medusa-ataque.png", sf::IntRect(0,0,48,56), sf::IntRect(0,0,48,56), 0, 0.1f);
+    disparar.sprite.setOrigin(48/2, 60/2);
+    disparar.sprite.setScale({0.65f, 0.65f});
 
     actual = &idle;
     actual->sprite.setPosition(collision->getPosition().x, collision->getPosition().y);
@@ -61,6 +62,8 @@ void Jefe::estados(sf::Vector2f posJ)
 
             if(cestados.getElapsedTime().asSeconds() >= 4)
             {
+                actual = &idle; //cambiar a dahsAnimacion
+                actual->sprite.setPosition(collision->getPosition());
                 cestados.restart();
                 estado = 1;
             }
@@ -83,7 +86,8 @@ void Jefe::estados(sf::Vector2f posJ)
 
                 cestados.restart();
                 estado = 2;
-
+                actual = &idle;
+                actual->sprite.setPosition(collision->getPosition());
                 cmov.restart(); // el siguiente estado es moverse
             }
             break;
@@ -95,7 +99,8 @@ void Jefe::estados(sf::Vector2f posJ)
             {
                 cestados.restart();
                 estado = 3;
-
+                actual = &disparar;
+                actual->sprite.setPosition(collision->getPosition());
                 cdispCD.restart();
             }
             break;
@@ -107,7 +112,8 @@ void Jefe::estados(sf::Vector2f posJ)
             {
                 srand(time(NULL));
                 dirCaminar = rand() % 8;
-
+                actual = &idle;
+                actual->sprite.setPosition(collision->getPosition());
                 cestados.restart();
                 estado = 0;
 
@@ -249,15 +255,16 @@ void Jefe::disparo8dir()
     {
         /*CREAR 8 PROYECTILES*/
         //balas.push_back(new P...) en 8 dir
+        sf::Vector2f pos = {collision->getPosition().x - 8, collision->getPosition().y - 8};
 
-        balas.push_back(new Proyectil(collision->getPosition(), {-0.2, -0.2}, 0.f));
-        balas.push_back(new Proyectil(collision->getPosition(), {   0, -0.2}, 0.f));
-        balas.push_back(new Proyectil(collision->getPosition(), { 0.2, -0.2}, 0.f));
-        balas.push_back(new Proyectil(collision->getPosition(), { 0.2,    0}, 0.f));
-        balas.push_back(new Proyectil(collision->getPosition(), { 0.2,  0.2}, 0.f));
-        balas.push_back(new Proyectil(collision->getPosition(), {   0,  0.2}, 0.f));
-        balas.push_back(new Proyectil(collision->getPosition(), {-0.2,  0.2}, 0.f));
-        balas.push_back(new Proyectil(collision->getPosition(), {-0.2,    0}, 0.f));
+        balas.push_back(new Proyectil(pos, {-0.2, -0.2}, 0.f, 2));
+        balas.push_back(new Proyectil(pos, {   0, -0.2}, 0.f, 2));
+        balas.push_back(new Proyectil(pos, { 0.2, -0.2}, 0.f, 2));
+        balas.push_back(new Proyectil(pos, { 0.2,    0}, 0.f, 2));
+        balas.push_back(new Proyectil(pos, { 0.2,  0.2}, 0.f, 2));
+        balas.push_back(new Proyectil(pos, {   0,  0.2}, 0.f, 2));
+        balas.push_back(new Proyectil(pos, {-0.2,  0.2}, 0.f, 2));
+        balas.push_back(new Proyectil(pos, {-0.2,    0}, 0.f, 2));
 
         cdispCD.restart();
     }
@@ -269,7 +276,7 @@ void Jefe::manejarDisp(int nCol, sf::FloatRect* colisiones)
     {
         balas.at(a)->update(nCol, colisiones);
         if(balas.at(a)->getColision().getPosition().x <= 20 || balas.at(a)->getColision().getPosition().x >= 370 ||
-           balas.at(a)->getColision().getPosition().y <= 30 || balas.at(a)->getColision().getPosition().y >= 270)
+           balas.at(a)->getColision().getPosition().y <= 20 || balas.at(a)->getColision().getPosition().y >= 270)
         {
             destruirBala(a);
         }
@@ -282,14 +289,37 @@ void Jefe::destruirBala(int a)
     balas.erase(balas.begin()+a);
 }
 
-bool Jefe::restarVida()
+bool Jefe::restarVida(sf::RectangleShape arma)
 {
     bool res = false;
-    if(vida-- <= 0)
+    if(collision->getGlobalBounds().intersects(arma.getGlobalBounds()) && vida-- <= 0)
     {
         res = true;
     }
     return res;
+}
+
+bool Jefe::restarVida(std::vector<Proyectil*> pr)
+{
+    bool res = false;
+    for(int a = 0; a < pr.size(); a++)
+    {
+        if(collision->getGlobalBounds().intersects(pr.at(a)->getColision().getGlobalBounds()))
+        {
+            pr.at(a)->setHacolisionado(true);
+            if(vida-- <= 0)
+            {
+                res = true;
+            }
+            break;
+        }
+    }
+    return res;
+}
+
+int Jefe::getVida()
+{
+    return vida;
 }
 
 sf::RectangleShape* Jefe::getCollision()
