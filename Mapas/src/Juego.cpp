@@ -135,7 +135,7 @@ void Juego::update(){
                //delete pocion;
             }
 
-            if(enemigos.size() > 0){
+            if(enemigos.size() > 0 || jefes.size() > 0){
 
                 for(int i = 0; i < enemigos.size(); i++) {
 
@@ -174,6 +174,17 @@ void Juego::update(){
                         enemigos.erase(enemigos.begin()+i);
                     }
                 }
+
+                if(nNivel%4==0)
+                {
+                    for(int a = 0; a < jefes.size(); a++)
+                    {
+                        jefes.at(a)->update(jugador->getCenter(),
+                                            mapa->getNumColisiones(),
+                                            mapa->getBounds());
+                    }
+                }
+
             }
             else {
                 if(!hayPortales){
@@ -258,11 +269,21 @@ void Juego::cargaPlayer(){
     for(int i = 0; i < nEnemigos; i++){
         enemigos.push_back(new Enemigo(mapa->generaPosicion()));
     }
+    cargaBoss();
 
     view.setCenter(jugador->getActual()->sprite.getPosition().x, jugador->getActual()->sprite.getPosition().y);
 }
 
-
+void Juego::cargaBoss()
+{
+    if(nNivel%4==0)
+    {
+        for(int a = 0; a < nNivel/4+1; a++)
+        {
+            jefes.push_back(new Jefe(mapa->generaPosicion()));
+        }
+    }
+}
 
 void Juego::cargaMapa(){
     mapa = new Mapa(nNivel);
@@ -404,6 +425,14 @@ void Juego::draw(){
     for(int i = 0; i < enemigos.size(); i++){
         if(enemigos.at(i)->getBorrado() == false)
         enemigos.at(i)->drawBoundingBoxes(m_window);
+    }
+
+    if(nNivel%4==0)
+    {
+        for(int a = 0; a < jefes.size(); a++)
+        {
+            jefes.at(a)->draw(m_window);
+        }
     }
 
     if(hayPortales){

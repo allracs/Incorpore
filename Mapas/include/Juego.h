@@ -9,6 +9,7 @@
 #include "Estado.h"
 #include "Portal.h"
 #include "Tumba.h"
+#include "Jefe.h"
 
 using namespace sf;
 
@@ -44,6 +45,7 @@ class Juego : public Estado
         static Juego* pinstance;
 
         void manejarIA();
+        void cargaBoss();
 
         //RenderWindow *window;
         RenderStates *states;
@@ -51,6 +53,7 @@ class Juego : public Estado
         Jugador *jugador;
         std::vector<Enemigo*> enemigos;
         std::vector<Tumba*> tumbas;
+        std::vector<Jefe*> jefes;
         Event *evento;
         Mapa *mapa;
         Hud *hud;
