@@ -12,8 +12,8 @@ using namespace std;
 Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Estado {maquina, window, cambio}{
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 1;
     nNivel = 1;
+    nEnemigos = 4 + nNivel/2;
     hAttack = 0;
     hSpeed = 0;
     hDef = 0;
