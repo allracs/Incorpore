@@ -67,7 +67,7 @@ class Entidad{
 
         Vector2f entityCenter;
 
-        float hp, attack, defense, speed;
+        float hp, attack, defense, speed, spd;
 };
 
 #endif // ENTIDAD_H

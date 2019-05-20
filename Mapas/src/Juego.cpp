@@ -386,6 +386,7 @@ void Juego::procesarEventos(){
                         hud->setHabilidad(tipo);
                         contadorHabilidades(tipo);
                         cofreAbierto = true;
+                        jugador->showStats();
                     }
                 }
                 if(evento->key.code == sf::Keyboard::G){

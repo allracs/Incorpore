@@ -40,8 +40,7 @@ void Potenciadores::gestionarHabilidades(Jugador& jugador, int tipo){
         break;
         case 3:
             //Spd down
-            jugador.setVelocidad(jugador.getVelocidad() - 25);
-
+            jugador.setVelocidad(jugador.getVelocidad() - 25.f);
         break;
         case 4:
             //Bubble
