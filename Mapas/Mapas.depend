@@ -1006,7 +1006,7 @@
 	"Entidad.h"
 	<SFML/Graphics.hpp>
 
-1558365195 /home/david/Documentos/Incorpore/Mapas/include/Hud.h
+1558372458 /home/david/Documentos/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
@@ -1021,7 +1021,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1558366147 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
+1558374551 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 	<string>
@@ -1054,7 +1054,7 @@
 	<iostream>
 	<vector>
 
-1558368183 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
+1558372466 source:/home/david/Documentos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -1077,7 +1077,7 @@
 	"Tumba.h"
 	"Jefe.h"
 
-1558361062 /home/david/Documentos/Incorpore/Mapas/include/Jugador.h
+1558371372 /home/david/Documentos/Incorpore/Mapas/include/Jugador.h
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
@@ -1087,7 +1087,7 @@
 	"Arma.h"
 	"Proyectil.h"
 
-1558368882 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
+1558374291 source:/home/david/Documentos/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
@@ -3703,7 +3703,7 @@
 1558348439 /home/david/Documentos/Incorpore/Mapas/include/Tumba.h
 	<SFML/Graphics.hpp>
 
-1558348439 source:/home/david/Documentos/Incorpore/Mapas/src/Potenciadores.cpp
+1558371405 source:/home/david/Documentos/Incorpore/Mapas/src/Potenciadores.cpp
 	"../include/Potenciadores.h"
 
 1558348439 source:/home/david/Documentos/Incorpore/Mapas/src/Tumba.cpp
