@@ -188,6 +188,7 @@ void Jugador::controlarEsquivar(){
     }
     if(esquivando){
         actual->sprite.setColor(sf::Color(105,105,105, 50));
+        std::cout << "entra en esquivando" << std::endl;
         speed = 100.f;
     }
 }
@@ -254,7 +255,7 @@ void Jugador::compruebaColor(){
     if(escudo){
            actual->sprite.setColor(sf::Color::Yellow);
     }
-    else{
+    else if(!esquivando){
                 actual->sprite.setColor(sf::Color::White);
     }
     if(cd.getElapsedTime().asSeconds() >= 0.25 && !esquivando && escudo){

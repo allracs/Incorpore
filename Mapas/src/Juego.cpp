@@ -12,8 +12,8 @@ using namespace std;
 Juego::Juego(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Estado {maquina, window, cambio}{
     srand(time(0));
     dimensiones = Vector2i(1280, 720);
-    nEnemigos = 1;
     nNivel = 1;
+    nEnemigos = 4 + nNivel/2;
     hAttack = 0;
     hSpeed = 0;
     hDef = 0;
@@ -131,9 +131,25 @@ void Juego::update(){
             hud->updateTeclas(jugador->puedeCambiarArma(),jugador->flagEsquivar());
             manejarIA();
             gestionaPotenciadores();
-            if(jugador->getHP() < 10 && pocion->isConsumible()){
+            if(jugador->getHP() < 5 && pocion->isConsumible()){
                if(pocion->consume(jugador->getEntidadHitbox())){
-                    hud->modificar_vida(1,1);
+                    if(pocion->getTipo() == 1){
+                        hud->modificar_vida(1,1);
+                        jugador->setHP(jugador->getHP() + 1);
+                    }
+                    else{
+                        if(jugador->getHP() == 4){
+                            jugador->setHP(jugador->getHP() + 1);
+                            hud->modificar_vida(1,1);
+                        }
+                        else{
+                            jugador->setHP(jugador->getHP() + 2);
+                            hud->modificar_vida(2,1);
+                        }
+
+
+                    }
+
                }
                //delete pocion;
             }

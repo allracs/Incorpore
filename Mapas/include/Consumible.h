@@ -13,10 +13,12 @@ class Consumible{
         bool consume(sf::RectangleShape);
         sf::FloatRect getConsumibleHitbox();
         bool isConsumible();
+        int getTipo();
     private:
         sf::Sprite *sprite;
         sf::Texture *tex;
         bool hayConsumible;
+        int tipo = 1;
 };
 
 #endif // CONSUMIBLE_H

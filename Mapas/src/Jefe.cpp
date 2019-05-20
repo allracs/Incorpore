@@ -5,7 +5,7 @@ Jefe::Jefe(sf::Vector2f ini)
 {
     //ctor
     estado = 0;
-    vida = 1;
+    vida = 10;
     atacando = false;
 
     posFdash = {-1.f, -1.f};

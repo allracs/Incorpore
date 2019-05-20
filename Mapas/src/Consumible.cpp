@@ -26,11 +26,13 @@ void Consumible::creaConsumible(sf::Vector2f pos){
     sf::IntRect dim(117,212,7,11);
 
     if(random < 20){
+        tipo = 2;
         dim.left = 196;
         dim.top = 180;
         dim.width = 9;
         dim.height = 11;
     }
+
     sprite = new sf::Sprite(*tex);
     sprite->setTextureRect(dim);
     sprite->setPosition(pos);
@@ -61,4 +63,8 @@ void Consumible::draw(sf::RenderWindow &window){
         window.draw(*sprite);
     }
 
+}
+
+int Consumible::getTipo(){
+    return tipo;
 }

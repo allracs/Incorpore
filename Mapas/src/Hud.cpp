@@ -141,8 +141,8 @@ void Hud::compruebaTeclas(){
 }
 
 void Hud::modificar_vida(int cantidad, int sr){
-    //cout << "Jejejaja: " << mejora_ataque->getPosition().x << ", " << mejora_ataque->getPosition().y << endl;
-    if(sr == 1 && cantidad_corazones->size() < 5){
+    if(sr == 1 && cantidad_corazones->size() < 5)
+    {
         for(int i = 0; i < cantidad; i++){
             cantidad_corazones->push_back(*corazon);
         }

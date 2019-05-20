@@ -33,7 +33,7 @@ Enemigo::Enemigo(Vector2f pos){
 
     deleteSprite = false;
 
-    hp = 1;
+    hp = 4;
     attack = 3;
     defense = 2;
     speed = 30.f;
