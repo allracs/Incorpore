@@ -12,6 +12,7 @@ class Animacion
         virtual ~Animacion();
         void setAnimacion(char* nTextura, IntRect firstF, IntRect finalF, int incremento,float tiempo);
         void update(Vector2f movement, float mTime);
+        void update();
         Sprite sprite;
 
     private:

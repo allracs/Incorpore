@@ -48,6 +48,20 @@ void Animacion::update(Vector2f movement, float mTime)
     sprite.move(movement* mTime);
 }
 
+void Animacion::update()
+{
+    float delta = clock.getElapsedTime().asSeconds();
+    if(delta >= switchTime) {
+        clock.restart();
+        if(actualFrame.left == finalF.left){
+            actualFrame.left = firstF.left;
+        } else {
+            actualFrame.left += incremento;
+        }
+
+        sprite.setTextureRect(actualFrame);
+    }
+}
 
 
 
