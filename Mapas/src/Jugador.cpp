@@ -10,7 +10,7 @@ Jugador::Jugador(Vector2f pos, int mejora){
     entidadHitbox.setPosition(pos);
     setColisionadores();
 
-    hp = 5;
+    hp = 10;
     attack = 3;
     defense = 2;
     speed = 75.f;
@@ -180,7 +180,7 @@ void Jugador::controlarEsquivar(){
     if(duracionEsquivar.getElapsedTime().asSeconds()>=2.f){
         //std::cout<<"Esquivar ha terminado"<<std::endl;
         esquivando=false;
-        speed = 75.f;
+        speed = spd;
     }
     if(cdEsquivar.getElapsedTime().asSeconds()>=5.f){
         puedeEsquivar=true;
@@ -188,8 +188,8 @@ void Jugador::controlarEsquivar(){
     }
     if(esquivando){
         actual->sprite.setColor(sf::Color(105,105,105, 50));
-        std::cout << "entra en esquivando" << std::endl;
-        speed = 100.f;
+        //std::cout << "entra en esquivando" << std::endl;
+        speed = spd + 25.f;
     }
 }
 

@@ -16,9 +16,9 @@ Enemigo::Enemigo(Vector2f pos){
     run.setAnimacion("resources/sprites/elfa.png", IntRect(0, 28, 16, 28), IntRect(48, 28, 16, 28), 16, 0.1f);
     run.sprite.setOrigin(9,20);*/
 
-    idle.setAnimacion("resources/sprites/enemigos.png", IntRect(0, 0, 16, 28), IntRect(48, 0, 16, 28), 16, 0.1f);
+    idle.setAnimacion("resources/sprites/enemigos.png", IntRect(0, 28*11, 16, 28), IntRect(48, 28*11, 16, 28), 16, 0.1f);
     idle.sprite.setOrigin(9,20);
-    run.setAnimacion("resources/sprites/enemigos.png", IntRect(64, 0, 16, 28), IntRect(112, 0, 16, 28), 16, 0.1f);
+    run.setAnimacion("resources/sprites/enemigos.png", IntRect(64, 28*11, 16, 28), IntRect(112, 28*11, 16, 28), 16, 0.1f);
     run.sprite.setOrigin(9,20);
 
     actual = &idle;

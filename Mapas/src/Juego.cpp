@@ -378,7 +378,7 @@ void Juego::procesarEventos(){
                 if(evento->key.code == sf::Keyboard::E && colisionaCofre){
                     if(!cofreAbierto){
                         int tipo = rand() % 4 + 1;
-                        tipo = 2;
+                        //tipo = 3;
                         mapa->getCofre()->abrirCofre(*jugador, tipo);
                         if(tipo == 1){
                             mejora++;
@@ -504,7 +504,6 @@ void Juego::draw(){
     {
         m_window.draw(*texcofre);
     }
-
 
     m_window.display();
 }
