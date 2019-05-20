@@ -19,8 +19,9 @@ Jefe::Jefe(sf::Vector2f ini)
 
     srand(time(NULL));
     dirCaminar = rand() % 8;
-    idle.setAnimacion("resources/sprites/medussa.png", sf::IntRect(0,0,56,60), sf::IntRect(444,0,56,60), 56, 0.2f);
+    idle.setAnimacion("resources/sprites/medusa-idle.png", sf::IntRect(0,0,48,56), sf::IntRect(384,0,48,56), 48, 0.1f);
     idle.sprite.setOrigin(56/2, 60/2);
+    idle.sprite.setScale({0.7f, 0.7f});
 
 
     actual = &idle;
@@ -42,7 +43,7 @@ void Jefe::update(sf::Vector2f posJ, int nCol, sf::FloatRect* colisiones)
 
 void Jefe::draw(sf::RenderWindow& w)
 {
-    w.draw(*collision);
+    //w.draw(*collision);
     for(int a = 0; a < balas.size(); a++)
     {
         balas.at(a)->draw(w);
@@ -139,11 +140,13 @@ void Jefe::dash()
             {
                 collision->move(xe * time.asMilliseconds(), ye * time.asMilliseconds());
                 actual->sprite.move(xe * time.asMilliseconds(), ye * time.asMilliseconds());
+                actual->sprite.setScale({-0.65f, 0.65f});
             }
             else                            //si el jugador esta abajo - derecha
             {
                 collision->move(xe * time.asMilliseconds(), -ye * time.asMilliseconds());
                 actual->sprite.move(xe * time.asMilliseconds(), -ye * time.asMilliseconds());
+                actual->sprite.setScale({-0.65f, 0.65f});
             }
         }
         else
@@ -152,11 +155,13 @@ void Jefe::dash()
             {
                 collision->move(-xe * time.asMilliseconds(), ye * time.asMilliseconds());
                 actual->sprite.move(-xe * time.asMilliseconds(), ye * time.asMilliseconds());
+                actual->sprite.setScale({0.65f, 0.65f});
             }
             else                            //si el jugador esta abajo - izquierda
             {
                 collision->move(-xe * time.asMilliseconds(), -ye * time.asMilliseconds());
                 actual->sprite.move(-xe * time.asMilliseconds(), -ye * time.asMilliseconds());
+                actual->sprite.setScale({0.65f, 0.65f});
             }
         }
     }
@@ -174,8 +179,8 @@ void Jefe::dash()
 void Jefe::caminar()
 {
 
-    if(collision->getPosition().x <= 50 || collision->getPosition().x >= 345 ||
-       collision->getPosition().y <= 40 || collision->getPosition().y >= 260)
+    if(collision->getPosition().x <= 70 || collision->getPosition().x >= 345 ||
+       collision->getPosition().y <= 40 || collision->getPosition().y >= 240)
     {
         srand(time(NULL));
         dirCaminar = rand() % 8;
@@ -187,6 +192,7 @@ void Jefe::caminar()
         case 0:
             x = -1;
             y = -1;
+            actual->sprite.setScale({0.65f, 0.65f});
             break;
 
         case 1:
@@ -196,15 +202,18 @@ void Jefe::caminar()
         case 2:
             x = 1;
             y = -1;
+            actual->sprite.setScale({-0.65f, 0.65f});
             break;
 
         case 3:
             x = 1;
+            actual->sprite.setScale({-0.65f, 0.65f});
             break;
 
         case 4:
             x = 1;
             y = 1;
+            actual->sprite.setScale({-0.65f, 0.65f});
             break;
 
         case 5:
@@ -214,10 +223,12 @@ void Jefe::caminar()
         case 6:
             x = -1;
             y = 1;
+            actual->sprite.setScale({0.65f, 0.65f});
             break;
 
         case 7:
             x = -1;
+            actual->sprite.setScale({0.65f, 0.65f});
             break;
     }
 
