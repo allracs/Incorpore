@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Estado.h"
 
 class MaquinaEstados;
@@ -48,7 +49,7 @@ class Menu : public Estado
         sf::Sprite *spropciones;
         sf::RenderWindow *window;
 
-
+        sf::Music musica;
 
         sf::Event *evento;
         sf::Mouse *raton;

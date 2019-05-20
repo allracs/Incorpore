@@ -6,6 +6,7 @@
 #include "Potenciadores.h"
 #include "Tumba.h"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 using namespace sf;
 using namespace tinyxml2;
@@ -57,6 +58,8 @@ class Mapa{
         int cofre, calavera, pocion, pocionmini;
         int *antorcha, *caja, *cajadoble, *columna;
         int nColisiones;
+
+        sf::Music musica;
 
         int nCapas = 0; //Numero de capas del tileset
         string nombreCapa; //nombre de la capa actual

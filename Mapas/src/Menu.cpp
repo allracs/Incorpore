@@ -6,6 +6,14 @@
 
 Menu::Menu(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Estado {maquina, window, cambio}
 {
+    if(!musica.openFromFile("resources/sound/menubuena.ogg"))
+    {
+        std::cout << "Error en audio" << std::endl;
+    }
+    musica.setVolume(100.0);
+    musica.setLoop(true);
+    musica.play();
+
     fuente = new sf::Font;
     fuente->loadFromFile("resources/menu/manaspc.ttf");
     jugar = new sf::Text;

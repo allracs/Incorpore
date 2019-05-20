@@ -19,6 +19,37 @@ Mapa::Mapa(int nivel){
         leerMapa(4);
     }
 
+    if(nivel == 1)
+    {
+        if(!musica.openFromFile("resources/sound/mapa1buena.ogg"))
+        {
+            std::cout << "Error en audio" << std::endl;
+        }
+    }
+    else if(nivel==2)
+    {
+        if(!musica.openFromFile("resources/sound/mapa2buena.ogg"))
+        {
+            std::cout << "Error en audio" << std::endl;
+        }
+    }else if(nivel==3)
+    {
+        if(!musica.openFromFile("resources/sound/mapa3buena.ogg"))
+        {
+            std::cout << "Error en audio" << std::endl;
+        }
+    }else if(nivel==4)
+    {
+        if(!musica.openFromFile("resources/sound/Boss.ogg"))
+        {
+            std::cout << "Error en audio" << std::endl;
+        }
+    }
+    musica.setVolume(100.0);
+    musica.setLoop(true);
+    musica.play();
+
+
     if(tipo != 4 || true) //TODO quitar cuando no se haga delete de los objetos en el mapa 4
         cargaObjetos();
     setDatos();

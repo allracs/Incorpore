@@ -2073,7 +2073,7 @@
 
 1558102561 e/MaquinaEstados.h"
 
-1558367637 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Animacion.cpp
+1558376986 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Animacion.cpp
 	<iostream>
 	"../include/Animacion.h"
 
@@ -2126,7 +2126,7 @@
 	<android/log.h>
 	<assert.h>
 
-1558362786 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Entidad.h
+1558382019 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
 	"Animacion.h"
 	"Proyectil.h"
@@ -2593,7 +2593,7 @@
 
 1557922417 e/Consumible.h"
 
-1558114893 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Consumible.h
+1558377186 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Consumible.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"time.h"
@@ -2601,7 +2601,7 @@
 1558373392 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Arma.cpp
 	"../include/Arma.h"
 
-1558114893 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Consumible.cpp
+1558377499 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Consumible.cpp
 	"../include/Consumible.h"
 
 1555496336 source:/home/carlos/Escritorio/Maquina/src/main.cpp
@@ -3407,8 +3407,9 @@
 	<stack>
 	<string>
 
-1558114893 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Menu.h
+1558387314 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Menu.h
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 	"Estado.h"
 
 1558114893 /home/oscar/Desktop/FV/Incorpore/Mapas/include/Estado.h
@@ -3421,7 +3422,7 @@
 1558114893 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Estado.cpp
 	"Estado.h"
 
-1558114893 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/MaquinaEstados.cpp
+1558376986 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/MaquinaEstados.cpp
 	"MaquinaEstados.h"
 	"Estado.h"
 	<iostream>
@@ -3434,7 +3435,7 @@
 	<iostream>
 	"Juego.h"
 
-1558373265 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Proyectil.cpp
+1558376986 source:/home/oscar/Desktop/FV/Incorpore/Mapas/src/Proyectil.cpp
 	"Proyectil.h"
 	<iostream>
 
