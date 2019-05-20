@@ -219,6 +219,7 @@ void Juego::update(){
                         cargaMapa();
                         cargaPlayer();
                         cargarHUD();
+                        hud->cambioNivel(hSpeed,hAttack,hDef);
                         //std::cout<< jugador->getVidas()<<std::endl;
                     }
                 }

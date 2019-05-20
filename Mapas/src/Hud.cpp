@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "../include/Hud.h"
+#include <iostream>
 using namespace std;
 using namespace sf;
 
@@ -103,8 +104,6 @@ Hud::Hud(int vidas,int hs,int hd, int ha){
     pieza_habilidades = new Sprite(*habilidades); // new RectangleShape({90,16});
     pieza_habilidades->setOrigin(pieza_habilidades->getOrigin().x/2, pieza_habilidades->getOrigin().x/2);
 
-    cambioNivel(hs,ha,hd);
-
 }
 
 void Hud::compruebaTeclas(){
@@ -161,7 +160,6 @@ void Hud::setHabilidad(int habilidad){
         vector_habilidades->push_back(*escudo);
         escudo_esta = true;
     }
-
     for(int i = 0; i < vector_habilidades->size(); i++){
        vector_habilidades->at(i).setPosition({pieza_habilidades->getPosition().x + 50 + (i*(vector_habilidades->at(i).getGlobalBounds().width+1)),pieza_habilidades->getPosition().y + 4});
     }

@@ -1013,9 +1013,10 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1558361859 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
+1558363527 source:/home/david/Documentos/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
+	<iostream>
 
 1558203348 e/Hud.h"
 
@@ -2746,7 +2747,7 @@
 	<iostream>
 	<memory>
 
-1558101917 source:/home/david/Documentos/Incorpore/Mapas/src/Menu.cpp
+1558362592 source:/home/david/Documentos/Incorpore/Mapas/src/Menu.cpp
 	"Menu.h"
 	"MaquinaEstados.h"
 	<memory>
