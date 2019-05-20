@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "../include/Hud.h"
+#include <string>
 #include <iostream>
 using namespace std;
 using namespace sf;
@@ -104,6 +105,18 @@ Hud::Hud(int vidas,int hs,int hd, int ha){
     pieza_habilidades = new Sprite(*habilidades); // new RectangleShape({90,16});
     pieza_habilidades->setOrigin(pieza_habilidades->getOrigin().x/2, pieza_habilidades->getOrigin().x/2);
 
+    //Numero de buffs
+    textoAttack = new Text;
+    textoAttack->setFont(*fuente);
+    textoAttack->setScale(0.25, 0.25);
+
+    textoDef = new Text;
+    textoDef->setFont(*fuente);
+    textoDef->setScale(0.25, 0.25);
+
+    textoSpeed = new Text;
+    textoSpeed->setFont(*fuente);
+    textoSpeed->setScale(0.25, 0.25);
 }
 
 void Hud::compruebaTeclas(){
@@ -239,12 +252,15 @@ void Hud::setPosicionHabilidades(int x, int y){
 void Hud::cambioNivel(int hs,int ha,int hd){
     if(hs > 0){
         setHabilidad(3);
+        textoSpeed->setString(to_string(hs));
     }
     if(ha > 0){
         setHabilidad(1);
+        textoAttack->setString(to_string(ha));
     }
     if(hd > 0){
         setHabilidad(2);
+        textoDef->setString(to_string(hd));
     }
 }
 
@@ -290,6 +306,8 @@ void Hud::draw(RenderWindow& target){
     target.draw(*sprite_switch);
     target.draw(*tecla_esquivar);
     target.draw(*sprite_esquivar);
+
+
 
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {

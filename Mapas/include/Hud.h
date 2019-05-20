@@ -66,6 +66,7 @@ private:
     Sprite *sprite_esquivar;
     Sprite *arma;
 
+    Text *textoAttack, *textoDef, *textoSpeed;
     bool mejora_ataque_esta = false;
     bool debilita_defensa_esta = false;
     bool debilita_velocidad_esta = false;
