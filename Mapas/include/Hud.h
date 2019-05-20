@@ -30,7 +30,7 @@ public:
     vector<Sprite> getArrayHabilidades();
     int getCantidadVida();
     int getCantidadHabilidades();
-
+    void updateHabilidades();
     void draw(RenderWindow&);
     void move(Vector2f);
 private:
@@ -71,7 +71,6 @@ private:
     bool debilita_defensa_esta = false;
     bool debilita_velocidad_esta = false;
     bool escudo_esta = false;
-
     int nAtaque, nDef, nSpeed;
 
     int xVida, yVida, xHab, yHab;

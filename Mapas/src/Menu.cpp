@@ -42,11 +42,9 @@ Menu::Menu(MaquinaEstados& maquina, sf::RenderWindow& window, bool cambio): Esta
     //fondo
     texfondo = new sf::Texture();
     //texfondo->loadFromFile("src/menu2.jpeg");
-    texfondo->loadFromFile("resources/menu/fondoMenu.png");
+    texfondo->loadFromFile("resources/menu/fondos.png");
     sprfondo = new sf::Sprite;
     sprfondo->setTexture(*texfondo);
-    sprfondo->setOrigin(sprfondo->getGlobalBounds().width/2,sprfondo->getGlobalBounds().height/2);
-    sprfondo->setPosition(1280/2,720/2);
 
     //fondo opciones
     texopciones = new sf::Texture();
@@ -75,6 +73,49 @@ Menu::~Menu()
     //dtor
 }
 
+void Menu::cambio()
+{
+    if(clkmenu.getElapsedTime().asSeconds() > 0.08)
+    {
+        if(linea == 3 && num > 5)
+        {
+            linea = 1;
+            num = 0;
+        }
+        if(num > 5 && linea < 3)
+        {
+            linea++;
+            num = 1;
+        }
+        recortes(num);
+        num++;
+        clkmenu.restart();
+    }
+
+}
+
+void Menu::recortes(int num)
+{
+    if(linea == 1)
+    {
+        sprfondo->setTextureRect(sf::IntRect(7200/6*num,0,7200/6,720));
+        sprfondo->setScale(1.07,1.0);
+    }
+
+    if(linea == 2)
+    {
+        sprfondo->setTextureRect(sf::IntRect(7200/6*num,720,7200/6,720));
+        sprfondo->setScale(1.07,1.0);
+    }
+
+    if(linea == 3)
+    {
+        sprfondo->setTextureRect(sf::IntRect(7200/6*num,1440,7200/6,720));
+        sprfondo->setScale(1.07,1.0);
+    }
+
+}
+
 void Menu::pause()
 {
     std::cout << "Menu pausa" << std::endl;
@@ -87,6 +128,7 @@ void Menu::resume()
 
 void Menu::update()
 {
+    cambio();
     eventos_raton();
     evento = new sf::Event;
     procesar_eventos();

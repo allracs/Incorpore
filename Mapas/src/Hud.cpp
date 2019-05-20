@@ -150,7 +150,16 @@ void Hud::modificar_vida(int cantidad, int sr){
     }
     if(sr == 2 && cantidad_corazones->size() > 0)
     {
-        cantidad_corazones->pop_back();
+        if(cantidad < 0){
+            updateHabilidades();
+            escudo_esta = false;
+        }
+
+        for(int i = 0; i < cantidad; i++){
+            cantidad_corazones->pop_back();
+        }
+
+
     }
 
     for(int i = 0; i < cantidad_corazones->size(); i++)
@@ -241,7 +250,6 @@ void Hud::updateTeclas(bool cambio, bool dash){
     else{
         tecla_esquivar->setColor(Color(50,50,50,180));
     }
-
 }
 
 void Hud::setPosicionHabilidades(int x, int y){
@@ -279,6 +287,7 @@ void Hud::cambioNivel(int hs,int ha,int hd){
         setHabilidad(2);
         textoDef->setString(to_string(hd));
     }
+
 
     nAtaque = ha;
     nDef = hd;
@@ -340,6 +349,8 @@ void Hud::draw(RenderWindow& target){
         target.draw(*textoAttack);
     }
 
+
+
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
         target.draw(cantidad_corazones->at(i));
@@ -348,6 +359,14 @@ void Hud::draw(RenderWindow& target){
     for(int i = 0; i < vector_habilidades->size(); i++)
     {
         target.draw(vector_habilidades->at(i));
+    }
+}
+
+void Hud::updateHabilidades(){
+    for(int i = 0; i < vector_habilidades->size(); i++){
+        if(4 == vector_tipos->at(i)){
+            vector_habilidades->erase(vector_habilidades->begin() + i);
+        }
     }
 }
 
@@ -364,6 +383,7 @@ void Hud::move(Vector2f delta){
     tecla_switch->move(delta);
     arma->move(delta);
     sprite_switch->move(delta);
+
     for(int i = 0; i < cantidad_corazones->size(); i++)
     {
         cantidad_corazones->at(i).move(delta);

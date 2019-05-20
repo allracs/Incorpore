@@ -37,7 +37,6 @@ void Potenciadores::gestionarHabilidades(Jugador& jugador, int tipo){
         case 2:
             //Dfn down
             jugador.setDefensa(jugador.getDefensa() - 1);
-
         break;
         case 3:
             //Spd down
@@ -46,9 +45,7 @@ void Potenciadores::gestionarHabilidades(Jugador& jugador, int tipo){
         break;
         case 4:
             //Bubble
-            //jugador.escudarse();
-            cout << "Jajasaludos" << endl;
-
+            jugador.escudarse();
         break;
     }
     jugador.showStats();

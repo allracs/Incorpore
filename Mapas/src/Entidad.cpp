@@ -179,12 +179,12 @@ void Entidad::draw(RenderWindow& target) {
     //target.draw(ataqueHitbox);
 }
 
-void Entidad::drawBoundingBoxes(RenderWindow& target){
+void Entidad::drawBoundingBoxes(RenderWindow& target){/*
     target.draw(*cuadrado_der);
     target.draw(*cuadrado_arr);
     target.draw(*cuadrado_abj);
     target.draw(*cuadrado_izq);
-    //target.draw(*cuadrado_cen);
+    target.draw(*cuadrado_cen);*/
 }
 
 /*

@@ -21,11 +21,11 @@ class Jugador: public Entidad{
 
         int update(float, RenderWindow&, int, FloatRect*);
         void moverse();
-        bool recibeDmg(RectangleShape, int, float);
+        int recibeDmg(RectangleShape, int, float);
         void cambiarArma(int opcion);
         bool cogePortal(FloatRect);
         bool cogeCofre(FloatRect);
-
+        bool getEscudo();
         void compruebaColor();
 
         Arma& getArma();
@@ -50,6 +50,7 @@ class Jugador: public Entidad{
         bool puedeEsquivar;
         bool flagArma;
         bool inicioArma = true;
+        bool escudo;
 
         Clock cdEsquivar;
         Clock duracionEsquivar;

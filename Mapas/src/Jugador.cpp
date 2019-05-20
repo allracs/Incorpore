@@ -14,6 +14,7 @@ Jugador::Jugador(Vector2f pos, int mejora){
     attack = 3;
     defense = 2;
     speed = 75.f;
+    escudo = false;
 
     dirMov = 1.f;
     movement = Vector2f(0.f, 0.f);
@@ -39,6 +40,7 @@ Jugador::Jugador(Vector2f pos, int vida, int tipoarma, int mejora, int ataque, i
     mostrarTumba = false;
     entidadHitbox.setPosition(pos);
     setColisionadores();
+    escudo = false;
     mostrarTumba = false;
     hp = vida;
     attack = ataque;
@@ -118,6 +120,8 @@ int Jugador::update(float delta, RenderWindow& window, int nCol, FloatRect* coli
     }
     compruebaColor();
 
+
+
     return cambia;
 }
 
@@ -143,48 +147,23 @@ bool Jugador::cogeCofre(FloatRect cofre){
     return res;
 }
 
-bool Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida, float atkEnemigo){
+int Jugador::recibeDmg(RectangleShape enemigoHitbox, int vida, float atkEnemigo){
+    int res = 0;
     Vector2f enemyPos = enemigoHitbox.getPosition();
-    bool res = false;
     if(getEntidadHitbox().getGlobalBounds().intersects(enemigoHitbox.getGlobalBounds()) && dmgCD.getElapsedTime().asSeconds() >= 1.5 && vida > 0 && !esquivando){
-        res = true;
-        hp -= atkEnemigo - defense;
-        actual->sprite.setColor(sf::Color::Red);
-        if(hp > 0){/* RETROCESO
-            //colisiona por la derecha
-            if(playerCenter.x > enemyPos.x){
-                actual->sprite.move(8,0);
-                entidadHitbox.move(8,0);
-                moverColisionadores({8,0});
-            }
-            //colisiona por la izquierda
-            if(playerCenter.x < enemyPos.x){
-                 actual->sprite.move(-8,0);
-                 entidadHitbox.move(-8,0);
-                 moverColisionadores({-8,0});
-            }
-            //colisiona por arriba
-            if(playerCenter.y < enemyPos.y){
-                actual->sprite.move(0,-8);
-                entidadHitbox.move(0,-8);
-                moverColisionadores({0,-8});
-            }
-            //colisiona por debajo
-            if(playerCenter.y > enemyPos.y){
-                actual->sprite.move(0,8);
-                entidadHitbox.move(0,8);
-                moverColisionadores({0,8});
-            }*/
+        if(!escudo){
+            hp -= atkEnemigo - defense;
+            actual->sprite.setColor(sf::Color::Red);
+            res = atkEnemigo - defense;
         }
-        /*
         else{
-            //Muerto
-            cout << "HAS PALMAO, FIN DE LA PARTIDA." << endl; //Cambiar por retorno a menu
-            exit(0);
+            escudo = false;
+            res = -1;
+
         }
-        */
         dmgCD.restart();
     }
+    return res;
 }
 
 void Jugador::esquivarInicio(){
@@ -272,7 +251,13 @@ void Jugador::moverse(){
 }
 
 void Jugador::compruebaColor(){
-    if(cd.getElapsedTime().asSeconds() >= 0.25 && !esquivando){
+    if(escudo){
+           actual->sprite.setColor(sf::Color::Yellow);
+    }
+    else{
+                actual->sprite.setColor(sf::Color::White);
+    }
+    if(cd.getElapsedTime().asSeconds() >= 0.25 && !esquivando && escudo){
         actual->sprite.setColor(sf::Color::White);
         cd.restart();
     }
@@ -323,8 +308,12 @@ void Jugador::muerteJugador(){
 
 }
 
+bool Jugador::getEscudo(){
+    return escudo;
+}
+
 void Jugador::escudarse(){
-    cout << "No se cargo la tumba" << endl;
+    escudo = true;
 }
 bool Jugador::flagEsquivar(){
     return puedeEsquivar;
