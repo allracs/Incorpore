@@ -2753,11 +2753,11 @@
 	<iostream>
 	"Juego.h"
 
-1558195892 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Entidad.cpp
+1558360047 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Entidad.cpp
 	"../include/Entidad.h"
 	<iostream>
 
-1558195892 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Entidad.h
+1558360047 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Entidad.h
 	<SFML/Graphics.hpp>
 	"Animacion.h"
 	"Proyectil.h"
@@ -2822,17 +2822,17 @@
 	<SFML/Graphics.hpp>
 	<memory>
 
-1558103666 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Arma.cpp
+1558360047 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Arma.cpp
 	"../include/Arma.h"
 
-1558101673 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Arma.h
+1558360047 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Arma.h
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
 	"Enemigo.h"
 	"Proyectil.h"
 
-1558083941 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Enemigo.h
+1558221729 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Enemigo.h
 	"Entidad.h"
 	"Posicion.h"
 	"Proyectil.h"
@@ -2861,22 +2861,22 @@
 	<iostream>
 	"time.h"
 
-1558195892 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Enemigo.cpp
+1558360047 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Enemigo.cpp
 	"../include/Enemigo.h"
 	"Proyectil.h"
 
 1557314233 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Estado.cpp
 	"Estado.h"
 
-1558203348 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Hud.cpp
+1558361644 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Hud.cpp
 	<SFML/Graphics.hpp>
 	"../include/Hud.h"
 
-1558202566 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Hud.h
+1558360047 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Hud.h
 	<SFML/Graphics.hpp>
 	<vector>
 
-1558197085 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Juego.cpp
+1558361644 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Juego.cpp
 	"../include/Juego.h"
 	"../include/Astar.h"
 	"../include/Posicion.h"
@@ -2885,7 +2885,7 @@
 	<vector>
 	<iostream>
 
-1558172506 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Juego.h
+1558360047 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Juego.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Jugador.h"
@@ -2896,8 +2896,9 @@
 	"Consumible.h"
 	"Estado.h"
 	"Portal.h"
+	"Tumba.h"
 
-1558198504 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Jugador.h
+1558360047 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Jugador.h
 	<SFML/Graphics.hpp>
 	<cmath>
 	<iostream>
@@ -2907,16 +2908,18 @@
 	"Arma.h"
 	"Proyectil.h"
 
-1558172506 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Mapa.h
+1558360047 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Mapa.h
 	"tinyxml2.h"
 	"Entidad.h"
 	"Jugador.h"
 	"Enemigo.h"
 	"Antorcha.h"
+	"Potenciadores.h"
+	"Tumba.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1558203386 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Jugador.cpp
+1558361644 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Jugador.cpp
 	<iostream>
 	"../include/Jugador.h"
 
@@ -2925,7 +2928,7 @@
 	<SFML/Graphics.hpp>
 	"../include/Aplicacion.h"
 
-1558172506 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Mapa.cpp
+1558360047 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Mapa.cpp
 	"../include/Mapa.h"
 	<time.h>
 	<stdio.h>
@@ -2938,7 +2941,7 @@
 	<iostream>
 	<memory>
 
-1558005942 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Menu.cpp
+1558360043 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Menu.cpp
 	"Menu.h"
 	"MaquinaEstados.h"
 	<memory>
@@ -3537,6 +3540,21 @@
 	"../include/Potenciadores.h"
 
 1558348439 source:/home/david/Documentos/Incorpore/Mapas/src/Tumba.cpp
+	"Tumba.h"
+	<iostream>
+
+1558360047 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Potenciadores.h
+	"Jugador.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1558291226 /home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/include/Tumba.h
+	<SFML/Graphics.hpp>
+
+1558360047 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Potenciadores.cpp
+	"../include/Potenciadores.h"
+
+1558291226 source:/home/irene/Documentos/Universidad/Fundamentos de los videojuegos/Incorpore/Mapas/src/Tumba.cpp
 	"Tumba.h"
 	<iostream>
 
