@@ -270,12 +270,12 @@ void Juego::cargaPlayer(){
     if(entraPortales)
     {
         std::cout<< jugador->getHP()<<std::endl;
-        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad());
+        jugador = new Jugador(mapa->generaPosicion(), jugador->getHP(), jugador->getArma().getOpcion(), mejora, jugador->getAtaque(), jugador->getDefensa(), jugador->getVelocidad());
         entraPortales = false;
     }
     else
     {
-        jugador = new Jugador(mapa->generaPosicion());
+        jugador = new Jugador(mapa->generaPosicion(), mejora);
     }
 
     for(int i = 0; i < nEnemigos; i++){
@@ -346,6 +346,10 @@ void Juego::procesarEventos(){
                     if(!cofreAbierto){
                         int tipo = rand() % 4 + 1;
                         mapa->getCofre()->abrirCofre(*jugador, tipo);
+                        if(tipo == 1){
+                            mejora++;
+                            jugador->getArma().mejorarArma(mejora);
+                        }
                         hud->setHabilidad(tipo);
                         contadorHabilidades(tipo);
                         cofreAbierto = true;

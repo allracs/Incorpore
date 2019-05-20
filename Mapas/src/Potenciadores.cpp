@@ -33,7 +33,6 @@ void Potenciadores::gestionarHabilidades(Jugador& jugador, int tipo){
         case 1:
             //Atk up
             jugador.setAtaque(jugador.getAtaque() + 1);
-
         break;
         case 2:
             //Dfn down

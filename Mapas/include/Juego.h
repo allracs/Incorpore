@@ -68,6 +68,7 @@ class Juego : public Estado
         bool pausa = false;
         bool reintentar = false;
         int selPausa;
+        int mejora = 0;
         RectangleShape *capaPausa;
         Font *fuente;
         Text *textopausa;

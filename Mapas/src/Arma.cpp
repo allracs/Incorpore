@@ -2,34 +2,40 @@
 using namespace std;
 using namespace sf;
 
-Arma::Arma(int opcion, Vector2f pos)
+Arma::Arma(int opcion, int mejora, Vector2f pos)
 {
-    tipo=opcion;
+    tipo = opcion;
 
-        ataqueHitbox.setOutlineThickness(1);
-        ataqueHitbox.setOutlineColor(Color::Transparent);
-        ataqueHitbox.setFillColor(Color::Transparent);
-        ataqueHitbox.setSize(Vector2f(11.f, 4.f));
-        ataqueHitbox.setOrigin(-8,2.f);
-        ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
+    ataqueHitbox.setOutlineThickness(1);
+    ataqueHitbox.setOutlineColor(Color::Transparent);
+    ataqueHitbox.setFillColor(Color::Transparent);
+    ataqueHitbox.setSize(Vector2f(11.f, 4.f));
+    ataqueHitbox.setOrigin(-8,2.f);
+    ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
 
+    // Cargar el sprite de la hitbox de ataque.
+    if(!texturaMelee.loadFromFile("resources/sprites/melee0.png"))
+        cout << "ERROR AL CARGAR LA TEXTURA: basic.png" << endl;
+    if(!texturaRange.loadFromFile("resources/sprites/range0.png"))
+        cout << "ERROR AL CARGAR LA TEXTURA: basic.png" << endl;
+    if(!texturaAtaque.loadFromFile("resources/sprites/ataque.png"))
+        cout << "ERROR AL CARGAR LA TEXTURA: atque.png" << endl;
 
-        // Cargar el sprite de la hitbox de ataque.
-      if(tipo==0){
-            if(!textura.loadFromFile("resources/sprites/sword.png"))
-            cout << "ERROR AL CARGAR LA TEXTURA: sword.png" << endl;
-      } else if(tipo==1){
-            if(!textura.loadFromFile("resources/sprites/baston.png"))
-            cout << "ERROR AL CARGAR LA TEXTURA: baston.png" << endl;
+    if(mejora != 0)
+        mejorarArma(mejora);
 
-      }
-        espada.setTexture(textura);
-        espada.setOrigin(14,14);
-        espada.setPosition(pos.x +2, pos.y +3);
-        espada.setScale(-1.f, -1.f);
+    if(tipo == 0) {
+        texturaActual = texturaMelee;
+    } else if(tipo == 1) {
+        texturaActual = texturaRange;
+    }
 
-        cambiado = false;
+    espada.setTexture(texturaActual);
+    espada.setOrigin(14,14);
+    espada.setPosition(pos.x +2, pos.y +3);
+    espada.setScale(-1.f, -1.f);
 
+    cambiado = false;
 }
 
 Arma::~Arma()
@@ -38,7 +44,6 @@ Arma::~Arma()
 }
 
 void Arma::update(Vector2f vDir, int nCol, FloatRect* colisiones){
-
     espada.move(vDir);
     for(int i = 0; i < proyectiles.size(); i++) {
         if(proyectiles.at(i)->getHacolsionado() == true) {
@@ -50,7 +55,6 @@ void Arma::update(Vector2f vDir, int nCol, FloatRect* colisiones){
     }
 
     terminAnim();
-
 }
 
 
@@ -59,18 +63,14 @@ void Arma::empezarAnim(){
     // cambio el sprite
 //    std::cout << "SE LLAMA AL MÉTODO EMPEZAR ANIM" << std::endl;
     animAtaque.restart();
-    if(!textura.loadFromFile("resources/sprites/ataque.png"))
-        cout << "ERROR AL CARGAR LA TEXTURA: atque.png" << endl;
-    espada.setTexture(textura);
+    espada.setTexture(texturaAtaque);
     cambiado = true;
 }
 
 void Arma::terminAnim() {
     if(animAtaque.getElapsedTime().asSeconds() >= 0.2f && cambiado){
         animAtaque.restart();
-        if(!textura.loadFromFile("resources/sprites/sword.png"))
-            cout << "ERROR AL CARGAR LA TEXTURA: atque.png" << endl;
-        espada.setTexture(textura);
+        espada.setTexture(texturaActual);
         cambiado = false;
     }
 }
@@ -153,14 +153,34 @@ int Arma::getOpcion(){
 
 void Arma::cambiarArma(int opcion) {
     if(opcion == 0) {
-        textura.loadFromFile("resources/sprites/sword.png");
+        texturaActual = texturaMelee;
         tipo = opcion;
     }
     if(opcion == 1) {
-        textura.loadFromFile("resources/sprites/baston.png");
+        texturaActual = texturaRange;
         tipo = opcion;
     }
 }
+
+void Arma::mejorarArma(int mejora) {
+    if(mejora == 1) {
+        texturaMelee.loadFromFile("resources/sprites/melee1.png");
+        texturaRange.loadFromFile("resources/sprites/range1.png");
+    } else if(mejora == 2) {
+        texturaMelee.loadFromFile("resources/sprites/melee2.png");
+        texturaRange.loadFromFile("resources/sprites/range2.png");
+    } else if(mejora >= 3) {
+        texturaMelee.loadFromFile("resources/sprites/melee3.png");
+        texturaRange.loadFromFile("resources/sprites/range3.png");
+    }
+
+    if(tipo == 0) {
+        texturaActual = texturaMelee;
+    } else if(tipo == 1) {
+        texturaActual = texturaRange;
+    }
+}
+
 
 RectangleShape Arma::getHitbox(){
     return ataqueHitbox;

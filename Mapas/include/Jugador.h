@@ -16,8 +16,8 @@ using namespace sf;
 
 class Jugador: public Entidad{
     public:
-        Jugador(Vector2f pos);
-        Jugador(Vector2f pos, int, int, int, int, float);
+        Jugador(Vector2f, int);
+        Jugador(Vector2f, int, int, int, int, int, float);
 
         int update(float, RenderWindow&, int, FloatRect*);
         void moverse();
@@ -28,7 +28,7 @@ class Jugador: public Entidad{
 
         void compruebaColor();
 
-        Arma getArma();
+        Arma& getArma();
         Arma* getPuntArma();
         Vector2f getMovement();
 
