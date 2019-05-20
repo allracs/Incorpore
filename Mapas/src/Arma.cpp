@@ -14,15 +14,19 @@ Arma::Arma(int opcion, int mejora, Vector2f pos)
     ataqueHitbox.setPosition(pos.x + 2, pos.y + 3);
 
     // Cargar el sprite de la hitbox de ataque.
-    if(!texturaMelee.loadFromFile("resources/sprites/melee0.png"))
-        cout << "ERROR AL CARGAR LA TEXTURA: basic.png" << endl;
-    if(!texturaRange.loadFromFile("resources/sprites/range0.png"))
-        cout << "ERROR AL CARGAR LA TEXTURA: basic.png" << endl;
     if(!texturaAtaque.loadFromFile("resources/sprites/ataque.png"))
         cout << "ERROR AL CARGAR LA TEXTURA: atque.png" << endl;
 
-    if(mejora != 0)
+    if(mejora == 0){
+        if(!texturaMelee.loadFromFile("resources/sprites/melee0.png"))
+            cout << "ERROR AL CARGAR LA TEXTURA: basic.png" << endl;
+        if(!texturaRange.loadFromFile("resources/sprites/range0.png"))
+            cout << "ERROR AL CARGAR LA TEXTURA: basic.png" << endl;
+    } else if(mejora != 0){
         mejorarArma(mejora);
+    }
+
+    cout << "M: " << mejora << endl;
 
     if(tipo == 0) {
         texturaActual = texturaMelee;
@@ -179,6 +183,8 @@ void Arma::mejorarArma(int mejora) {
     } else if(tipo == 1) {
         texturaActual = texturaRange;
     }
+
+    cout << "Me: " << mejora << endl;
 }
 
 

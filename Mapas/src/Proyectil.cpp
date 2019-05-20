@@ -26,7 +26,7 @@ Proyectil::Proyectil(sf::Vector2f posicion, sf::Vector2f dir, float rotation, in
         sprite.setScale({0.6,0.6});
     }
 
-    std::cout << "POSICION: " << colision.getPosition().x << " ," << colision.getPosition().y << std::endl;
+    //std::cout << "POSICION: " << colision.getPosition().x << " ," << colision.getPosition().y << std::endl;
     sprite.setPosition(posicion);
 
     colision = sf::RectangleShape(sf::Vector2f(4,4));
