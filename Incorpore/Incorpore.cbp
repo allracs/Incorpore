@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Incorpore" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Incorpore" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Incorpore" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="cb.bmp" />
+		<Unit filename="include/Animacion.h" />
+		<Unit filename="include/Antorcha.h" />
+		<Unit filename="include/Aplicacion.h" />
+		<Unit filename="include/Arma.h" />
+		<Unit filename="include/Astar.h" />
+		<Unit filename="include/Bala.h" />
+		<Unit filename="include/Consumible.h" />
+		<Unit filename="include/Enemigo.h" />
+		<Unit filename="include/Entidad.h" />
+		<Unit filename="include/Estado.h" />
+		<Unit filename="include/Hud.h" />
+		<Unit filename="include/Jefe.h" />
+		<Unit filename="include/Juego.h" />
+		<Unit filename="include/Jugador.h" />
+		<Unit filename="include/Mapa.h" />
+		<Unit filename="include/MaquinaEstados.h" />
+		<Unit filename="include/Menu.h" />
+		<Unit filename="include/Portal.h" />
+		<Unit filename="include/Posicion.h" />
+		<Unit filename="include/Potenciadores.h" />
+		<Unit filename="include/Proyectil.h" />
+		<Unit filename="include/Tumba.h" />
+		<Unit filename="include/tinyxml2.h" />
+		<Unit filename="src/Animacion.cpp" />
+		<Unit filename="src/Antorcha.cpp" />
+		<Unit filename="src/Aplicacion.cpp" />
+		<Unit filename="src/Arma.cpp" />
+		<Unit filename="src/Astar.cpp" />
+		<Unit filename="src/Bala.cpp" />
+		<Unit filename="src/Consumible.cpp" />
+		<Unit filename="src/Enemigo.cpp" />
+		<Unit filename="src/Entidad.cpp" />
+		<Unit filename="src/Estado.cpp" />
+		<Unit filename="src/Hud.cpp" />
+		<Unit filename="src/Jefe.cpp" />
+		<Unit filename="src/Juego.cpp" />
+		<Unit filename="src/Jugador.cpp" />
+		<Unit filename="src/Mapa.cpp" />
+		<Unit filename="src/MaquinaEstados.cpp" />
+		<Unit filename="src/Menu.cpp" />
+		<Unit filename="src/Portal.cpp" />
+		<Unit filename="src/Posicion.cpp" />
+		<Unit filename="src/Potenciadores.cpp" />
+		<Unit filename="src/Proyectil.cpp" />
+		<Unit filename="src/Tumba.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/tinyxml2.cpp" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
