@@ -1,0 +1,79 @@
+html {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    min-width: 375px;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    border-radius: 4px;
+    /*  */
+    background-image: linear-gradient(to bottom right, #aaa, #333);
+
+}
+
+#seecode {
+    background-color: #3AC2FF;
+    border-radius: 4px;
+    position: fixed;
+    top: -2.5em;
+    right: 3em;
+    height: 6em;
+    padding-top: 0.8em;
+    transition: transform 1s;
+    box-shadow: 2px 2px 5px #ccc;
+}
+
+#seecode:hover {
+    transform: translate(0, 1em);
+}
+
+header img {
+    width: 4em;
+    height: auto;
+    padding: .6em .3em;
+    transform: translate(0, 1.6em);
+}
+
+@font-face {
+  font-family: Blockheads;
+  src: url(fonts/Blockheads.ttf);
+}
+
+h1 {
+    font-family: Blockheads;
+    font-size: 4em;
+    margin: 0;
+    padding: .4em 1em;
+    width: 100%;
+    text-align: center;
+    color: white;
+    height: auto;
+}
+
+.video {
+    width: 100%;
+}
+
+iframe {
+    margin: auto;
+}
+
+
+
+
+
+@media screen and (max-width: 572px) {
+    .video > iframe {
+        width: 100%;
+    }
+
+    #seecode {
+        position: relative;
+        top: -2.5em;
+        right: 3em;
+        height: 8em;
+        padding-top: 0.8em;
+    }
+}
