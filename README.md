@@ -49,4 +49,5 @@ Juego roguelike 2D desarrollado con C++ usando la librería [SMFL](https://www.s
 2. "Open project"
  - File > Open > {folderPath}/Incorpore/Incorpore.cbp
  - Project mode: DEBUG (Build target)
+ - AUDIO SFML: Setting > Compiler > Linker Settings > Add: sfml-audio > OK
  - Compile, execute and have fun ^^
