@@ -1,15 +1,19 @@
 html {
     font-family: 'Roboto', sans-serif;
-    background-color: #fff;
-    min-width: 375px;
+    min-width: 375px !important;
+    overflow-x: hidden;
 }
 
-header {
+body {
+    background-color: #1E2029 !important;
+    color: white !important;
+}
+
+nav {
     width: 100%;
     display: flex;
     border-radius: 4px;
-    /*  */
-    background-image: linear-gradient(to bottom right, #aaa, #333);
+    margin-bottom: 3em;
 
 }
 
@@ -23,13 +27,14 @@ header {
     padding-top: 0.8em;
     transition: transform 1s;
     box-shadow: 2px 2px 5px #ccc;
+    z-index: 1;
 }
 
 #seecode:hover {
     transform: translate(0, 1em);
 }
 
-header img {
+nav img {
     width: 4em;
     height: auto;
     padding: .6em .3em;
@@ -41,15 +46,33 @@ header img {
   src: url(fonts/Blockheads.ttf);
 }
 
+#gradient1 {
+    background-color: #aaa;
+    width: 30em;
+    height: 30em;
+    position: absolute;
+    z-index: -5;
+    right: -5em;
+    top: -15em;
+    border-radius: 5px;
+    transform: rotate(65deg);
+
+    background-image: linear-gradient(to top, #FF004A, #FFAB0D);
+}
+
 h1 {
     font-family: Blockheads;
     font-size: 4em;
     margin: 0;
     padding: .4em 1em;
     width: 100%;
-    text-align: center;
+    text-align: left;
     color: white;
     height: auto;
+}
+
+a {
+    color: #00DCFF;
 }
 
 .video {
@@ -60,20 +83,8 @@ iframe {
     margin: auto;
 }
 
-
-
-
-
 @media screen and (max-width: 572px) {
     .video > iframe {
         width: 100%;
-    }
-
-    #seecode {
-        position: relative;
-        top: -2.5em;
-        right: 3em;
-        height: 6em;
-        padding-top: 0.8em;
     }
 }
