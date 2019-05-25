@@ -17,6 +17,16 @@ nav {
 
 }
 
+.wrapper {
+  margin-right: auto;
+  margin-left:  auto;
+
+  max-width: 960px;
+
+  padding-right: 10px;
+  padding-left:  10px;
+}
+
 #seecode {
     background-color: #3AC2FF;
     border-radius: 4px;
