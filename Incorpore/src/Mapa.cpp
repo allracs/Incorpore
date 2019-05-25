@@ -64,6 +64,8 @@ Mapa::Mapa(int nivel){
 
 Mapa::~Mapa(){
     //Destructor
+    musica.stop();
+
 	delete caja;
     delete cajadoble;
     delete columna;

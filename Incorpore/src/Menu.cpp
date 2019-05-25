@@ -196,6 +196,7 @@ void Menu::procesar_eventos()
                 case sf::Keyboard::Space:
                     if(opcion_seleccionada == 0)
                     {
+                        musica.stop();
                         m_siguiente = MaquinaEstados::build<Juego>(m_maquina, m_window, true);
                     }
                     if(opcion_seleccionada == 1)
@@ -225,6 +226,7 @@ void Menu::procesar_eventos()
                 case sf::Event::MouseButtonReleased:
                     if(opcion_seleccionada == 0)
                     {
+                        musica.stop();
                         m_siguiente = MaquinaEstados::build<Juego>(m_maquina, m_window, true);
                     }
                     if(opcion_seleccionada == 1)
