@@ -7,6 +7,7 @@ html {
 body {
     background-color: #1E2029 !important;
     color: white !important;
+    overflow: hidden;
 }
 
 nav {
@@ -18,13 +19,14 @@ nav {
 }
 
 .wrapper {
-  margin-right: auto;
-  margin-left:  auto;
+    overflow-x: hidden;
+    margin-right: auto;
+    margin-left:  auto;
 
-  max-width: 960px;
+    max-width: 960px;
 
-  padding-right: 10px;
-  padding-left:  10px;
+    padding-right: 10px;
+    padding-left:  10px;
 }
 
 #seecode {
