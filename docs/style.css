@@ -30,7 +30,7 @@ nav {
 #seecode {
     background-color: #3AC2FF;
     border-radius: 4px;
-    position: fixed;
+    position: absolute;
     top: -2.5em;
     right: 3em;
     height: 6em;
@@ -57,6 +57,7 @@ nav img {
 }
 
 #gradient1 {
+    overflow: hidden;
     background-color: #aaa;
     width: 30em;
     height: 30em;
